@@ -1980,14 +1980,16 @@ document.addEventListener('click', function (e) {
    ============================================================ */
 
 function openDatasheetNotice(productId) {
-  const product = PRODUCTS.find(p => p.id === productId || p.code === productId);
-  if (product) {
-    showToast(`Downloading ${product.code} Technical Data Sheet...`);
-    window.open(`/api/download-tds?code=${encodeURIComponent(product.code)}`, '_blank');
-  } else {
-    showToast('Downloading NODA PLAST Technical Data Sheet...');
-    window.open('/api/download-tds?code=ALL', '_blank');
+  const product = PRODUCTS.find(p => p.id === productId);
+
+  if (!product) {
+    showToast('Technical Data Sheet not found.');
+    return;
   }
+
+  const pdfPath = `assets/tds/${product.code}.pdf`;
+
+  window.open(pdfPath, '_blank');
 }
 
 
