@@ -2679,3 +2679,86 @@ else {
   initializeNodaWebsite();
 
 }
+
+/* ================= DYNAMIC HERO VALUES ================= */
+
+const HERO_VALUES = [
+  {
+    name: "QUALITY",
+    image: "quality-labrotory.png",
+    eyebrow: "Quality you can measure",
+    title: "Quality<br>without compromise.",
+    text: "Consistent BOPP film performance built around controlled production, laboratory testing and reliable specifications."
+  },
+  {
+    name: "INNOVATION",
+    image: "printing-laminating.png",
+    eyebrow: "Innovation in every application",
+    title: "Engineered film.<br>Ready for what comes next.",
+    text: "Film solutions developed for modern packaging, printing, lamination and demanding converting applications."
+  },
+  {
+    name: "SUSTAINABILITY",
+    image: "recycling logo.png",
+    eyebrow: "Performance with purpose",
+    title: "Better film.<br>More responsible choices.",
+    text: "We focus on recyclable film solutions, efficient processes and responsible approaches to packaging performance."
+  },
+  {
+    name: "RELIABILITY",
+    image: "nodaplast.jpg",
+    eyebrow: "A partner you can rely on",
+    title: "Reliable film.<br>Reliable results.",
+    text: "Dependable BOPP film solutions supported by consistent quality, technical expertise and customer-focused service."
+  },
+  {
+  name: "TECHNOLOGY",
+  image: "bopp-production-line-wide.jpg",
+  eyebrow: "Advanced film technology",
+  title: "Technology<br>behind every roll.",
+  text: "Modern production technologies and precision processes designed to deliver consistent BOPP film performance."
+ },
+];
+
+let heroValueIndex = 0;
+let heroInterval;
+
+function changeHeroValue(index) {
+  const value = HERO_VALUES[index];
+
+  const heroBg = document.getElementById("heroBg");
+  const heroBadge = document.getElementById("heroBadge");
+  const heroEyebrow = document.getElementById("heroEyebrow");
+  const heroTitle = document.getElementById("heroTitle");
+  const heroText = document.getElementById("heroText");
+
+  if (!heroBg) return;
+
+  heroBg.style.opacity = "0";
+
+  setTimeout(() => {
+    heroBg.style.backgroundImage =
+      `url("assets/images/${value.image}")`;
+
+    heroBadge.textContent = value.name;
+    heroEyebrow.textContent = value.eyebrow;
+    heroTitle.innerHTML = value.title;
+    heroText.textContent = value.text;
+
+    heroBg.style.opacity = "1";
+  }, 400);
+}
+
+function startHeroAutoChange() {
+  heroInterval = setInterval(() => {
+    heroValueIndex =
+      (heroValueIndex + 1) % HERO_VALUES.length;
+
+    changeHeroValue(heroValueIndex);
+  }, 5000);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  changeHeroValue(0);
+  startHeroAutoChange();
+});
