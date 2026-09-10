@@ -2430,3 +2430,107 @@ CAREERS RESPONSIVE
   }
 }
 
+
+/* ============================================================
+   HOME APPLICATIONS CAROUSEL
+   ============================================================ */
+
+.home-app-carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.home-app-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+
+  animation: homeApplicationsScroll 35s linear infinite;
+
+  will-change: transform;
+}
+
+.home-app-card {
+  flex: 0 0 340px;
+  width: 340px;
+  cursor: default;
+}
+
+.home-app-card .ph {
+  aspect-ratio: 4 / 3;
+}
+
+.home-app-card .app-card-body {
+  min-height: 245px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-app-card .app-explore-btn {
+  margin-top: auto;
+  width: fit-content;
+
+  border: 0;
+  background: none;
+  padding: 0;
+
+  font: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.home-app-carousel:hover .home-app-track,
+.home-app-carousel:focus-within .home-app-track {
+  animation-play-state: paused;
+}
+
+@keyframes homeApplicationsScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 15px));
+  }
+}
+
+
+/* Tablet */
+@media (max-width: 900px) {
+
+  .home-app-card {
+    flex: 0 0 300px;
+    width: 300px;
+  }
+
+  .home-app-track {
+    gap: 24px;
+    animation-duration: 30s;
+  }
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  .home-app-card {
+    flex: 0 0 280px;
+    width: 280px;
+  }
+
+  .home-app-track {
+    gap: 18px;
+    animation-duration: 25s;
+  }
+}
+
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  .home-app-track {
+    animation: none;
+  }
+}
