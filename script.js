@@ -1368,7 +1368,7 @@ function renderProductDetail(id) {
         .join('');
 
   }
-const pdKeyProps =
+  const pdKeyProps =
     document.getElementById('pdKeyProps');
 
 
@@ -2191,7 +2191,7 @@ async function handleQuoteFormSubmit(e) {
     showFormError(
       form,
       error.message ||
-        'We could not send your request. Please try again or contact us directly at contact@nodaplast-film.com.'
+      'We could not send your request. Please try again or contact us directly at contact@nodaplast-film.com.'
     );
   } finally {
     setFormLoading(form, false);
@@ -2200,6 +2200,306 @@ async function handleQuoteFormSubmit(e) {
 
 on('quoteForm', 'submit', handleQuoteFormSubmit);
 
+/* ============================================================
+CAREERS / CV APPLICATION
+============================================================ */
+
+async function handleCareerFormSubmit(e) {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+
+  clearFormError(form);
+
+  // Check required fields
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const cvInput = document.getElementById('career-cv');
+  const cvFile = cvInput ? cvInput.files[0] : null;
+
+  // Make sure a CV was selected
+  if (!cvFile) {
+    showFormError(form, 'Please upload your CV before submitting.');
+    return;
+  }
+
+  // Allowed file types
+  const allowedTypes = [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  ];
+
+  const allowedExtensions = ['pdf', 'doc', 'docx'];
+
+  const fileExtension =
+    cvFile.name.split('.').pop().toLowerCase();
+
+  if (
+    !allowedTypes.includes(cvFile.type) &&
+    !allowedExtensions.includes(fileExtension)
+  ) {
+    showFormError(
+      form,
+      'Please upload your CV as a PDF, DOC, or DOCX file.'
+    );
+    return;
+  }
+
+  // File size limit: 5 MB
+  const maxFileSize = 5 * 1024 * 1024;
+
+  if (cvFile.size > maxFileSize) {
+    showFormError(
+      form,
+      'Your CV is too large. Please upload a file smaller than 5 MB.'
+    );
+    return;
+  }
+
+  /*
+  
+  * FormData automatically includes:
+  * name
+  * email
+  * phone
+  * position
+  * message
+  * consent
+  * cv
+    */
+  const formData = new FormData(form);
+
+  // Add application type for the backend
+  formData.append('type', 'career');
+
+  setFormLoading(form, true);
+
+  try {
+
+
+    const response = await fetch('/api/career-application', {
+      method: 'POST',
+      body: formData
+    });
+
+    let result = {};
+
+    try {
+      result = await response.json();
+    } catch (_) {
+      throw new Error(
+        'The server returned an invalid response.'
+      );
+    }
+
+    if (!response.ok || !result.success) {
+      throw new Error(
+        result.message ||
+        'Unable to submit your application.'
+      );
+    }
+
+    /*
+     * Hide form
+     */
+    form.style.display = 'none';
+
+    /*
+     * Show success message
+     */
+    const success =
+      document.getElementById('career-success');
+
+    if (success) {
+      success.classList.add('show');
+    }
+
+    /*
+     * Reset form after successful submission
+     */
+    form.reset();
+
+    clearFormError(form);
+
+
+  } catch (error) {
+
+
+    showFormError(
+      form,
+      error.message ||
+      'We could not send your application. Please try again or contact HR directly.'
+    );
+
+
+  } finally {
+
+
+    setFormLoading(form, false);
+
+
+  }
+}
+
+/*
+
+* Connect the Careers form
+  */
+on(
+  'career-form',
+  'submit',
+  handleCareerFormSubmit
+);
+
+/* ============================================================
+CAREERS — APPLY NOW BUTTONS
+============================================================ */
+
+document.addEventListener('click', function (e) {
+
+  const applyButton =
+    e.target.closest('[data-position]');
+
+  if (!applyButton) return;
+
+  const position =
+    applyButton.getAttribute('data-position');
+
+  const positionSelect =
+    document.getElementById('career-position');
+
+  if (positionSelect && position) {
+    positionSelect.value = position;
+  }
+
+  /*
+  
+  * Scroll to application form
+    */
+  const applicationSection =
+    document.getElementById('careers-apply');
+
+  if (applicationSection) {
+
+
+    applicationSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+
+  }
+
+});
+
+/* ============================================================
+CAREERS — CV FILE NAME
+============================================================ */
+
+const careerCvInput =
+  document.getElementById('career-cv');
+
+if (careerCvInput) {
+
+  careerCvInput.addEventListener('change', function () {
+
+
+    const file = this.files[0];
+
+    const fileText =
+      document.querySelector(
+        '.careers-file-text strong'
+      );
+
+    const fileSubtext =
+      document.querySelector(
+        '.careers-file-text small'
+      );
+
+    if (!file) {
+
+      if (fileText) {
+        fileText.textContent = 'Upload your CV';
+      }
+
+      if (fileSubtext) {
+        fileSubtext.textContent =
+          'PDF, DOC or DOCX';
+      }
+
+      return;
+    }
+
+    if (fileText) {
+      fileText.textContent = file.name;
+    }
+
+    if (fileSubtext) {
+
+      const sizeMB =
+        (file.size / (1024 * 1024)).toFixed(2);
+
+      fileSubtext.textContent =
+        `${sizeMB} MB • Ready to upload`;
+
+    }
+
+
+  });
+
+}
+
+/* ============================================================
+CAREERS — RESET APPLICATION
+============================================================ */
+
+function resetCareerForm() {
+
+  const form =
+    document.getElementById('career-form');
+
+  const success =
+    document.getElementById('career-success');
+
+  const cvInput =
+    document.getElementById('career-cv');
+
+  if (form) {
+    form.reset();
+    form.style.display = '';
+    clearFormError(form);
+  }
+
+  if (cvInput) {
+    cvInput.value = '';
+  }
+
+  if (success) {
+    success.classList.remove('show');
+  }
+
+}
+
+/*
+
+* Optional "Send another application" button
+* if you add:
+*
+* <button id="career-again-btn">
+* Send another application
+* </button>
+
+*/
+
+on(
+  'career-again-btn',
+  'click',
+  resetCareerForm
+);
 
 /* ============================================================
    CONTACT FORM SUBMISSION
@@ -2245,7 +2545,7 @@ async function handleContactFormSubmit(e) {
     showFormError(
       form,
       error.message ||
-        'We could not send your message. Please try again or contact us directly at contact@nodaplast-film.com.'
+      'We could not send your message. Please try again or contact us directly at contact@nodaplast-film.com.'
     );
   } finally {
     setFormLoading(form, false);
