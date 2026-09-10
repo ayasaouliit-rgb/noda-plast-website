@@ -1726,6 +1726,54 @@ function renderApplicationsGrid() {
 
 }
 
+function renderHomeApplicationsCarousel() {
+  const track = document.getElementById('homeApplicationsTrack');
+
+  if (!track) return;
+
+  const cards = APPLICATIONS.map((a, i) => `
+    <div class="card app-card home-app-card">
+      ${ph(a.phCap, a.img)}
+
+      <div class="app-card-body">
+        <div class="app-card-num">0${i + 1}</div>
+
+        <h3>${a.name}</h3>
+
+        <p>${a.desc}</p>
+
+        <button
+          type="button"
+          class="btn-ghost app-explore-btn"
+          data-app-id="${a.id}"
+        >
+          Explore application
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+            <path
+              d="M9 1l4 4-4 4M1 5h11"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  `).join('');
+
+  // Duplicate the cards for infinite scrolling
+  track.innerHTML = cards + cards;
+
+  track.querySelectorAll('.app-explore-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+
+      openApplicationDetail(
+        btn.getAttribute('data-app-id')
+      );
+    });
+  });
+}
+
 
 /* ============================================================
    APPLICATION DETAIL
@@ -2949,6 +2997,7 @@ function initializeNodaWebsite() {
   renderNewsGrid('homeNewsGrid', 3);
   renderProductGrid();
   renderApplicationsGrid();
+  renderHomeApplicationsCarousel();
 
   on('pdDatasheetBtn', 'click', () => {
     const product = window.currentSelectedProduct;
