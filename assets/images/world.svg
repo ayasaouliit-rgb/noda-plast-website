@@ -15,6 +15,39 @@
     stroke: #ffffff;
     stroke-width: 0.5;
   }
+  #DZ {
+   fill: #de970aff
+  }
+  #TN,
+   #EG,
+   #LY,
+   #SN,
+   #MR,
+   #SY {
+      fill: #555252;
+      stroke: #de970a;
+      stroke-width: 2;
+   }
+   #FR {
+   fill: #555252;
+   stroke: #de970a;
+   stroke-width: 2;
+   animation: franceFlash 1s infinite;
+   }
+
+   @keyframes franceFlash {
+   0%, 100% {
+      stroke: #de970a;
+      stroke-width: 2;
+      opacity: 1;
+   }
+
+   50% {
+      stroke: #ffd45a;
+      stroke-width: 4;
+      opacity: 0.5;
+   }
+   }
 </style>
  
   <path
