@@ -2888,6 +2888,7 @@ CAREERS RESPONSIVE
 .world-map-card {
   display: grid;
   width: 1200px;
+  height: 500px;
   grid-template-columns: minmax(0, 1fr) 280px;
   gap: 0;
   background: #c1c5c7;
@@ -2902,23 +2903,45 @@ CAREERS RESPONSIVE
    WORLD SVG
    ============================================================ */
 
+/* ============================================================
+   WORLD SVG
+   ============================================================ */
+
 .world-map-image {
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 45px;
+
   min-width: 0;
-  overflow: hidden;
+  min-height: 0;
+
+  /* Enable horizontal + vertical scrolling */
+  overflow: auto;
+
   position: relative;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.world-map-image::-webkit-scrollbar {
+  display: none;
 }
 
 .world-map-image img {
-  width: 2000px;
+  width: 2500px;
   max-width: none;
   height: auto;
+
   position: absolute;
+
+  /* Initial position */
   left: 55%;
-  top: 40%;
+  top: 20%;
+
   transform: translate(-50%, -50%);
 }
 

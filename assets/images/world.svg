@@ -23,6 +23,8 @@
    #LY,
    #SN,
    #MR,
+   #NG,
+   #CI,
    #SY {
       fill: #23de0aff;
       stroke: #23de0aff;
@@ -1130,11 +1132,14 @@
 <path d="M 490 358 Q 490 380 520 380" title="Libya" class="export-arrow"/>
 <!-- Algeria → Egypt-->
 <path d="M 490 358 Q 500 370 555 385" title="Egypt" class="export-arrow"/>
-<!--
-Algeria → Mauritania
-<path d="M 495 358 Q 480 400 450 440" title="Mauritania" class="export-arrow"/>
-
-Algeria → Senegal
-<path d="M 495 358 Q 450 400 410 460" title="Senegal" class="export-arrow"/> -->
-   <circle cx="490" cy="358" r="1" class="algeria-point"/>
+<!-- Algeria → Mauritania -->
+<path d="M 490 358 Q 480 400 450 400" title="Mauritania" class="export-arrow"/>
+<!-- Algeria → Senegal -->
+<path d="M 490 358 Q 490 400 435 423" title="Senegal" class="export-arrow"/>
+<!-- Algeria → cote d'ivoire -->
+<path d="M 490 358 Q 490 400 460 440" title="cote d'ivoire" class="export-arrow"/>
+<!-- Algeria → nigeria -->
+<path d="M 490 358 Q 490 400 500 435" title="Nigeria" class="export-arrow"/> 
+   
+<circle cx="490" cy="358" r="1" class="algeria-point"/>
 </svg>
