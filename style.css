@@ -618,6 +618,142 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
+/* ============================================================
+   HOME NEWS / EVENTS / JOBS CAROUSEL
+   ============================================================ */
+
+.home-news-carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.home-news-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+
+  animation: homeNewsScroll 45s linear infinite;
+
+  will-change: transform;
+}
+
+
+/* Cards */
+
+.home-news-card {
+  flex: 0 0 340px;
+  width: 340px;
+
+  cursor: pointer;
+}
+
+
+/* Keep the image size consistent */
+
+.home-news-card .ph {
+  aspect-ratio: 16 / 10;
+}
+
+
+/* Pause when user interacts */
+
+.home-news-carousel:hover .home-news-track,
+.home-news-carousel:focus-within .home-news-track {
+  animation-play-state: paused;
+}
+
+
+/* Infinite movement */
+
+@keyframes homeNewsScroll {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 15px));
+  }
+
+}
+
+
+/* Job card */
+
+.home-job-card .job-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--dark),
+      #26343d
+    );
+}
+
+.home-job-card .job-icon {
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--orange);
+  color: var(--dark);
+
+  font-size: 36px;
+  font-weight: 400;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+  .home-news-track {
+    gap: 24px;
+    animation-duration: 38s;
+  }
+
+  .home-news-card {
+    flex: 0 0 300px;
+    width: 300px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .home-news-track {
+    gap: 18px;
+    animation-duration: 32s;
+  }
+
+  .home-news-card {
+    flex: 0 0 280px;
+    width: 280px;
+  }
+
+}
+
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .home-news-track {
+    animation: none;
+  }
+
+}
 
 .grid-4 {
   display: grid;
@@ -1254,7 +1390,7 @@ footer {
   color: var(--text-gray);
 }
 
-/* applications page */
+/*  page */
 .appx-card {
   cursor: pointer;
 }
@@ -2430,7 +2566,7 @@ CAREERS RESPONSIVE
 
 
 /* ============================================================
-   HOME APPLICATIONS CAROUSEL
+   HOME  CAROUSEL
    ============================================================ */
 
 .home-app-carousel {
@@ -2443,7 +2579,7 @@ CAREERS RESPONSIVE
   gap: 30px;
   width: max-content;
 
-  animation: homeApplicationsScroll 35s linear infinite;
+  animation: homeScroll 35s linear infinite;
 
   will-change: transform;
 }
@@ -2484,7 +2620,7 @@ CAREERS RESPONSIVE
   animation-play-state: paused;
 }
 
-@keyframes homeApplicationsScroll {
+@keyframes homeScroll {
   from {
     transform: translateX(0);
   }

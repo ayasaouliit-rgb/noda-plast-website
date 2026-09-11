@@ -969,71 +969,97 @@ const APPLICATIONS = [
   }
 ];
 
-
-/* ============================================================
-   NEWS
-   ============================================================ */
-
 const NEWS = [
   {
-    category: 'Company',
-    date: 'PLACEHOLDER DATE',
-    title: 'NODA PLAST expands production capacity',
-    desc: 'Placeholder summary — replace with real company announcement content.',
-    phCap: 'Factory news photograph',
-    img: 'factory-news.png'
+    type: "news",
+    category: "Company",
+    date: "PLACEHOLDER DATE",
+    title: "NODA PLAST expands production capacity",
+    desc: "Placeholder summary — replace with real company announcement content.",
+    phCap: "Factory news photograph",
+    img: "factory-news.png"
   },
 
   {
-    category: 'Technology',
-    date: 'PLACEHOLDER DATE',
-    title: 'Inside our extrusion and orientation process',
-    desc: 'Placeholder summary — replace with real technical article content.',
-    phCap: 'Laboratory or technical photograph',
-    img: 'extrusion-process-technical.png'
+    type: "event",
+    category: "Exhibition",
+    date: "PLACEHOLDER DATE",
+    title: "NODA PLAST at industry trade exhibition",
+    desc: "Meet our team and discover our latest BOPP film solutions at an upcoming industry exhibition.",
+    phCap: "Trade exhibition photograph",
+    img: "trade-exhibition.png"
   },
 
   {
-    category: 'Sustainability',
-    date: 'PLACEHOLDER DATE',
-    title: 'Progress on material efficiency initiatives',
-    desc: 'Placeholder summary — replace with verified sustainability content.',
-    phCap: 'Certification or sustainability photograph',
-    img: 'sustainability-certification.png'
+    type: "news",
+    category: "Technology",
+    date: "PLACEHOLDER DATE",
+    title: "Inside our extrusion and orientation process",
+    desc: "Explore how our production processes contribute to consistent film quality and performance.",
+    phCap: "Laboratory or technical photograph",
+    img: "extrusion-process-technical.png"
   },
 
   {
-    category: 'Company',
-    date: 'PLACEHOLDER DATE',
-    title: 'NODA PLAST at industry trade exhibition',
-    desc: 'Placeholder summary — replace with real company announcement content.',
-    phCap: 'Trade exhibition photograph',
-    img: 'trade-exhibition.png'
+    type: "event",
+    category: "Company",
+    date: "PLACEHOLDER DATE",
+    title: "NODA PLAST welcomes industry partners",
+    desc: "An opportunity to connect with customers, partners, and professionals from the flexible packaging industry.",
+    phCap: "Industry meeting photograph",
+    img: "industry-meeting.png"
   },
 
   {
-    category: 'Technology',
-    date: 'PLACEHOLDER DATE',
-    title: 'Quality lab instrumentation upgrade',
-    desc: 'Placeholder summary — replace with real technical article content.',
-    phCap: 'Quality lab instrument photograph',
-    img: 'quality-lab-instrument-upgrade.png'
+    type: "news",
+    category: "Sustainability",
+    date: "PLACEHOLDER DATE",
+    title: "Progress on material efficiency initiatives",
+    desc: "Placeholder summary — replace with verified sustainability content.",
+    phCap: "Certification or sustainability photograph",
+    img: "sustainability-certification.png"
   },
 
   {
-    category: 'Sustainability',
-    date: 'PLACEHOLDER DATE',
-    title: 'Edge-trim recovery process overview',
-    desc: 'Placeholder summary — replace with verified sustainability content.',
-    phCap: 'Material recovery photograph',
-    img: 'material-recovery-process.png'
+    type: "event",
+    category: "Open Day",
+    date: "PLACEHOLDER DATE",
+    title: "NODA PLAST facility open day",
+    desc: "A closer look at our production environment, technology, and commitment to quality.",
+    phCap: "Factory open day photograph",
+    img: "factory-open-day.png"
+  },
+
+  {
+    type: "news",
+    category: "Technology",
+    date: "PLACEHOLDER DATE",
+    title: "Quality lab instrumentation upgrade",
+    desc: "Placeholder summary — replace with real technical article content.",
+    phCap: "Quality lab instrument photograph",
+    img: "quality-lab-instrument-upgrade.png"
+  },
+
+  {
+    type: "event",
+    category: "Training",
+    date: "PLACEHOLDER DATE",
+    title: "Technical training and knowledge sharing",
+    desc: "A technical session focused on production processes, quality, and continuous improvement.",
+    phCap: "Technical training photograph",
+    img: "technical-training.png"
+  },
+
+  {
+    type: "news",
+    category: "Sustainability",
+    date: "PLACEHOLDER DATE",
+    title: "Edge-trim recovery process overview",
+    desc: "Placeholder summary — replace with verified sustainability content.",
+    phCap: "Material recovery photograph",
+    img: "material-recovery-process.png"
   }
 ];
-
-
-/* ============================================================
-   CHATBOT
-   ============================================================ */
 
 const CHAT_QA = [
   {
@@ -1081,11 +1107,112 @@ const CHAT_QA = [
     a: 'NODA PLAST FILM is located in the Industrial Zone, Guidjel, Sétif, Algeria (demo address shown in this prototype).'
   }
 ];
+const jobs = [
+  {
+    category: "Production",
+    title: "Production Operator",
+    description:
+      "Support daily production operations and ensure that manufacturing processes are carried out safely, efficiently, and according to quality requirements.",
+    tags: ["Full-time", "Production", "On-site"],
+    location: "Sétif, Algeria",
+    employment: "Full-time"
+  },
+  {
+    category: "Engineering",
+    title: "Process / Production Engineer",
+    description:
+      "Help optimize production processes, monitor performance, identify improvement opportunities, and support continuous improvement initiatives.",
+    tags: ["Full-time", "Engineering", "On-site"],
+    location: "Sétif, Algeria",
+    employment: "Full-time"
+  },
+  {
+    category: "Quality",
+    title: "Quality Control Technician",
+    description:
+      "Perform quality checks, record technical measurements, support laboratory activities, and help maintain product quality standards.",
+    tags: ["Full-time", "Quality", "Laboratory"],
+    location: "Sétif, Algeria",
+    employment: "Full-time"
+  }
+];
 
 
-/* ============================================================
-   HELPERS
-   ============================================================ */
+function renderjobsgrid() {
+  const containers = document.querySelectorAll(".careers-jobs");
+
+  containers.forEach(container => {
+    container.innerHTML = "";
+    jobs.forEach(job => {
+
+      const article = document.createElement("article");
+      article.className = "card careers-job";
+
+      article.innerHTML = `
+        <div class="careers-job-main">
+          <div class="careers-job-category">
+            ${job.category}
+          </div>
+          <h3>
+            ${job.title}
+          </h3>
+          <p>
+            ${job.description}
+          </p>
+          <div class="tag-row">
+            ${job.tags.map(tag => `
+              <span class="tag">${tag}</span>
+            `).join("")}
+          </div>
+        </div>
+
+        <div class="careers-job-side">
+          <div class="careers-job-detail">
+            <span>Location</span>
+            <strong>${job.location}</strong>
+          </div>
+          <div class="careers-job-detail">
+            <span>Employment</span>
+            <strong>${job.employment}</strong>
+          </div>
+          <a
+            href="#careers-apply"
+            class="btn btn-primary btn-sm"
+            data-position="${job.title}"
+          >
+            Apply now
+          </a>
+        </div>
+      `;
+
+      container.appendChild(article);
+    });
+
+  if (container.id === "career-grid") {
+      // Keep the "no vacancies" section exactly as it was
+    const noVacancies = document.createElement("div");
+    noVacancies.className = "careers-no-vacancies";
+
+    noVacancies.innerHTML = `
+      <div class="careers-no-icon">+</div>
+      <div>
+        <h3>Don't see the right position?</h3>
+        <p>
+          We are always interested in meeting motivated people.
+          Send us your CV and we will keep your profile in mind
+          for future opportunities.
+        </p>
+      </div>
+      <a href="#careers-apply" class="btn btn-secondary btn-sm">
+        Send your CV
+      </a>
+    `;
+
+    container.appendChild(noVacancies);
+  }
+  
+});
+}
 
 function ph(cap, img) {
 
@@ -1115,18 +1242,222 @@ function on(id, event, callback) {
   }
 }
 
-
 /* ============================================================
-   NEWS GRID
+   HOME NEWS / EVENTS / JOBS CAROUSEL
    ============================================================ */
 
-function renderNewsGrid(containerId, count) {
+function renderHomeNewsCarousel() {
+
+  const track = document.getElementById('homeNewsTrack');
+
+  if (!track) return;
+
+
+  /*
+   * Mix News + Events + Jobs
+   */
+  const homeItems = [
+
+    ...NEWS.map(item => ({
+      ...item,
+      contentType: item.type
+    })),
+
+    ...jobs.map(job => ({
+      ...job,
+      contentType: 'job'
+    }))
+
+  ];
+
+
+  /*
+   * Create the cards
+   */
+  const cards = homeItems.map((item, index) => {
+
+    /* NEWS / EVENT */
+
+    if (
+      item.contentType === 'news' ||
+      item.contentType === 'event'
+    ) {
+
+      return `
+        <div
+          class="card news-card home-news-card"
+          data-content-type="${item.contentType}"
+        >
+
+          ${ph(item.phCap, item.img)}
+
+          <div class="news-card-body">
+
+            <div class="news-meta">
+
+              <span class="news-cat">
+                ${item.contentType === 'event'
+                  ? 'Event'
+                  : item.category}
+              </span>
+
+              <span class="news-date">
+                ${item.date}
+              </span>
+
+            </div>
+
+            <h3>${item.title}</h3>
+
+            <p>${item.desc}</p>
+
+            <button
+              type="button"
+              class="btn-ghost home-content-btn"
+              data-content-type="${item.contentType}"
+            >
+
+              ${item.contentType === 'event'
+                ? 'View event'
+                : 'Read more'}
+
+              <svg
+                width="14"
+                height="10"
+                viewBox="0 0 14 10"
+                fill="none"
+              >
+                <path
+                  d="M9 1l4 4-4 4M1 5h11"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+              </svg>
+
+            </button>
+
+          </div>
+
+        </div>
+      `;
+    }
+
+
+    /* JOB */
+
+    return `
+      <div
+        class="card news-card home-news-card home-job-card"
+        data-content-type="job"
+      >
+
+        <div class="ph job-placeholder">
+          <div class="job-icon">+</div>
+        </div>
+
+        <div class="news-card-body">
+
+          <div class="news-meta">
+
+            <span class="news-cat">
+              Job Opportunity
+            </span>
+
+            <span class="news-date">
+              ${item.location}
+            </span>
+
+          </div>
+
+          <h3>${item.title}</h3>
+
+          <p>${item.description}</p>
+
+          <button
+            type="button"
+            class="btn-ghost home-content-btn"
+            data-content-type="job"
+          >
+            View position
+
+            <svg
+              width="14"
+              height="10"
+              viewBox="0 0 14 10"
+              fill="none"
+            >
+              <path
+                d="M9 1l4 4-4 4M1 5h11"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+            </svg>
+
+          </button>
+
+        </div>
+
+      </div>
+    `;
+
+  }).join('');
+
+
+  /*
+   * Duplicate cards for infinite rotation
+   * Same technique used by Applications carousel
+   */
+  track.innerHTML = cards + cards;
+
+
+  /*
+   * Navigation when a card is clicked
+   */
+  track.querySelectorAll('.home-content-btn').forEach(button => {
+
+    button.addEventListener('click', function(e) {
+
+      e.stopPropagation();
+
+      const type =
+        this.getAttribute('data-content-type');
+
+
+      if (type === 'news') {
+
+        openNewsSection('news');
+
+      }
+
+      else if (type === 'event') {
+
+        openNewsSection('event');
+
+      }
+
+      else if (type === 'job') {
+
+        openNewsSection('job');
+
+      }
+
+    });
+
+  });
+
+}
+
+function renderNewsGrid(containerId, count, type = "news") {
 
   const el = document.getElementById(containerId);
 
   if (!el) return;
 
-  el.innerHTML = NEWS.slice(0, count).map(n => `
+  const items = NEWS
+    .filter(item => item.type === type)
+    .slice(0, count);
+
+  el.innerHTML = items.map(n => `
 
     <div class="card news-card">
 
@@ -2988,16 +3319,119 @@ window.NODA_WIDTH_OPTIONS =
 window.NODA_TREATMENT_OPTIONS =
   TREATMENT_OPTIONS;
 
+function openNewsSection(type) {
+
+  if (type === 'job') {
+
+    /*
+     * JOB → CAREERS
+     */
+    const careersPage =
+      document.getElementById('page-careers');
+
+    if (!careersPage) return;
+
+    document.querySelectorAll('.page')
+      .forEach(page => {
+        page.classList.remove('active');
+      });
+
+    careersPage.classList.add('active');
+
+    document.querySelectorAll('.nav-link')
+      .forEach(link => {
+        link.classList.remove('active');
+      });
+
+    const careersNav =
+      document.querySelector(
+        '[data-nav="careers"]'
+      );
+
+    if (careersNav) {
+      careersNav.classList.add('active');
+    }
+
+    return;
+  }
+
+
+  /*
+   * NEWS / EVENT → NEWS PAGE
+   */
+  const newsPage =
+    document.getElementById('page-news');
+
+  if (!newsPage) return;
+
+  document.querySelectorAll('.page')
+    .forEach(page => {
+      page.classList.remove('active');
+    });
+
+  newsPage.classList.add('active');
+
+  document.querySelectorAll('.nav-link')
+    .forEach(link => {
+      link.classList.remove('active');
+    });
+
+  const newsNav =
+    document.querySelector(
+      '[data-nav="news"]'
+    );
+
+  if (newsNav) {
+    newsNav.classList.add('active');
+  }
+
+
+  /*
+   * Scroll to the correct subsection
+   */
+  const target =
+    type === 'event'
+      ? document.getElementById('eventsGrid')
+      : document.getElementById('newsGrid');
+
+  if (target) {
+
+    setTimeout(() => {
+
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+    }, 100);
+
+  }
+
+}
 
 /* ============================================================
    INITIALIZATION
    ============================================================ */
 
 function initializeNodaWebsite() {
-  renderNewsGrid('homeNewsGrid', 3);
+    // Home
+  renderHomeNewsCarousel();
+
+  // Products
   renderProductGrid();
+
+  // Applications
   renderApplicationsGrid();
   renderHomeApplicationsCarousel();
+
+  // News page/section
+  renderNewsGrid('newsGrid', NEWS.length, 'news');
+
+  // Events page/section
+  renderNewsGrid('eventsGrid', NEWS.length, 'event');
+
+  // Job opportunities
+  renderjobsgrid();
 
   on('pdDatasheetBtn', 'click', () => {
     const product = window.currentSelectedProduct;

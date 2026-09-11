@@ -285,10 +285,14 @@
       <section class="section">
         <div class="container">
           <div class="section-head">
-            <div class="eyebrow">News</div>
+            <div class="eyebrow">News & Events</div>
             <h2>What's happening<br>at NODA PLAST.</h2>
+            <p>Discover our latest news, events and career opportunities.</p>
           </div>
-          <div class="grid-3" id="homeNewsGrid"></div>
+
+          <div class="home-news-carousel">
+            <div class="home-news-track" id="homeNewsTrack"></div>
+          </div>
         </div>
       </section>
 
@@ -984,117 +988,7 @@
               where your experience and skills can make a difference.
             </p>
           </div>
-          <div class="careers-jobs">
-            <article class="card careers-job">
-              <div class="careers-job-main">
-                <div class="careers-job-category">
-                  Production
-                </div>
-                <h3>
-                  Production Operator
-                </h3>
-                <p>
-                  Support daily production operations and ensure that
-                  manufacturing processes are carried out safely,
-                  efficiently, and according to quality requirements.
-                </p>
-                <div class="tag-row">
-                  <span class="tag">Full-time</span>
-                  <span class="tag">Production</span>
-                  <span class="tag">On-site</span>
-                </div>
-              </div>
-              <div class="careers-job-side">
-                <div class="careers-job-detail">
-                  <span>Location</span>
-                  <strong>Sétif, Algeria</strong>
-                </div>
-                <div class="careers-job-detail">
-                  <span>Employment</span>
-                  <strong>Full-time</strong>
-                </div>
-                <a href="#careers-apply" class="btn btn-primary btn-sm" data-position="Production Operator"> Apply now </a>
-              </div>
-            </article>
-
-            <article class="card careers-job">
-              <div class="careers-job-main">
-                <div class="careers-job-category">
-                  Engineering
-                </div>
-                <h3>
-                  Process / Production Engineer
-                </h3>
-                <p>
-                  Help optimize production processes, monitor performance,
-                  identify improvement opportunities, and support
-                  continuous improvement initiatives.
-                </p>
-                <div class="tag-row">
-                  <span class="tag">Full-time</span>
-                  <span class="tag">Engineering</span>
-                  <span class="tag">On-site</span>
-                </div>
-              </div>
-              <div class="careers-job-side">
-                <div class="careers-job-detail">
-                  <span>Location</span>
-                  <strong>Sétif, Algeria</strong>
-                </div>
-                <div class="careers-job-detail">
-                  <span>Employment</span>
-                  <strong>Full-time</strong>
-                </div>
-                <a href="#careers-apply" class="btn btn-primary btn-sm" data-position="Process / Production Engineer"> Apply now </a>
-              </div>
-            </article>
-
-            <article class="card careers-job">
-              <div class="careers-job-main">
-                <div class="careers-job-category">
-                  Quality
-                </div>
-                <h3>
-                  Quality Control Technician
-                </h3>
-                <p>
-                  Perform quality checks, record technical measurements,
-                  support laboratory activities, and help maintain
-                  product quality standards.
-                </p>
-                <div class="tag-row">
-                  <span class="tag">Full-time</span>
-                  <span class="tag">Quality</span>
-                  <span class="tag">Laboratory</span>
-                </div>
-              </div>
-              <div class="careers-job-side">
-                <div class="careers-job-detail">
-                  <span>Location</span>
-                  <strong>Sétif, Algeria</strong>
-                </div>
-                <div class="careers-job-detail">
-                  <span>Employment</span>
-                  <strong>Full-time</strong>
-                </div>
-                <a href="#careers-apply" class="btn btn-primary btn-sm" data-position="Quality Control Technician"> Apply now </a>
-              </div>
-            </article>
-            
-            <div class="careers-no-vacancies">
-              <div class="careers-no-icon">+</div>
-              <div>
-                <h3>Don't see the right position?</h3>
-                <p>
-                  We are always interested in meeting motivated people.
-                  Send us your CV and we will keep your profile in mind
-                  for future opportunities.
-                </p>
-              </div>
-              <a href="#careers-apply" class="btn btn-secondary btn-sm"> Send your CV </a>
-            </div>
-
-          </div>
+          <div class="careers-jobs" id="career-grid"></div>
         </div>
       </section>
 
@@ -1280,20 +1174,10 @@
     <section class="page" id="page-global-presence">
       <div class="hero global-hero">
         <div class="hero-bg"></div>
-
         <div class="container hero-content">
-          <div class="eyebrow" style="color:var(--orange);">
-            Global Presence
-          </div>
-          <h1>
-            From Algeria<br>
-            <span>to the world.</span>
-          </h1>
-          <p class="lede">
-            NODA PLAST products are trusted beyond borders, connecting
-            Algerian manufacturing excellence with customers and partners
-            across international markets.
-          </p>
+          <div class="eyebrow" style="color:var(--orange);">Global Presence</div>
+          <h1>From Algeria<br><span>to the world.</span></h1>
+          <p class="lede">NODA PLAST products are trusted beyond borders, connecting Algerian manufacturing excellence with customers and partners across international markets.</p>
         </div>
       </div>
       <section class="section global-intro">
@@ -1477,16 +1361,44 @@
     </section>
   </section>
 
+
   <!-- ================= NEWS ================= -->
   <section class="page" id="page-news">
     <div class="hero" style="min-height:380px;">
       <div class="hero-bg"></div>
-        <div class="container hero-content" style="padding:80px 0 56px;">
-          <div class="eyebrow" style="color:var(--orange);">News &amp; Insights</div>
-          <h1 style="font-size:52px;">What's happening at NODA PLAST.</h1>
+      <div class="container hero-content" style="padding:80px 0 56px;">
+        <div class="eyebrow" style="color:var(--orange);">News &amp; Insights</div>
+        <h1 style="font-size:52px;">What's happening at NODA PLAST.</h1>
+      </div>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">News</div>
+          <h2>What's happening<br>at NODA PLAST.</h2>
         </div>
+        <div class="grid-3" id="newsGrid"></div>
       </div>
     </section>
+    <section class="section section-tint">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Evants</div>
+          <h2>What's happening<br>at NODA PLAST.</h2>
+        </div>
+        <div class="grid-3" id="eventsGrid"></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Job Opertunities</div>
+          <h2>Join our team<br>at NODA PLAST.</h2>
+        </div>
+        <div class="careers-jobs"></div>
+      </div>
+    </section>
+  </section>
 
     <!-- ================= CONTACT ================= -->
     <section class="page" id="page-contact">
