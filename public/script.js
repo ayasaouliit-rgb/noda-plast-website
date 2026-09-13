@@ -3057,59 +3057,6 @@ function getFormValues(form) {
 
 
 /* ============================================================
-/* ============================================================
-   QUOTE FORM SUBMISSION
-   ============================================================ */
-
-async function handleQuoteFormSubmit(e) {
-  e.preventDefault();
-
-  const form = e.currentTarget;
-  clearFormError(form);
-
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-
-  const values = getFormValues(form);
-  const payload = {
-    type: 'quote',
-    name: values.name || '',
-    company: values.company || '',
-    email: values.email || '',
-    phone: values.phone || '',
-    country: values.country || '',
-    application: values.application || '',
-    message: values.message || '',
-    website: values.website || ''
-  };
-
-  setFormLoading(form, true);
-
-  try {
-    await sendEmailRequest(payload);
-
-    const wrap = document.getElementById('homeQuoteFormWrap');
-    const success = document.getElementById('homeQuoteSuccess');
-
-    form.reset();
-    if (wrap) wrap.style.display = 'none';
-    if (success) success.classList.add('show');
-  } catch (error) {
-    showFormError(
-      form,
-      error.message ||
-      'We could not send your request. Please try again or contact us directly at contact@nodaplast-film.com.'
-    );
-  } finally {
-    setFormLoading(form, false);
-  }
-}
-
-on('quoteForm', 'submit', handleQuoteFormSubmit);
-
-/* ============================================================
 CAREERS / CV APPLICATION
 ============================================================ */
 
@@ -3410,9 +3357,91 @@ on(
   resetCareerForm
 );
 
+on('homeContactForm', 'submit', handleHomeContactFormSubmit);
+
+async function handleHomeContactFormSubmit(e) {
+  const form = e.currentTarget;
+  clearFormError(form);
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const values = getFormValues(form);
+
+  const payload = {
+    type: 'contact',
+    name: values.name || '',
+    company: values.company || '',
+    email: values.email || '',
+    phone: values.phone || '',
+    country: values.country || '',
+    message: values.message || '',
+    website: values.website || ''
+  };
+
+  setFormLoading(form, true);
+
+  try {
+    await sendEmailRequest(payload);
+
+    const wrap = document.getElementById('homeContactFormWrap');
+    const success = document.getElementById('homeContactSuccess');
+
+    if (wrap) {
+      wrap.style.display = 'none';
+    }
+
+    if (success) {
+      success.classList.add('show');
+    }
+
+    form.reset();
+    clearFormError(form);
+
+  } catch (error) {
+    showFormError(
+      form,
+      error.message ||
+      'We could not send your message. Please try again or contact us directly at contact@nodaplast-film.com.'
+    );
+  } finally {
+    setFormLoading(form, false);
+  }
+}
+
+
 /* ============================================================
-   CONTACT FORM SUBMISSION
+   HOME CONTACT - SEND ANOTHER
    ============================================================ */
+
+on('homeContactAgainBtn', 'click', () => {
+
+  const form = document.getElementById('homeContactForm');
+  const wrap = document.getElementById('homeContactFormWrap');
+  const success = document.getElementById('homeContactSuccess');
+
+  if (form) {
+    form.reset();
+    clearFormError(form);
+  }
+
+  if (success) {
+    success.classList.remove('show');
+  }
+
+  if (wrap) {
+    wrap.style.display = 'block';
+  }
+});
+
+
+/* ============================================================
+   CONTACT PAGE FORM
+   ============================================================ */
+
+on('contactForm', 'submit', handleContactFormSubmit);
 
 async function handleContactFormSubmit(e) {
   e.preventDefault();
@@ -3446,10 +3475,17 @@ async function handleContactFormSubmit(e) {
     const wrap = document.getElementById('contactFormWrap');
     const success = document.getElementById('contactSuccess');
 
-    if (wrap) wrap.style.display = 'none';
-    if (success) success.classList.add('show');
+    if (wrap) {
+      wrap.style.display = 'none';
+    }
+
+    if (success) {
+      success.classList.add('show');
+    }
+
     form.reset();
     clearFormError(form);
+
   } catch (error) {
     showFormError(
       form,
@@ -3461,21 +3497,29 @@ async function handleContactFormSubmit(e) {
   }
 }
 
-on('contactForm', 'submit', handleContactFormSubmit);
 
-
-
+/* ============================================================
+   CONTACT PAGE - SEND ANOTHER
+   ============================================================ */
 
 on('contactAgainBtn', 'click', () => {
+
   const form = document.getElementById('contactForm');
   const wrap = document.getElementById('contactFormWrap');
   const success = document.getElementById('contactSuccess');
+
   if (form) {
     form.reset();
     clearFormError(form);
   }
-  if (success) success.classList.remove('show');
-  if (wrap) wrap.style.display = 'block';
+
+  if (success) {
+    success.classList.remove('show');
+  }
+
+  if (wrap) {
+    wrap.style.display = 'block';
+  }
 });
 /* ============================================================
    PRODUCT FILTERS

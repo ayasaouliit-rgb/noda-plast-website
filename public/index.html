@@ -302,7 +302,7 @@
 
       <section class="section section-tint" style="color:var(--white);">
         <div class="container quote-inner">
-          <div class="quote-info">
+          <div class="contact-info">
             <div class="eyebrow" style="color:var(--orange);">Contact US</div>
             <h2>Looking for the<br>right BOPP film?</h2>
             <p>Tell us about your application and requirements. Our team will help identify the appropriate film
@@ -311,42 +311,36 @@
             <div class="contact-line"><b>FAX:</b>&nbsp;030 80 72 46</div>
           </div>
           <div>
-            <div id="homeQuoteFormWrap">
-              <form id="quoteForm">
+            <div id="homeContactFormWrap">
+              <h3>Send us a message</h3>
+              <form id="homeContactForm" style="margin-top:20px;">
                 <div style="display:none;" aria-hidden="true">
                   <input type="text" name="website" tabindex="-1" autocomplete="off">
                 </div>
                 <div class="form-grid">
-                  <div class="field"><label>Name</label><input id="quoteName" name="name" required
+                  <div class="field"><label>Name</label><input id="contactName" name="name" required
                       placeholder="Full name"></div>
-                  <div class="field"><label>Company</label><input id="quoteCompany" name="company" required
+                  <div class="field"><label>Company</label><input id="contactCompany" name="company" required
                       placeholder="Company name"></div>
-                  <div class="field"><label>Email</label><input id="quoteEmail" name="email" type="email" required
+                  <div class="field"><label>Email</label><input id="contactEmail" name="email" type="email" required
                       placeholder="you@company.com">
                   </div>
-                  <div class="field"><label>Phone</label><input id="quotePhone" name="phone" placeholder="+___"></div>
-                  <div class="field"><label>Country</label><input id="quoteCountry" name="country"
+                  <div class="field"><label>Phone</label><input id="contactPhone" name="phone" placeholder="+___"></div>
+                  <div class="field full"><label>Country</label><input id="contactCountry" name="country"
                       placeholder="Country"></div>
-                  <div class="field"><label>Application</label><select id="quoteApplication" name="application">
-                      <option>Food </option>
-                      <option>Labels </option>
-                      <option>Printing </option>
-                      <option>Lamination</option>
-                      <option>Industrial </option>
-                      <option>Specialty</option>
-                    </select></div>
-                  <div class="field full"><label>Message</label><textarea id="quoteMessage" name="message"
-                      placeholder="Tell us more about your requirement"></textarea></div>
+                  <div class="field full"><label>Message</label><textarea id="contactMessage" name="message" required
+                      placeholder="How can we help?"></textarea>
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-cta" style="margin-top:22px;width:100%;">Send Request</button>
+                <button type="submit" class="btn btn-cta" style="margin-top:22px;width:100%;">Send Message</button>
               </form>
-              <div class="form-error" id="quoteError" role="alert" aria-live="polite"></div>
+              <div class="form-error" id="contactError" role="alert" aria-live="polite"></div>
             </div>
-            <div class="form-success request-success" id="homeQuoteSuccess">
+            <div class="form-success request-success" id="homeContactSuccess">
               <h3>Your request has been sent!</h3>
               <p>Thank you for contacting us. We will respond to you as soon as possible.</p>
-              <button class="btn btn-secondary" id="homeQuoteAgainBtn" type="button" style="margin-top:20px;">Send
-                another request</button>
+              <button class="btn btn-secondary" id="homeContactAgainBtn" type="button" style="margin-top:20px;">Send another
+                message</button>
             </div>
           </div>
         </div>
