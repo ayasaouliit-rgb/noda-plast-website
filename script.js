@@ -54,13 +54,18 @@ for (let width = 400; width <= 2000; width += 50) {
 }
 
 const PRODUCTS = [
-
   {
     id: 'mattn',
     code: 'MATTN',
-    img: 'matt-film.png',
+    img: 'matt-bopp-film-roll.png',
+    gallery: [
+      'matt-bopp-film-roll.png',
+      'matt_gallery_1.png',
+      'matt_gallery_2.png',
+      'matt_gallery_3.png'
+    ],
     category: 'Matt Films',
-    name: 'MATTN — Matt Film',
+    name: 'MATTN — Matt Film Non Sealable',
     shortName: 'Matt Film (Matt Side Non Sealable)',
     desc: 'Matt film with a non-sealable matte side, designed for applications requiring a distinctive low-gloss surface.',
     overview:
@@ -120,9 +125,15 @@ const PRODUCTS = [
   {
     id: 'matts',
     code: 'MATTS',
-    img: 'matt-sealable-film.png',
+    img: 'matt-bopp-film-roll.png',
+    gallery: [
+      'matt-bopp-film-roll.png',
+      'matt-application-1.jpg',
+      'matt-application-2.jpg',
+      'matt-application-3.jpg'
+    ],
     category: 'Matt Films',
-    name: 'MATTS — Matt Film',
+    name: 'MATTS — Matt Film Both Sides Sealable',
     shortName: 'Matt Film (Both Sides Sealable)',
     desc: 'Matt film with both sides sealable for packaging structures requiring a matte appearance and sealing capability.',
     overview:
@@ -182,7 +193,13 @@ const PRODUCTS = [
   {
     id: 'nlc',
     code: 'NLC',
-    img: 'label-clear-film.png',
+    img: 'clear-bopp-film-roll.png',
+    gallery: [
+      'clear-bopp-film-roll.png',
+      'clear-application-1.jpg',
+      'clear-application-2.jpg',
+      'clear-application-3.jpg'
+    ],
     category: 'Label Films',
     name: 'NLC — Label Clear Film',
     shortName: 'Label Clear Film',
@@ -245,7 +262,13 @@ const PRODUCTS = [
   {
     id: 'nlv',
     code: 'NLV',
-    img: 'label-white-voided-film.png',
+    img: 'white-bopp-film-roll.png',
+    gallery: [
+      'white-bopp-film-roll.png',
+      'white-application-1.jpg',
+      'white-application-2.jpg',
+      'white-application-3.jpg'
+    ],
     category: 'Label Films',
     name: 'NLV — Label White Voided Film',
     shortName: 'Label White Voided Film',
@@ -297,7 +320,13 @@ const PRODUCTS = [
   {
     id: 'nnc',
     code: 'NNC',
-    img: 'clear-non-sealable-film.png',
+    img: 'clear-bopp-film-roll.png',
+    gallery: [
+      'clear-bopp-film-roll.png',
+      'clear-application-1.jpg',
+      'clear-application-2.jpg',
+      'clear-application-3.jpg'
+    ],
     category: 'Clear Films',
     name: 'NNC — Clear Non-Sealable',
     shortName: 'Clear Non-Sealable Film',
@@ -360,7 +389,13 @@ const PRODUCTS = [
   {
     id: 'nrc',
     code: 'NRC',
-    img: 'clear-release-film.png',
+    img: 'clear-bopp-film-roll.png',
+    gallery: [
+      'clear-bopp-film-roll.png',
+      'clear-application-1.jpg',
+      'clear-application-2.jpg',
+      'clear-application-3.jpg'
+    ],
     category: 'Clear Films',
     name: 'NRC — Clear Release Film',
     shortName: 'Clear Release Film',
@@ -423,7 +458,13 @@ const PRODUCTS = [
   {
     id: 'nsc',
     code: 'NSC',
-    img: 'transparent-clear-heat-sealable-film.png',
+    img: 'clear-bopp-film-roll.png',
+    gallery: [
+      'clear-bopp-film-roll.png',
+      'clear-application-1.jpg',
+      'clear-application-2.jpg',
+      'clear-application-3.jpg'
+    ],
     category: 'Heat Sealable Films',
     name: 'NSC — Transparent Clear Heat Sealable',
     shortName: 'Transparent (Clear) Heat Sealable',
@@ -497,7 +538,13 @@ const PRODUCTS = [
   {
     id: 'nsh',
     code: 'NSH',
-    img: 'high-cof-heat-sealable-film.png',
+    img: 'clear-bopp-film-roll.png',
+    gallery: [
+      'clear-bopp-film-roll.png',
+      'clear-application-1.jpg',
+      'clear-application-2.jpg',
+      'clear-application-3.jpg'
+    ],
     category: 'Heat Sealable Films',
     name: 'NSH — Clear Heat Sealable',
     shortName: 'Clear Heat Sealable, High C.O.F',
@@ -571,7 +618,13 @@ const PRODUCTS = [
   {
     id: 'nsmm',
     code: 'NSMM',
-    img: 'metallized-sealable-film.png',
+    img: 'mtz-bopp-film-roll.png',
+    gallery: [
+      'mtz-bopp-film-roll.png',
+      'mtz-application-1.jpg',
+      'mtz-application-2.jpg',
+      'mtz-application-3.jpg'
+    ],
     category: 'Metallized Films',
     name: 'NSMM — Metallized Sealable Film',
     shortName: 'Metallized Sealable Film',
@@ -645,7 +698,13 @@ const PRODUCTS = [
   {
     id: 'nsp',
     code: 'NSP',
-    img: 'white-pearlized-sealable-film.png',
+    img: 'pearlised-bopp-film-roll.png',
+    gallery: [
+      'pearlised-bopp-film-roll.png',
+      'pearlised-application-1.jpg',
+      'pearlised-application-2.jpg',
+      'pearlised-application-3.jpg'
+    ],
     category: 'White Films',
     name: 'NSP — White Pearlized Sealable Film',
     shortName: 'White Pearlized Sealable Film',
@@ -719,7 +778,13 @@ const PRODUCTS = [
   {
     id: 'nsw',
     code: 'NSW',
-    img: 'solid-white-sealable-film.png',
+    img: 'white-bopp-film-roll.png',
+    gallery: [
+      'white-bopp-film-roll.png',
+      'white-application-1.jpg',
+      'white-application-2.jpg',
+      'white-application-3.jpg'
+    ],
     category: 'White Films',
     name: 'NSW — Solid White Sealable',
     shortName: 'Solid White Sealable (Milky)',
@@ -781,7 +846,13 @@ const PRODUCTS = [
   {
     id: 'nvmm',
     code: 'NVMM',
-    img: 'metalized-white-voided-film.png',
+    img: 'mtz-bopp-film-roll.png',
+    gallery: [
+      'mtz-bopp-film-roll.png',
+      'mtz-application-1.jpg',
+      'mtz-application-2.jpg',
+      'mtz-application-3.jpg'
+    ],
     category: 'White Films, Metalized Films',
     name: 'NVMM — Metalized White Voided Film',
     shortName: 'Metalized White Voided Film',
@@ -1670,17 +1741,357 @@ function renderProductDetail(id) {
       p.overview;
 
 
+  /* ============================================================
+   PRODUCT DETAIL IMAGE GALLERY
+   ============================================================ */
+
   const pdImageImg =
     document.getElementById('pdImageImg');
+
+  const pdGalleryThumbs =
+    document.getElementById('pdGalleryThumbs');
 
 
   if (pdImageImg) {
 
-    pdImageImg.src =
-      'assets/images/' + p.img;
+    /*
+     * Get exactly 4 gallery images.
+     * Fall back to the normal product image if
+     * no gallery has been defined.
+     */
+    const galleryImages =
+      Array.isArray(p.gallery) && p.gallery.length
+        ? p.gallery.slice(0, 4)
+        : [p.img];
 
-    pdImageImg.alt =
-      p.phCap;
+
+    /*
+     * Current main image index
+     */
+    let currentIndex = 0;
+
+
+    /*
+     * Autoplay timer
+     */
+    let autoplayTimer = null;
+
+
+    /*
+     * Whether autoplay is currently paused
+     */
+    let galleryPaused = false;
+
+
+    /* ==========================================================
+       RENDER GALLERY
+       ========================================================== */
+
+    function renderGallery() {
+
+      if (!galleryImages.length) return;
+
+
+      /*
+       * Current main image
+       */
+      const currentImage =
+        galleryImages[currentIndex];
+
+
+      /*
+       * Set main image
+       */
+      pdImageImg.src =
+        'assets/images/' + currentImage;
+
+      pdImageImg.alt =
+        p.phCap || p.name;
+
+
+      /*
+       * Create thumbnails from ALL OTHER images.
+       *
+       * The current main image is NEVER displayed
+       * as a thumbnail.
+       */
+      const thumbnailIndexes =
+        galleryImages
+          .map((image, index) => index)
+          .filter(index => index !== currentIndex);
+
+
+      /*
+       * Always show maximum 3 thumbnails
+       */
+      if (pdGalleryThumbs) {
+
+        pdGalleryThumbs.innerHTML =
+          thumbnailIndexes
+            .slice(0, 3)
+            .map(index => `
+
+            <button
+              type="button"
+              class="pd-gallery-thumb"
+              data-gallery-index="${index}"
+              aria-label="View product image ${index + 1}"
+            >
+
+              <img
+                src="assets/images/${galleryImages[index]}"
+                alt="${p.phCap || p.name} image ${index + 1}"
+                loading="lazy"
+              >
+
+            </button>
+
+          `)
+            .join('');
+
+
+        /*
+         * Add click events
+         */
+        pdGalleryThumbs
+          .querySelectorAll('.pd-gallery-thumb')
+          .forEach(thumb => {
+
+            thumb.addEventListener('click', () => {
+
+              const newIndex =
+                Number(
+                  thumb.dataset.galleryIndex
+                );
+
+
+              if (
+                Number.isNaN(newIndex) ||
+                newIndex === currentIndex
+              ) {
+                return;
+              }
+
+
+              /*
+               * Pause autoplay when user clicks
+               */
+              pauseGallery();
+
+
+              /*
+               * Change image
+               */
+              changeGalleryImage(newIndex);
+
+
+              /*
+               * Restart autoplay after user interaction
+               */
+              restartGalleryAutoplay();
+
+            });
+
+          });
+
+      }
+
+    }
+
+
+    /* ==========================================================
+       CHANGE MAIN IMAGE
+       ========================================================== */
+
+    function changeGalleryImage(newIndex) {
+
+      if (
+        newIndex < 0 ||
+        newIndex >= galleryImages.length
+      ) {
+        return;
+      }
+
+
+      if (newIndex === currentIndex) {
+        return;
+      }
+
+
+      /*
+       * Fade the current image out
+       */
+      pdImageImg.classList.add(
+        'gallery-changing'
+      );
+
+
+      setTimeout(() => {
+
+        /*
+         * IMPORTANT:
+         *
+         * Only change the current index.
+         *
+         * renderGallery() then automatically removes
+         * the new main image from the 3 thumbnails
+         * and adds the previous main image to them.
+         */
+        currentIndex = newIndex;
+
+
+        renderGallery();
+
+
+        /*
+         * Fade the new image in
+         */
+        requestAnimationFrame(() => {
+
+          pdImageImg.classList.remove(
+            'gallery-changing'
+          );
+
+        });
+
+      }, 180);
+
+    }
+
+
+    /* ==========================================================
+       AUTOPLAY
+       ========================================================== */
+
+    function startGalleryAutoplay() {
+
+      clearInterval(autoplayTimer);
+
+
+      /*
+       * Change image every 4.5 seconds
+       */
+      autoplayTimer = setInterval(() => {
+
+        if (galleryPaused) {
+          return;
+        }
+
+
+        /*
+         * Go to the next image
+         */
+        const nextIndex =
+          (currentIndex + 1) %
+          galleryImages.length;
+
+
+        changeGalleryImage(nextIndex);
+
+      }, 4500);
+
+    }
+
+
+    /* ==========================================================
+       PAUSE
+       ========================================================== */
+
+    function pauseGallery() {
+
+      galleryPaused = true;
+
+    }
+
+
+    /* ==========================================================
+       RESUME
+       ========================================================== */
+
+    function resumeGallery() {
+
+      galleryPaused = false;
+
+    }
+
+
+    /* ==========================================================
+       RESTART AUTOPLAY AFTER CLICK
+       ========================================================== */
+
+    function restartGalleryAutoplay() {
+
+      clearInterval(autoplayTimer);
+
+
+      /*
+       * Wait 4.5 seconds after the user's click
+       * before automatically changing again.
+       */
+      autoplayTimer = setInterval(() => {
+
+        if (galleryPaused) {
+          return;
+        }
+
+
+        const nextIndex =
+          (currentIndex + 1) %
+          galleryImages.length;
+
+
+        changeGalleryImage(nextIndex);
+
+      }, 4500);
+
+    }
+
+
+    /* ==========================================================
+       HOVER PAUSE
+       ========================================================== */
+
+    const galleryElement =
+      document.querySelector('.pd-gallery');
+
+
+    if (galleryElement) {
+
+      /*
+       * Pause while mouse is over the gallery
+       */
+      galleryElement.addEventListener(
+        'mouseenter',
+        () => {
+          pauseGallery();
+        }
+      );
+
+
+      /*
+       * Resume when mouse leaves
+       */
+      galleryElement.addEventListener(
+        'mouseleave',
+        () => {
+          resumeGallery();
+        }
+      );
+
+    }
+
+
+    /* ==========================================================
+       INITIAL RENDER
+       ========================================================== */
+
+    renderGallery();
+
+
+    /*
+     * Start automatic rotation
+     */
+    startGalleryAutoplay();
 
   }
 
@@ -1823,6 +2234,15 @@ function getTechnicalSpecification(product, selectedThickness) {
     heatSealRange: 'N/A'
   };
 }
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 
 function populateProductDetailThickness(product, selectedThickness) {
   const select = document.getElementById('productThickness');
@@ -1841,7 +2261,113 @@ function populateProductDetailThickness(product, selectedThickness) {
   select.value = selected;
   return selected;
 }
+function updateSelectedProductSpecs(product) {
 
+  const output =
+    document.getElementById(
+      'selectedProductSpecs'
+    );
+
+
+  if (!output) return;
+
+
+  const specs =
+    getSelectedProductSpecifications();
+
+
+  output.innerHTML = `
+
+    <div
+      style="
+        display:flex;
+        flex-wrap:wrap;
+        gap:8px;
+        align-items:center;
+      "
+    >
+
+      <strong
+        style="
+          margin-right:4px;
+        "
+      >
+        Selected:
+      </strong>
+
+      <span class="tag">
+        ${product.code}
+      </span>
+
+      <span class="tag">
+        ${specs.thickness}
+      </span>
+
+      <span class="tag">
+        ${specs.width}
+      </span>
+
+      <span class="tag">
+        ${specs.treatment}
+      </span>
+
+    </div>
+
+  `;
+
+
+  /*
+   * Also update the old specification
+   * fields on the page.
+   */
+
+  const pdThickness =
+    document.getElementById('pdThickness');
+
+  const pdWidth =
+    document.getElementById('pdWidth');
+
+  const pdTreatment =
+    document.getElementById('pdTreatment');
+
+
+  if (pdThickness)
+    pdThickness.textContent =
+      specs.thickness;
+
+
+  if (pdWidth)
+    pdWidth.textContent =
+      specs.width;
+
+
+  if (pdTreatment)
+    pdTreatment.textContent =
+      specs.treatment;
+
+
+  /*
+   * Save selection globally so Request Quote
+   * can use it.
+   */
+
+  window.currentProductConfiguration = {
+
+    productId: product.id,
+
+    code: product.code,
+
+    name: product.name,
+
+    thickness: specs.thickness,
+
+    width: specs.width,
+
+    treatment: specs.treatment
+
+  };
+
+}
 function renderTechnicalSpecifications(product, selectedThickness) {
   const table = document.querySelector('#page-product-detail .spec-table');
   if (!table || !product) return;
