@@ -3680,11 +3680,14 @@ CAREERS RESPONSIVE
 
 .certificates-grid {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
   gap: 24px;
 }
+
+
+/* ============================================================
+   CERTIFICATE CARD
+   ============================================================ */
 
 .certificate-card {
   background: #fff;
@@ -3708,75 +3711,37 @@ CAREERS RESPONSIVE
 }
 
 
-/* Certificate preview */
+/* ============================================================
+   CERTIFICATE IMAGE
+   ============================================================ */
 
 .certificate-preview {
-  height: 260px;
+  height: 250px;
 
-  padding: 24px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #f5f5f3 0%,
-      #ffffff 50%,
-      #eeeeeb 100%
-    );
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.certificate-placeholder {
-  width: 70%;
-  height: 82%;
-
-  background: #fff;
-
-  border: 1px solid rgba(16, 24, 32, 0.12);
-
-  box-shadow:
-    0 8px 25px rgba(16, 24, 32, 0.10);
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 10px;
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.08em;
-}
-
-.certificate-placeholder-icon {
-  width: 46px;
-  height: 46px;
-
-  border-radius: 50%;
-
-  background: rgba(242, 165, 26, 0.15);
-
-  color: var(--orange);
+  background: #f4f4f1;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 20px;
+  padding: 20px;
+
+  overflow: hidden;
+}
+
+.certificate-preview img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
 }
 
 
-/* Certificate information */
+/* ============================================================
+   CERTIFICATE INFORMATION
+   ============================================================ */
 
 .certificate-info {
   display: grid;
@@ -3799,55 +3764,79 @@ CAREERS RESPONSIVE
 }
 
 .certificate-info h3 {
-  font-size: 18px;
-
   margin: 0;
+
+  font-size: 18px;
 }
 
 .certificate-info p {
+  margin: 10px 0 16px;
+
   font-size: 13px;
 
   line-height: 1.65;
 
-  margin: 10px 0 15px;
-
   opacity: 0.7;
 }
 
-.certificate-link {
-  padding: 0;
 
-  border: 0;
+/* ============================================================
+   STATUS
+   ============================================================ */
 
-  background: none;
-
-  color: var(--dark);
-
-  font-size: 12px;
-
-  font-weight: 800;
-
-  letter-spacing: 0.04em;
-
-  cursor: pointer;
-
+.certificate-status {
   display: inline-flex;
 
   align-items: center;
 
   gap: 8px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  color: #68737c;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.05em;
 }
 
-.certificate-link span {
-  color: var(--orange);
+.certificate-status span {
+  width: 7px;
+  height: 7px;
 
-  transition: transform 0.2s ease;
+  border-radius: 50%;
+
+  background: var(--orange);
+
+  display: inline-block;
 }
 
-.certificate-link:hover span {
-  transform: translate(3px, -3px);
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1000px) {
+
+  .certificates-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
 }
 
+@media (max-width: 700px) {
+
+  .certificates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-preview {
+    height: 230px;
+  }
+
+}
 
 /* ============================================================
    TABLET
