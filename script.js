@@ -1188,12 +1188,12 @@ function renderjobsgrid() {
       container.appendChild(article);
     });
 
-  if (container.id === "career-grid") {
+    if (container.id === "career-grid") {
       // Keep the "no vacancies" section exactly as it was
-    const noVacancies = document.createElement("div");
-    noVacancies.className = "careers-no-vacancies";
+      const noVacancies = document.createElement("div");
+      noVacancies.className = "careers-no-vacancies";
 
-    noVacancies.innerHTML = `
+      noVacancies.innerHTML = `
       <div class="careers-no-icon">+</div>
       <div>
         <h3>Don't see the right position?</h3>
@@ -1208,10 +1208,10 @@ function renderjobsgrid() {
       </a>
     `;
 
-    container.appendChild(noVacancies);
-  }
-  
-});
+      container.appendChild(noVacancies);
+    }
+
+  });
 }
 
 function ph(cap, img) {
@@ -1297,8 +1297,8 @@ function renderHomeNewsCarousel() {
 
               <span class="news-cat">
                 ${item.contentType === 'event'
-                  ? 'Event'
-                  : item.category}
+          ? 'Event'
+          : item.category}
               </span>
 
               <span class="news-date">
@@ -1318,8 +1318,8 @@ function renderHomeNewsCarousel() {
             >
 
               ${item.contentType === 'event'
-                ? 'View event'
-                : 'Read more'}
+          ? 'View event'
+          : 'Read more'}
 
               <svg
                 width="14"
@@ -1415,7 +1415,7 @@ function renderHomeNewsCarousel() {
    */
   track.querySelectorAll('.home-content-btn').forEach(button => {
 
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
 
       e.stopPropagation();
 
@@ -2076,6 +2076,7 @@ function renderHomeApplicationsCarousel() {
         <button
           type="button"
           class="btn-ghost app-explore-btn"
+          data-nav="applications"
           data-app-id="${a.id}"
         >
           Explore application
@@ -2096,11 +2097,14 @@ function renderHomeApplicationsCarousel() {
 
   track.querySelectorAll('.app-explore-btn').forEach(btn => {
     btn.addEventListener('click', e => {
+      e.preventDefault();
       e.stopPropagation();
 
-      openApplicationDetail(
-        btn.getAttribute('data-app-id')
-      );
+      const appId = btn.getAttribute('data-app-id');
+
+      showPage('applications', {
+        app: appId
+      });
     });
   });
 }
@@ -3414,7 +3418,7 @@ function openNewsSection(type) {
    ============================================================ */
 
 function initializeNodaWebsite() {
-    // Home
+  // Home
   renderHomeNewsCarousel();
 
   // Products
@@ -3495,12 +3499,12 @@ const HERO_VALUES = [
     text: "Dependable BOPP film solutions supported by consistent quality, technical expertise and customer-focused service."
   },
   {
-  name: "TECHNOLOGY",
-  image: "bopp-production-line-wide.jpg",
-  eyebrow: "Advanced film technology",
-  title: "Technology<br>behind every roll.",
-  text: "Modern production technologies and precision processes designed to deliver consistent BOPP film performance."
- },
+    name: "TECHNOLOGY",
+    image: "bopp-production-line-wide.jpg",
+    eyebrow: "Advanced film technology",
+    title: "Technology<br>behind every roll.",
+    text: "Modern production technologies and precision processes designed to deliver consistent BOPP film performance."
+  },
 ];
 
 let heroValueIndex = 0;
