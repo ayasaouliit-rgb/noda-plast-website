@@ -3471,11 +3471,11 @@ else {
 
 const HERO_VALUES = [
   {
-    name: "QUALITY",
-    image: "quality-labrotory.png",
-    eyebrow: "Quality you can measure",
-    title: "Quality<br>without compromise.",
-    text: "Consistent BOPP film performance built around controlled production, laboratory testing and reliable specifications."
+    name: "RELIABILITY",
+    image: "Noda.png",
+    eyebrow: "A partner you can rely on",
+    title: "Reliable film.<br>Reliable results.",
+    text: "Dependable BOPP film solutions supported by consistent quality, technical expertise and customer-focused service."
   },
   {
     name: "INNOVATION",
@@ -3492,18 +3492,18 @@ const HERO_VALUES = [
     text: "We focus on recyclable film solutions, efficient processes and responsible approaches to packaging performance."
   },
   {
-    name: "RELIABILITY",
-    image: "nodaplast.jpg",
-    eyebrow: "A partner you can rely on",
-    title: "Reliable film.<br>Reliable results.",
-    text: "Dependable BOPP film solutions supported by consistent quality, technical expertise and customer-focused service."
-  },
-  {
     name: "TECHNOLOGY",
     image: "bopp-production-line-wide.jpg",
     eyebrow: "Advanced film technology",
     title: "Technology<br>behind every roll.",
     text: "Modern production technologies and precision processes designed to deliver consistent BOPP film performance."
+  },
+  {
+    name: "QUALITY",
+    image: "quality-labrotory.png",
+    eyebrow: "Quality you can measure",
+    title: "Quality<br>without compromise.",
+    text: "Consistent BOPP film performance built around controlled production, laboratory testing and reliable specifications."
   },
 ];
 
