@@ -786,6 +786,7 @@ footer {
 
 .home-news-carousel {
   width: 100%;
+  position: relative;
   overflow: hidden;
 }
 
@@ -793,7 +794,7 @@ footer {
   display: flex;
   gap: 30px;
   width: max-content;
-
+  
   animation: homeNewsScroll 45s linear infinite;
 
   will-change: transform;
@@ -2721,6 +2722,7 @@ CAREERS RESPONSIVE
 
 .home-app-carousel {
   width: 100%;
+  position: relative;
   overflow: hidden;
 }
 
@@ -5409,3 +5411,100 @@ CAREERS RESPONSIVE
   transform: translateX(-2px);
 }
 
+.home-news-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: transparent;
+  color: var(--dark);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: .75;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.home-news-nav:hover {
+  opacity: 1;
+}
+
+.home-news-nav-left {
+  left: 0;
+}
+
+.home-news-nav-left:hover {
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.home-news-nav-right {
+  right: 0;
+}
+
+.home-news-nav-right:hover {
+  transform: translateY(-50%) translateX(4px);
+}
+
+@media (max-width: 700px) {
+  .home-news-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+}
+
+.home-app-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: transparent;
+  color: var(--dark);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: .75;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.home-app-nav:hover {
+  opacity: 1;
+}
+
+.home-app-nav-left {
+  left: 0;
+}
+
+.home-app-nav-left:hover {
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.home-app-nav-right {
+  right: 0;
+}
+
+.home-app-nav-right:hover {
+  transform: translateY(-50%) translateX(4px);
+}
+
+@media (max-width: 700px) {
+  .home-app-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+}
