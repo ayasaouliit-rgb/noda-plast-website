@@ -7,7 +7,8 @@
   <title>NODA PLAST FILM — BOPP Film Manufacturing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_backspace" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_backspace" />
   <link
     href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet">
@@ -20,8 +21,10 @@
   <!-- ============ HEADER ============ -->
   <header>
     <div class="nav-wrap">
-      <a class="brand" data-nav="home" href="#"><img alt="NODA PLAST FILM logo" src="assets/images/nodaplast_logo.png"
-          style="width: 265px; height: 90px;" /></a>
+      <div class="nav-left">
+        <a class="brand" data-nav="home" href="#"><img alt="NODA PLAST FILM logo"
+            src="assets/images/nodaplast_logo.png" /></a>
+      </div>
       <nav class="nav-center">
         <a href="#" class="nav-link" data-nav="about">About Us</a>
         <a href="#" class="nav-link" data-nav="products">Products</a>
@@ -34,9 +37,13 @@
         <a href="#" class="nav-link" data-nav="contact">Contact</a>
       </nav>
       <div class="nav-right">
-
-        <button class="hamburger" id="hamburgerBtn"
-          aria-label="Open menu"><span></span><span></span><span></span></button>
+        <button aria-label="Switch language" class="language-toggle" data-i18n-toggle="true" id="languageToggle"
+          type="button">FR</button>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
@@ -44,10 +51,12 @@
   <!-- ============ MOBILE PANEL ============ -->
   <div class="mobile-panel" id="mobilePanel">
     <div class="mobile-panel-top">
-      <img alt="NODA PLAST FILM" src="assets/images/nodaplast_logo.png" class="logo">
+      <button aria-label="Switch language" class="language-toggle mobile-language-toggle" data-i18n-toggle="true"
+        id="mobileLanguageToggle" type="button">FR</button>
+      <img alt="NODA PLAST FILM" class="logo" src="assets/images/nodaplast_logo.png" />
       <button class="modal-close" id="closeMobileBtn">✕</button>
     </div>
-    <a href="#" class="nav-link" data-nav="about">About Us</a>
+    <a href="#" class="nav-link"  data-nav="about">About Us</a>
     <a href="#" class="nav-link" data-nav="products">Products</a>
     <a href="#" class="nav-link" data-nav="applications">Applications</a>
     <a href="#" class="nav-link" data-nav="quality">Quality</a>
@@ -62,31 +71,31 @@
     <!-- ================= HOME ================= -->
     <section class="page active" id="page-home">
       <div class="hero">
-      <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-bg" id="heroBg"></div>
 
-      <div class="hero-badge" id="heroBadge">QUALITY</div>
+        <div class="hero-badge" id="heroBadge">QUALITY</div>
 
-      <div class="container hero-content">
-        <div class="eyebrow" style="color:var(--orange);" id="heroEyebrow">
-          BOPP Film Manufacturing
-        </div>
+        <div class="container hero-content">
+          <div class="eyebrow" style="color:var(--orange);" id="heroEyebrow">
+            BOPP Film Manufacturing
+          </div>
 
-        <h1 id="heroTitle">
-          Engineered film.<br>Reliable results.
-        </h1>
+          <h1 id="heroTitle">
+            Engineered film.<br>Reliable results.
+          </h1>
 
-        <p class="lede" id="heroText">
-          High-performance BOPP film solutions for packaging, labels, printing,
-          lamination and demanding industrial applications.
-        </p>
+          <p class="lede" id="heroText">
+            High-performance BOPP film solutions for packaging, labels, printing,
+            lamination and demanding industrial applications.
+          </p>
 
-        <div class="hero-actions">
-          <button class="btn btn-cta" data-nav="products">
-            Explore Our Films
-          </button>
+          <div class="hero-actions">
+            <button class="btn btn-cta" data-nav="products">
+              Explore Our Films
+            </button>
+          </div>
         </div>
       </div>
-</div>
 
       <section class="section">
         <div class="container">
@@ -278,10 +287,7 @@
             </div>
 
             <div class="home-about-visual" aria-hidden="true">
-              <img
-                src="assets/images/nodaplast.jpg"
-                alt="Exterior photograph of NODA PLAST factory"
-                loading="lazy">
+              <img src="assets/images/nodaplast.jpg" alt="Exterior photograph of NODA PLAST factory" loading="lazy">
             </div>
           </div>
         </div>
@@ -339,7 +345,8 @@
             <div class="form-success request-success" id="homeContactSuccess">
               <h3>Your request has been sent!</h3>
               <p>Thank you for contacting us. We will respond to you as soon as possible.</p>
-              <button class="btn btn-secondary" id="homeContactAgainBtn" type="button" style="margin-top:20px;">Send another
+              <button class="btn btn-secondary" id="homeContactAgainBtn" type="button" style="margin-top:20px;">Send
+                another
                 message</button>
             </div>
           </div>
@@ -349,532 +356,478 @@
 
     <!-- ================= ABOUT ================= -->
     <section class="page" id="page-about">
-
-  <!-- =====================================================
-       ABOUT HERO
-       ===================================================== -->
-
-  <div class="hero about-hero">
-
-    <div class="hero-bg"></div>
-
-    <div class="container hero-content">
-
-      <div class="eyebrow" style="color:var(--orange);">
-        About NODA PLAST
-      </div>
-
-      <h1>
-        The Power to Create,<br>
-        the Flexibility to Express
-      </h1>
-
-      <p class="about-hero-lede">
-        BOPP film solutions designed around the evolving needs
-        of flexible packaging customers.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- =====================================================
-       WHO WE ARE
-       ===================================================== -->
-
-  <section class="section about-company-section">
-
-    <div class="container about-company-grid">
-
-      <!-- Image -->
-      <div class="about-company-image">
-
-        <img
-          src="assets/images/nodaplast.jpg"
-          alt="NODA PLAST manufacturing facility in Sétif, Algeria"
-          loading="lazy"
-        >
-
-        <div class="about-image-caption">
-          <span class="about-caption-line"></span>
-          <span>Sétif, Algeria</span>
+      <div class="hero about-hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+          <div class="eyebrow" style="color:var(--orange);">About NODA PLAST</div>
+          <h1>
+            The Power to Create,<br>
+            <span>The Flexibility to Express</span>
+          </h1>
+          <p class="about-hero-lede">
+            BOPP film solutions designed around the evolving needs
+            of flexible packaging customers.
+          </p>
         </div>
-
       </div>
+      <section class="section about-company-section">
+        <div class="container about-company-grid">
+          <div class="about-company-image">
+            <img src="assets/images/nodaplast.jpg" alt="NODA PLAST manufacturing facility in Sétif, Algeria"
+              loading="lazy">
+            <div class="about-image-caption">
+              <span class="about-caption-line"></span>
+              <span>Sétif, Algeria</span>
+            </div>
+          </div>
+          <div class="about-company-content">
+            <div class="eyebrow">About NODA PLAST</div>
+            <h2>
+              A flexible packaging partner built around your needs
+            </h2>
+            <p class="about-lead">
+              NODA PLAST is part of AGRO FILM Group, a US$120 million
+              flexible packaging group. We provide BOPP film solutions
+              designed around the evolving requirements of flexible
+              packaging customers.
+            </p>
+            <p>
+              Our manufacturing facility in Sétif, Algeria, operates an
+              advanced 8.7-meter, five-layer BOPP production line,
+              combining manufacturing capability with the flexibility
+              to respond to different customer requirements.
+            </p>
+            <div class="about-reach">
 
+              <div class="about-reach-icon">
+                <span>◎</span>
+              </div>
 
-      <!-- Content -->
-      <div class="about-company-content">
+              <div>
+                <span class="about-reach-label">
+                  Our Reach
+                </span>
 
-        <div class="eyebrow">
-          About NODA PLAST
-        </div>
+                <h3>
+                  From Algeria to international markets
+                </h3>
 
-        <h2>
-          A flexible packaging partner built around your needs
-        </h2>
+                <p>
+                  Serving customers across Africa while expanding our
+                  export presence in Europe and the United Kingdom,
+                  supported by a network of offices and local partners
+                  in more than 50 countries.
+                </p>
+              </div>
 
-        <p class="about-lead">
-          NODA PLAST is part of AGRO FILM Group, a US$120 million
-          flexible packaging group. We provide BOPP film solutions
-          designed around the evolving requirements of flexible
-          packaging customers.
-        </p>
+            </div>
 
-        <p>
-          Our manufacturing facility in Sétif, Algeria, operates an
-          advanced 8.7-meter, five-layer BOPP production line,
-          combining manufacturing capability with the flexibility
-          to respond to different customer requirements.
-        </p>
-
-
-        <!-- Reach highlight -->
-        <div class="about-reach">
-
-          <div class="about-reach-icon">
-            <span>◎</span>
           </div>
 
-          <div>
-            <span class="about-reach-label">
-              Our Reach
-            </span>
+        </div>
 
-            <h3>
-              From Algeria to international markets
-            </h3>
+      </section>
+
+      <section class="section section-tint about-mvv-section">
+        <div class="container">
+
+          <div class="about-section-head">
+
+            <div class="eyebrow">
+              What drives us
+            </div>
+
+            <h2>
+              Purpose, ambition and values
+            </h2>
 
             <p>
-              Serving customers across Africa while expanding our
-              export presence in Europe and the United Kingdom,
-              supported by a network of offices and local partners
-              in more than 50 countries.
+              Our approach is built around creating lasting value for
+              customers, partners, employees and the communities around us.
             </p>
+
           </div>
 
-        </div>
 
-      </div>
+          <div class="mv-grid">
 
-    </div>
+            <!-- Mission -->
+            <div class="mv-card about-mv-card">
 
-  </section>
+              <div class="num-badge">
+                M
+              </div>
 
+              <h3>
+                Mission
+              </h3>
 
-  <!-- =====================================================
-       MISSION / VISION / VALUES
-       ===================================================== -->
+              <p>
+                Meet our customers' dynamic packaging needs by providing
+                innovative, productive, cost-effective, optimized and
+                eco-friendly packaging solutions that continually add
+                value to their business.
+              </p>
 
-  <section class="section section-tint about-mvv-section">
-
-    <div class="container">
-
-      <div class="about-section-head">
-
-        <div class="eyebrow">
-          What drives us
-        </div>
-
-        <h2>
-          Purpose, ambition and values
-        </h2>
-
-        <p>
-          Our approach is built around creating lasting value for
-          customers, partners, employees and the communities around us.
-        </p>
-
-      </div>
-
-
-      <div class="mv-grid">
-
-        <!-- Mission -->
-        <div class="mv-card about-mv-card">
-
-          <div class="num-badge">
-            M
-          </div>
-
-          <h3>
-            Mission
-          </h3>
-
-          <p>
-            Meet our customers' dynamic packaging needs by providing
-            innovative, productive, cost-effective, optimized and
-            eco-friendly packaging solutions that continually add
-            value to their business.
-          </p>
-
-        </div>
-
-
-        <!-- Vision -->
-        <div class="mv-card about-mv-card">
-
-          <div class="num-badge">
-            V
-          </div>
-
-          <h3>
-            Vision
-          </h3>
-
-          <p>
-            Be a leading company and preferred supplier of BOPP film
-            solutions, serving customers across the world while
-            maximizing value for all stakeholders.
-          </p>
-
-        </div>
-
-
-        <!-- Values -->
-        <div class="mv-card about-mv-card">
-
-          <div class="num-badge">
-            V
-          </div>
-
-          <h3>
-            Values
-          </h3>
-
-          <div class="values-list">
-
-            <div class="value-item">
-              <strong>Trust & Respect</strong>
-              <span>Building lasting relationships.</span>
             </div>
 
-            <div class="value-item">
-              <strong>Customer Value</strong>
-              <span>Delivering measurable results.</span>
+
+            <!-- Vision -->
+            <div class="mv-card about-mv-card">
+
+              <div class="num-badge">
+                V
+              </div>
+
+              <h3>
+                Vision
+              </h3>
+
+              <p>
+                Be a leading company and preferred supplier of BOPP film
+                solutions, serving customers across the world while
+                maximizing value for all stakeholders.
+              </p>
+
             </div>
 
-            <div class="value-item">
-              <strong>Innovation</strong>
-              <span>Continuously improving what we do.</span>
-            </div>
 
-            <div class="value-item">
-              <strong>Responsiveness</strong>
-              <span>Moving quickly in every direction.</span>
-            </div>
+            <!-- Values -->
+            <div class="mv-card about-mv-card">
 
-            <div class="value-item">
-              <strong>Sustainability</strong>
-              <span>Operating responsibly for people and the environment.</span>
+              <div class="num-badge">
+                V
+              </div>
+
+              <h3>
+                Values
+              </h3>
+
+              <div class="values-list">
+
+                <div class="value-item">
+                  <strong>Trust & Respect</strong>
+                  <span>Building lasting relationships.</span>
+                </div>
+
+                <div class="value-item">
+                  <strong>Customer Value</strong>
+                  <span>Delivering measurable results.</span>
+                </div>
+
+                <div class="value-item">
+                  <strong>Innovation</strong>
+                  <span>Continuously improving what we do.</span>
+                </div>
+
+                <div class="value-item">
+                  <strong>Responsiveness</strong>
+                  <span>Moving quickly in every direction.</span>
+                </div>
+
+                <div class="value-item">
+                  <strong>Sustainability</strong>
+                  <span>Operating responsibly for people and the environment.</span>
+                </div>
+
+              </div>
+
             </div>
 
           </div>
 
         </div>
 
-      </div>
-
-    </div>
-
-  </section>
+      </section>
 
 
-  <!-- =====================================================
+      <!-- =====================================================
        SERVICES
        ===================================================== -->
 
-  <section class="section services-section">
+      <section class="section services-section">
 
-    <div class="container">
+        <div class="container">
 
-      <div class="eyebrow services-eyebrow">
-        Services
-      </div>
+          <div class="eyebrow services-eyebrow">
+            Services
+          </div>
 
 
-      <div class="services-intro">
+          <div class="services-intro">
 
-        <!-- Image -->
-        <div class="services-image">
+            <!-- Image -->
+            <div class="services-image">
 
-          <img
-            src="assets/images/film-rolls-warehouse.png"
-            alt="BOPP film rolls in a warehouse"
-            loading="lazy"
-          >
+              <img src="assets/images/film-rolls-warehouse.png" alt="BOPP film rolls in a warehouse" loading="lazy">
+
+            </div>
+
+
+            <!-- Intro -->
+            <div class="services-content">
+
+              <span class="services-label">
+                NODA PLAST
+              </span>
+
+              <h2>
+                Supply solutions built around your business
+              </h2>
+
+              <p>
+                We combine flexible supply solutions, responsive service
+                and local market presence to help our customers reduce
+                complexity, optimize inventory and keep their operations
+                moving.
+              </p>
+
+              <p>
+                From fast lead times to dedicated account management,
+                we adapt our supply approach to the needs of each customer.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- Services -->
+          <div class="services-grid">
+
+
+            <!-- 01 -->
+            <div class="service-card">
+
+              <div class="service-icon">
+                <span>↔</span>
+              </div>
+
+              <div class="service-card-content">
+
+                <span class="service-number">
+                  01
+                </span>
+
+                <h3>
+                  Flexible Supply
+                </h3>
+
+                <p>
+                  Customized supply chain solutions adapted to your
+                  requirements.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- 02 -->
+            <div class="service-card">
+
+              <div class="service-icon">
+                <span>◎</span>
+              </div>
+
+              <div class="service-card-content">
+
+                <span class="service-number">
+                  02
+                </span>
+
+                <h3>
+                  Strategic Supply
+                </h3>
+
+                <p>
+                  Geo-politically and economically diversified sourcing
+                  for greater supply security.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- 03 -->
+            <div class="service-card">
+
+              <div class="service-icon">
+                <span>⚡</span>
+              </div>
+
+              <div class="service-card-content">
+
+                <span class="service-number">
+                  03
+                </span>
+
+                <h3>
+                  Fast Lead Times
+                </h3>
+
+                <p>
+                  Responsive supply and exceptionally short lead times
+                  when you need them.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- 04 -->
+            <div class="service-card">
+
+              <div class="service-icon">
+                <span>↓</span>
+              </div>
+
+              <div class="service-card-content">
+
+                <span class="service-number">
+                  04
+                </span>
+
+                <h3>
+                  Lower Inventory
+                </h3>
+
+                <p>
+                  Reduce warehouse space and working capital with a
+                  supply model built around your needs.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- 05 -->
+            <div class="service-card">
+
+              <div class="service-icon">
+                <span>◇</span>
+              </div>
+
+              <div class="service-card-content">
+
+                <span class="service-number">
+                  05
+                </span>
+
+                <h3>
+                  Demand-Driven Supply
+                </h3>
+
+                <p>
+                  Reduce the need for blind forecasting and improve
+                  your operational efficiency.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- 06 -->
+            <div class="service-card">
+
+              <div class="service-icon service-icon-24">
+                <span>24</span>
+              </div>
+
+              <div class="service-card-content">
+
+                <span class="service-number">
+                  06
+                </span>
+
+                <h3>
+                  Dedicated Support
+                </h3>
+
+                <p>
+                  Dedicated account managers available 24/7/365 to
+                  support your business.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- 07 -->
+            <div class="service-card">
+
+              <div class="service-icon">
+                <span>◎</span>
+              </div>
+
+              <div class="service-card-content">
+
+                <span class="service-number">
+                  07
+                </span>
+
+                <h3>
+                  Local Presence
+                </h3>
+
+                <p>
+                  Local presence in key markets for faster communication
+                  and responsive service.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- 08 -->
+            <div class="service-card">
+
+              <div class="service-icon">
+                <span>□</span>
+              </div>
+
+              <div class="service-card-content">
+
+                <span class="service-number">
+                  08
+                </span>
+
+                <h3>
+                  One-Stop Shop
+                </h3>
+
+                <p>
+                  One-stop access to flexible packaging films and
+                  solutions.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- CTA -->
+          <div class="services-cta">
+
+            <button class="btn btn-cta" data-nav="contact">
+              Get in touch with NODA PLAST →
+            </button>
+
+          </div>
 
         </div>
 
+      </section>
 
-        <!-- Intro -->
-        <div class="services-content">
-
-          <span class="services-label">
-            NODA PLAST
-          </span>
-
-          <h2>
-            Supply solutions built around your business
-          </h2>
-
-          <p>
-            We combine flexible supply solutions, responsive service
-            and local market presence to help our customers reduce
-            complexity, optimize inventory and keep their operations
-            moving.
-          </p>
-
-          <p>
-            From fast lead times to dedicated account management,
-            we adapt our supply approach to the needs of each customer.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- Services -->
-      <div class="services-grid">
-
-
-        <!-- 01 -->
-        <div class="service-card">
-
-          <div class="service-icon">
-            <span>↔</span>
-          </div>
-
-          <div class="service-card-content">
-
-            <span class="service-number">
-              01
-            </span>
-
-            <h3>
-              Flexible Supply
-            </h3>
-
-            <p>
-              Customized supply chain solutions adapted to your
-              requirements.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <!-- 02 -->
-        <div class="service-card">
-
-          <div class="service-icon">
-            <span>◎</span>
-          </div>
-
-          <div class="service-card-content">
-
-            <span class="service-number">
-              02
-            </span>
-
-            <h3>
-              Strategic Supply
-            </h3>
-
-            <p>
-              Geo-politically and economically diversified sourcing
-              for greater supply security.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <!-- 03 -->
-        <div class="service-card">
-
-          <div class="service-icon">
-            <span>⚡</span>
-          </div>
-
-          <div class="service-card-content">
-
-            <span class="service-number">
-              03
-            </span>
-
-            <h3>
-              Fast Lead Times
-            </h3>
-
-            <p>
-              Responsive supply and exceptionally short lead times
-              when you need them.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <!-- 04 -->
-        <div class="service-card">
-
-          <div class="service-icon">
-            <span>↓</span>
-          </div>
-
-          <div class="service-card-content">
-
-            <span class="service-number">
-              04
-            </span>
-
-            <h3>
-              Lower Inventory
-            </h3>
-
-            <p>
-              Reduce warehouse space and working capital with a
-              supply model built around your needs.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <!-- 05 -->
-        <div class="service-card">
-
-          <div class="service-icon">
-            <span>◇</span>
-          </div>
-
-          <div class="service-card-content">
-
-            <span class="service-number">
-              05
-            </span>
-
-            <h3>
-              Demand-Driven Supply
-            </h3>
-
-            <p>
-              Reduce the need for blind forecasting and improve
-              your operational efficiency.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <!-- 06 -->
-        <div class="service-card">
-
-          <div class="service-icon service-icon-24">
-            <span>24</span>
-          </div>
-
-          <div class="service-card-content">
-
-            <span class="service-number">
-              06
-            </span>
-
-            <h3>
-              Dedicated Support
-            </h3>
-
-            <p>
-              Dedicated account managers available 24/7/365 to
-              support your business.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <!-- 07 -->
-        <div class="service-card">
-
-          <div class="service-icon">
-            <span>◎</span>
-          </div>
-
-          <div class="service-card-content">
-
-            <span class="service-number">
-              07
-            </span>
-
-            <h3>
-              Local Presence
-            </h3>
-
-            <p>
-              Local presence in key markets for faster communication
-              and responsive service.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <!-- 08 -->
-        <div class="service-card">
-
-          <div class="service-icon">
-            <span>□</span>
-          </div>
-
-          <div class="service-card-content">
-
-            <span class="service-number">
-              08
-            </span>
-
-            <h3>
-              One-Stop Shop
-            </h3>
-
-            <p>
-              One-stop access to flexible packaging films and
-              solutions.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- CTA -->
-      <div class="services-cta">
-
-        <button
-          class="btn btn-cta"
-          data-nav="contact"
-        >
-          Get in touch with NODA PLAST →
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-</section>
+    </section>
 
 
     <!-- ================= APPLICATIONS ================= -->
@@ -883,7 +836,7 @@
         <div class="hero-bg"></div>
         <div class="container hero-content" style="padding:80px 0 56px;">
           <div class="eyebrow" style="color:var(--orange);">Applications</div>
-          <h1 style="font-size:52px;">Built around your application.</h1>
+          <h1>Built around your<br><span>Application.</span></h1>
           <p class="lede">Explore film recommendations by end use, from food packaging to industrial specialty
             structures.</p>
         </div>
@@ -902,7 +855,7 @@
         <div class="hero-bg"></div>
         <div class="container hero-content" style="padding:80px 0 56px;">
           <div class="eyebrow" style="color:var(--orange);">Product Catalogue</div>
-          <h1 style="font-size:52px;">Explore our BOPP films.</h1>
+          <h1>Explore our <br><span>BOPP films.</span></h1>
           <p class="lede">Find films according to application, properties and converting requirements.</p>
         </div>
       </div>
@@ -1064,11 +1017,11 @@
     </section>
 
 
-   <!-- ================= QUALITY ================= -->
+    <!-- ================= QUALITY ================= -->
     <section class="page" id="page-quality">
 
       <!-- QUALITY HERO -->
-      <div class="hero quality-hero">
+      <div class="hero">
         <div class="hero-bg"></div>
 
         <div class="container hero-content">
@@ -1076,7 +1029,7 @@
 
           <h1>
             Quality is part<br>
-            of every step.
+            <span>Of every step.</span>
           </h1>
 
           <p class="lede">
@@ -1114,11 +1067,7 @@
             </div>
 
             <div class="quality-intro-image">
-              <img
-                src="assets/images/quality-labrotory.png"
-                alt="NODA PLAST quality control laboratory"
-                loading="lazy"
-              >
+              <img src="assets/images/quality-labrotory.png" alt="NODA PLAST quality control laboratory" loading="lazy">
             </div>
 
           </div>
@@ -1255,11 +1204,7 @@
               </p>
 
               <div class="quality-check-image">
-                <img
-                  src="assets/images/quality-lab.png"
-                  alt="NODA PLAST quality laboratory inspection"
-                  loading="lazy"
-                >
+                <img src="assets/images/quality-lab.png" alt="NODA PLAST quality laboratory inspection" loading="lazy">
               </div>
 
             </div>
@@ -1405,10 +1350,7 @@
             <article class="certificate-card">
 
               <div class="certificate-preview">
-                <img
-                  src="assets/images/ISO_9001_2015.png"
-                  alt="ISO 9001:2015"
-                >
+                <img src="assets/images/ISO_9001_2015.png" alt="ISO 9001:2015">
               </div>
 
               <div class="certificate-info">
@@ -1438,10 +1380,7 @@
             <article class="certificate-card">
 
               <div class="certificate-preview">
-                <img
-                  src="assets/images/ISO_22000.png"
-                  alt="ISO 22000"
-                >
+                <img src="assets/images/ISO_22000.png" alt="ISO 22000">
               </div>
 
               <div class="certificate-info">
@@ -1471,10 +1410,7 @@
             <article class="certificate-card">
 
               <div class="certificate-preview">
-                <img
-                  src="assets/images/ISO_14000.png"
-                  alt="ISO 14000"
-                >
+                <img src="assets/images/ISO_14000.png" alt="ISO 14000">
               </div>
 
               <div class="certificate-info">
@@ -1510,24 +1446,24 @@
     <!-- ================= SUSTAINABILITY ================= -->
     <section class="page" id="page-sustainability">
       <!-- HERO -->
-    <div class="hero sustainability-hero">
-      <div class="hero-bg"></div>
+      <div class="hero">
+        <div class="hero-bg"></div>
 
-      <div class="container hero-content">
-        <div class="eyebrow" style="color:var(--orange);">
-          Sustainability
+        <div class="container hero-content">
+          <div class="eyebrow" style="color:var(--orange);">
+            Sustainability
+          </div>
+
+          <h1>
+            Better production.<br>
+            <span>More responsible choices.</span>
+          </h1>
+
+          <p class="lede">
+            We focus on responsible production, efficient use of resources,
+            waste recovery and the people behind our progress. </p>
         </div>
-
-        <h1>
-          Better production.<br>
-          More responsible choices.
-        </h1>
-
-        <p class="lede">
-          We focus on responsible production, efficient use of resources,
-          waste recovery and the people behind our progress. </p>
       </div>
-    </div>
       <!-- 01 ENVIRONMENTAL RESPONSIBILITY -->
       <section class="section sustainability-feature">
         <div class="container">
@@ -1535,11 +1471,8 @@
           <div class="sustainability-row">
 
             <div class="sustainability-image">
-              <img
-                src="assets/images/recycling logo.png"
-                alt="Environmental responsibility and recycling"
-                loading="lazy"
-              >
+              <img src="assets/images/recycling logo.png" alt="Environmental responsibility and recycling"
+                loading="lazy">
             </div>
 
             <div class="sustainability-content">
@@ -1616,11 +1549,7 @@
             </div>
 
             <div class="sustainability-image">
-              <img
-                src="assets/images/recycling logo.png"
-                alt="Material recovery process"
-                loading="lazy"
-              >
+              <img src="assets/images/recycling logo.png" alt="Material recovery process" loading="lazy">
             </div>
 
           </div>
@@ -1636,11 +1565,7 @@
           <div class="sustainability-row">
 
             <div class="sustainability-image">
-              <img
-                src="assets/images/recycling logo.png"
-                alt="Responsible film production"
-                loading="lazy"
-              >
+              <img src="assets/images/recycling logo.png" alt="Responsible film production" loading="lazy">
             </div>
 
             <div class="sustainability-content">
@@ -1717,11 +1642,7 @@
             </div>
 
             <div class="sustainability-image">
-              <img
-                src="assets/images/production-team.png"
-                alt="NODA PLAST team and people"
-                loading="lazy"
-              >
+              <img src="assets/images/production-team.png" alt="NODA PLAST team and people" loading="lazy">
             </div>
 
           </div>
@@ -1732,23 +1653,23 @@
 
     <!-- ================= CAREERS ================= -->
     <section class="page" id="page-careers">
-      <div class="hero careers-hero" style="min-height:380px;">
+      <div class="hero" style="min-height:380px;">
         <div class="hero-bg"></div>
-          <div class="container hero-content" style="padding:80px 0 56px;">
-            <div class="eyebrow" style="color:var(--orange);">Careers</div>
-            <h1 style="font-size:52px;">
-              Build your future with NODA PLAST.
-            </h1>
-            <p class="lede">
-              Join a growing team working across production, engineering,
-              quality, sales, and operations to shape the future of flexible films.
-            </p>
-            <div class="hero-actions">
-              <a href="#careers-vacancies" class="btn btn-cta">View open positions</a>
-              <a href="#careers-apply" class="btn btn-cta">Submit your CV</a>
-            </div>
+        <div class="container hero-content" style="padding:80px 0 56px;">
+          <div class="eyebrow" style="color:var(--orange);">Careers</div>
+          <h1>
+            Build your future <br><span>With NODA PLAST.</span>
+          </h1>
+          <p class="lede">
+            Join a growing team working across production, engineering,
+            quality, sales, and operations to shape the future of flexible films.
+          </p>
+          <div class="hero-actions">
+            <a href="#careers-vacancies" class="btn btn-cta">View open positions</a>
+            <a href="#careers-apply" class="btn btn-cta">Submit your CV</a>
           </div>
         </div>
+      </div>
       </div>
 
       <section class="section">
@@ -1915,7 +1836,7 @@
               </div>
             </div>
             <div class="card careers-application-card">
-              <form id="career-form" class="careers-form" enctype="multipart/form-data" >
+              <form id="career-form" class="careers-form" enctype="multipart/form-data">
                 <div class="form-grid">
                   <div class="field">
                     <label for="career-name">Full name *</label>
@@ -1927,7 +1848,7 @@
                   </div>
                   <div class="field">
                     <label for="career-phone">Phone number</label>
-                    <input type="tel" id="career-phone" name="phone" placeholder="+213 ..." >
+                    <input type="tel" id="career-phone" name="phone" placeholder="+213 ...">
                   </div>
                   <div class="field">
                     <label for="career-position">Position</label>
@@ -1941,7 +1862,8 @@
                   </div>
                   <div class="field full">
                     <label for="career-message">Message</label>
-                    <textarea id="career-message" name="message" placeholder="Tell us briefly about your experience and what you are looking for..."></textarea>
+                    <textarea id="career-message" name="message"
+                      placeholder="Tell us briefly about your experience and what you are looking for..."></textarea>
                   </div>
                   <div class="field full">
                     <label for="career-cv">CV / Resume *</label>
@@ -1992,12 +1914,13 @@
 
     <!-- ================= global-presence ==================== -->
     <section class="page" id="page-global-presence">
-      <div class="hero global-hero">
+      <div class="hero">
         <div class="hero-bg"></div>
         <div class="container hero-content">
           <div class="eyebrow" style="color:var(--orange);">Global Presence</div>
-          <h1>From Algeria<br><span>to the world.</span></h1>
-          <p class="lede">NODA PLAST products are trusted beyond borders, connecting Algerian manufacturing excellence with customers and partners across international markets.</p>
+          <h1>From Algeria<br><span>To the world.</span></h1>
+          <p class="lede">NODA PLAST products are trusted beyond borders, connecting Algerian manufacturing excellence
+            with customers and partners across international markets.</p>
         </div>
       </div>
       <section class="section global-intro">
@@ -2008,7 +1931,8 @@
               <h2>Growing beyond borders.</h2>
             </div>
             <p>
-              NODA PLAST products are trusted beyond borders, connecting algerian manufacturing excellence with customers and partners across international markets.
+              NODA PLAST products are trusted beyond borders, connecting algerian manufacturing excellence with
+              customers and partners across international markets.
             </p>
           </div>
         </div>
@@ -2076,7 +2000,7 @@
             <div class="export-market">
               <span class="market-number">09</span>
               <div class="next-market">
-                <div>                   
+                <div>
                   <strong>France</strong>
                   <small>Europe</small>
                 </div>
@@ -2085,140 +2009,141 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section section-tint global-stats">
-      <div class="container">
-        <div class="section-head center">
-          <div class="eyebrow">
-            Built on Trust
-          </div>
-          <h2>Quality that travels.</h2>
-          <p>
-            Every market we serve represents another relationship built
-            around product quality, dependable service and long-term trust.
-          </p>
         </div>
-        <div class="global-stats-grid">
-          <div class="global-stat">
-            <strong>10+</strong>
-            <span>Export Markets</span>
-          </div>
-          <div class="global-stat">
-            <strong>10</strong>
-            <span>Countries Served</span>
-          </div>
-          <div class="global-stat">
-            <strong>20+</strong>
-            <span>International Partners</span>
-          </div>
-          <div class="global-stat">
-            <strong>5+</strong>
-            <span>Years of Experience</span>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section global-quality">
-      <div class="container">
-        <div class="grid-2">
-          <div>
-            <div class="eyebrow"> Why Customers Choose Us</div>
-            <h2>A partner you can rely on.</h2>
-            <p class="global-quality-lede">
-              International customers expect more than a product.
-              They expect consistency, responsiveness and a partner
-              capable of delivering reliably.
+      <section class="section section-tint global-stats">
+        <div class="container">
+          <div class="section-head center">
+            <div class="eyebrow">
+              Built on Trust
+            </div>
+            <h2>Quality that travels.</h2>
+            <p>
+              Every market we serve represents another relationship built
+              around product quality, dependable service and long-term trust.
             </p>
-            <button class="btn btn-primary" data-nav="contact" style="margin-top: 30px;"> Contact our team →</button>
           </div>
-          <div class="global-trust-list">
-            <div class="global-trust-item">
-              <span class="trust-number">01</span>
-              <div>
-                <h3>Consistent Quality</h3>
-                <p>
-                  Reliable film performance across production batches
-                  and applications.
-                </p>
-              </div>
+          <div class="global-stats-grid">
+            <div class="global-stat">
+              <strong>10+</strong>
+              <span>Export Markets</span>
             </div>
-            <div class="global-trust-item">
-              <span class="trust-number">02</span>
-              <div>
-                <h3>Reliable Supply</h3>
-                <p>
-                  Production and logistics designed to support
-                  international customers.
-                </p>
-              </div>
+            <div class="global-stat">
+              <strong>10</strong>
+              <span>Countries Served</span>
             </div>
-            <div class="global-trust-item">
-              <span class="trust-number">03</span>
-              <div>
-                <h3>Long-Term Partnerships</h3>
-                <p>
-                  We focus on building lasting relationships with
-                  customers and distributors.
-                </p>
-              </div>
+            <div class="global-stat">
+              <strong>20+</strong>
+              <span>International Partners</span>
             </div>
-            <div class="global-trust-item">
-              <span class="trust-number">04</span>
-              <div>
-                <h3>Technical Support</h3>
-                <p>
-                  Our technical approach helps customers select the
-                  right film for their application.
-                </p>
-              </div>
+            <div class="global-stat">
+              <strong>5+</strong>
+              <span>Years of Experience</span>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section class="section global-quality">
+        <div class="container">
+          <div class="grid-2">
+            <div>
+              <div class="eyebrow"> Why Customers Choose Us</div>
+              <h2>A partner you can rely on.</h2>
+              <p class="global-quality-lede">
+                International customers expect more than a product.
+                They expect consistency, responsiveness and a partner
+                capable of delivering reliably.
+              </p>
+              <button class="btn btn-primary" data-nav="contact" style="margin-top: 30px;"> Contact our team →</button>
+            </div>
+            <div class="global-trust-list">
+              <div class="global-trust-item">
+                <span class="trust-number">01</span>
+                <div>
+                  <h3>Consistent Quality</h3>
+                  <p>
+                    Reliable film performance across production batches
+                    and applications.
+                  </p>
+                </div>
+              </div>
+              <div class="global-trust-item">
+                <span class="trust-number">02</span>
+                <div>
+                  <h3>Reliable Supply</h3>
+                  <p>
+                    Production and logistics designed to support
+                    international customers.
+                  </p>
+                </div>
+              </div>
+              <div class="global-trust-item">
+                <span class="trust-number">03</span>
+                <div>
+                  <h3>Long-Term Partnerships</h3>
+                  <p>
+                    We focus on building lasting relationships with
+                    customers and distributors.
+                  </p>
+                </div>
+              </div>
+              <div class="global-trust-item">
+                <span class="trust-number">04</span>
+                <div>
+                  <h3>Technical Support</h3>
+                  <p>
+                    Our technical approach helps customers select the
+                    right film for their application.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
-  </section>
 
 
-  <!-- ================= NEWS ================= -->
-  <section class="page" id="page-news">
-    <div class="hero" style="min-height:380px;">
-      <div class="hero-bg"></div>
-      <div class="container hero-content" style="padding:80px 0 56px;">
-        <div class="eyebrow" style="color:var(--orange);">News &amp; Insights</div>
-        <h1 style="font-size:52px;">What's happening at NODA PLAST.</h1>
-      </div>
-    </div>
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">News</div>
-          <h2>What's happening<br>at NODA PLAST.</h2>
+    <!-- ================= NEWS ================= -->
+    <section class="page" id="page-news">
+      <div class="hero" style="min-height:380px;">
+        <div class="hero-bg"></div>
+        <div class="container hero-content" style="padding:80px 0 56px;">
+          <div class="eyebrow" style="color:var(--orange);">News &amp; Insights</div>
+          <h1>What's happening <br><span>At NODA PLAST.</span></h1>
+          <p class="lede">Stay updated with the latest news, articles, and industry insights from NODA PLAST.</p>
         </div>
-        <div class="grid-3" id="newsGrid"></div>
       </div>
-    </section>
-    <section class="section section-tint">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Evants</div>
-          <h2>What's happening<br>at NODA PLAST.</h2>
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">News</div>
+            <h2>What's happening<br>at NODA PLAST.</h2>
+          </div>
+          <div class="grid-3" id="newsGrid"></div>
         </div>
-        <div class="grid-3" id="eventsGrid"></div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Job Opertunities</div>
-          <h2>Join our team<br>at NODA PLAST.</h2>
+      </section>
+      <section class="section section-tint">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">Evants</div>
+            <h2>What's happening<br>at NODA PLAST.</h2>
+          </div>
+          <div class="grid-3" id="eventsGrid"></div>
         </div>
-        <div class="careers-jobs"></div>
-      </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">Job Opertunities</div>
+            <h2>Join our team<br>at NODA PLAST.</h2>
+          </div>
+          <div class="careers-jobs"></div>
+        </div>
+      </section>
     </section>
-  </section>
 
     <!-- ================= CONTACT ================= -->
     <section class="page" id="page-contact">
@@ -2226,7 +2151,8 @@
         <div class="hero-bg"></div>
         <div class="container hero-content" style="padding:80px 0 56px;">
           <div class="eyebrow" style="color:var(--orange);">Contact</div>
-          <h1 style="font-size:52px;">Let's talk about your film.</h1>
+          <h1>Let's talk about<br> <span>Your film.</span></h1>
+          <p class="lede">Contact us today for quotes, technical questions, or partnership inquiries.</p>
         </div>
       </div>
       <section class="section">
