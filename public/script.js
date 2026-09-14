@@ -1,4 +1,16 @@
 /* ============================================================
+   I18N HELPER
+   Translates a static English string to French at call time when
+   the site is currently in French mode. Used for text that is set
+   via .textContent (so translation.js's data-i18n mutation observer
+   cannot pick it up automatically). Falls back to the original
+   string when not in French mode or before translation.js loads.
+   ============================================================ */
+function i18nText(str) {
+  return (window.NODA_LANGUAGE === 'fr' && window.t) ? window.t(str) : str;
+}
+
+/* ============================================================
    EMAIL API
    ============================================================ */
 
@@ -1044,7 +1056,7 @@ const NEWS = [
   {
     type: "news",
     category: "Company",
-    date: "PLACEHOLDER DATE",
+    date: "Coming soon",
     title: "NODA PLAST expands production capacity",
     desc: "Placeholder summary — replace with real company announcement content.",
     phCap: "Factory news photograph",
@@ -1054,7 +1066,7 @@ const NEWS = [
   {
     type: "event",
     category: "Exhibition",
-    date: "PLACEHOLDER DATE",
+    date: "Coming soon",
     title: "NODA PLAST at industry trade exhibition",
     desc: "Meet our team and discover our latest BOPP film solutions at an upcoming industry exhibition.",
     phCap: "Trade exhibition photograph",
@@ -1064,7 +1076,7 @@ const NEWS = [
   {
     type: "news",
     category: "Technology",
-    date: "PLACEHOLDER DATE",
+    date: "Coming soon",
     title: "Inside our extrusion and orientation process",
     desc: "Explore how our production processes contribute to consistent film quality and performance.",
     phCap: "Laboratory or technical photograph",
@@ -1074,7 +1086,7 @@ const NEWS = [
   {
     type: "event",
     category: "Company",
-    date: "PLACEHOLDER DATE",
+    date: "Coming soon",
     title: "NODA PLAST welcomes industry partners",
     desc: "An opportunity to connect with customers, partners, and professionals from the flexible packaging industry.",
     phCap: "Industry meeting photograph",
@@ -1084,7 +1096,7 @@ const NEWS = [
   {
     type: "news",
     category: "Sustainability",
-    date: "PLACEHOLDER DATE",
+    date: "Coming soon",
     title: "Progress on material efficiency initiatives",
     desc: "Placeholder summary — replace with verified sustainability content.",
     phCap: "Certification or sustainability photograph",
@@ -1094,7 +1106,7 @@ const NEWS = [
   {
     type: "event",
     category: "Open Day",
-    date: "PLACEHOLDER DATE",
+    date: "Coming soon",
     title: "NODA PLAST facility open day",
     desc: "A closer look at our production environment, technology, and commitment to quality.",
     phCap: "Factory open day photograph",
@@ -1104,7 +1116,7 @@ const NEWS = [
   {
     type: "news",
     category: "Technology",
-    date: "PLACEHOLDER DATE",
+    date: "Coming soon",
     title: "Quality lab instrumentation upgrade",
     desc: "Placeholder summary — replace with real technical article content.",
     phCap: "Quality lab instrument photograph",
@@ -1114,7 +1126,7 @@ const NEWS = [
   {
     type: "event",
     category: "Training",
-    date: "PLACEHOLDER DATE",
+    date: "Coming soon",
     title: "Technical training and knowledge sharing",
     desc: "A technical session focused on production processes, quality, and continuous improvement.",
     phCap: "Technical training photograph",
@@ -1124,7 +1136,7 @@ const NEWS = [
   {
     type: "news",
     category: "Sustainability",
-    date: "PLACEHOLDER DATE",
+    date: "Coming soon",
     title: "Edge-trim recovery process overview",
     desc: "Placeholder summary — replace with verified sustainability content.",
     phCap: "Material recovery photograph",
@@ -1221,37 +1233,37 @@ function renderjobsgrid() {
 
       article.innerHTML = `
         <div class="careers-job-main">
-          <div class="careers-job-category">
+          <div class="careers-job-category" data-i18n="${job.category}">
             ${job.category}
           </div>
-          <h3>
+          <h3 data-i18n="${job.title}">
             ${job.title}
           </h3>
-          <p>
+          <p data-i18n="${job.description}">
             ${job.description}
           </p>
           <div class="tag-row">
             ${job.tags.map(tag => `
-              <span class="tag">${tag}</span>
+              <span class="tag" data-i18n="${tag}">${tag}</span>
             `).join("")}
           </div>
         </div>
 
         <div class="careers-job-side">
           <div class="careers-job-detail">
-            <span>Location</span>
-            <strong>${job.location}</strong>
+            <span data-i18n="Location">Location</span>
+            <strong data-i18n="${job.location}">${job.location}</strong>
           </div>
           <div class="careers-job-detail">
-            <span>Employment</span>
-            <strong>${job.employment}</strong>
+            <span data-i18n="Employment">Employment</span>
+            <strong data-i18n="${job.employment}">${job.employment}</strong>
           </div>
           <a
             href="#careers-apply"
             class="btn btn-primary btn-sm"
             data-position="${job.title}"
           >
-            Apply now
+            <span data-i18n="Apply now">Apply now</span>
           </a>
         </div>
       `;
@@ -1267,15 +1279,15 @@ function renderjobsgrid() {
       noVacancies.innerHTML = `
       <div class="careers-no-icon">+</div>
       <div>
-        <h3>Don't see the right position?</h3>
-        <p>
+        <h3 data-i18n="Don't see the right position?">Don't see the right position?</h3>
+        <p data-i18n="We are always interested in meeting motivated people. Send us your CV and we will keep your profile in mind for future opportunities.">
           We are always interested in meeting motivated people.
           Send us your CV and we will keep your profile in mind
           for future opportunities.
         </p>
       </div>
       <a href="#careers-apply" class="btn btn-secondary btn-sm">
-        Send your CV
+        <span data-i18n="Send your CV">Send your CV</span>
       </a>
     `;
 
@@ -1368,19 +1380,19 @@ function renderHomeNewsCarousel() {
 
               <span class="news-cat">
                 ${item.contentType === 'event'
-          ? 'Event'
-          : item.category}
+          ? '<span data-i18n="Event">Event</span>'
+          : `<span data-i18n="${item.category}">${item.category}</span>`}
               </span>
 
-              <span class="news-date">
+              <span class="news-date" data-i18n="${item.date}">
                 ${item.date}
               </span>
 
             </div>
 
-            <h3>${item.title}</h3>
+            <h3 data-i18n="${item.title}">${item.title}</h3>
 
-            <p>${item.desc}</p>
+            <p data-i18n="${item.desc}">${item.desc}</p>
 
             <button
               type="button"
@@ -1389,8 +1401,8 @@ function renderHomeNewsCarousel() {
             >
 
               ${item.contentType === 'event'
-          ? 'View event'
-          : 'Read more'}
+          ? '<span data-i18n="View event">View event</span>'
+          : '<span data-i18n="Read more">Read more</span>'}
 
               <svg
                 width="14"
@@ -1430,26 +1442,26 @@ function renderHomeNewsCarousel() {
 
           <div class="news-meta">
 
-            <span class="news-cat">
+            <span class="news-cat" data-i18n="Job Opportunity">
               Job Opportunity
             </span>
 
-            <span class="news-date">
+            <span class="news-date" data-i18n="${item.location}">
               ${item.location}
             </span>
 
           </div>
 
-          <h3>${item.title}</h3>
+          <h3 data-i18n="${item.title}">${item.title}</h3>
 
-          <p>${item.description}</p>
+          <p data-i18n="${item.description}">${item.description}</p>
 
           <button
             type="button"
             class="btn-ghost home-content-btn"
             data-content-type="job"
           >
-            View position
+            <span data-i18n="View position">View position</span>
 
             <svg
               width="14"
@@ -1537,16 +1549,16 @@ function renderNewsGrid(containerId, count, type = "news") {
       <div class="news-card-body">
 
         <div class="news-meta">
-          <span class="news-cat">${n.category}</span>
-          <span class="news-date">${n.date}</span>
+          <span class="news-cat" data-i18n="${n.category}">${n.category}</span>
+          <span class="news-date" data-i18n="${n.date}">${n.date}</span>
         </div>
 
-        <h3>${n.title}</h3>
+        <h3 data-i18n="${n.title}">${n.title}</h3>
 
-        <p>${n.desc}</p>
+        <p data-i18n="${n.desc}">${n.desc}</p>
 
         <span class="btn-ghost">
-          Read more
+          <span data-i18n="Read more">Read more</span>
 
           <svg
             width="14"
@@ -1639,21 +1651,21 @@ function renderProductGrid() {
       <div class="pgrid-card-body">
 
         <div class="pcat">
-          ${p.code} · ${p.category}
+          ${p.code} · <span data-i18n="${p.category}">${p.category}</span>
         </div>
 
-        <h3>
+        <h3 data-i18n="${p.name}">
           ${p.name}
         </h3>
 
-        <p>
+        <p data-i18n="${p.desc}">
           ${p.desc}
         </p>
 
         <div class="tag-row">
 
           ${p.tags.map(t => `
-            <span class="tag">${t}</span>
+            <span class="tag" data-i18n="${t}">${t}</span>
           `).join('')}
 
         </div>
@@ -1670,7 +1682,7 @@ function renderProductGrid() {
         >
 
           <div style="margin-bottom:5px;">
-            <strong>Thickness:</strong>
+            <strong data-i18n="Thickness:">Thickness:</strong>
             ${p.defaultThickness}
           </div>
 
@@ -1684,7 +1696,7 @@ function renderProductGrid() {
             data-nav="product-detail"
             data-product="${p.id}"
           >
-            View Details
+            <span data-i18n="View Details">View Details</span>
           </button>
 
         </div>
@@ -1723,22 +1735,22 @@ function renderProductDetail(id) {
 
   if (pdCategory)
     pdCategory.textContent =
-      `${p.code} · ${p.category}`;
+      `${p.code} · ${i18nText(p.category)}`;
 
 
   if (pdName)
     pdName.textContent =
-      p.name;
+      i18nText(p.name);
 
 
   if (pdDesc)
     pdDesc.textContent =
-      p.shortName;
+      i18nText(p.shortName);
 
 
   if (pdOverview)
     pdOverview.textContent =
-      p.overview;
+      i18nText(p.overview);
 
 
   /* ============================================================
@@ -2105,7 +2117,7 @@ function renderProductDetail(id) {
     pdTags.innerHTML =
       p.tags
         .map(t => `
-          <span class="tag">${t}</span>
+          <span class="tag" data-i18n="${t}">${t}</span>
         `)
         .join('');
 
@@ -2122,7 +2134,7 @@ function renderProductDetail(id) {
         ${p.code}
       </span>
 
-      <span class="tag">
+      <span class="tag" data-i18n="${p.shortName}">
         ${p.shortName}
       </span>
 
@@ -2251,7 +2263,7 @@ function populateProductDetailThickness(product, selectedThickness) {
   const allowed = getProductThicknesses(product);
   const selected = getSelectedThicknessForProduct(product, selectedThickness);
 
-  select.innerHTML = '<option value="">Select thickness</option>' +
+  select.innerHTML = '<option value="" data-i18n="Select thickness">Select thickness</option>' +
     allowed.map(value => `
       <option value="${escapeHtml(value)}" ${value === selected ? 'selected' : ''}>
         ${escapeHtml(value)}
@@ -2292,7 +2304,7 @@ function updateSelectedProductSpecs(product) {
           margin-right:4px;
         "
       >
-        Selected:
+        <span data-i18n="Selected:">Selected:</span>
       </strong>
 
       <span class="tag">
@@ -2390,11 +2402,11 @@ function renderTechnicalSpecifications(product, selectedThickness) {
 
   tbody.innerHTML = `
     <tr>
-      <td>Thickness</td>
+      <td data-i18n="Thickness">Thickness</td>
       <td>µm</td>
       <td class="tbd">
         <select id="productThickness" name="thickness" aria-label="Select product thickness">
-          <option value="">Select thickness</option>
+          <option value="" data-i18n="Select thickness">Select thickness</option>
           ${thicknessOptions}
         </select>
       </td>
@@ -2410,12 +2422,12 @@ function renderTechnicalSpecifications(product, selectedThickness) {
       <td>${escapeHtml(String(specs.yield))}</td>
     </tr>
     <tr>
-      <td>Haze</td>
+      <td data-i18n="Haze">Haze</td>
       <td>%</td>
       <td>${escapeHtml(String(specs.haze))}</td>
     </tr>
     <tr>
-      <td>Gloss</td>
+      <td data-i18n="Gloss">Gloss</td>
       <td>%</td>
       <td>${escapeHtml(String(specs.gloss))}</td>
     </tr>
@@ -2425,22 +2437,22 @@ function renderTechnicalSpecifications(product, selectedThickness) {
       <td>${escapeHtml(String(specs.cof))}</td>
     </tr>
     <tr>
-      <td>Tensile Strength (MD / TD)</td>
+      <td data-i18n="Tensile Strength (MD / TD)">Tensile Strength (MD / TD)</td>
       <td>MPa</td>
       <td>${escapeHtml(String(specs.tensileStrength))}</td>
     </tr>
     <tr>
-      <td>Elongation at Break (MD / TD)</td>
+      <td data-i18n="Elongation at Break (MD / TD)">Elongation at Break (MD / TD)</td>
       <td>%</td>
       <td>${escapeHtml(String(specs.elongation))}</td>
     </tr>
     <tr>
-      <td>Thermal Shrinkage (MD / TD)</td>
+      <td data-i18n="Thermal Shrinkage (MD / TD)">Thermal Shrinkage (MD / TD)</td>
       <td>%</td>
       <td>${escapeHtml(String(specs.thermalShrinkage))}</td>
     </tr>
     <tr>
-      <td>Heat Seal Range</td>
+      <td data-i18n="Heat Seal Range">Heat Seal Range</td>
       <td>°C</td>
       <td>${escapeHtml(String(specs.heatSealRange))}</td>
     </tr>
@@ -2449,7 +2461,7 @@ function renderTechnicalSpecifications(product, selectedThickness) {
   const note = table.parentElement?.querySelector('.form-note');
   if (note) {
     note.textContent =
-      'Placeholder values only — replace with approved NODA PLAST laboratory data before publication.';
+      i18nText('Placeholder values only — replace with approved NODA PLAST laboratory data before publication.');
   }
 
   // renderTechnicalSpecifications() recreates the select, so bind the change
@@ -2537,12 +2549,12 @@ function renderApplicationsGrid() {
             0${i + 1}
           </div>
 
-          <h3>${a.name}</h3>
+          <h3 data-i18n="${a.name}">${a.name}</h3>
 
-          <p>${a.desc}</p>
+          <p data-i18n="${a.desc}">${a.desc}</p>
 
           <span class="btn-ghost">
-            View details
+            <span data-i18n="View details">View details</span>
 
             <svg
               width="14"
@@ -2595,9 +2607,9 @@ function renderHomeApplicationsCarousel() {
       <div class="app-card-body">
         <div class="app-card-num">0${i + 1}</div>
 
-        <h3>${a.name}</h3>
+        <h3 data-i18n="${a.name}">${a.name}</h3>
 
-        <p>${a.desc}</p>
+        <p data-i18n="${a.desc}">${a.desc}</p>
 
         <button
           type="button"
@@ -2605,7 +2617,7 @@ function renderHomeApplicationsCarousel() {
           data-nav="applications"
           data-app-id="${a.id}"
         >
-          Explore application
+          <span data-i18n="Explore application">Explore application</span>
           <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
             <path
               d="M9 1l4 4-4 4M1 5h11"
@@ -2664,7 +2676,7 @@ function openApplicationDetail(id) {
 
     <div>
 
-      <div class="eyebrow">
+      <div class="eyebrow" data-i18n="${a.name}">
         ${a.name}
       </div>
 
@@ -2674,7 +2686,7 @@ function openApplicationDetail(id) {
           margin-bottom:12px;
         "
       >
-        ${a.desc}
+        <span data-i18n="${a.desc}">${a.desc}</span>
       </h3>
 
 
@@ -2688,7 +2700,7 @@ function openApplicationDetail(id) {
           margin-bottom:10px;
         "
       >
-        Recommended film ranges
+        <span data-i18n="Recommended film ranges">Recommended film ranges</span>
       </p>
 
 
@@ -2716,14 +2728,14 @@ function openApplicationDetail(id) {
           margin-bottom:10px;
         "
       >
-        Benefits
+        <span data-i18n="Benefits">Benefits</span>
       </p>
 
 
       <ul class="bullet-list">
 
         ${a.benefits
-      .map(b => `<li>${b}</li>`)
+      .map(b => `<li data-i18n="${b}">${b}</li>`)
       .join('')}
 
       </ul>
@@ -2734,7 +2746,7 @@ function openApplicationDetail(id) {
         style="margin-top:24px;"
         data-nav="products"
       >
-        View suitable films →
+        <span data-i18n="View suitable films →">View suitable films →</span>
       </button>
 
     </div>
@@ -3026,7 +3038,7 @@ function setFormLoading(form, isLoading) {
     }
     button.disabled = true;
     button.classList.add('form-loading');
-    button.textContent = 'Sending...';
+    button.textContent = i18nText('Sending...');
   } else {
     button.disabled = false;
     button.classList.remove('form-loading');
@@ -3279,12 +3291,12 @@ if (careerCvInput) {
     if (!file) {
 
       if (fileText) {
-        fileText.textContent = 'Upload your CV';
+        fileText.textContent = i18nText('Upload your CV');
       }
 
       if (fileSubtext) {
         fileSubtext.textContent =
-          'PDF, DOC or DOCX';
+          i18nText('PDF, DOC or DOCX');
       }
 
       return;
@@ -3300,7 +3312,7 @@ if (careerCvInput) {
         (file.size / (1024 * 1024)).toFixed(2);
 
       fileSubtext.textContent =
-        `${sizeMB} MB • Ready to upload`;
+        `${sizeMB} ${i18nText('MB • Ready to upload')}`;
 
     }
 
@@ -3595,7 +3607,7 @@ function chatInit() {
 
   chatBody.innerHTML = `
 
-    <div class="msg msg-bot">
+    <div class="msg msg-bot" data-i18n="Hello! I'm the NODA PLAST assistant. Ask me about our BOPP films, applications, quality or specifications.">
       Hello! I'm the NODA PLAST assistant.
       Ask me about our BOPP films,
       applications, quality or specifications.
@@ -3631,7 +3643,7 @@ function chatInit() {
 
 
     b.textContent =
-      item.q;
+      i18nText(item.q);
 
 
     b.addEventListener(
@@ -3676,7 +3688,7 @@ function chatAsk(
 
 
   userMsg.textContent =
-    question;
+    i18nText(question);
 
 
   chatBody.appendChild(
@@ -3779,7 +3791,7 @@ function chatAsk(
 
 
       botMsg.textContent =
-        answer;
+        i18nText(answer);
 
 
       chatBody.appendChild(
@@ -4116,14 +4128,39 @@ function changeHeroValue(index) {
     heroBg.style.backgroundImage =
       `url("assets/images/${value.image}")`;
 
-    heroBadge.textContent = value.name;
-    heroEyebrow.textContent = value.eyebrow;
-    heroTitle.innerHTML = value.title;
-    heroText.textContent = value.text;
+    /* Store the original English value in data-i18n so translation.js
+       can translate it now and whenever the language is toggled. */
+    if (heroBadge) {
+      heroBadge.dataset.i18n = value.name;
+      heroBadge.textContent = i18nText(value.name);
+    }
+
+    if (heroEyebrow) {
+      heroEyebrow.dataset.i18n = value.eyebrow;
+      heroEyebrow.textContent = i18nText(value.eyebrow);
+    }
+
+    if (heroTitle) {
+      heroTitle.dataset.i18n = value.title;
+      heroTitle.innerHTML = i18nText(value.title);
+    }
+
+    if (heroText) {
+      heroText.dataset.i18n = value.text;
+      heroText.textContent = i18nText(value.text);
+    }
 
     heroBg.style.opacity = "1";
   }, 400);
 }
+
+/* Exposed globally so translation.js can re-apply translations
+   when the user clicks the FR/EN toggle while on the hero. */
+window.refreshHeroTranslations = function () {
+  if (typeof heroValueIndex === 'number' && typeof changeHeroValue === 'function') {
+    changeHeroValue(heroValueIndex);
+  }
+};
 
 function startHeroAutoChange() {
   heroInterval = setInterval(() => {
