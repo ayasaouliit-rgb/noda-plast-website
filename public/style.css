@@ -599,6 +599,55 @@ footer {
   background: var(--orange);
 }
 
+.hero-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: transparent;
+  color: var(--white);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: .75;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.hero-nav:hover {
+  opacity: 1;
+}
+
+.hero-nav-left {
+  left: 0;
+}
+
+.hero-nav-left:hover {
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.hero-nav-right {
+  right: 0;
+}
+
+.hero-nav-right:hover {
+  transform: translateY(-50%) translateX(4px);
+}
+
+@media (max-width: 700px) {
+  .hero-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+}
+
 @media(max-width:900px) {
   .hero-badge {
     display: none;
