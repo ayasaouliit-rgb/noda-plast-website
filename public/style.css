@@ -794,9 +794,6 @@ footer {
   display: flex;
   gap: 30px;
   width: max-content;
-  
-  animation: homeNewsScroll 45s linear infinite;
-
   will-change: transform;
 }
 
@@ -816,30 +813,6 @@ footer {
 .home-news-card .ph {
   aspect-ratio: 16 / 10;
 }
-
-
-/* Pause when user interacts */
-
-.home-news-carousel:hover .home-news-track,
-.home-news-carousel:focus-within .home-news-track {
-  animation-play-state: paused;
-}
-
-
-/* Infinite movement */
-
-@keyframes homeNewsScroll {
-
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(calc(-50% - 15px));
-  }
-
-}
-
 
 /* Job card */
 
@@ -880,7 +853,6 @@ footer {
 
   .home-news-track {
     gap: 24px;
-    animation-duration: 38s;
   }
 
   .home-news-card {
@@ -897,23 +869,11 @@ footer {
 
   .home-news-track {
     gap: 18px;
-    animation-duration: 32s;
   }
 
   .home-news-card {
     flex: 0 0 280px;
     width: 280px;
-  }
-
-}
-
-
-/* Accessibility */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .home-news-track {
-    animation: none;
   }
 
 }
@@ -2730,9 +2690,6 @@ CAREERS RESPONSIVE
   display: flex;
   gap: 30px;
   width: max-content;
-
-  animation: homeScroll 35s linear infinite;
-
   will-change: transform;
 }
 
@@ -2767,22 +2724,6 @@ CAREERS RESPONSIVE
   cursor: pointer;
 }
 
-.home-app-carousel:hover .home-app-track,
-.home-app-carousel:focus-within .home-app-track {
-  animation-play-state: paused;
-}
-
-@keyframes homeScroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(calc(-50% - 15px));
-  }
-}
-
-
 /* Tablet */
 @media (max-width: 900px) {
 
@@ -2793,7 +2734,6 @@ CAREERS RESPONSIVE
 
   .home-app-track {
     gap: 24px;
-    animation-duration: 30s;
   }
 }
 
@@ -2808,18 +2748,9 @@ CAREERS RESPONSIVE
 
   .home-app-track {
     gap: 18px;
-    animation-duration: 25s;
   }
 }
 
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-
-  .home-app-track {
-    animation: none;
-  }
-}
 
 /* FEATURE ROW */
 
