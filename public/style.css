@@ -1893,8 +1893,7 @@ footer {
 .hero-bg {
   background:
     linear-gradient(90deg, rgba(10, 16, 21, .90) 0%, rgba(10, 16, 21, .66) 48%, rgba(10, 16, 21, .38) 100%),
-    linear-gradient(0deg, rgba(10, 16, 21, .72), rgba(10, 16, 21, .20)),
-    url('assets/images/hero-background.png') center/cover no-repeat;
+    linear-gradient(0deg, rgba(10, 16, 21, .72), rgba(10, 16, 21, .20));
   transform: scale(1.02);
 }
 
@@ -3813,15 +3812,21 @@ CAREERS RESPONSIVE
   letter-spacing: 0.05em;
 }
 
-.certificate-status span {
+.certificate-status .status-dot {
   width: 7px;
   height: 7px;
-
   border-radius: 50%;
-
   background: var(--orange);
-
   display: inline-block;
+  flex-shrink: 0;
+}
+
+.certificate-status .status-text {
+  display: inline;
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
 }
 
 
@@ -4832,7 +4837,7 @@ CAREERS RESPONSIVE
 }
 
 .about-section-head {
-  max-width: 800px;
+  max-width: 700px;
 
   margin-bottom: 55px;
 }
@@ -4858,7 +4863,7 @@ CAREERS RESPONSIVE
 .about-mv-card {
   min-height: 320px;
 
-  padding: 20px;
+  padding: 34px;
 
   border: 1px solid transparent;
 
