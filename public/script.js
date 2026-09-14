@@ -4115,7 +4115,25 @@ function startHeroAutoChange() {
   }, 5000);
 }
 
+function goToHero(index) {
+  clearInterval(heroInterval);
+  heroValueIndex = (index + HERO_VALUES.length) % HERO_VALUES.length;
+  changeHeroValue(heroValueIndex);
+  startHeroAutoChange();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   changeHeroValue(0);
   startHeroAutoChange();
+
+  const heroPrev = document.getElementById("heroPrev");
+  const heroNext = document.getElementById("heroNext");
+
+  if (heroPrev) heroPrev.addEventListener("click", () => goToHero(heroValueIndex - 1));
+  if (heroNext) heroNext.addEventListener("click", () => goToHero(heroValueIndex + 1));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") goToHero(heroValueIndex - 1);
+    if (e.key === "ArrowRight") goToHero(heroValueIndex + 1);
+  });
 });
