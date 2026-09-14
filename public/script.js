@@ -3258,7 +3258,7 @@ async function handleHomeContactFormSubmit(e) {
     await sendEmailRequest(payload);
 
     const wrap = document.getElementById('homeContactFormWrap');
-    const success = document.getElementById('homeContactSuccess');
+    const success = document.getElementById('homeSuccess');
 
     if (wrap) {
       wrap.style.display = 'none';
@@ -3291,7 +3291,7 @@ on('homeContactAgainBtn', 'click', () => {
 
   const form = document.getElementById('homeContactForm');
   const wrap = document.getElementById('homeContactFormWrap');
-  const success = document.getElementById('homeContactSuccess');
+  const success = document.getElementById('homeSuccess');
 
   if (form) {
     form.reset();
