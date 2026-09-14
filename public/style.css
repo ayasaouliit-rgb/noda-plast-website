@@ -3059,7 +3059,7 @@ CAREERS RESPONSIVE
 .world-map-card {
   display: grid;
   width: 1200px;
-  height: 500px;
+  height: 700px;
   grid-template-columns: minmax(0, 1fr) 280px;
   gap: 0;
   background: #c1c5c7;
@@ -3089,7 +3089,7 @@ CAREERS RESPONSIVE
   min-height: 0;
 
   /* Enable horizontal + vertical scrolling */
-  overflow: auto;
+  overflow: scroll;
 
   position: relative;
 
@@ -3122,6 +3122,12 @@ CAREERS RESPONSIVE
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.export-markets::-webkit-scrollbar {
+  display: none;
 }
 
 .export-market {

@@ -2148,10 +2148,8 @@ function renderProductDetail(id) {
    * Store the currently selected product before rendering
    * thickness-dependent controls/specifications.
    */
-  window.currentSelectedProduct = p;
 
-  initializeProductDetailThicknessListener();
-  updateProductDetailSpecifications(p, p.defaultThickness);
+  renderTechnicalSpecifications(p);
 
 }
 
@@ -2177,27 +2175,6 @@ function getProductThicknesses(product) {
   return product.thicknesses.map(value => String(value).trim()).filter(Boolean);
 }
 
-function normalizeThickness(value) {
-  if (value === null || value === undefined) return '';
-  const raw = String(value).trim().toUpperCase();
-  if (!raw) return '';
-  if (/MIC$/.test(raw)) return raw;
-  const number = raw.match(/\d+(?:\.\d+)?/);
-  return number ? `${number[0]} MIC` : raw;
-}
-
-function getSelectedThicknessForProduct(product, requestedThickness) {
-  const allowed = getProductThicknesses(product);
-  if (!allowed.length) return '';
-
-  const requested = normalizeThickness(requestedThickness);
-  const matchingAllowed = allowed.find(value => normalizeThickness(value) === requested);
-  if (matchingAllowed) return matchingAllowed;
-
-  const defaultThickness = normalizeThickness(product.defaultThickness);
-  const matchingDefault = allowed.find(value => normalizeThickness(value) === defaultThickness);
-  return matchingDefault || allowed[0];
-}
 
 function getTechnicalSpecification(product, selectedThickness) {
   if (!product) return null;
@@ -2244,23 +2221,6 @@ function escapeHtml(value) {
 }
 
 
-function populateProductDetailThickness(product, selectedThickness) {
-  const select = document.getElementById('productThickness');
-  if (!select || !product) return '';
-
-  const allowed = getProductThicknesses(product);
-  const selected = getSelectedThicknessForProduct(product, selectedThickness);
-
-  select.innerHTML = '<option value="">Select thickness</option>' +
-    allowed.map(value => `
-      <option value="${escapeHtml(value)}" ${value === selected ? 'selected' : ''}>
-        ${escapeHtml(value)}
-      </option>
-    `).join('');
-
-  select.value = selected;
-  return selected;
-}
 function updateSelectedProductSpecs(product) {
 
   const output =
@@ -2368,95 +2328,106 @@ function updateSelectedProductSpecs(product) {
   };
 
 }
-function renderTechnicalSpecifications(product, selectedThickness) {
+function renderTechnicalSpecifications(product) {
   const table = document.querySelector('#page-product-detail .spec-table');
+
   if (!table || !product) return;
 
   const tbody = table.querySelector('tbody');
+
   if (!tbody) return;
 
-  const selected = getSelectedThicknessForProduct(product, selectedThickness);
-  const specs = getTechnicalSpecification(product, selected);
+  const thicknesses = getProductThicknesses(product);
 
-  // Keep the thickness dropdown in the table. The previous version replaced
-  // the entire tbody with plain text, which deleted #productThickness after
-  // populateProductDetailThickness() had created it.
-  const thicknessOptions = getProductThicknesses(product)
-    .map(value => `
-      <option value="${escapeHtml(value)}" ${value === selected ? 'selected' : ''}>
-        ${escapeHtml(value)}
-      </option>
-    `).join('');
+  const specifications = [
+    {
+      label: 'Thickness',
+      unit: 'µm',
+      key: 'thickness',
+      format: thickness => thickness.replace(' MIC', '')
+    },
+    {
+      label: 'Unit weight',
+      unit: 'g/m²',
+      key: 'unitweight'
+    },
+    {
+      label: 'Yield',
+      unit: 'm²/kg',
+      key: 'yield'
+    },
+    {
+      label: 'Haze',
+      unit: '%',
+      key: 'haze'
+    },
+    {
+      label: 'Gloss',
+      unit: '%',
+      key: 'gloss'
+    },
+    {
+      label: 'COF',
+      unit: '-',
+      key: 'cof'
+    },
+    {
+      label: 'Tensile Strength (MD / TD)',
+      unit: 'MPa',
+      key: 'tensileStrength'
+    },
+    {
+      label: 'Elongation at Break (MD / TD)',
+      unit: '%',
+      key: 'elongation'
+    },
+    {
+      label: 'Thermal Shrinkage (MD / TD)',
+      unit: '%',
+      key: 'thermalShrinkage'
+    },
+    {
+      label: 'Heat Seal Range',
+      unit: '°C',
+      key: 'heatSealRange'
+    }
+  ];
 
-  tbody.innerHTML = `
-    <tr>
-      <td>Thickness</td>
-      <td>µm</td>
-      <td class="tbd">
-        <select id="productThickness" name="thickness" aria-label="Select product thickness">
-          <option value="">Select thickness</option>
-          ${thicknessOptions}
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>unitweight</td>
-      <td>g/m²</td>
-      <td>${escapeHtml(String(specs.unitweight))}</td>
-    </tr>
-    <tr>
-      <td>yield</td>
-      <td>m²/kg</td>
-      <td>${escapeHtml(String(specs.yield))}</td>
-    </tr>
-    <tr>
-      <td>Haze</td>
-      <td>%</td>
-      <td>${escapeHtml(String(specs.haze))}</td>
-    </tr>
-    <tr>
-      <td>Gloss</td>
-      <td>%</td>
-      <td>${escapeHtml(String(specs.gloss))}</td>
-    </tr>
-    <tr>
-      <td>cof</td>
-      <td>-</td>
-      <td>${escapeHtml(String(specs.cof))}</td>
-    </tr>
-    <tr>
-      <td>Tensile Strength (MD / TD)</td>
-      <td>MPa</td>
-      <td>${escapeHtml(String(specs.tensileStrength))}</td>
-    </tr>
-    <tr>
-      <td>Elongation at Break (MD / TD)</td>
-      <td>%</td>
-      <td>${escapeHtml(String(specs.elongation))}</td>
-    </tr>
-    <tr>
-      <td>Thermal Shrinkage (MD / TD)</td>
-      <td>%</td>
-      <td>${escapeHtml(String(specs.thermalShrinkage))}</td>
-    </tr>
-    <tr>
-      <td>Heat Seal Range</td>
-      <td>°C</td>
-      <td>${escapeHtml(String(specs.heatSealRange))}</td>
-    </tr>
-  `;
+  tbody.innerHTML = specifications.map(spec => {
+
+    const values = thicknesses.map(thickness => {
+
+      if (spec.key === 'thickness') {
+        return spec.format(thickness);
+      }
+
+      const thicknessSpecs =
+        product.technicalSpecifications?.[thickness] || {};
+
+      return thicknessSpecs[spec.key] ?? 'TBD';
+
+    });
+
+    return `
+      <tr>
+        <td>${spec.label}</td>
+        <td>${spec.unit}</td>
+
+        ${values.map(value => `
+          <td>${escapeHtml(String(value))}</td>
+        `).join('')}
+
+      </tr>
+    `;
+
+  }).join('');
 
   const note = table.parentElement?.querySelector('.form-note');
+
   if (note) {
     note.textContent =
       'Placeholder values only — replace with approved NODA PLAST laboratory data before publication.';
   }
-
-  // renderTechnicalSpecifications() recreates the select, so bind the change
-  // handler to the newly created element.
-  initializeProductDetailThicknessListener();
-
-  return specs;
 }
 
 function updateProductDetailSpecifications(product, selectedThickness) {
@@ -2481,37 +2452,6 @@ function updateProductDetailSpecifications(product, selectedThickness) {
     technicalSpecifications: specs
   };
 }
-
-function initializeProductDetailThicknessListener() {
-  const select = document.getElementById('productThickness');
-  if (!select || select.dataset.thicknessListenerBound === 'true') return;
-
-  select.addEventListener('change', () => {
-    const product = window.currentSelectedProduct;
-    if (!product) return;
-
-    const selected = getSelectedThicknessForProduct(product, select.value);
-    select.value = selected;
-    renderTechnicalSpecifications(product, selected);
-    updateSelectedProductSpecs(product);
-
-    const specs = getTechnicalSpecification(product, selected);
-    window.currentProductConfiguration = {
-      ...(window.currentProductConfiguration || {}),
-      productId: product.id,
-      code: product.code,
-      name: product.name,
-      thickness: selected,
-      technicalSpecifications: specs
-    };
-  });
-
-  select.dataset.thicknessListenerBound = 'true';
-}
-
-/* ============================================================
-   APPLICATIONS GRID
-   ============================================================ */
 
 function renderApplicationsGrid() {
 
