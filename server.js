@@ -12,10 +12,10 @@ const MAIL_FROM = process.env.MAIL_FROM || process.env.SMTP_USER || 'ayasaouliit
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || '';
 
 const PUBLIC_DIR = path.resolve(__dirname, 'public');
-const MAX_BODY_BYTES = 32 * 1024; // 32 KB
+const MAX_BODY_BYTES = 8 * 1024 * 1024; // 8 MB — enough for a 5 MB CV in base64 + overhead
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
-const RATE_LIMIT_MAX = 20; // 20 requests per IP per window
-const MAX_QUOTE_PRODUCTS = 20; // Max 20 items per quote
+const RATE_LIMIT_MAX = 10; // 10 requests per IP per window
+const MAX_QUOTE_PRODUCTS = 10; // Max 10 items per quote
 
 const rateBuckets = new Map();
 
@@ -29,7 +29,7 @@ setInterval(() => {
   }
 }, 10 * 60 * 1000).unref();
 
-const allowedTypes = new Set(['sample', 'quote', 'contact']);
+const allowedTypes = new Set(['career', 'contact']);
 
 // Field length limits
 const limits = {
@@ -243,21 +243,62 @@ function validatePayload(input) {
     message: cleanMultiLine(input.message, limits.message),
     turnstileToken: input.cfTurnstileResponse || input.turnstileToken || ''
   };
+  if (type === 'career') {
+      if (!data.name) {
+        return { ok: false, message: 'Name is required for career applications.' };
+      }
 
-  if (!data.name || !data.company || !data.email) {
-    return { ok: false, message: 'Name, company and email are required.' };
-  }
+      const attachment = input.attachment;
+      if (!attachment || typeof attachment !== 'object') {
+        return { ok: false, message: 'A CV attachment is required.' };
+      }
+
+      const filename = cleanSingleLine(attachment.filename, 200);
+      const mimeType = cleanSingleLine(attachment.mimeType, 100);
+      const content = typeof attachment.content === 'string' ? attachment.content : '';
+
+      if (!filename || !content) {
+        return { ok: false, message: 'The CV attachment is missing or empty.' };
+      }
+
+      // Base64 size guard (roughly 5 MB raw → ~7 MB base64)
+      if (content.length > 7 * 1024 * 1024) {
+        return { ok: false, message: 'The CV file is too large.' };
+      }
+
+      const allowedMimes = new Set([
+        'application/pdf',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      ]);
+
+      if (!allowedMimes.has(mimeType)) {
+        return { ok: false, message: 'Only PDF, DOC or DOCX files are accepted.' };
+      }
+
+      data.position = cleanSingleLine(input.position, 120);
+      data.consent  = cleanSingleLine(input.consent, 10);
+      data.attachment = {
+        filename,
+        mimeType,
+        content
+      };
+    }
+  
 
   if (!isValidEmail(data.email)) {
     return { ok: false, message: 'Please provide a valid email address.' };
   }
 
   if (type === 'contact') {
+    if (!data.name || !data.company || !data.email) {
+    return { ok: false, message: 'Name, company and email are required.' };
+  }
     if (!data.message) {
       return { ok: false, message: 'A message is required for contact requests.' };
     }
   }
-
+    
   if (type === 'sample') {
     if (!data.phone) {
       return { ok: false, message: 'Phone number is required for sample requests.' };
@@ -362,7 +403,17 @@ function buildEmail(data) {
   let subject;
   let title;
   let rows = [];
-
+    if (data.type === 'career') {
+    subject = `New CV Application — ${data.position || 'General application'}`;
+    title = 'NEW CAREER APPLICATION';
+    rows = [
+      ['Name', data.name],
+      ['Email', data.email],
+      ['Phone', data.phone],
+      ['Position', data.position],
+      ['Consent given', data.consent]
+    ];
+  }
   if (data.type === 'sample') {
     subject = `New Sample Request — ${data.productCode}`;
     title = 'NEW SAMPLE REQUEST';
@@ -459,6 +510,15 @@ function buildEmail(data) {
 }
 
 async function handleSendEmail(req, res) {
+   // ----- CORS preflight -----
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.writeHead(204).end();
+  }
+
   if (req.method !== 'POST') {
     return sendJson(res, 405, { success: false, message: 'Method not allowed.' });
   }
@@ -507,14 +567,25 @@ async function handleSendEmail(req, res) {
 
     const email = buildEmail(validation.data);
 
-    await transporter.sendMail({
+        const mailOptions = {
       from: MAIL_FROM,
       to: MAIL_TO,
       replyTo: validation.data.email,
       subject: email.subject,
       text: email.text,
       html: email.html
-    });
+    };
+
+    if (validation.data.type === 'career' && validation.data.attachment) {
+      mailOptions.attachments = [{
+        filename: validation.data.attachment.filename,
+        content: validation.data.attachment.content,
+        encoding: 'base64',
+        contentType: validation.data.attachment.mimeType
+      }];
+    }
+
+    await transporter.sendMail(mailOptions);
 
     return sendJson(res, 200, {
       success: true,
@@ -530,6 +601,14 @@ async function handleSendEmail(req, res) {
 }
 
 function handleDownloadTds(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.writeHead(204).end();
+  }
+
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     return sendJson(res, 405, { success: false, message: 'Method not allowed.' });
   }

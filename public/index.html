@@ -332,29 +332,28 @@
                 </div>
                 <div class="form-grid">
                   <div class="field"><label data-i18n="Name">Name</label><input data-i18n-placeholder="Full name"
-                      id="contactName" name="name" placeholder="Full name" required="" /></div>
+                      id="homeName" name="name" placeholder="Full name" required="" /></div>
                   <div class="field"><label data-i18n="Company">Company</label><input
-                      data-i18n-placeholder="Company name" id="contactCompany" name="company" placeholder="Company name"
+                      data-i18n-placeholder="Company name" id="homeCompany" name="company" placeholder="Company name"
                       required="" /></div>
                   <div class="field"><label data-i18n="Email">Email</label><input
-                      data-i18n-placeholder="you@company.com" id="contactEmail" name="email"
+                      data-i18n-placeholder="you@company.com" id="homeEmail" name="email"
                       placeholder="you@company.com" required="" type="email" />
                   </div>
                   <div class="field"><label data-i18n="Phone">Phone</label><input data-i18n-placeholder="+___"
-                      id="contactPhone" name="phone" placeholder="+___" /></div>
+                      id="homePhone" name="phone" placeholder="+___" /></div>
                   <div class="field full"><label data-i18n="Country">Country</label><input
-                      data-i18n-placeholder="Country" id="contactCountry" name="country" placeholder="Country" /></div>
+                      data-i18n-placeholder="Country" id="homeCountry" name="country" placeholder="Country" /></div>
                   <div class="field full"><label data-i18n="Message">Message</label><textarea
-                      data-i18n-placeholder="How can we help?" id="contactMessage" name="message"
+                      data-i18n-placeholder="How can we help?" id="homeMessage" name="message"
                       placeholder="How can we help?" required=""></textarea>
                   </div>
                 </div>
-                <button class="btn btn-cta" data-i18n="Send Message" style="margin-top:22px;width:100%;"
-                  type="submit">Send Message</button>
+                <button class="btn btn-cta" data-i18n="Send Message" style="margin-top:22px;width:100%;" type="submit">Send Message</button>
               </form>
-              <div aria-live="polite" class="form-error" id="contactError" role="alert"></div>
+              <div aria-live="polite" class="form-error" id="homeError" role="alert"></div>
             </div>
-            <div class="form-success request-success" id="homeContactSuccess">
+            <div class="form-success request-success" id="homeSuccess">
               <h3 data-i18n="Your request has been sent!">Your request has been sent!</h3>
               <p data-i18n="Thank you for contacting us. We will respond to you as soon as possible.">Thank you for
                 contacting us. We will respond to you as soon as possible.</p>
@@ -1642,6 +1641,9 @@
                   Our HR team will review your application and contact
                   you if your profile matches an opportunity.
                 </p>
+                <button class="btn btn-cta" data-i18n="Send another application" id="career-again-btn">
+                  Send another application
+                </button>
               </div>
               <div class="form-error careers-error"
                 data-i18n="Something went wrong while sending your application. Please try again or contact our HR team directly."
@@ -1991,8 +1993,7 @@
                       placeholder="How can we help?" required=""></textarea>
                   </div>
                 </div>
-                <button class="btn btn-cta" data-i18n="Send Message" style="margin-top:22px;width:100%;"
-                  type="submit">Send Message</button>
+                <button class="btn btn-cta" data-i18n="Send Message" style="margin-top:22px;width:100%;" type="submit">Send Message</button>
               </form>
               <div aria-live="polite" class="form-error" id="contactError" role="alert"></div>
             </div>

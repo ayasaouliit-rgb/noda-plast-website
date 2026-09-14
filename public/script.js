@@ -17,23 +17,27 @@ function i18nText(str) {
 const EMAIL_API_ENDPOINT = '/api/send-email';
 
 async function sendEmailRequest(payload) {
-  const response = await fetch(EMAIL_API_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-  });
+  let response;
+  try {
+    response = await fetch(EMAIL_API_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (networkErr) {
+    throw new Error('Network error — please check your connection and try again.');
+  }
 
   let result = {};
+  const raw = await response.text();
   try {
-    result = await response.json();
+    result = raw ? JSON.parse(raw) : {};
   } catch (_) {
-    throw new Error('The server returned an invalid response.');
+    throw new Error(`Server returned an unexpected response (HTTP ${response.status}).`);
   }
 
   if (!response.ok || !result.success) {
-    throw new Error(result.message || 'Unable to send request.');
+    throw new Error(result.message || `Unable to send request (HTTP ${response.status}).`);
   }
 
   return result;
@@ -2165,23 +2169,6 @@ function renderProductDetail(id) {
 
 }
 
-
-/* ============================================================
-   TECHNICAL SPECIFICATIONS
-   ============================================================ */
-
-/*
- * PLACEHOLDER TECHNICAL SPECIFICATIONS
- * ------------------------------------
- * Every product stores its specification values inside the product
- * dictionary, grouped by thickness. Replace the placeholder numbers
- * below with the approved NODA PLAST laboratory values.
- *
- * Structure:
- * product.technicalSpecifications['20 MIC']
- * product.technicalSpecifications['25 MIC']
- * etc.
- */
 function getProductThicknesses(product) {
   if (!product || !Array.isArray(product.thicknesses)) return [];
   return product.thicknesses.map(value => String(value).trim()).filter(Boolean);
@@ -3033,10 +3020,8 @@ async function handleCareerFormSubmit(e) {
   e.preventDefault();
 
   const form = e.currentTarget;
-
   clearFormError(form);
 
-  // Check required fields
   if (!form.checkValidity()) {
     form.reportValidity();
     return;
@@ -3045,7 +3030,6 @@ async function handleCareerFormSubmit(e) {
   const cvInput = document.getElementById('career-cv');
   const cvFile = cvInput ? cvInput.files[0] : null;
 
-  // Make sure a CV was selected
   if (!cvFile) {
     showFormError(form, 'Please upload your CV before submitting.');
     return;
@@ -3057,119 +3041,47 @@ async function handleCareerFormSubmit(e) {
     'application/msword',
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   ];
-
   const allowedExtensions = ['pdf', 'doc', 'docx'];
-
-  const fileExtension =
-    cvFile.name.split('.').pop().toLowerCase();
+  const fileExtension = cvFile.name.split('.').pop().toLowerCase();
 
   if (
     !allowedTypes.includes(cvFile.type) &&
     !allowedExtensions.includes(fileExtension)
   ) {
-    showFormError(
-      form,
-      'Please upload your CV as a PDF, DOC, or DOCX file.'
-    );
+    showFormError(form, 'Please upload your CV as a PDF, DOC, or DOCX file.');
     return;
   }
 
   // File size limit: 5 MB
   const maxFileSize = 5 * 1024 * 1024;
-
   if (cvFile.size > maxFileSize) {
-    showFormError(
-      form,
-      'Your CV is too large. Please upload a file smaller than 5 MB.'
-    );
+    showFormError(form, 'Your CV is too large. Please upload a file smaller than 5 MB.');
     return;
   }
-
-  /*
-  
-  * FormData automatically includes:
-  * name
-  * email
-  * phone
-  * position
-  * message
-  * consent
-  * cv
-    */
-  const formData = new FormData(form);
-
-  // Add application type for the backend
-  formData.append('type', 'career');
 
   setFormLoading(form, true);
 
   try {
+    await sendCareerApplication(form);
 
-
-    const response = await fetch('/api/career-application', {
-      method: 'POST',
-      body: formData
-    });
-
-    let result = {};
-
-    try {
-      result = await response.json();
-    } catch (_) {
-      throw new Error(
-        'The server returned an invalid response.'
-      );
-    }
-
-    if (!response.ok || !result.success) {
-      throw new Error(
-        result.message ||
-        'Unable to submit your application.'
-      );
-    }
-
-    /*
-     * Hide form
-     */
     form.style.display = 'none';
 
-    /*
-     * Show success message
-     */
-    const success =
-      document.getElementById('career-success');
+    const success = document.getElementById('career-success');
+    if (success) success.classList.add('show');
 
-    if (success) {
-      success.classList.add('show');
-    }
-
-    /*
-     * Reset form after successful submission
-     */
     form.reset();
-
     clearFormError(form);
 
-
   } catch (error) {
-
-
     showFormError(
       form,
       error.message ||
       'We could not send your application. Please try again or contact HR directly.'
     );
-
-
   } finally {
-
-
     setFormLoading(form, false);
-
-
   }
 }
-
 /*
 
 * Connect the Careers form
@@ -3309,17 +3221,6 @@ function resetCareerForm() {
 
 }
 
-/*
-
-* Optional "Send another application" button
-* if you add:
-*
-* <button id="career-again-btn">
-* Send another application
-* </button>
-
-*/
-
 on(
   'career-again-btn',
   'click',
@@ -3329,6 +3230,7 @@ on(
 on('homeContactForm', 'submit', handleHomeContactFormSubmit);
 
 async function handleHomeContactFormSubmit(e) {
+  e.preventDefault();
   const form = e.currentTarget;
   clearFormError(form);
 
@@ -4303,4 +4205,62 @@ function setupInfiniteCarousel({
       lastTime = performance.now();
     });
   }
+}
+
+/* ============================================================
+   CAREERS FORM — EMAIL SUBMISSION
+   Converts the CV file to base64 and sends the whole
+   application through the shared /api/send-email endpoint.
+   ============================================================ */
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      // result looks like: "data:application/pdf;base64,JVBERi0x..."
+      const base64 = String(reader.result).split(',')[1];
+      resolve(base64);
+    };
+
+    reader.onerror = () => reject(
+      new Error('Could not read the CV file. Please try again.')
+    );
+
+    reader.readAsDataURL(file);
+  });
+}
+
+
+async function sendCareerApplication(form) {
+  const cvInput = document.getElementById('career-cv');
+  const cvFile = cvInput ? cvInput.files[0] : null;
+
+  if (!cvFile) {
+    throw new Error('Please upload your CV before submitting.');
+  }
+
+  // Convert CV to base64 so it can travel inside the JSON payload
+  const cvBase64 = await fileToBase64(cvFile);
+
+  const values = getFormValues(form);
+
+  const payload = {
+    type: 'career',
+    name: values.name || '',
+    email: values.email || '',
+    phone: values.phone || '',
+    position: values.position || 'General application',
+    message: values.message || '',
+    consent: values.consent ? 'Yes' : 'No',
+
+    // Attachment info for the backend
+    attachment: {
+      filename: cvFile.name,
+      mimeType: cvFile.type || 'application/octet-stream',
+      content: cvBase64
+    }
+  };
+
+  return sendEmailRequest(payload);
 }
