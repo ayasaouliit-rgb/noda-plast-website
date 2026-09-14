@@ -2160,7 +2160,7 @@ function renderProductDetail(id) {
    * Store the currently selected product before rendering
    * thickness-dependent controls/specifications.
    */
-
+  window.currentSelectedProduct = p;
   renderTechnicalSpecifications(p);
 
 }
@@ -2366,82 +2366,96 @@ function renderTechnicalSpecifications(product) {
 
   if (!tbody) return;
 
-  const selected = getSelectedThicknessForProduct(product, selectedThickness);
-  const specs = getTechnicalSpecification(product, selected);
+  const thicknesses = getProductThicknesses(product);
 
-  // Keep the thickness dropdown in the table. The previous version replaced
-  // the entire tbody with plain text, which deleted #productThickness after
-  // populateProductDetailThickness() had created it.
-  const thicknessOptions = getProductThicknesses(product)
-    .map(value => `
-      <option value="${escapeHtml(value)}" ${value === selected ? 'selected' : ''}>
-        ${escapeHtml(value)}
-      </option>
-    `).join('');
+  const specifications = [
+    {
+      label: 'Thickness',
+      unit: 'µm',
+      key: 'thickness',
+      format: thickness => thickness.replace(' MIC', '')
+    },
+    {
+      label: 'Unit weight',
+      unit: 'g/m²',
+      key: 'unitweight'
+    },
+    {
+      label: 'Yield',
+      unit: 'm²/kg',
+      key: 'yield'
+    },
+    {
+      label: 'Haze',
+      unit: '%',
+      key: 'haze'
+    },
+    {
+      label: 'Gloss',
+      unit: '%',
+      key: 'gloss'
+    },
+    {
+      label: 'COF',
+      unit: '-',
+      key: 'cof'
+    },
+    {
+      label: 'Tensile Strength (MD / TD)',
+      unit: 'MPa',
+      key: 'tensileStrength'
+    },
+    {
+      label: 'Elongation at Break (MD / TD)',
+      unit: '%',
+      key: 'elongation'
+    },
+    {
+      label: 'Thermal Shrinkage (MD / TD)',
+      unit: '%',
+      key: 'thermalShrinkage'
+    },
+    {
+      label: 'Heat Seal Range',
+      unit: '°C',
+      key: 'heatSealRange'
+    }
+  ];
 
-  tbody.innerHTML = `
-    <tr>
-      <td data-i18n="Thickness">Thickness</td>
-      <td>µm</td>
-      <td class="tbd">
-        <select id="productThickness" name="thickness" aria-label="Select product thickness">
-          <option value="" data-i18n="Select thickness">Select thickness</option>
-          ${thicknessOptions}
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>unitweight</td>
-      <td>g/m²</td>
-      <td>${escapeHtml(String(specs.unitweight))}</td>
-    </tr>
-    <tr>
-      <td>yield</td>
-      <td>m²/kg</td>
-      <td>${escapeHtml(String(specs.yield))}</td>
-    </tr>
-    <tr>
-      <td data-i18n="Haze">Haze</td>
-      <td>%</td>
-      <td>${escapeHtml(String(specs.haze))}</td>
-    </tr>
-    <tr>
-      <td data-i18n="Gloss">Gloss</td>
-      <td>%</td>
-      <td>${escapeHtml(String(specs.gloss))}</td>
-    </tr>
-    <tr>
-      <td>cof</td>
-      <td>-</td>
-      <td>${escapeHtml(String(specs.cof))}</td>
-    </tr>
-    <tr>
-      <td data-i18n="Tensile Strength (MD / TD)">Tensile Strength (MD / TD)</td>
-      <td>MPa</td>
-      <td>${escapeHtml(String(specs.tensileStrength))}</td>
-    </tr>
-    <tr>
-      <td data-i18n="Elongation at Break (MD / TD)">Elongation at Break (MD / TD)</td>
-      <td>%</td>
-      <td>${escapeHtml(String(specs.elongation))}</td>
-    </tr>
-    <tr>
-      <td data-i18n="Thermal Shrinkage (MD / TD)">Thermal Shrinkage (MD / TD)</td>
-      <td>%</td>
-      <td>${escapeHtml(String(specs.thermalShrinkage))}</td>
-    </tr>
-    <tr>
-      <td data-i18n="Heat Seal Range">Heat Seal Range</td>
-      <td>°C</td>
-      <td>${escapeHtml(String(specs.heatSealRange))}</td>
-    </tr>
-  `;
+  tbody.innerHTML = specifications.map(spec => {
+
+    const values = thicknesses.map(thickness => {
+
+      if (spec.key === 'thickness') {
+        return spec.format(thickness);
+      }
+
+      const thicknessSpecs =
+        product.technicalSpecifications?.[thickness] || {};
+
+      return thicknessSpecs[spec.key] ?? 'TBD';
+
+    });
+
+    return `
+      <tr>
+        <td>${spec.label}</td>
+        <td>${spec.unit}</td>
+
+        ${values.map(value => `
+          <td>${escapeHtml(String(value))}</td>
+        `).join('')}
+
+      </tr>
+    `;
+
+  }).join('');
 
   const note = table.parentElement?.querySelector('.form-note');
 
   if (note) {
     note.textContent =
-      i18nText('Placeholder values only — replace with approved NODA PLAST laboratory data before publication.');
+      'Placeholder values only — replace with approved NODA PLAST laboratory data before publication.';
   }
 }
 
