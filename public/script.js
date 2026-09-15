@@ -402,7 +402,7 @@ const PRODUCTS = [
     phCap: 'NNC clear non-sealable film'
   },
 
-  {
+  /*{
     id: 'nrc',
     code: 'NRC',
     img: 'clear-bopp-film-roll.png',
@@ -469,7 +469,7 @@ const PRODUCTS = [
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
     phCap: 'NRC clear release film'
-  },
+  },*/
 
   {
     id: 'nsc',
