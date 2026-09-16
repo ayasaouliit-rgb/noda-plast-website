@@ -637,9 +637,9 @@ const PRODUCTS = [
     img: 'mtz-bopp-film-roll.png',
     gallery: [
       'mtz-bopp-film-roll.png',
-      'nsmm/nsmm1.png',
-      'nsmm/nsmm2.png',
-      'nsmm/nsmm3.png'
+      'nsmm/nsmm (1).jpg',
+      'nsmm/nsmm (2).jpg',
+      'nsmm/nsmm (3).jpg'
     ],
     category: 'Metallized Films',
     name: 'NSMM — Metallized Sealable Film',
