@@ -3946,7 +3946,7 @@ const HERO_VALUES = [
   },
   {
     name: "SUSTAINABILITY",
-    image: "recycling logo.png",
+    image: "recycling hero.jpg",
     eyebrow: "Performance with purpose",
     title: "Better film.<br>More responsible choices.",
     text: "We focus on recyclable film solutions, efficient processes and responsible approaches to packaging performance."
