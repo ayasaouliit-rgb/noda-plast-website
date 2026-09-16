@@ -281,9 +281,9 @@ const PRODUCTS = [
     img: 'white-bopp-film-roll.png',
     gallery: [
       'white-bopp-film-roll.png',
-      'white-application-1.jpg',
-      'white-application-2.jpg',
-      'white-application-3.jpg'
+      'nlv/nlv1.jpg',
+      'nlv/nlv2.jpg',
+      'nlv/nlv3.jpg'
     ],
     category: 'Label Films',
     name: 'NLV — Label White Voided Film',
