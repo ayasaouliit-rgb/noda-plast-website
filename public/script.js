@@ -76,9 +76,9 @@ const PRODUCTS = [
     img: 'matt-bopp-film-roll.png',
     gallery: [
       'matt-bopp-film-roll.png',
-      'matt/mattn1.png',
-      'matt/mattn2.png',
-      'matt/mattn3.png'
+      'mattn/mattn1.png',
+      'mattn/mattn2.png',
+      'mattn/mattn3.png'
     ],
     category: 'Matt Films',
     name: 'MATTN — Matt Film Non Sealable',
@@ -144,9 +144,9 @@ const PRODUCTS = [
     img: 'matt-bopp-film-roll.png',
     gallery: [
       'matt-bopp-film-roll.png',
-      'matt-application-1.jpg',
-      'matt-application-2.jpg',
-      'matt-application-3.jpg'
+      'matts/matts1.png',
+      'matts/matts2.png',
+      'matts/matts3.png'
     ],
     category: 'Matt Films',
     name: 'MATTS — Matt Film Both Sides Sealable',
@@ -212,9 +212,9 @@ const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
-      'clear-application-1.jpg',
-      'clear-application-2.jpg',
-      'clear-application-3.jpg'
+      'nlc/nlc1.jpg',
+      'nlc/nlc2.jpg',
+      'nlc/nlc3.jpg'
     ],
     category: 'Label Films',
     name: 'NLC — Label Clear Film',
