@@ -5503,3 +5503,13 @@ CAREERS RESPONSIVE
   }
 }
 
+
+/* Clickable cards cursor */
+.pgrid-card,
+.appx-card,
+.home-app-card,
+.home-news-card,
+.news-card,
+.careers-job {
+  cursor: pointer;
+}

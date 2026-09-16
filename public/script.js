@@ -4234,3 +4234,76 @@ async function sendCareerApplication(form) {
 
   return sendEmailRequest(payload);
 }
+
+/* ============================================================
+   MAKE ALL CARDS CLICKABLE
+   ============================================================ */
+
+document.addEventListener('click', function (e) {
+
+  // ---- PRODUCT GRID CARDS (pgrid-card) ----
+  const productCard = e.target.closest('.pgrid-card');
+  if (productCard && !e.target.closest('a, button')) {
+    const viewBtn = productCard.querySelector('[data-product]');
+    if (viewBtn) {
+      showPage('product-detail', {
+        product: viewBtn.getAttribute('data-product')
+      });
+    }
+    return;
+  }
+
+  // ---- APPLICATION CARDS (appx-card) ----
+  const appxCard = e.target.closest('.appx-card');
+  if (appxCard && !e.target.closest('a, button')) {
+    openApplicationDetail(appxCard.getAttribute('data-app-id'));
+    return;
+  }
+
+  // ---- HOME APPLICATION CARDS (home-app-card) ----
+  const homeAppCard = e.target.closest('.home-app-card');
+  if (homeAppCard && !e.target.closest('a, button')) {
+    const btn = homeAppCard.querySelector('.app-explore-btn');
+    if (btn) {
+      showPage('applications', {
+        app: btn.getAttribute('data-app-id')
+      });
+    }
+    return;
+  }
+
+  // ---- HOME NEWS / EVENT / JOB CARDS (home-news-card) ----
+  const homeNewsCard = e.target.closest('.home-news-card');
+  if (homeNewsCard && !e.target.closest('a, button')) {
+    const btn = homeNewsCard.querySelector('.home-content-btn');
+    if (btn) {
+      const type = btn.getAttribute('data-content-type');
+      if (type === 'news')       openNewsSection('news');
+      else if (type === 'event') openNewsSection('event');
+      else if (type === 'job')   openNewsSection('job');
+    }
+    return;
+  }
+
+  // ---- NEWS GRID CARDS (news-card without home-news-card) ----
+  const newsCard = e.target.closest('.news-card');
+  if (newsCard && !newsCard.classList.contains('home-news-card') && !e.target.closest('a, button')) {
+    showPage('news');
+    return;
+  }
+
+  // ---- CAREERS JOB CARDS (careers-job) ----
+  const careerCard = e.target.closest('.careers-job');
+  if (careerCard && !e.target.closest('a, button')) {
+    const applyLink = careerCard.querySelector('[data-position]');
+    if (applyLink) {
+      const position = applyLink.getAttribute('data-position');
+      const positionSelect = document.getElementById('career-position');
+      if (positionSelect) positionSelect.value = position;
+      const section = document.getElementById('careers-apply');
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    return;
+  }
+
+});
