@@ -1058,16 +1058,6 @@ const APPLICATIONS = [
 
 const NEWS = [
   {
-    type: "news",
-    category: "Company",
-    date: "Coming soon",
-    title: "NODA PLAST expands production capacity",
-    desc: "Placeholder summary — replace with real company announcement content.",
-    phCap: "Factory news photograph",
-    img: "factory-news.png"
-  },
-
-  {
     type: "event",
     category: "Exhibition",
     date: "Coming soon",
@@ -1095,26 +1085,6 @@ const NEWS = [
     desc: "An opportunity to connect with customers, partners, and professionals from the flexible packaging industry.",
     phCap: "Industry meeting photograph",
     img: "industry-meeting.png"
-  },
-
-  {
-    type: "news",
-    category: "Sustainability",
-    date: "Coming soon",
-    title: "Progress on material efficiency initiatives",
-    desc: "Placeholder summary — replace with verified sustainability content.",
-    phCap: "Certification or sustainability photograph",
-    img: "sustainability-certification.png"
-  },
-
-  {
-    type: "event",
-    category: "Open Day",
-    date: "Coming soon",
-    title: "NODA PLAST facility open day",
-    desc: "A closer look at our production environment, technology, and commitment to quality.",
-    phCap: "Factory open day photograph",
-    img: "factory-open-day.png"
   },
 
   {
