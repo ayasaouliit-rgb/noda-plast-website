@@ -339,9 +339,9 @@ const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
-      'clear-application-1.jpg',
-      'clear-application-2.jpg',
-      'clear-application-3.jpg'
+      'nnc/nnc1.png',
+      'nnc/nnc2.png',
+      'nnc/nnc3.png'
     ],
     category: 'Clear Films',
     name: 'NNC — Clear Non-Sealable',
@@ -477,9 +477,9 @@ const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
-      'clear-application-1.jpg',
-      'clear-application-2.jpg',
-      'clear-application-3.jpg'
+      'nsc/nsc1.png',
+      'nsc/nsc2.png',
+      'nsc/nsc3.png'
     ],
     category: 'Heat Sealable Films',
     name: 'NSC — Transparent Clear Heat Sealable',
@@ -557,9 +557,9 @@ const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
-      'clear-application-1.jpg',
-      'clear-application-2.jpg',
-      'clear-application-3.jpg'
+      'nsh/nsh1.png',
+      'nsh/nsh2.png',
+      'nsh/nsh3.png'
     ],
     category: 'Heat Sealable Films',
     name: 'NSH — Clear Heat Sealable',
@@ -637,9 +637,9 @@ const PRODUCTS = [
     img: 'mtz-bopp-film-roll.png',
     gallery: [
       'mtz-bopp-film-roll.png',
-      'mtz-application-1.jpg',
-      'mtz-application-2.jpg',
-      'mtz-application-3.jpg'
+      'nsmm/nsmm1.png',
+      'nsmm/nsmm2.png',
+      'nsmm/nsmm3.png'
     ],
     category: 'Metallized Films',
     name: 'NSMM — Metallized Sealable Film',
@@ -717,9 +717,9 @@ const PRODUCTS = [
     img: 'pearlised-bopp-film-roll.png',
     gallery: [
       'pearlised-bopp-film-roll.png',
-      'pearlised-application-1.jpg',
-      'pearlised-application-2.jpg',
-      'pearlised-application-3.jpg'
+      'nsp/nsp1.png',
+      'nsp/nsp2.png',
+      'nsp/nsp3.png'
     ],
     category: 'White Films',
     name: 'NSP — White Pearlized Sealable Film',
@@ -797,9 +797,9 @@ const PRODUCTS = [
     img: 'white-bopp-film-roll.png',
     gallery: [
       'white-bopp-film-roll.png',
-      'white-application-1.jpg',
-      'white-application-2.jpg',
-      'white-application-3.jpg'
+      'nsw/nsw1.png',
+      'nsw/nsw2.png',
+      'nsw/nsw3.png'
     ],
     category: 'White Films',
     name: 'NSW — Solid White Sealable',
@@ -865,9 +865,9 @@ const PRODUCTS = [
     img: 'mtz-bopp-film-roll.png',
     gallery: [
       'mtz-bopp-film-roll.png',
-      'mtz-application-1.jpg',
-      'mtz-application-2.jpg',
-      'mtz-application-3.jpg'
+      'nvmm/nvmm1.png',
+      'nvmm/nvmm2.png',
+      'nvmm/nvmm3.png'
     ],
     category: 'White Films, Metalized Films',
     name: 'NVMM — Metalized White Voided Film',
