@@ -76,9 +76,9 @@ const PRODUCTS = [
     img: 'matt-bopp-film-roll.png',
     gallery: [
       'matt-bopp-film-roll.png',
-      'matt_gallery_1.png',
-      'matt_gallery_2.png',
-      'matt_gallery_3.png'
+      'matt/mattn1.png',
+      'matt/mattn2.png',
+      'matt/mattn3.png'
     ],
     category: 'Matt Films',
     name: 'MATTN — Matt Film Non Sealable',
