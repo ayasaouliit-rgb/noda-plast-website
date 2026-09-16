@@ -996,7 +996,7 @@ const APPLICATIONS = [
 
   {
     id: 'lamination',
-    img: 'printing-laminating.png',
+    img: 'laminating.png',
     name: 'Lamination',
     desc: 'BOPP film solutions suitable for flexible packaging and multilayer structures.',
     products: [
