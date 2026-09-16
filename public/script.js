@@ -3859,7 +3859,7 @@ function openNewsSection(type) {
    ============================================================ */
 
 function initializeNodaWebsite() {
-    // Home News
+  // Home News
   renderHomeNewsCarousel();
 
   setupInfiniteCarousel({
@@ -3939,7 +3939,7 @@ const HERO_VALUES = [
   },
   {
     name: "INNOVATION",
-    image: "printing-laminating.png",
+    image: "products.png",
     eyebrow: "Innovation in every application",
     title: "Engineered film.<br>Ready for what comes next.",
     text: "Film solutions developed for modern packaging, printing, lamination and demanding converting applications."
@@ -3960,7 +3960,7 @@ const HERO_VALUES = [
   },
   {
     name: "QUALITY",
-    image: "quality-labrotory.png",
+    image: "quality-lab.jpg",
     eyebrow: "Quality you can measure",
     title: "Quality<br>without compromise.",
     text: "Consistent BOPP film performance built around controlled production, laboratory testing and reliable specifications."
