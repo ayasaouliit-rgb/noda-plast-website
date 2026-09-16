@@ -76,9 +76,9 @@ const PRODUCTS = [
     img: 'matt-bopp-film-roll.png',
     gallery: [
       'matt-bopp-film-roll.png',
-      'mattn/mattn1.png',
-      'mattn/mattn2.png',
-      'mattn/mattn3.png'
+      'mattn/mattn (1).png',
+      'mattn/mattn (2).png',
+      'mattn/mattn (3).png'
     ],
     category: 'Matt Films',
     name: 'MATTN — Matt Film Non Sealable',
@@ -144,9 +144,9 @@ const PRODUCTS = [
     img: 'matt-bopp-film-roll.png',
     gallery: [
       'matt-bopp-film-roll.png',
-      'matts/matts1.png',
-      'matts/matts2.png',
-      'matts/matts3.png'
+      'matts/matts (1).png',
+      'matts/matts (2).png',
+      'matts/matts (3).png'
     ],
     category: 'Matt Films',
     name: 'MATTS — Matt Film Both Sides Sealable',
@@ -212,9 +212,9 @@ const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
-      'nlc/nlc1.jpg',
-      'nlc/nlc2.jpg',
-      'nlc/nlc3.jpg'
+      'nlc/nlc (1).jpg',
+      'nlc/nlc (2).jpg',
+      'nlc/nlc (3).jpg'
     ],
     category: 'Label Films',
     name: 'NLC — Label Clear Film',
@@ -477,9 +477,9 @@ const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
-      'nsc/nsc1.png',
-      'nsc/nsc2.png',
-      'nsc/nsc3.png'
+      'nsc/nsc (1).png',
+      'nsc/nsc (2).png',
+      'nsc/nsc (3).png'
     ],
     category: 'Heat Sealable Films',
     name: 'NSC — Transparent Clear Heat Sealable',
@@ -557,9 +557,9 @@ const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
-      'nsh/nsh1.png',
-      'nsh/nsh2.png',
-      'nsh/nsh3.png'
+      'nsh/nsh (1).png',
+      'nsh/nsh (2).png',
+      'nsh/nsh (3).png'
     ],
     category: 'Heat Sealable Films',
     name: 'NSH — Clear Heat Sealable',
