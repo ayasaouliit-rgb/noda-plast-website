@@ -717,9 +717,9 @@ const PRODUCTS = [
     img: 'pearlised-bopp-film-roll.png',
     gallery: [
       'pearlised-bopp-film-roll.png',
-      'nsp/nsp1.png',
-      'nsp/nsp2.png',
-      'nsp/nsp3.png'
+      'nsp/nsp (1).png',
+      'nsp/nsp (2).png',
+      'nsp/nsp (3).png'
     ],
     category: 'White Films',
     name: 'NSP — White Pearlized Sealable Film',
@@ -797,9 +797,9 @@ const PRODUCTS = [
     img: 'white-bopp-film-roll.png',
     gallery: [
       'white-bopp-film-roll.png',
-      'nsw/nsw1.png',
-      'nsw/nsw2.png',
-      'nsw/nsw3.png'
+      'nsw/nsw (1).png',
+      'nsw/nsw (2).png',
+      'nsw/nsw (3).png'
     ],
     category: 'White Films',
     name: 'NSW — Solid White Sealable',
@@ -859,15 +859,16 @@ const PRODUCTS = [
     treatments: [...TREATMENT_OPTIONS],
     phCap: 'NSW solid white sealable film'
   },
+  
   {
     id: 'nvmm',
     code: 'NVMM',
     img: 'mtz-bopp-film-roll.png',
     gallery: [
       'mtz-bopp-film-roll.png',
-      'nvmm/nvmm1.png',
-      'nvmm/nvmm2.png',
-      'nvmm/nvmm3.png'
+      'nvmm/nvmm (1).png',
+      'nvmm/nvmm (2).png',
+      'nvmm/nvmm (3).png'
     ],
     category: 'White Films, Metalized Films',
     name: 'NVMM — Metalized White Voided Film',
