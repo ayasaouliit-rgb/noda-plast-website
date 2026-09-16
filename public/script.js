@@ -1060,11 +1060,11 @@ const NEWS = [
   {
     type: "event",
     category: "Exhibition",
-    date: "Coming soon",
-    title: "NODA PLAST at industry trade exhibition",
-    desc: "Meet our team and discover our latest BOPP film solutions at an upcoming industry exhibition.",
+    date: "17 – 21 octobre 2026",
+    title: "NodaPlast Film au SIAL Paris 2026 !",
+    desc: "Nous sommes heureux de vous annoncer notre participation au SIAL Paris 2026, le rendez-vous incontournable des professionnels de l’agroalimentaire et de l’emballage.",
     phCap: "Trade exhibition photograph",
-    img: "trade-exhibition.png"
+    img: "paris-event.png"
   },
 
   {
