@@ -954,7 +954,7 @@ const APPLICATIONS = [
 
   {
     id: 'labels',
-    img: 'lable.png',
+    img: 'label.jpg',
     name: 'Labels',
     desc: 'Film solutions for clear, white and specialty label applications.',
     products: [
