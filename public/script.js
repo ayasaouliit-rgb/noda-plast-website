@@ -2157,6 +2157,58 @@ if (pdImageImg) {
   window.currentSelectedProduct = p;
   renderTechnicalSpecifications(p);
 
+    /* ==========================================================
+     PRODUCT DETAIL — TOP PREV / NEXT PRODUCT BUTTONS
+     ========================================================== */
+
+  // Remove any previous top-nav (from a previous product)
+  const existingNav = document.getElementById('pdProductTopNav');
+  if (existingNav) existingNav.remove();
+
+  const currentIndex = PRODUCTS.findIndex(x => x.id === p.id);
+
+  if (currentIndex !== -1) {
+
+    const topNav = document.createElement('div');
+    topNav.id = 'pdProductTopNav';
+    topNav.className = 'pd-top-nav';
+
+    topNav.innerHTML = `
+      <button type="button" class="back-btn" id="pdPrevProductBtn" aria-label="Previous product">
+        <span class="material-symbols-outlined">keyboard_backspace</span>
+      </button>
+
+      <button type="button" class="back-btn pd-next-btn" id="pdNextProductBtn" aria-label="Next product">
+        <span class="material-symbols-outlined">keyboard_backspace</span>
+      </button>
+    `;
+
+    // Insert the nav at the top of the product detail container
+    const pdContainer = document.querySelector('#page-product-detail .container');
+    if (pdContainer) {
+      const pdHero = pdContainer.querySelector('.pd-hero');
+      if (pdHero) {
+        pdContainer.insertBefore(topNav, pdHero);
+      } else {
+        pdContainer.insertBefore(topNav, pdContainer.firstChild);
+      }
+    }
+    topNav.querySelector('#pdPrevProductBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const prevIndex = (currentIndex - 1 + PRODUCTS.length) % PRODUCTS.length;
+      showPage('product-detail', { product: PRODUCTS[prevIndex].id });
+    });
+
+    topNav.querySelector('#pdNextProductBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const nextIndex = (currentIndex + 1) % PRODUCTS.length;
+      showPage('product-detail', { product: PRODUCTS[nextIndex].id });
+    });
+
+  }
+
 }
 
 function getProductThicknesses(product) {

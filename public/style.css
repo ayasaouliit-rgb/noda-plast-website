@@ -5513,3 +5513,25 @@ CAREERS RESPONSIVE
 .careers-job {
   cursor: pointer;
 }
+
+/* ============================================================
+   PRODUCT DETAIL — TOP PREV / NEXT BUTTONS
+   ============================================================ */
+
+.pd-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+}
+
+.pd-top-nav .back-btn {
+  margin-bottom: 0; /* override the default bottom margin */
+}
+
+/* Flip the second button so it points right, matching the left one */
+.pd-top-nav .pd-next-btn .material-symbols-outlined {
+  display: inline-block;
+  transform: scaleX(-1);
+}
