@@ -81,7 +81,7 @@ const PRODUCTS = [
       'mattn/mattn (3).png'
     ],
     category: 'Matt Films',
-    name: 'MATTN — Matt Film Non Sealable',
+    name: 'MATTN — Matt Film side Non Sealable',
     shortName: 'Matt Film (Matt Side Non Sealable)',
     desc: 'Matt film with a non-sealable matte side, designed for applications requiring a distinctive low-gloss surface.',
     overview:
@@ -281,9 +281,9 @@ const PRODUCTS = [
     img: 'white-bopp-film-roll.png',
     gallery: [
       'white-bopp-film-roll.png',
-      'nlv/nlv1.jpg',
-      'nlv/nlv2.jpg',
-      'nlv/nlv3.jpg'
+      'nlv/nlv (1).jpg',
+      'nlv/nlv (2).jpg',
+      'nlv/nlv (3).jpg'
     ],
     category: 'Label Films',
     name: 'NLV — Label White Voided Film',
@@ -859,7 +859,7 @@ const PRODUCTS = [
     treatments: [...TREATMENT_OPTIONS],
     phCap: 'NSW solid white sealable film'
   },
-  
+
   {
     id: 'nvmm',
     code: 'NVMM',
@@ -1688,6 +1688,7 @@ function renderProductGrid() {
    PRODUCT DETAIL
    ============================================================ */
 
+window.__nodaProductGalleryCleanup = null;
 function renderProductDetail(id) {
 
   const p =
@@ -1727,360 +1728,423 @@ function renderProductDetail(id) {
     pdOverview.textContent =
       i18nText(p.overview);
 
-
   /* ============================================================
    PRODUCT DETAIL IMAGE GALLERY
+   Safe, isolated gallery with proper cleanup
    ============================================================ */
 
-  const pdImageImg =
-    document.getElementById('pdImageImg');
+const pdImageImg =
+  document.getElementById('pdImageImg');
 
-  const pdGalleryThumbs =
-    document.getElementById('pdGalleryThumbs');
+const pdGalleryThumbs =
+  document.getElementById('pdGalleryThumbs');
 
 
-  if (pdImageImg) {
+if (pdImageImg) {
+
+  /*
+   * CLEAN UP THE PREVIOUS PRODUCT GALLERY
+   *
+   * This is the key fix.
+   * When a new product is opened, the previous product's
+   * autoplay timer, transition timer and event listeners
+   * are stopped before the new gallery starts.
+   */
+
+  if (typeof window.__nodaProductGalleryCleanup === 'function') {
+    window.__nodaProductGalleryCleanup();
+  }
+
+
+  /*
+   * Get this product's gallery only.
+   */
+
+  const galleryImages =
+    Array.isArray(p.gallery) && p.gallery.length
+      ? p.gallery.slice(0, 4)
+      : [p.img];
+
+
+  /*
+   * Unique gallery instance.
+   * Any delayed callback from an older instance becomes invalid.
+   */
+
+  const galleryInstanceId =
+    Symbol('productGallery');
+
+
+  let currentIndex = 0;
+  let autoplayTimer = null;
+  let transitionTimer = null;
+  let galleryPaused = false;
+  let destroyed = false;
+
+
+  /*
+   * Gallery element for hover pause.
+   */
+
+  const galleryElement =
+    document.querySelector('.pd-gallery');
+
+
+  /*
+   * CLEANUP FUNCTION FOR THIS GALLERY INSTANCE
+   */
+
+  const cleanupGallery = () => {
+
+    destroyed = true;
+
+    clearInterval(autoplayTimer);
+    clearTimeout(transitionTimer);
+
+    autoplayTimer = null;
+    transitionTimer = null;
 
     /*
-     * Get exactly 4 gallery images.
-     * Fall back to the normal product image if
-     * no gallery has been defined.
+     * Remove listeners attached by this gallery instance.
      */
-    const galleryImages =
-      Array.isArray(p.gallery) && p.gallery.length
-        ? p.gallery.slice(0, 4)
-        : [p.img];
+
+    if (galleryElement) {
+      galleryElement.removeEventListener(
+        'mouseenter',
+        handleMouseEnter
+      );
+
+      galleryElement.removeEventListener(
+        'mouseleave',
+        handleMouseLeave
+      );
+    }
+
+    /*
+     * Only clear the global reference if it still
+     * belongs to this exact gallery instance.
+     */
+
+    if (
+      window.__nodaProductGalleryCleanup === cleanupGallery
+    ) {
+      window.__nodaProductGalleryCleanup = null;
+    }
+
+  };
+
+
+  /*
+   * Register this gallery as the active one.
+   */
+
+  window.__nodaProductGalleryCleanup = cleanupGallery;
+
+
+  /* ==========================================================
+     RENDER GALLERY
+     ========================================================== */
+
+  function renderGallery() {
+
+    if (
+      destroyed ||
+      window.__nodaProductGalleryCleanup !== cleanupGallery
+    ) {
+      return;
+    }
+
+    if (!galleryImages.length) return;
+
+
+    const currentImage =
+      galleryImages[currentIndex];
 
 
     /*
-     * Current main image index
+     * Only this product's image can be displayed.
      */
-    let currentIndex = 0;
+
+    pdImageImg.src =
+      'assets/images/' + currentImage;
+
+    pdImageImg.alt =
+      p.phCap || p.name;
 
 
     /*
-     * Autoplay timer
+     * Create thumbnails from the other images.
      */
-    let autoplayTimer = null;
+
+    const thumbnailIndexes =
+      galleryImages
+        .map((image, index) => index)
+        .filter(index => index !== currentIndex);
 
 
-    /*
-     * Whether autoplay is currently paused
-     */
-    let galleryPaused = false;
+    if (pdGalleryThumbs) {
 
-
-    /* ==========================================================
-       RENDER GALLERY
-       ========================================================== */
-
-    function renderGallery() {
-
-      if (!galleryImages.length) return;
-
-
-      /*
-       * Current main image
-       */
-      const currentImage =
-        galleryImages[currentIndex];
-
-
-      /*
-       * Set main image
-       */
-      pdImageImg.src =
-        'assets/images/' + currentImage;
-
-      pdImageImg.alt =
-        p.phCap || p.name;
-
-
-      /*
-       * Create thumbnails from ALL OTHER images.
-       *
-       * The current main image is NEVER displayed
-       * as a thumbnail.
-       */
-      const thumbnailIndexes =
-        galleryImages
-          .map((image, index) => index)
-          .filter(index => index !== currentIndex);
-
-
-      /*
-       * Always show maximum 3 thumbnails
-       */
-      if (pdGalleryThumbs) {
-
-        pdGalleryThumbs.innerHTML =
-          thumbnailIndexes
-            .slice(0, 3)
-            .map(index => `
-
+      pdGalleryThumbs.innerHTML =
+        thumbnailIndexes
+          .slice(0, 3)
+          .map(index => `
             <button
               type="button"
               class="pd-gallery-thumb"
               data-gallery-index="${index}"
               aria-label="View product image ${index + 1}"
             >
-
               <img
                 src="assets/images/${galleryImages[index]}"
                 alt="${p.phCap || p.name} image ${index + 1}"
                 loading="lazy"
               >
-
             </button>
-
           `)
-            .join('');
+          .join('');
 
 
-        /*
-         * Add click events
-         */
-        pdGalleryThumbs
-          .querySelectorAll('.pd-gallery-thumb')
-          .forEach(thumb => {
+      /*
+       * Add click listeners only to the current gallery's
+       * newly created thumbnails.
+       */
 
-            thumb.addEventListener('click', () => {
+      pdGalleryThumbs
+        .querySelectorAll('.pd-gallery-thumb')
+        .forEach(thumb => {
 
-              const newIndex =
-                Number(
-                  thumb.dataset.galleryIndex
-                );
+          thumb.addEventListener('click', () => {
 
-
-              if (
-                Number.isNaN(newIndex) ||
-                newIndex === currentIndex
-              ) {
-                return;
-              }
+            if (
+              destroyed ||
+              window.__nodaProductGalleryCleanup !== cleanupGallery
+            ) {
+              return;
+            }
 
 
-              /*
-               * Pause autoplay when user clicks
-               */
-              pauseGallery();
+            const newIndex =
+              Number(thumb.dataset.galleryIndex);
 
 
-              /*
-               * Change image
-               */
-              changeGalleryImage(newIndex);
+            if (
+              Number.isNaN(newIndex) ||
+              newIndex === currentIndex
+            ) {
+              return;
+            }
 
 
-              /*
-               * Restart autoplay after user interaction
-               */
-              restartGalleryAutoplay();
+            pauseGallery();
 
-            });
+            changeGalleryImage(newIndex);
+
+            restartGalleryAutoplay();
 
           });
 
-      }
+        });
 
     }
 
+  }
 
-    /* ==========================================================
-       CHANGE MAIN IMAGE
-       ========================================================== */
 
-    function changeGalleryImage(newIndex) {
+  /* ==========================================================
+     CHANGE MAIN IMAGE
+     ========================================================== */
+
+  function changeGalleryImage(newIndex) {
+
+    if (
+      destroyed ||
+      window.__nodaProductGalleryCleanup !== cleanupGallery
+    ) {
+      return;
+    }
+
+
+    if (
+      newIndex < 0 ||
+      newIndex >= galleryImages.length ||
+      newIndex === currentIndex
+    ) {
+      return;
+    }
+
+
+    /*
+     * Cancel any previous pending transition.
+     * This prevents delayed transitions from stacking.
+     */
+
+    clearTimeout(transitionTimer);
+
+
+    pdImageImg.classList.add('gallery-changing');
+
+
+    transitionTimer = setTimeout(() => {
+
+      /*
+       * IMPORTANT:
+       * Verify that this callback still belongs to
+       * the currently active product gallery.
+       */
 
       if (
-        newIndex < 0 ||
-        newIndex >= galleryImages.length
+        destroyed ||
+        window.__nodaProductGalleryCleanup !== cleanupGallery
       ) {
         return;
       }
 
 
-      if (newIndex === currentIndex) {
+      currentIndex = newIndex;
+
+      renderGallery();
+
+
+      requestAnimationFrame(() => {
+
+        if (
+          destroyed ||
+          window.__nodaProductGalleryCleanup !== cleanupGallery
+        ) {
+          return;
+        }
+
+        pdImageImg.classList.remove('gallery-changing');
+
+      });
+
+    }, 180);
+
+  }
+
+
+  /* ==========================================================
+     AUTOPLAY
+     ========================================================== */
+
+  function startGalleryAutoplay() {
+
+    clearInterval(autoplayTimer);
+
+    if (galleryImages.length <= 1) {
+      return;
+    }
+
+
+    autoplayTimer = setInterval(() => {
+
+      if (
+        destroyed ||
+        window.__nodaProductGalleryCleanup !== cleanupGallery ||
+        galleryPaused
+      ) {
         return;
       }
 
 
-      /*
-       * Fade the current image out
-       */
-      pdImageImg.classList.add(
-        'gallery-changing'
-      );
+      const nextIndex =
+        (currentIndex + 1) % galleryImages.length;
 
 
-      setTimeout(() => {
+      changeGalleryImage(nextIndex);
 
-        /*
-         * IMPORTANT:
-         *
-         * Only change the current index.
-         *
-         * renderGallery() then automatically removes
-         * the new main image from the 3 thumbnails
-         * and adds the previous main image to them.
-         */
-        currentIndex = newIndex;
-
-
-        renderGallery();
-
-
-        /*
-         * Fade the new image in
-         */
-        requestAnimationFrame(() => {
-
-          pdImageImg.classList.remove(
-            'gallery-changing'
-          );
-
-        });
-
-      }, 180);
-
-    }
-
-
-    /* ==========================================================
-       AUTOPLAY
-       ========================================================== */
-
-    function startGalleryAutoplay() {
-
-      clearInterval(autoplayTimer);
-
-
-      /*
-       * Change image every 4.5 seconds
-       */
-      autoplayTimer = setInterval(() => {
-
-        if (galleryPaused) {
-          return;
-        }
-
-
-        /*
-         * Go to the next image
-         */
-        const nextIndex =
-          (currentIndex + 1) %
-          galleryImages.length;
-
-
-        changeGalleryImage(nextIndex);
-
-      }, 4500);
-
-    }
-
-
-    /* ==========================================================
-       PAUSE
-       ========================================================== */
-
-    function pauseGallery() {
-
-      galleryPaused = true;
-
-    }
-
-
-    /* ==========================================================
-       RESUME
-       ========================================================== */
-
-    function resumeGallery() {
-
-      galleryPaused = false;
-
-    }
-
-
-    /* ==========================================================
-       RESTART AUTOPLAY AFTER CLICK
-       ========================================================== */
-
-    function restartGalleryAutoplay() {
-
-      clearInterval(autoplayTimer);
-
-
-      /*
-       * Wait 4.5 seconds after the user's click
-       * before automatically changing again.
-       */
-      autoplayTimer = setInterval(() => {
-
-        if (galleryPaused) {
-          return;
-        }
-
-
-        const nextIndex =
-          (currentIndex + 1) %
-          galleryImages.length;
-
-
-        changeGalleryImage(nextIndex);
-
-      }, 4500);
-
-    }
-
-
-    /* ==========================================================
-       HOVER PAUSE
-       ========================================================== */
-
-    const galleryElement =
-      document.querySelector('.pd-gallery');
-
-
-    if (galleryElement) {
-
-      /*
-       * Pause while mouse is over the gallery
-       */
-      galleryElement.addEventListener(
-        'mouseenter',
-        () => {
-          pauseGallery();
-        }
-      );
-
-
-      /*
-       * Resume when mouse leaves
-       */
-      galleryElement.addEventListener(
-        'mouseleave',
-        () => {
-          resumeGallery();
-        }
-      );
-
-    }
-
-
-    /* ==========================================================
-       INITIAL RENDER
-       ========================================================== */
-
-    renderGallery();
-
-
-    /*
-     * Start automatic rotation
-     */
-    startGalleryAutoplay();
+    }, 4500);
 
   }
+
+
+  /* ==========================================================
+     PAUSE / RESUME
+     ========================================================== */
+
+  function pauseGallery() {
+    galleryPaused = true;
+  }
+
+
+  function resumeGallery() {
+    galleryPaused = false;
+  }
+
+
+  /* ==========================================================
+     RESTART AUTOPLAY AFTER CLICK
+     ========================================================== */
+
+  function restartGalleryAutoplay() {
+
+    clearInterval(autoplayTimer);
+
+    if (galleryImages.length <= 1) {
+      return;
+    }
+
+
+    autoplayTimer = setInterval(() => {
+
+      if (
+        destroyed ||
+        window.__nodaProductGalleryCleanup !== cleanupGallery ||
+        galleryPaused
+      ) {
+        return;
+      }
+
+
+      const nextIndex =
+        (currentIndex + 1) % galleryImages.length;
+
+
+      changeGalleryImage(nextIndex);
+
+    }, 4500);
+
+  }
+
+
+  /* ==========================================================
+     HOVER PAUSE
+     ========================================================== */
+
+  function handleMouseEnter() {
+    pauseGallery();
+  }
+
+
+  function handleMouseLeave() {
+    resumeGallery();
+  }
+
+
+  if (galleryElement) {
+
+    galleryElement.addEventListener(
+      'mouseenter',
+      handleMouseEnter
+    );
+
+    galleryElement.addEventListener(
+      'mouseleave',
+      handleMouseLeave
+    );
+
+  }
+
+
+  /* ==========================================================
+     INITIAL RENDER
+     ========================================================== */
+
+  renderGallery();
+
+  startGalleryAutoplay();
+
+}
 
 
   const pdTags =
@@ -2687,6 +2751,19 @@ function openApplicationDetail(id) {
 function showPage(id, opts) {
 
   opts = opts || {};
+  /*
+  * Stop the active product gallery when leaving
+  * the product detail page.
+  */
+
+
+  if (
+    id !== 'product-detail' &&
+    typeof window.__nodaProductGalleryCleanup === 'function'
+  ) {
+    window.__nodaProductGalleryCleanup();
+  }
+
 
   document
     .querySelectorAll('.page')
@@ -4279,9 +4356,9 @@ document.addEventListener('click', function (e) {
     const btn = homeNewsCard.querySelector('.home-content-btn');
     if (btn) {
       const type = btn.getAttribute('data-content-type');
-      if (type === 'news')       openNewsSection('news');
+      if (type === 'news') openNewsSection('news');
       else if (type === 'event') openNewsSection('event');
-      else if (type === 'job')   openNewsSection('job');
+      else if (type === 'job') openNewsSection('job');
     }
     return;
   }
