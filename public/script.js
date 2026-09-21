@@ -1059,6 +1059,7 @@ const APPLICATIONS = [
 
 const NEWS = [
   {
+    id: 'sial-paris-2026',
     type: "event",
     category: "Exhibition",
     date: "17 – 21 octobre 2026",
@@ -1069,6 +1070,7 @@ const NEWS = [
   },
 
   {
+    id: 'news-item-2',
     type: "news",
     category: "Technology",
     date: "Coming soon",
@@ -1079,6 +1081,7 @@ const NEWS = [
   },
 
   {
+    id: 'news-item-3',
     type: "event",
     category: "Company",
     date: "Coming soon",
@@ -1089,6 +1092,7 @@ const NEWS = [
   },
 
   {
+    id: 'news-item-4',
     type: "news",
     category: "Technology",
     date: "Coming soon",
@@ -1099,6 +1103,7 @@ const NEWS = [
   },
 
   {
+    id: 'news-item-5',
     type: "event",
     category: "Training",
     date: "Coming soon",
@@ -1109,6 +1114,7 @@ const NEWS = [
   },
 
   {
+    id: 'news-item-6',
     type: "news",
     category: "Sustainability",
     date: "Coming soon",
@@ -1122,6 +1128,7 @@ const NEWS = [
 
 const jobs = [
   {
+    id: 'production-operator',
     category: "Production",
     title: "Production Operator",
     description:
@@ -1130,7 +1137,9 @@ const jobs = [
     location: "Sétif, Algeria",
     employment: "Full-time"
   },
+
   {
+    id: 'process-production-engineer',
     category: "Engineering",
     title: "Process / Production Engineer",
     description:
@@ -1139,7 +1148,9 @@ const jobs = [
     location: "Sétif, Algeria",
     employment: "Full-time"
   },
+
   {
+    id: 'quality-control-technician',
     category: "Quality",
     title: "Quality Control Technician",
     description:
@@ -1150,7 +1161,6 @@ const jobs = [
   }
 ];
 
-
 function renderjobsgrid() {
   const containers = document.querySelectorAll(".careers-jobs");
 
@@ -1159,7 +1169,10 @@ function renderjobsgrid() {
     jobs.forEach(job => {
 
       const article = document.createElement("article");
+
       article.className = "card careers-job";
+      article.id = `job-${job.id}`;
+      article.dataset.jobId = job.id;
 
       article.innerHTML = `
         <div class="careers-job-main">
@@ -1328,6 +1341,7 @@ function renderHomeNewsCarousel() {
               type="button"
               class="btn-ghost home-content-btn"
               data-content-type="${item.contentType}"
+              data-content-id="${item.id || ""}"
             >
 
               ${item.contentType === 'event'
@@ -1390,6 +1404,7 @@ function renderHomeNewsCarousel() {
             type="button"
             class="btn-ghost home-content-btn"
             data-content-type="job"
+            data-content-id="${item.id}"
           >
             <span data-i18n="View position">View position</span>
 
@@ -1423,95 +1438,187 @@ function renderHomeNewsCarousel() {
   track.innerHTML = cards + cards;
 
 
-  /*
-   * Navigation when a card is clicked
-   */
-  track.querySelectorAll('.home-content-btn').forEach(button => {
+}
 
-    button.addEventListener('click', function (e) {
+/* ============================================================
+   NEWS PAGE
+   Each news/event is a full-width SECTION.
 
-      e.stopPropagation();
+   Alternating structure:
 
-      const type =
-        this.getAttribute('data-content-type');
+   1. .section
+   2. .section-tint
+   3. .section
+   4. .section-tint
+   ============================================================ */
 
+function renderNewsGrid(filter = 'all') {
+  const firstGrid = document.getElementById('newsGridFirst');
+  const restGrid = document.getElementById('newsGridRest');
 
-      if (type === 'news') {
+  if (!firstGrid || !restGrid) return;
 
-        openNewsSection('news');
+  // Clear previous content
+  firstGrid.innerHTML = '';
+  restGrid.innerHTML = '';
 
-      }
-
-      else if (type === 'event') {
-
-        openNewsSection('event');
-
-      }
-
-      else if (type === 'job') {
-
-        openNewsSection('job');
-
-      }
-
-    });
-
+  // Filter NEWS
+  const filteredNews = NEWS.filter(item => {
+    if (filter === 'all') return true;
+    return item.type === filter;
   });
 
+  if (!filteredNews.length) {
+    firstGrid.innerHTML = `
+      <div class="news-empty">
+        ${i18nText('No news or events available.')}
+      </div>
+    `;
+    return;
+  }
+
+  filteredNews.forEach((item, index) => {
+
+    /*
+     * FIRST NEWS / EVENT
+     * Goes inside .news-hub-section
+     */
+    if (index === 0) {
+      const section = createNewsSection(item, index);
+
+      firstGrid.appendChild(section);
+      return;
+    }
+
+    /*
+     * REST OF NEWS / EVENTS
+     * Goes outside .news-hub-section
+     */
+    const section = createNewsSection(item, index);
+
+    restGrid.appendChild(section);
+  });
 }
+function createNewsSection(item, index) {
 
-function renderNewsGrid(containerId, count, type = "news") {
+  const section = document.createElement('section');
 
-  const el = document.getElementById(containerId);
+  /*
+   * First item:
+   * .section
+   *
+   * Second item:
+   * .section-tint
+   *
+   * Third:
+   * .section
+   *
+   * Fourth:
+   * .section-tint
+   */
+  const sectionClass =
+    index % 2 === 0
+      ? 'section news-item-section'
+      : 'section section-tint news-item-section';
 
-  if (!el) return;
+  section.className = sectionClass;
 
-  const items = NEWS
-    .filter(item => item.type === type)
-    .slice(0, count);
+  // IMPORTANT:
+  // The section ID must be the actual NEWS id.
+  // This allows Read More from the homepage
+  // to scroll directly to this section.
+  section.id = item.id;
 
-  el.innerHTML = items.map(n => `
+  section.dataset.newsId = item.id;
+  section.dataset.newsType = item.type;
 
-    <div class="card news-card">
+  /*
+   * Odd items are reversed:
+   *
+   * index 0 → image | text
+   * index 1 → text  | image
+   * index 2 → image | text
+   * index 3 → text  | image
+   */
+  const reversedClass =
+    index % 2 === 1 ? 'is-reversed' : '';
 
-      ${ph(n.phCap, n.img)}
+  section.innerHTML = `
+    <div class="container">
 
-      <div class="news-card-body">
+      <article
+        class="news-paper-item ${reversedClass}"
+        data-news-id="${item.id}"
+      >
 
-        <div class="news-meta">
-          <span class="news-cat" data-i18n="${n.category}">${n.category}</span>
-          <span class="news-date" data-i18n="${n.date}">${n.date}</span>
+        <div class="news-paper-image">
+          <div class="ph">
+
+            <img
+              src="assets/images/${item.img}"
+              alt="${item.phCap || item.title}"
+              loading="lazy"
+              onerror="
+                this.style.display='none';
+                this.parentElement.classList.add('image-missing');
+              "
+            >
+
+          </div>
         </div>
 
-        <h3 data-i18n="${n.title}">${n.title}</h3>
+        <div class="news-paper-content">
 
-        <p data-i18n="${n.desc}">${n.desc}</p>
+          <div class="news-paper-meta">
 
-        <span class="btn-ghost">
-          <span data-i18n="Read more">Read more</span>
+            <span class="news-paper-category">
+              ${i18nText(
+                item.type === 'event'
+                  ? 'Event'
+                  : item.category
+              )}
+            </span>
 
-          <svg
-            width="14"
-            height="10"
-            viewBox="0 0 14 10"
-            fill="none"
+            <span class="news-date">
+              ${i18nText(item.date || '')}
+            </span>
+
+          </div>
+
+          <h3>
+            ${i18nText(item.title)}
+          </h3>
+
+          <p>
+            ${i18nText(item.desc || '')}
+          </p>
+
+          <button
+            type="button"
+            class="news-paper-readmore"
+            data-news-id="${item.id}"
           >
-            <path
-              d="M9 1l4 4-4 4M1 5h11"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-          </svg>
+            ${i18nText(
+              item.type === 'event'
+                ? 'View event'
+                : 'Read more'
+            )}
 
-        </span>
+            <span class="material-symbols-outlined">
+              arrow_forward
+            </span>
 
-      </div>
+          </button>
+
+        </div>
+
+      </article>
 
     </div>
+  `;
 
-  `).join('');
+  return section;
 }
-
 
 /* ============================================================
    PRODUCT GRID
@@ -2826,6 +2933,10 @@ function showPage(id, opts) {
 
   }
 
+  if (id === 'news' && opts.newsId) {
+    openNewsSection('all', opts.newsId);
+  }
+
 
   /* ==========================================================
      APPLICATION DETAIL
@@ -3507,96 +3618,155 @@ window.NODA_WIDTH_OPTIONS =
 window.NODA_TREATMENT_OPTIONS =
   TREATMENT_OPTIONS;
 
-function openNewsSection(type) {
+function openNewsSection(type = 'all', itemId = null) {
 
-  if (type === 'job') {
+  showPage('news');
 
-    /*
-     * JOB → CAREERS
-     */
-    const careersPage =
-      document.getElementById('page-careers');
+  const filter =
+    type === 'news' || type === 'event'
+      ? type
+      : 'all';
 
-    if (!careersPage) return;
+  const filterBtn =
+    document.querySelector(
+      `[data-news-filter="${filter}"]`
+    );
 
-    document.querySelectorAll('.page')
-      .forEach(page => {
-        page.classList.remove('active');
-      });
+  document
+    .querySelectorAll('[data-news-filter]')
+    .forEach(btn => {
+      btn.classList.toggle(
+        'active',
+        btn === filterBtn
+      );
+    });
 
-    careersPage.classList.add('active');
+  renderNewsGrid(filter);
 
-    document.querySelectorAll('.nav-link')
-      .forEach(link => {
-        link.classList.remove('active');
-      });
+  setTimeout(() => {
 
-    const careersNav =
-      document.querySelector(
-        '[data-nav="careers"]'
+    const target = itemId
+      ? document.getElementById(itemId)
+      : document.getElementById('newsGridFirst');
+
+    if (!target) return;
+
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: itemId ? 'center' : 'start'
+    });
+
+    if (itemId) {
+
+      target.classList.remove(
+        'news-item-highlight'
       );
 
-    if (careersNav) {
-      careersNav.classList.add('active');
+      void target.offsetWidth;
+
+      target.classList.add(
+        'news-item-highlight'
+      );
     }
 
-    return;
-  }
+  }, 80);
+}
+
+function setupNewsInteractions() {
+
+  /*
+   * CATEGORY FILTERS
+   */
+  document
+    .querySelectorAll('[data-news-filter]')
+    .forEach(button => {
+
+      button.addEventListener('click', () => {
+
+        const filter =
+          button.getAttribute(
+            'data-news-filter'
+          ) || 'all';
+
+        document
+          .querySelectorAll('[data-news-filter]')
+          .forEach(btn => {
+            btn.classList.toggle(
+              'active',
+              btn === button
+            );
+          });
+
+        renderNewsGrid(filter);
+
+        /*
+         * After changing the filter,
+         * return to the beginning of the news content.
+         */
+        const firstGrid =
+          document.getElementById(
+            'newsGridFirst'
+          );
+
+        if (firstGrid) {
+          firstGrid.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+
+      });
+
+    });
 
 
   /*
-   * NEWS / EVENT → NEWS PAGE
+   * NEWS / EVENT BUTTONS
+   *
+   * Event delegation works for both
+   * newsGridFirst and newsGridRest.
    */
   const newsPage =
     document.getElementById('page-news');
 
   if (!newsPage) return;
 
-  document.querySelectorAll('.page')
-    .forEach(page => {
-      page.classList.remove('active');
-    });
+  newsPage.addEventListener('click', event => {
 
-  newsPage.classList.add('active');
+    const button =
+      event.target.closest(
+        '[data-news-id]'
+      );
 
-  document.querySelectorAll('.nav-link')
-    .forEach(link => {
-      link.classList.remove('active');
-    });
+    if (!button) return;
 
-  const newsNav =
-    document.querySelector(
-      '[data-nav="news"]'
-    );
+    const itemId =
+      button.getAttribute(
+        'data-news-id'
+      );
 
-  if (newsNav) {
-    newsNav.classList.add('active');
-  }
+    if (!itemId) return;
 
+    /*
+     * If clicking Read More on a news item,
+     * go to that exact item.
+     */
+    if (
+      button.classList.contains(
+        'news-paper-readmore'
+      )
+    ) {
+      event.preventDefault();
 
-  /*
-   * Scroll to the correct subsection
-   */
-  const target =
-    type === 'event'
-      ? document.getElementById('eventsGrid')
-      : document.getElementById('newsGrid');
+      openNewsSection(
+        'all',
+        itemId
+      );
+    }
 
-  if (target) {
-
-    setTimeout(() => {
-
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-
-    }, 100);
-
-  }
+  });
 
 }
-
 /* ============================================================
    INITIALIZATION
    ============================================================ */
@@ -3631,11 +3801,9 @@ function initializeNodaWebsite() {
     speed: 0.5
   });
 
-  // News page/section
-  renderNewsGrid('newsGrid', NEWS.length, 'news');
-
-  // Events page/section
-  renderNewsGrid('eventsGrid', NEWS.length, 'event');
+  // Newspaper-style news page
+  renderNewsGrid('all');
+  setupNewsInteractions();
 
   // Job opportunities
   renderjobsgrid();
@@ -4045,23 +4213,32 @@ document.addEventListener('click', function (e) {
     return;
   }
 
-  // ---- HOME NEWS / EVENT / JOB CARDS (home-news-card) ----
-  const homeNewsCard = e.target.closest('.home-news-card');
-  if (homeNewsCard && !e.target.closest('a, button')) {
-    const btn = homeNewsCard.querySelector('.home-content-btn');
-    if (btn) {
-      const type = btn.getAttribute('data-content-type');
-      if (type === 'news') openNewsSection('news');
-      else if (type === 'event') openNewsSection('event');
-      else if (type === 'job') openNewsSection('job');
+  // ---- HOME NEWS / EVENT / JOB BUTTONS ----
+  const homeContentBtn = e.target.closest('.home-content-btn');
+  if (homeContentBtn) {
+    const type = homeContentBtn.getAttribute('data-content-type');
+    const itemId = homeContentBtn.getAttribute('data-content-id');
+    if (type === 'news' || type === 'event') {
+      e.preventDefault();
+      openNewsSection('all', itemId);
+    } else if (type === 'job') {
+      openCareerPosition(itemId);
     }
     return;
   }
 
-  // ---- NEWS GRID CARDS (news-card without home-news-card) ----
-  const newsCard = e.target.closest('.news-card');
-  if (newsCard && !newsCard.classList.contains('home-news-card') && !e.target.closest('a, button')) {
-    showPage('news');
+  // ---- HOME NEWS / EVENT / JOB CARDS ----
+  const homeNewsCard = e.target.closest('.home-news-card');
+  if (homeNewsCard && !e.target.closest('a, button')) {
+    const btn = homeNewsCard.querySelector('.home-content-btn');
+    if (btn) btn.click();
+    return;
+  }
+
+  // ---- NEWS PAPER ITEMS ----
+  const newsItem = e.target.closest('.news-paper-item');
+  if (newsItem && !e.target.closest('a, button')) {
+    openNewsSection('all', newsItem.getAttribute('data-news-id'));
     return;
   }
 
@@ -4080,3 +4257,58 @@ document.addEventListener('click', function (e) {
   }
 
 });
+function openCareerPosition(jobId = null) {
+
+  // Open the Careers page
+  showPage('careers');
+
+  // Wait until the page is visible and job cards exist
+  setTimeout(() => {
+
+    // If no specific job was supplied,
+    // simply go to the vacancies section.
+    if (!jobId) {
+
+      const vacancies =
+        document.getElementById('careers-vacancies');
+
+      if (vacancies) {
+        vacancies.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+
+      return;
+    }
+
+    // Find the exact job card
+    const target =
+      document.getElementById(`job-${jobId}`);
+
+    if (!target) {
+      console.warn(
+        `Career position not found: ${jobId}`
+      );
+      return;
+    }
+
+    // Scroll directly to that job
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+
+    // Highlight the selected job
+    target.classList.remove(
+      'career-job-highlight'
+    );
+
+    void target.offsetWidth;
+
+    target.classList.add(
+      'career-job-highlight'
+    );
+
+  }, 80);
+}

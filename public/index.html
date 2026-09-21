@@ -1851,45 +1851,41 @@
     </section>
     <!-- ================= NEWS ================= -->
     <section class="page" id="page-news">
-      <div class="hero" style="min-height:380px;">
+      <div class="hero news-hero" style="min-height:380px;">
         <div class="hero-bg"></div>
         <div class="container hero-content" style="padding:80px 0 56px;">
           <div class="eyebrow" data-i18n="News &amp; Insights" style="color:var(--orange);">News &amp; Insights</div>
           <h1 data-i18n="What's happening&lt;br/&gt;&lt;span&gt;At NODA PLAST.&lt;/span&gt;">What's happening
             <br /><span data-i18n="At NODA PLAST.">At NODA PLAST.</span>
           </h1>
-          <p class="lede"
-            data-i18n="Stay updated with the latest news, articles, and industry insights from NODA PLAST.">Stay updated
-            with the latest news, articles, and industry insights from NODA PLAST.</p>
+          <p class="lede" data-i18n="Stay updated with the latest news, articles, and industry insights from NODA PLAST.">Stay updated with the latest news, articles, and industry insights from NODA PLAST.</p>
         </div>
       </div>
-      <section class="section">
+
+      <section class="section news-hub-section">
         <div class="container">
-          <div class="section-head">
-            <div class="eyebrow" data-i18n="News">News</div>
-            <h2 data-i18n="What's happening&lt;br/&gt;at NODA PLAST.">What's happening<br />at NODA PLAST.</h2>
+          <div class="section-head news-paper-heading">
+            <div class="eyebrow" data-i18n="NODA PLAST Updates">NODA PLAST Updates</div>
+            <h2 data-i18n="News, events &amp; insights.">News, events &amp; insights.</h2>
+            <p data-i18n="Explore company news, industry insights, and upcoming events.">Explore company news, industry insights, and upcoming events.</p>
           </div>
-          <div class="grid-3" id="newsGrid"></div>
+
+          <div class="news-filters" role="tablist" aria-label="News categories">
+            <button type="button" class="news-filter active" data-news-filter="all" data-i18n="All">All</button>
+            <button type="button" class="news-filter" data-news-filter="news" data-i18n="News">News</button>
+            <button type="button" class="news-filter" data-news-filter="event" data-i18n="Events">Events</button>
+          </div>
+          <!-- FIRST NEWS / EVENT -->
+          <div class="news-content-grid" id="newsGridFirst">
+            <!-- first news/event generated here -->
+          </div>
         </div>
       </section>
-      <section class="section section-tint">
-        <div class="container">
-          <div class="section-head">
-            <div class="eyebrow" data-i18n="Evants">Evants</div>
-            <h2 data-i18n="What's happening&lt;br/&gt;at NODA PLAST.">What's happening<br />at NODA PLAST.</h2>
-          </div>
-          <div class="grid-3" id="eventsGrid"></div>
-        </div>
-      </section>
-      <section class="section">
-        <div class="container">
-          <div class="section-head">
-            <div class="eyebrow" data-i18n="Job Opertunities">Job Opertunities</div>
-            <h2 data-i18n="Join our team&lt;br/&gt;at NODA PLAST.">Join our team<br />at NODA PLAST.</h2>
-          </div>
-          <div class="careers-jobs"></div>
-        </div>
-      </section>
+
+      <!-- REST OF NEWS / EVENTS -->
+      <div class="news-content-grid" id="newsGridRest">
+      <!-- remaining items generated here -->
+    </div>
     </section>
     <!-- ================= CONTACT ================= -->
     <section class="page" id="page-contact">
