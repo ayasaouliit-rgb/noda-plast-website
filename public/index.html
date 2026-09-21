@@ -343,8 +343,18 @@
                   </div>
                   <div class="field"><label data-i18n="Phone">Phone</label><input data-i18n-placeholder="+___"
                       id="homePhone" name="phone" placeholder="+___" /></div>
-                  <div class="field full"><label data-i18n="Country">Country</label><input
+                  <div class="field"><label data-i18n="Country">Country</label><input
                       data-i18n-placeholder="Country" id="homeCountry" name="country" placeholder="Country" /></div>
+                  <div class="field"><label data-i18n="service to contact">Service to Contact</label>
+                    <select data-i18n-placeholder="Select a service to contact" id="homeservice"
+                      name="homeservice" required="" >
+                      <option disabled selected value="">Select a service to contact</option>
+                      <option value="purchasing">purchasing</option>
+                      <option value="sales">sales</option>
+                      <option value="cs">customer service</option>
+                      <option value="hr">human resources</option>
+                    </select>
+                  </div>
                   <div class="field full"><label data-i18n="Message">Message</label><textarea
                       data-i18n-placeholder="How can we help?" id="homeMessage" name="message"
                       placeholder="How can we help?" required=""></textarea>
@@ -1980,8 +1990,18 @@
                   </div>
                   <div class="field"><label data-i18n="Phone">Phone</label><input data-i18n-placeholder="+___"
                       id="contactPhone" name="phone" placeholder="+___" /></div>
-                  <div class="field full"><label data-i18n="Country">Country</label><input
+                  <div class="field"><label data-i18n="Country">Country</label><input
                       data-i18n-placeholder="Country" id="contactCountry" name="country" placeholder="Country" /></div>
+                  <div class="field"><label data-i18n="service to contact">Service to Contact</label>
+                    <select data-i18n-placeholder="Select a service to contact" id="contactservice"
+                      name="contactservice" required="">
+                      <option disabled selected value="">Select a service to contact</option>
+                      <option value="purchasing">purchasing</option>
+                      <option value="sales">sales</option>
+                      <option value="cs">customer service</option>
+                      <option value="hr">human resources</option>
+                    </select>
+                  </div>
                   <div class="field full"><label data-i18n="Message">Message</label><textarea
                       data-i18n-placeholder="How can we help?" id="contactMessage" name="message"
                       placeholder="How can we help?" required=""></textarea>

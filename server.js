@@ -7,8 +7,27 @@ const nodemailer = require('nodemailer');
 
 const PORT = Number(process.env.PORT || 3000);
 const HOST = process.env.HOST || '0.0.0.0';
-const MAIL_TO = process.env.MAIL_TO || 'ayasaouliit@gmail.com';
-const MAIL_FROM = process.env.MAIL_FROM || process.env.SMTP_USER || 'ayasaouliit@gmail.com';
+const MAIL_TO_PURCHASING = process.env.MAIL_TO_PURCHASING || [EMAIL_ADDRESS];
+const MAIL_TO_SALES = process.env.MAIL_TO_SALES || [EMAIL_ADDRESS];
+const MAIL_TO_CS = process.env.MAIL_TO_CS || [EMAIL_ADDRESS];
+const MAIL_TO_HR = process.env.MAIL_TO_HR || [EMAIL_ADDRESS];
+
+const MAIL_FROM =
+  process.env.MAIL_FROM ||
+  process.env.SMTP_USER ||
+  'ayasaouliit@gmail.com';
+
+
+// ============================================================
+// SERVICE → EMAIL RECIPIENT ROUTING
+// ============================================================
+
+const SERVICE_RECIPIENTS = {
+  sales: MAIL_TO_SALES,
+  purchasing: MAIL_TO_PURCHASING,
+  cs: MAIL_TO_CS,
+  hr: MAIL_TO_HR
+};
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || '';
 
 const PUBLIC_DIR = path.resolve(__dirname, 'public');
@@ -237,6 +256,7 @@ function validatePayload(input) {
     email: cleanSingleLine(input.email, limits.email),
     phone: cleanSingleLine(input.phone, limits.phone),
     country: cleanSingleLine(input.country, limits.country),
+    service: cleanSingleLine(input.service, 50),
     application: cleanSingleLine(input.application, limits.application),
     quantity: cleanSingleLine(input.quantity, limits.quantity),
     coreSize: cleanSingleLine(input.coreSize, limits.coreSize),
@@ -298,74 +318,6 @@ function validatePayload(input) {
       return { ok: false, message: 'A message is required for contact requests.' };
     }
   }
-    
-  if (type === 'sample') {
-    if (!data.phone) {
-      return { ok: false, message: 'Phone number is required for sample requests.' };
-    }
-    const validatedProd = validateProductItem({
-      productId: input.productId || input.filmType,
-      thickness: input.thickness,
-      width: input.width,
-      treatment: input.treatment
-    });
-
-    if (!validatedProd) {
-      return { ok: false, message: 'Please select a valid product and specification combination.' };
-    }
-
-    data.filmType = validatedProd.productName;
-    data.productId = validatedProd.productId;
-    data.productCode = validatedProd.productCode;
-    data.productName = validatedProd.productName;
-    data.thickness = validatedProd.thickness;
-    data.width = validatedProd.width;
-    data.treatment = validatedProd.treatment;
-  }
-
-  if (type === 'quote') {
-    let verifiedProducts = [];
-
-    if (Array.isArray(input.selectedProducts) && input.selectedProducts.length > 0) {
-      if (input.selectedProducts.length > MAX_QUOTE_PRODUCTS) {
-        return { ok: false, message: `A quote request can contain a maximum of ${MAX_QUOTE_PRODUCTS} products.` };
-      }
-
-      for (const item of input.selectedProducts) {
-        const validItem = validateProductItem(item);
-        if (!validItem) {
-          return { ok: false, message: 'One or more selected products contain invalid specifications.' };
-        }
-        verifiedProducts.push(validItem);
-      }
-    } else if (input.productId || input.productCode || input.filmType) {
-      const validItem = validateProductItem({
-        productId: input.productId || input.filmType,
-        thickness: input.thickness,
-        width: input.width,
-        treatment: input.treatment
-      });
-      if (validItem) {
-        verifiedProducts.push(validItem);
-      }
-    }
-
-    if (verifiedProducts.length > 0) {
-      data.selectedProducts = verifiedProducts;
-      data.productId = verifiedProducts.map(p => p.productId).join(', ');
-      data.productCode = verifiedProducts.map(p => p.productCode).join(', ');
-      data.productName = verifiedProducts.map(p => p.productName).join(' | ');
-      data.filmType = verifiedProducts[0].productName;
-      data.thickness = verifiedProducts[0].thickness;
-      data.width = verifiedProducts[0].width;
-      data.treatment = verifiedProducts[0].treatment;
-    } else {
-      data.filmType = cleanSingleLine(input.filmType || input.application || 'General Quote Request', limits.filmType);
-      data.thickness = cleanSingleLine(input.thickness, limits.thickness);
-      data.width = cleanSingleLine(input.width, limits.width);
-      data.treatment = cleanSingleLine(input.treatment, limits.treatment);
-    }
-  }
 
   return { ok: true, data };
 }
@@ -414,21 +366,7 @@ function buildEmail(data) {
       ['Consent given', data.consent]
     ];
   }
-  if (data.type === 'sample') {
-    subject = `New Sample Request — ${data.productCode}`;
-    title = 'NEW SAMPLE REQUEST';
-    rows = [
-      ['Name', data.name],
-      ['Company', data.company],
-      ['Email', data.email],
-      ['Phone', data.phone],
-      ['Product Code', data.productCode],
-      ['Product Name', data.productName],
-      ['Thickness', data.thickness],
-      ['Width', data.width],
-      ['Treatment', data.treatment]
-    ];
-  } else if (data.type === 'contact') {
+  if (data.type === 'contact') {
     subject = 'New Contact Message — NODA PLAST Website';
     title = 'NEW CONTACT MESSAGE';
     rows = [
@@ -437,19 +375,6 @@ function buildEmail(data) {
       ['Email', data.email],
       ['Phone', data.phone],
       ['Country', data.country]
-    ];
-  } else {
-    subject = `New Quote Request — NODA PLAST Website (${data.selectedProducts ? data.selectedProducts.length : 1} product(s))`;
-    title = 'NEW QUOTE REQUEST';
-    rows = [
-      ['Name', data.name],
-      ['Company', data.company],
-      ['Email', data.email],
-      ['Phone', data.phone],
-      ['Country', data.country],
-      ['Application', data.application],
-      ['Quantity', data.quantity],
-      ['Core Size', data.coreSize]
     ];
   }
 
@@ -484,23 +409,6 @@ function buildEmail(data) {
     html += `<tr><td><strong>${escapeHtml(label)}</strong></td><td>${escapeHtml(value)}</td></tr>`;
   }
   html += '</table>';
-
-  if (data.type === 'quote' && Array.isArray(data.selectedProducts) && data.selectedProducts.length > 0) {
-    html += '<h3>Requested Products Specification List</h3>';
-    html += '<table cellpadding="6" cellspacing="0" border="1" style="border-collapse:collapse;">';
-    html += '<tr><th>#</th><th>Code</th><th>Product Name</th><th>Thickness</th><th>Width</th><th>Treatment</th></tr>';
-    data.selectedProducts.forEach((p, idx) => {
-      html += `<tr>
-        <td>${idx + 1}</td>
-        <td><strong>${escapeHtml(p.productCode)}</strong></td>
-        <td>${escapeHtml(p.productName)}</td>
-        <td>${escapeHtml(p.thickness || 'N/A')}</td>
-        <td>${escapeHtml(p.width || 'N/A')}</td>
-        <td>${escapeHtml(p.treatment || 'N/A')}</td>
-      </tr>`;
-    });
-    html += '</table>';
-  }
 
   html += `<h3>${data.type === 'contact' ? 'Message' : 'Customer Message'}</h3>`;
   html += `<p>${escapeHtml(data.message || 'No message provided.').replace(/\n/g, '<br>')}</p>`;
@@ -566,10 +474,18 @@ async function handleSendEmail(req, res) {
     }
 
     const email = buildEmail(validation.data);
+    const recipient = SERVICE_RECIPIENTS[validation.data.service];
 
-        const mailOptions = {
+    if (!recipient) {
+      return sendJson(res, 400, {
+        success: false,
+        message: 'Invalid service selected.'
+      });
+    }
+
+    const mailOptions = {
       from: MAIL_FROM,
-      to: MAIL_TO,
+      to: recipient,
       replyTo: validation.data.email,
       subject: email.subject,
       text: email.text,

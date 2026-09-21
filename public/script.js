@@ -3414,6 +3414,7 @@ async function handleHomeContactFormSubmit(e) {
     email: values.email || '',
     phone: values.phone || '',
     country: values.country || '',
+    service: values.homeservice || '',
     message: values.message || '',
     website: values.website || ''
   };
@@ -3500,6 +3501,7 @@ async function handleContactFormSubmit(e) {
     email: values.email || '',
     phone: values.phone || '',
     country: values.country || '',
+    service: values.contactservice || '',
     message: values.message || '',
     website: values.website || ''
   };
