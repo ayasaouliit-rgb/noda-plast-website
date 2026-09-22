@@ -69,8 +69,99 @@ for (let width = 400; width <= 2000; width += 50) {
   WIDTH_OPTIONS.push(`${width} mm`);
 }
 
+
+/* ============================================================
+   PRODUCT SPECIFICATION DEFINITIONS
+   Each product declares which specifications belong to its TDS.
+   Values are stored per thickness in product.technicalSpecifications.
+   ============================================================ */
+
+const SPECIFICATION_DEFINITIONS = {
+  thickness: {
+    label: 'Thickness',
+    unit: 'µm',
+    format: value => String(value).replace(' MIC', '')
+  },
+  unitweight: {
+    label: 'Unit Weight',
+    unit: 'g/m²'
+  },
+  yield: {
+    label: 'Yield',
+    unit: 'm²/kg'
+  },
+  density: {
+    label: 'Density',
+    unit: 'g/cm³'
+  },
+  wettingTension: {
+    label: 'Wetting Tension',
+    unit: 'mN/m'
+  },
+  whiteness: {
+    label: 'Whiteness Index',
+    unit: '-'
+  },
+  opacity: {
+    label: 'Opacity',
+    unit: '%'
+  },
+  transmittance: {
+    label: 'Transmittance',
+    unit: '%'
+  },
+  haze: {
+    label: 'Haze',
+    unit: '%'
+  },
+  gloss: {
+    label: 'Gloss 45°',
+    unit: '%'
+  },
+  cof: {
+    label: 'COF Dynamic F-F (U-U)',
+    unit: '-'
+  },
+  opticalDensity: {
+    label: 'Optical Density',
+    unit: '-'
+  },
+  otr: {
+    label: 'OTR',
+    unit: 'cc/(m²·day·atm)'
+  },
+  wvtr: {
+    label: 'WVTR',
+    unit: 'g/(m²·day·atm)'
+  },
+  tensileStrength: {
+    label: 'Tensile Strength (MD / TD)',
+    unit: 'MPa'
+  },
+  elongation: {
+    label: 'Elongation at Break (MD / TD)',
+    unit: '%'
+  },
+  modulus: {
+    label: 'Modulus of Elasticity (MD / TD)',
+    unit: 'MPa'
+  },
+  thermalShrinkage: {
+    label: 'Thermal Shrinkage (MD / TD)',
+    unit: '%'
+  },
+  heatSealRange: {
+    label: 'Heat Seal Range',
+    unit: '°C'
+  },
+  sealStrength: {
+    label: 'Seal Strength',
+    unit: 'N/15mm'
+  }
+};
+
 const PRODUCTS = [
-  {
+  /*{
     id: 'mattn',
     code: 'MATTN',
     img: 'matt-bopp-film-roll.png',
@@ -97,45 +188,46 @@ const PRODUCTS = [
     ],
     thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
     technicalSpecifications: {
-      '20 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "20 MIC": {
+        unitweight: "TBD",
+        yield: "TBD",
+        haze: "TBD",
+        gloss: "TBD",
+        cof: "TBD",
+        tensileStrength: "TBD",
+        elongation: "TBD",
+        thermalShrinkage: "TBD",
+        heatSealRange: "TBD",
       },
-      '25 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "25 MIC": {
+        unitweight: "TBD",
+        yield: "TBD",
+        haze: "TBD",
+        gloss: "TBD",
+        cof: "TBD",
+        tensileStrength: "TBD",
+        elongation: "TBD",
+        thermalShrinkage: "TBD",
+        heatSealRange: "TBD",
       },
-      '30 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "30 MIC": {
+        unitweight: "TBD",
+        yield: "TBD",
+        haze: "TBD",
+        gloss: "TBD",
+        cof: "TBD",
+        tensileStrength: "TBD",
+        elongation: "TBD",
+        thermalShrinkage: "TBD",
+        heatSealRange: "TBD",
       },
     },
+    specificationSchema: ["thickness", "unitweight", "yield", "haze", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "heatSealRange"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
     phCap: 'MATTN matt BOPP film'
-  },
+  },*/
 
   {
     id: 'matts',
@@ -164,40 +256,50 @@ const PRODUCTS = [
     ],
     thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
     technicalSpecifications: {
-      '20 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "20 MIC": {
+        unitweight: "17.6",
+        yield: "56.8",
+        wettingTension: "≥ 38",
+        gloss: "10",
+        haze: "72",
+        cof: "≤ 0.30",
+        tensileStrength: "130 / 260",
+        elongation: "150 / 50",
+        modulus: "2000 / 3800",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        sealStrength: "> 2",
+        heatSealRange: "125-140",
       },
-      '25 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "25 MIC": {
+        unitweight: "22.2",
+        yield: "45.5",
+        wettingTension: "≥ 38",
+        gloss: "10",
+        haze: "72",
+        cof: "≤ 0.30",
+        tensileStrength: "130 / 260",
+        elongation: "150 / 50",
+        modulus: "2000 / 3800",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        sealStrength: "> 2",
+        heatSealRange: "125-140",
       },
-      '30 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "30 MIC": {
+        unitweight: "26.7",
+        yield: "37.5",
+        wettingTension: "≥ 38",
+        gloss: "10",
+        haze: "72",
+        cof: "≤ 0.30",
+        tensileStrength: "130 / 260",
+        elongation: "150 / 50",
+        modulus: "2000 / 3800",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        sealStrength: "> 2",
+        heatSealRange: "125-140",
       },
     },
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "gloss", "haze", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage", "sealStrength", "heatSealRange"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -232,40 +334,47 @@ const PRODUCTS = [
     ],
     thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
     technicalSpecifications: {
-      '20 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "20 MIC": {
+        unitweight: "18.2",
+        yield: "54.9",
+        wettingTension: "≥ 38",
+        opacity: "1.8",
+        haze: "1.6",
+        gloss: "95",
+        cof: "≤ 0.30",
+        tensileStrength: "160 / 290",
+        elongation: "180 / 60",
+        modulus: "2000 / 3800",
+        thermalShrinkage: "≤ 5 / ≤ 3",
       },
-      '25 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "25 MIC": {
+        unitweight: "22.7",
+        yield: "44",
+        wettingTension: "≥ 38",
+        opacity: "2.2",
+        haze: "1.7",
+        gloss: "94",
+        cof: "≤ 0.30",
+        tensileStrength: "160 / 290",
+        elongation: "180 / 60",
+        modulus: "2000 / 3800",
+        thermalShrinkage: "≤ 5 / ≤ 3",
       },
-      '30 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "30 MIC": {
+        unitweight: "27.3",
+        yield: "36.6",
+        wettingTension: "≥ 38",
+        opacity: "2.5",
+        haze: "1.8",
+        gloss: "93",
+        cof: "≤ 0.30",
+        tensileStrength: "160 / 290",
+        elongation: "180 / 60",
+        modulus: "2000 / 3800",
+        thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opacity", "haze", "gloss", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -300,33 +409,122 @@ const PRODUCTS = [
     ],
     thicknesses: ['38 MIC', '47 MIC'],
     technicalSpecifications: {
-      '38 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "38 MIC": {
+        unitweight: "23.6",
+        yield: "42.4",
+        density: "0.68",
+        wettingTension: "≥ 38",
+        whiteness: "90",
+        opacity: "81",
+        gloss: "90",
+        cof: "≤ 0.30",
+        tensileStrength: "103 / 141",
+        elongation: "140 / 32",
+        modulus: "1080 / 2000",
       },
-      '47 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "47 MIC": {
+        unitweight: "32",
+        yield: "31.25",
+        density: "0.68",
+        wettingTension: "≥ 38",
+        whiteness: "92",
+        opacity: "83",
+        gloss: "90",
+        cof: "≤ 0.30",
+        tensileStrength: "103 / 141",
+        elongation: "140 / 32",
+        modulus: "1080 / 2000",
       },
     },
+    specificationSchema: ["thickness", "unitweight", "yield", "density", "wettingTension", "whiteness", "opacity", "gloss", "cof", "tensileStrength", "elongation", "modulus"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
     phCap: 'NLV white voided label film'
+  },
+
+  {
+    id: 'nsc',
+    code: 'NSC',
+    img: 'clear-bopp-film-roll.png',
+    gallery: [
+      'clear-bopp-film-roll.png',
+      'nsc/nsc (1).png',
+      'nsc/nsc (2).png',
+      'nsc/nsc (3).png'
+    ],
+    category: 'Clear Films',
+    name: 'NSC — Clear Non-Sealable',
+    shortName: 'Clear Non-Sealable Film',
+    desc: 'Transparent BOPP film without heat-sealing functionality.',
+    overview:
+      'NSC is a clear non-sealable BOPP film intended for applications requiring transparency without a heat-sealable structure.',
+    tags: [
+      'Clear',
+      'Transparent',
+      'Non-sealable'
+    ],
+    applications: [
+      'Printing',
+      'Lamination',
+      'Flexible packaging'
+    ],
+    thicknesses: ['20 MIC', '25 MIC', '30 MIC','40 MIC'],
+    technicalSpecifications: {
+      "20 MIC": {
+        unitweight: "18.2",
+        yield: "55",
+        wettingTension: "≥ 38",
+        haze: "≤3.5",
+        gloss: "82",
+        cof: "≤ 0.30",
+        tensileStrength: "150 / 290",
+        elongation: "200 / 50",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange:"105-140",
+      },
+      "25 MIC": {
+        unitweight: "22.7",
+        yield: "44",
+        wettingTension: "≥ 38",
+        haze: "≤3.5",
+        gloss: "82",
+        cof: "≤ 0.30",
+        tensileStrength: "140 / 290",
+        elongation: "200 / 50",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange:"105-140",
+      },
+      "30 MIC": {
+        unitweight: "27.3",
+        yield: "36.6",
+        wettingTension: "≥ 38",
+        haze: "≤3.5",
+        gloss: "82",
+        cof: "≤ 0.30",
+        tensileStrength: "140 / 290",
+        elongation: "200 / 50",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange:"105-140",
+      },
+      "40 MIC": {
+        unitweight: "36.5",
+        yield: "27.4",
+        wettingTension: "≥ 38",
+        haze: "≤3.5",
+        gloss: "82",
+        cof: "≤ 0.30",
+        tensileStrength: "140 / 290",
+        elongation: "180 / 40",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange:"105-140",
+      },
+    },
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "haze", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "heatSealRange"],
+    widthMin: 400,
+    widthMax: 2000,
+    treatments: [...TREATMENT_OPTIONS],
+    phCap: 'NRC clear release film'
   },
 
   {
@@ -335,9 +533,9 @@ const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
-      'nnc/nnc1.png',
-      'nnc/nnc2.png',
-      'nnc/nnc3.png'
+      'nnc/nnc (1).png',
+      'nnc/nnc (2).png',
+      'nnc/nnc (3).png'
     ],
     category: 'Clear Films',
     name: 'NNC — Clear Non-Sealable',
@@ -357,125 +555,38 @@ const PRODUCTS = [
     ],
     thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
     technicalSpecifications: {
-      '20 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "20 MIC": {
+        unitweight: "18.2",
+        yield: "54.9",
+        wettingTension: "≥ 38",
+        opacity: "1.8",
+        haze: "1.6",
+        gloss: "95",
+        cof: "≤ 0.30",
+        tensileStrength: "160 / 290",
+        elongation: "180 / 60",
+        modulus: "2000 / 3800",
+        thermalShrinkage: "≤ 5 / ≤ 3",
       },
-      '25 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-      '30 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "25 MIC": {
+        unitweight: "22.7",
+        yield: "44",
+        wettingTension: "≥ 38",
+        opacity: "2.2",
+        haze: "1.7",
+        gloss: "94",
+        cof: "≤ 0.30",
+        tensileStrength: "160 / 290",
+        elongation: "180 / 60",
+        modulus: "2000 / 3800",
+        thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    defaultThickness: '20 MIC',
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opacity","haze", "gloss", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
-    phCap: 'NNC clear non-sealable film'
-  },
-
-  {
-    id: 'nsc',
-    code: 'NSC',
-    img: 'clear-bopp-film-roll.png',
-    gallery: [
-      'clear-bopp-film-roll.png',
-      'nsc/nsc (1).png',
-      'nsc/nsc (2).png',
-      'nsc/nsc (3).png'
-    ],
-    category: 'Heat Sealable Films',
-    name: 'NSC — Transparent Clear Heat Sealable',
-    shortName: 'Transparent (Clear) Heat Sealable',
-    desc: 'Transparent clear BOPP film with heat-sealing capability.',
-    overview:
-      'NSC is a transparent heat-sealable BOPP film designed for packaging applications where clarity and reliable sealing are required.',
-    tags: [
-      'Transparent',
-      'Clear',
-      'Heat sealable'
-    ],
-    applications: [
-      'Flexible packaging',
-      'Food packaging',
-      'Bag making'
-    ],
-    thicknesses: ['20 MIC', '25 MIC', '30 MIC', '40 MIC'],
-    technicalSpecifications: {
-      '20 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-      '25 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-      '30 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-      '40 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-    },
-    defaultThickness: '25 MIC',
-    widthMin: 400,
-    widthMax: 2000,
-    treatments: [...TREATMENT_OPTIONS],
-    phCap: 'NSC transparent heat sealable BOPP film'
+    phCap: 'NRC clear release film'
   },
 
   {
@@ -506,52 +617,56 @@ const PRODUCTS = [
     ],
     thicknesses: ['20 MIC', '25 MIC', '30 MIC', '40 MIC'],
     technicalSpecifications: {
-      '20 MIC': {
-        unitweight: '18.2',
-        yield: '55',
-        haze: '≤3.5',
-        gloss: '86',
-        cof: '≤0.50',
-        tensileStrength: '150 / 290',
-        elongation: '200 / 50',
-        thermalShrinkage: '≤5 / ≤3',
-        heatSealRange: '105 - 140'
+      "20 MIC": {
+        unitweight: "18.2",
+        yield: "55",
+        wettingTension: "≥ 38",
+        haze: "≤3.5",
+        gloss: "86",
+        cof: "≤ 0.50",
+        tensileStrength: "150 / 290",
+        elongation: "200 / 50",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange:"105-140",
       },
-      '25 MIC': {
-        unitweight: '22.7',
-        yield: '44',
-        haze: '≤3.5',
-        gloss: '85',
-        cof: '≤0.50',
-        tensileStrength: '140 / 290',
-        elongation: '200 / 50',
-        thermalShrinkage: '≤5 / ≤3',
-        heatSealRange: '105 - 140'
+      "25 MIC": {
+        unitweight: "22.7",
+        yield: "44",
+        wettingTension: "≥ 38",
+        haze: "≤3.5",
+        gloss: "85",
+        cof: "≤ 0.50",
+        tensileStrength: "140 / 290",
+        elongation: "200 / 50",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange:"105-140",
       },
-      '30 MIC': {
-        unitweight: '27.3',
-        yield: '36.6',
-        haze: '≤3.5',
-        gloss: '85',
-        cof: '≤0.50',
-        tensileStrength: '140 / 290',
-        elongation: '200 / 50',
-        thermalShrinkage: '≤5 / ≤3',
-        heatSealRange: '105 - 140'
+      "30 MIC": {
+        unitweight: "27.3",
+        yield: "36.6",
+        wettingTension: "≥ 38",
+        haze: "≤3.5",
+        gloss: "82",
+        cof: "≤ 0.50",
+        tensileStrength: "140 / 290",
+        elongation: "200 / 50",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange:"105-140",
       },
-      '40 MIC': {
-        unitweight: '36.5',
-        yield: '27.4',
-        haze: '≤3.5',
-        gloss: '85',
-        cof: '≤0.50',
-        tensileStrength: '140 / 290',
-        elongation: '200 / 50',
-        thermalShrinkage: '≤5 / ≤3',
-        heatSealRange: '105 - 140'
+      "40 MIC": {
+        unitweight: "36.5",
+        yield: "27.4",
+        wettingTension: "≥ 38",
+        haze: "≤3.5",
+        gloss: "82",
+        cof: "≤ 0.50",
+        tensileStrength: "140 / 290",
+        elongation: "200 / 50",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange:"105-140",
       },
     },
-    defaultThickness: '25 MIC',
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "haze", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "heatSealRange"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -569,8 +684,8 @@ const PRODUCTS = [
       'nsmm/nsmm (3).jpg'
     ],
     category: 'Metallized Films',
-    name: 'NSMM — Metallized Sealable Film',
-    shortName: 'Metallized Sealable Film',
+    name: 'NSMM — Metallized Sealable One Side Film',
+    shortName: 'Metallized Sealable One Side Film',
     desc: 'Metallized BOPP film with sealing capability for packaging structures.',
     overview:
       'NSMM is a metallized sealable film designed for packaging structures where the metallized appearance and sealing functionality are required.',
@@ -586,52 +701,116 @@ const PRODUCTS = [
     ],
     thicknesses: ['18 MIC', '20 MIC', '25 MIC', '30 MIC'],
     technicalSpecifications: {
-      '18 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "18 MIC": {
+        unitweight: "16.4",
+        yield: "60.97",
+        wettingTension: "≥ 38",
+        opticalDensity:"> 2",
+        otr:"< 80",
+        wvtr:"<0.8",
+        cof: "≤ 0.30",
+        tensileStrength: "150 / 290",
+        elongation: "180 / 60",
+        thermalShrinkage: "≤ 5 / ≤ 3",
       },
-      '20 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "20 MIC": {
+        unitweight: "18.2",
+        yield: "54.9",
+        wettingTension: "≥ 38",
+        opticalDensity:"> 2",
+        otr:"< 80",
+        wvtr:"<0.8",
+        cof: "≤ 0.31",
+        tensileStrength: "150 / 290",
+        elongation: "180 / 60",
+        thermalShrinkage: "≤ 5 / ≤ 3",
       },
-      '25 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "25 MIC": {
+        unitweight: "22.75",
+        yield: "43.96",
+        wettingTension: "≥ 38",
+        opticalDensity:"> 2",
+        otr:"< 80",
+        wvtr:"<0.8",
+        cof: "≤ 0.32",
+        tensileStrength: "150 / 290",
+        elongation: "180 / 60",
+        thermalShrinkage: "≤ 5 / ≤ 3",
       },
-      '30 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "30 MIC": {
+        unitweight: "27.3",
+        yield: "36.6",
+        wettingTension: "≥ 38",
+        opticalDensity:"> 2",
+        otr:"< 80",
+        wvtr:"<0.8",
+        cof: "≤ 0.30",
+        tensileStrength: "150 / 290",
+        elongation: "180 / 60",
+        thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    defaultThickness: '20 MIC',
+    specificationSchema: ["thickness", "unitweight", "yield","wettingTension", "opticalDensity", "otr","wvtr", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
+    widthMin: 400,
+    widthMax: 2000,
+    treatments: [...TREATMENT_OPTIONS],
+    phCap: 'NSMM metallized sealable film'
+  },
+
+  {
+    id: 'nsmmb',
+    code: 'NSMM-B',
+    img: 'mtz-bopp-film-roll.png',
+    gallery: [
+      'mtz-bopp-film-roll.png',
+      'nsmmb/nsmmb (1).jpg',
+      'nsmmb/nsmmb (2).jpg',
+      'nsmmb/nsmmb (3).jpg'
+    ],
+    category: 'Metallized Films',
+    name: 'NSMM-B — Metallized Sealable Both Sides Film',
+    shortName: 'Metallized Sealable Both Sides Film',
+    desc: 'Metallized BOPP film with sealing capability for packaging structures.',
+    overview:
+      'NSMM is a metallized sealable film designed for packaging structures where the metallized appearance and sealing functionality are required.',
+    tags: [
+      'Metallized',
+      'Sealable',
+      'Barrier packaging'
+    ],
+    applications: [
+      'Metallized packaging',
+      'Snack packaging',
+      'Barrier laminates'
+    ],
+    thicknesses: ['18 MIC', '20 MIC'],
+    technicalSpecifications: {
+      "18 MIC": {
+        unitweight: "16.4",
+        yield: "60.97",
+        wettingTension: "≥ 38",
+        opticalDensity:"> 2",
+        otr:"< 80",
+        wvtr:"<0.8",
+        cof: "≤ 0.30",
+        tensileStrength: "150 / 290",
+        elongation: "180 / 60",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+      },
+      "20 MIC": {
+        unitweight: "18.2",
+        yield: "54.9",
+        wettingTension: "≥ 38",
+        opticalDensity:"> 2",
+        otr:"< 80",
+        wvtr:"<0.8",
+        cof: "≤ 0.31",
+        tensileStrength: "150 / 290",
+        elongation: "180 / 60",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+      },
+    },
+    specificationSchema: ["thickness", "unitweight", "yield","wettingTension", "opticalDensity", "otr","wvtr", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -666,52 +845,60 @@ const PRODUCTS = [
     ],
     thicknesses: ['25 MIC', '30 MIC', '35 MIC', '40 MIC'],
     technicalSpecifications: {
-      '25 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "25 MIC": {
+        unitweight: "17",
+        yield: "58.8",
+        density: "0.68",
+        wettingTension: "≥ 38",
+        whiteness: "89",
+        opacity: "70",
+        gloss: "90",
+        cof: "≤ 0.30",
+        tensileStrength: "103 / 141",
+        elongation: "140 / 32",
+        modulus: "1050 / 1980",
       },
-      '30 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "30 MIC": {
+        unitweight: "20.4",
+        yield: "49",
+        density: "0.68",
+        wettingTension: "≥ 38",
+        whiteness: "90",
+        opacity: "72",
+        gloss: "90",
+        cof: "≤ 0.30",
+        tensileStrength: "103 / 141",
+        elongation: "140 / 32",
+        modulus: "1050 / 1980",
       },
-      '35 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "35 MIC": {
+        unitweight: "23.8",
+        yield: "42",
+        density: "0.68",
+        wettingTension: "≥ 38",
+        whiteness: "90",
+        opacity: "73",
+        gloss: "93",
+        cof: "≤ 0.30",
+        tensileStrength: "103 / 141",
+        elongation: "140 / 32",
+        modulus: "1050 / 1980",
       },
-      '40 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "40 MIC": {
+        unitweight: "27.2",
+        yield: "36.8",
+        density: "0.68",
+        wettingTension: "≥ 38",
+        whiteness: "92",
+        opacity: "76",
+        gloss: "97",
+        cof: "≤ 0.30",
+        tensileStrength: "103 / 141",
+        elongation: "140 / 32",
+        modulus: "1050 / 1980",
       },
     },
-    defaultThickness: '30 MIC',
+    specificationSchema: ["thickness", "unitweight", "yield", "density", "wettingTension", "whiteness", "opacity", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -744,50 +931,77 @@ const PRODUCTS = [
       'Flexible packaging',
       'White packaging structures'
     ],
-    thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
+    thicknesses: ['18 MIC', '20 MIC', '25 MIC', '30 MIC', '40 MIC'],
     technicalSpecifications: {
-      '20 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "18 MIC": {
+        unitweight: "17.1",
+        yield: "58.5",
+        wettingTension: "≥ 38",
+        transmittance: "44",
+        gloss: "55",
+        cof: "≤ 0.30",
+        tensileStrength: "107 / 205",
+        elongation: "220 / 60",
+        thermalShrinkage: "≤ 5.0 / ≤ 3.0",
+        sealStrength: "> 2.0",
       },
-      '25 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "20 MIC": {
+        unitweight: "19.0",
+        yield: "52.6",
+        wettingTension: "≥ 38",
+        transmittance: "43",
+        gloss: "55",
+        cof: "≤ 0.30",
+        tensileStrength: "107 / 205",
+        elongation: "220 / 60",
+        thermalShrinkage: "≤ 5.0 / ≤ 3.0",
+        sealStrength: "> 2.0",
       },
-      '30 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "25 MIC": {
+        unitweight: "23.8",
+        yield: "42",
+        wettingTension: "≥ 38",
+        transmittance: "40",
+        gloss: "50",
+        cof: "≤ 0.30",
+        tensileStrength: "107 / 205",
+        elongation: "220 / 60",
+        thermalShrinkage: "≤ 5.0 / ≤ 3.0",
+        sealStrength: "> 2.0",
+      },
+      "30 MIC": {
+        unitweight: "28.6",
+        yield: "35.1",
+        wettingTension: "≥ 38",
+        transmittance: "38",
+        gloss: "50",
+        cof: "≤ 0.30",
+        tensileStrength: "107 / 205",
+        elongation: "220 / 60",
+        thermalShrinkage: "≤ 5.0 / ≤ 3.0",
+        sealStrength: "> 2.0",
+      },
+      "40 MIC": {
+        unitweight: "38.0",
+        yield: "26.3",
+        wettingTension: "≥ 38",
+        transmittance: "34",
+        gloss: "50",
+        cof: "≤ 0.30",
+        tensileStrength: "107 / 205",
+        elongation: "220 / 60",
+        thermalShrinkage: "≤ 5.0 / ≤ 3.0",
+        sealStrength: "> 2.0",
       },
     },
-    defaultThickness: '30 MIC',
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "transmittance", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "sealStrength"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
     phCap: 'NSW solid white sealable film'
   },
 
-  {
+/*  {
     id: 'nvmm',
     code: 'NVMM',
     img: 'mtz-bopp-film-roll.png',
@@ -849,12 +1063,11 @@ const PRODUCTS = [
         heatSealRange: 'TBD'
       },
     },
-    defaultThickness: '35 MIC',
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
     phCap: 'NVMM metalized white voided film'
-  }
+  }*/
   
   /*{
     id: 'nrc',
@@ -882,42 +1095,35 @@ const PRODUCTS = [
       'Technical converting',
       'Specialty applications'
     ],
-    thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
     technicalSpecifications: {
-      '20 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "38 MIC": {
+        unitweight: "23.6",
+        yield: "42.4",
+        density: "0.68",
+        wettingTension: "≥ 38",
+        whiteness: "90",
+        opacity: "81",
+        gloss: "90",
+        cof: "≤ 0.30",
+        tensileStrength: "103 / 141",
+        elongation: "140 / 32",
+        modulus: "1150 / 2100",
       },
-      '25 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-      '30 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+      "47 MIC": {
+        unitweight: "32",
+        yield: "31.25",
+        density: "0.68",
+        wettingTension: "≥ 38",
+        whiteness: "92",
+        opacity: "83",
+        gloss: "90",
+        cof: "≤ 0.30",
+        tensileStrength: "103 / 141",
+        elongation: "140 / 32",
+        modulus: "1150 / 2100",
       },
     },
+    specificationSchema: ["thickness", "unitweight", "yield", "density", "wettingTension", "whiteness", "opacity", "gloss", "cof", "tensileStrength", "elongation", "modulus"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -2488,115 +2694,120 @@ function updateSelectedProductSpecs(product) {
   };
 
 }
-function renderTechnicalSpecifications(product) {
-  const table = document.querySelector('#page-product-detail .spec-table');
+function isTBDSpecificationValue(value) {
+  if (value === undefined || value === null || value === '') return true;
+  return String(value).trim().toUpperCase() === 'TBD';
+}
 
-  if (!table || !product) return;
+function hasSpecificationValue(product, key) {
+  if (!product) return false;
+  if (key === 'thickness') return true;
+
+  return getProductThicknesses(product).some(thickness => {
+    const value = product.technicalSpecifications?.[thickness]?.[key];
+    return !isTBDSpecificationValue(value);
+  });
+}
+
+function getProductSpecificationSchema(product) {
+  const schema = Array.isArray(product?.specificationSchema)
+    ? product.specificationSchema
+    : [];
+
+  return schema
+    .map(key => ({
+      key,
+      ...(SPECIFICATION_DEFINITIONS[key] || {
+        label: key,
+        unit: '-'
+      })
+    }))
+    .filter(spec => hasSpecificationValue(product, spec.key));
+}
+
+function getProductTechnicalSpecificationValues(product, selectedThickness) {
+  if (!product) return {};
+
+  const thickness =
+    selectedThickness ||
+    product.defaultThickness ||
+    getProductThicknesses(product)[0];
+
+  const values = product.technicalSpecifications?.[thickness] || {};
+
+  return {
+    thickness,
+    ...values
+  };
+}
+
+function renderTechnicalSpecifications(product, selectedThickness) {
+  const table =
+    document.querySelector('#page-product-detail .spec-table');
+
+  if (!table || !product) {
+    return getProductTechnicalSpecificationValues(product, selectedThickness);
+  }
 
   const tbody = table.querySelector('tbody');
 
-  if (!tbody) return;
+  if (!tbody) {
+    return getProductTechnicalSpecificationValues(product, selectedThickness);
+  }
 
   const thicknesses = getProductThicknesses(product);
-
-  const specifications = [
-    {
-      label: 'Thickness',
-      unit: 'µm',
-      key: 'thickness',
-      format: thickness => thickness.replace(' MIC', '')
-    },
-    {
-      label: 'Unit weight',
-      unit: 'g/m²',
-      key: 'unitweight'
-    },
-    {
-      label: 'Yield',
-      unit: 'm²/kg',
-      key: 'yield'
-    },
-    {
-      label: 'Haze',
-      unit: '%',
-      key: 'haze'
-    },
-    {
-      label: 'Gloss',
-      unit: '%',
-      key: 'gloss'
-    },
-    {
-      label: 'COF',
-      unit: '-',
-      key: 'cof'
-    },
-    {
-      label: 'Tensile Strength (MD / TD)',
-      unit: 'MPa',
-      key: 'tensileStrength'
-    },
-    {
-      label: 'Elongation at Break (MD / TD)',
-      unit: '%',
-      key: 'elongation'
-    },
-    {
-      label: 'Thermal Shrinkage (MD / TD)',
-      unit: '%',
-      key: 'thermalShrinkage'
-    },
-    {
-      label: 'Heat Seal Range',
-      unit: '°C',
-      key: 'heatSealRange'
-    }
-  ];
+  const specifications = getProductSpecificationSchema(product);
 
   tbody.innerHTML = specifications.map(spec => {
-
     const values = thicknesses.map(thickness => {
-
       if (spec.key === 'thickness') {
-        return spec.format(thickness);
+        const formatter = spec.format || (value => value);
+        return formatter(thickness);
       }
 
       const thicknessSpecs =
         product.technicalSpecifications?.[thickness] || {};
 
       return thicknessSpecs[spec.key] ?? 'TBD';
-
     });
 
     return `
       <tr>
-        <td>${spec.label}</td>
-        <td>${spec.unit}</td>
-
+        <td>${escapeHtml(String(spec.label))}</td>
+        <td>${escapeHtml(String(spec.unit || '-'))}</td>
         ${values.map(value => `
           <td>${escapeHtml(String(value))}</td>
         `).join('')}
-
       </tr>
     `;
-
   }).join('');
 
-  const note = table.parentElement?.querySelector('.form-note');
+  const note =
+    table.parentElement?.querySelector('.form-note');
 
   if (note) {
     note.textContent =
-      'Placeholder values only — replace with approved NODA PLAST laboratory data before publication.';
+      'Typical values from the available NODA PLAST technical data sheets. Please contact NODA PLAST for detailed technical specifications and current approved values.';
   }
+
+  return getProductTechnicalSpecificationValues(
+    product,
+    selectedThickness
+  );
 }
 
 function updateProductDetailSpecifications(product, selectedThickness) {
   if (!product) return;
 
-  const selected = populateProductDetailThickness(product, selectedThickness);
-  const specs = renderTechnicalSpecifications(product, selected);
+  const selected =
+    populateProductDetailThickness(product, selectedThickness);
 
-  const thickness = document.getElementById('productThickness');
+  const specs =
+    renderTechnicalSpecifications(product, selected);
+
+  const thickness =
+    document.getElementById('productThickness');
+
   if (thickness && thickness.value !== selected) {
     thickness.value = selected;
   }
