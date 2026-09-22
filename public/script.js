@@ -131,7 +131,6 @@ const PRODUCTS = [
         heatSealRange: 'TBD'
       },
     },
-    defaultThickness: '20 MIC',
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -199,7 +198,6 @@ const PRODUCTS = [
         heatSealRange: 'TBD'
       },
     },
-    defaultThickness: '20 MIC',
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -268,7 +266,6 @@ const PRODUCTS = [
         heatSealRange: 'TBD'
       },
     },
-    defaultThickness: '30 MIC',
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -326,7 +323,6 @@ const PRODUCTS = [
         heatSealRange: 'TBD'
       },
     },
-    defaultThickness: '38 MIC',
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -401,75 +397,6 @@ const PRODUCTS = [
     treatments: [...TREATMENT_OPTIONS],
     phCap: 'NNC clear non-sealable film'
   },
-
-  /*{
-    id: 'nrc',
-    code: 'NRC',
-    img: 'clear-bopp-film-roll.png',
-    gallery: [
-      'clear-bopp-film-roll.png',
-      'clear-application-1.jpg',
-      'clear-application-2.jpg',
-      'clear-application-3.jpg'
-    ],
-    category: 'Clear Films',
-    name: 'NRC — Clear Release Film',
-    shortName: 'Clear Release Film',
-    desc: 'Clear release film designed for applications requiring a transparent release surface.',
-    overview:
-      'NRC is a clear release film intended for applications where a controlled release surface and transparent appearance are required.',
-    tags: [
-      'Clear',
-      'Release film',
-      'Transparent'
-    ],
-    applications: [
-      'Release applications',
-      'Technical converting',
-      'Specialty applications'
-    ],
-    thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
-    technicalSpecifications: {
-      '20 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-      '25 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-      '30 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-    },
-    defaultThickness: '30 MIC',
-    widthMin: 400,
-    widthMax: 2000,
-    treatments: [...TREATMENT_OPTIONS],
-    phCap: 'NRC clear release film'
-  },*/
 
   {
     id: 'nsc',
@@ -1720,7 +1647,7 @@ function renderProductGrid() {
 
           <div style="margin-bottom:5px;">
             <strong data-i18n="Thickness:">Thickness:</strong>
-            ${p.defaultThickness}
+            ${p.thicknesses.join(', ')}
           </div>
 
         </div>
