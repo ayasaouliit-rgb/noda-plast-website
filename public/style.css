@@ -1179,13 +1179,6 @@ footer {
 }
 
 
-/* EYEBROW */
-
-.section-dark .eyebrow {
-  color: #3498f5;
-}
-
-
 /* =========================================
    RESPONSIVE
    ========================================= */
@@ -1196,7 +1189,10 @@ footer {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-
+  .sustainability-image-home {
+    width: 100%;
+    height: 600px;
+  }
   .sustainability-image {
     height: 400px;
   }
@@ -1232,28 +1228,14 @@ footer {
     font-size: 20px;
   }
 
+  .sustainability-image-home {
+    width: 100%;
+    height: 600px;
+  }
+
   .sustainability-point h3 {
     font-size: 17px;
   }
-}
-
-/* stats editable pill */
-.editable {
-  position: relative;
-}
-
-.editable .edit-pill {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background: var(--orange);
-  color: var(--dark);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  padding: 3px 7px;
-  border-radius: 5px;
 }
 
 /* news */
@@ -3216,6 +3198,40 @@ CAREERS RESPONSIVE
 .export-market:first-child {
   border-top: 1px solid rgba(255, 255, 255, .1);
 }
+/* =========================================================
+   EXPORT MARKETS
+   ========================================================= */
+
+.export-markets-wrapper {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  background: #182229;
+}
+
+.export-markets {
+  height: 100%;
+  background: #182229;
+  padding: 35px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.export-markets::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Hamburger button hidden on desktop */
+
+.export-markets-toggle {
+  display: none;
+}
 
 .market-number {
   font-family: var(--font-head);
@@ -3237,6 +3253,151 @@ CAREERS RESPONSIVE
   color: #8F9BA0;
   font-size: 11px;
 }
+/* =========================================================
+   EXPORT MARKETS — MOBILE HAMBURGER
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .world-map-card {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .world-map-image {
+    width: 100%;
+  }
+
+  .export-markets-wrapper {
+    width: 100%;
+    height: auto;
+    background: #182229;
+  }
+
+  /* Hamburger header */
+
+  .export-markets-toggle {
+    width: 100%;
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 22px;
+
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+
+    background: #182229;
+    color: var(--white);
+
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 600;
+
+    text-align: left;
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .export-markets-toggle-text {
+    display: block;
+  }
+
+  /* Hamburger icon */
+
+  .export-hamburger {
+    width: 25px;
+    height: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    flex-shrink: 0;
+  }
+
+  .export-hamburger span {
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    background: var(--orange);
+
+    transition:
+      transform .25s ease,
+      opacity .25s ease;
+  }
+
+
+  /* Closed state */
+
+  .export-markets {
+    display: grid;
+
+    grid-template-rows: 0fr;
+
+    height: 0;
+    overflow: hidden;
+
+    padding: 0 22px;
+
+    opacity: 0;
+
+    transition:
+      height .3s ease,
+      opacity .25s ease,
+      padding .3s ease;
+  }
+
+
+  /* Open state */
+
+  .export-markets-wrapper.is-open .export-markets {
+    height: auto;
+    max-height: 420px;
+
+    overflow-y: auto;
+
+    padding-top: 8px;
+    padding-bottom: 15px;
+
+    opacity: 1;
+  }
+
+
+  /* Hamburger -> X */
+
+  .export-markets-wrapper.is-open
+  .export-hamburger span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .export-markets-wrapper.is-open
+  .export-hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .export-markets-wrapper.is-open
+  .export-hamburger span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+
+  /* Market rows */
+
+  .export-market {
+    padding: 14px 0;
+  }
+}
+/* =========================================================
+   GLOBAL MAP — RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 900px) {
 
@@ -3247,49 +3408,136 @@ CAREERS RESPONSIVE
   }
 
   .world-map-card {
-    width: 1000px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     grid-template-columns: 1fr;
+    overflow: hidden;
   }
 
   .world-map-image {
-    padding: 20px;
-  }
+  position: relative;
+  width: 100%;
+  height: 200px;
+  min-width: 0;
+  min-height: 0;
+
+  overflow: auto;
+
+  display: block;
+  padding: 0;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.world-map-image::-webkit-scrollbar {
+  display: none;
+}
+
+.world-map-image img {
+  display: block;
+
+  /* ZOOM */
+  width: 1200px;
+  max-width: none;
+  height: auto;
+  max-height: none;
+
+  /* Prevent the image from shrinking */
+  flex-shrink: 0;
+}
 
   .export-markets {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0 25px;
     padding: 25px;
+    min-width: 0;
   }
-
 }
 
 
+/* =========================================================
+   PHONES
+   ========================================================= */
+
 @media (max-width: 600px) {
-
-  .global-map-section {
-    padding-top: 55px;
-    padding-bottom: 70px;
+   .world-map-image {
+    height: 320px;
+    overflow: auto;
   }
 
-  .global-map-header h2 {
-    font-size: 36px;
+  .world-map-image img {
+    width: 1000px;
+    max-width: none;
+    max-height: none;
   }
 
-  .world-map-card {
-    border-radius: var(--radius-md);
+  .export-markets-toggle {
+    min-height: 58px;
+    padding: 0 18px;
+    font-size: 14px;
   }
 
-  .world-map-image {
-    padding: 20px 10px;
+  .export-hamburger {
+    width: 23px;
+    height: 18px;
   }
 
   .export-markets {
-    grid-template-columns: 1fr;
-    padding: 20px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
+  .export-markets-wrapper.is-open .export-markets {
+    max-height: 360px;
+  }
+
+  .export-market {
+    gap: 12px;
+    padding: 13px 0;
+  }
+
+  .market-number {
+    min-width: 22px;
+    font-size: 10px;
+  }
+
+  .export-market strong {
+    font-size: 14px;
+  }
+
+  .export-market small {
+    font-size: 10px;
+  }
 }
+
+
+@media (max-width: 380px) {
+   .world-map-image {
+    height: 280px;
+  }
+
+  .world-map-image img {
+    width: 900px;
+  }
+
+  .export-markets-toggle {
+    min-height: 54px;
+    padding: 0 15px;
+  }
+
+  .export-markets {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .export-markets-wrapper.is-open .export-markets {
+    max-height: 320px;
+  }
+}
+
 
 .global-stats {
   padding-top: 95px;

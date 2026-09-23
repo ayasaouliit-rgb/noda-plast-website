@@ -53,6 +53,7 @@
       <img alt="NODA PLAST FILM" class="logo-mobile" src="assets/images/nodaplast_logo.png" />
       <button class="modal-close" id="closeMobileBtn">✕</button>
     </div>
+    <a class="nav-link" data-i18n="home" data-nav="home" href="#">Home</a>
     <a class="nav-link" data-i18n="About Us" data-nav="about" href="#">About Us</a>
     <a class="nav-link" data-i18n="Products" data-nav="products" href="#">Products</a>
     <a class="nav-link" data-i18n="Applications" data-nav="applications" href="#">Applications</a>
@@ -1691,78 +1692,126 @@
           </div>
         </div>
         <div class="world-map-card">
-          <div class="world-map-image">
-            <img alt="World map showing NODA PLAST export markets" class="world-map" src="assets/images/world.svg" />
+
+  <div class="world-map-image">
+    <img
+      alt="World map showing NODA PLAST export markets"
+      class="world-map"
+      src="assets/images/world.svg"
+    />
+  </div>
+
+  <div class="export-markets-wrapper">
+
+    <button
+      class="export-markets-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="exportMarketsMenu"
+    >
+      <span
+        class="export-markets-toggle-text"
+        data-i18n="Export Markets"
+      >
+        Export Markets
+      </span>
+
+      <span class="export-hamburger" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <div class="export-markets" id="exportMarketsMenu">
+
+      <!-- YOUR EXISTING MARKETS -->
+
+      <div class="export-market">
+        <span class="market-number">01</span>
+        <div>
+          <strong data-i18n="Tunisia">Tunisia</strong>
+          <small data-i18n="North Africa">North Africa</small>
+        </div>
+      </div>
+
+      <div class="export-market">
+        <span class="market-number">02</span>
+        <div>
+          <strong data-i18n="Libya">Libya</strong>
+          <small data-i18n="North Africa">North Africa</small>
+        </div>
+      </div>
+
+      <div class="export-market">
+        <span class="market-number">03</span>
+        <div>
+          <strong data-i18n="Egypt">Egypt</strong>
+          <small data-i18n="North Africa">North Africa</small>
+        </div>
+      </div>
+
+      <div class="export-market">
+        <span class="market-number">04</span>
+        <div>
+          <strong data-i18n="Mauritania">Mauritania</strong>
+          <small data-i18n="West Africa">West Africa</small>
+        </div>
+      </div>
+
+      <div class="export-market">
+        <span class="market-number">05</span>
+        <div>
+          <strong data-i18n="Senegal">Senegal</strong>
+          <small data-i18n="West Africa">West Africa</small>
+        </div>
+      </div>
+
+      <div class="export-market">
+        <span class="market-number">06</span>
+        <div>
+          <strong data-i18n="Nigeria">Nigeria</strong>
+          <small data-i18n="West Africa">West Africa</small>
+        </div>
+      </div>
+
+      <div class="export-market">
+        <span class="market-number">07</span>
+        <div>
+          <strong data-i18n="Cotedivoure">Cotedivoure</strong>
+          <small data-i18n="West Africa">West Africa</small>
+        </div>
+      </div>
+
+      <div class="export-market">
+        <span class="market-number">08</span>
+        <div>
+          <strong data-i18n="Syria">Syria</strong>
+          <small data-i18n="West Asia">West Asia</small>
+        </div>
+      </div>
+
+      <div class="export-market">
+        <span class="market-number">09</span>
+        <div class="next-market">
+          <div>
+            <strong data-i18n="France">France</strong>
+            <small data-i18n="Europe">Europe</small>
           </div>
-          <div class="export-markets">
-            <div class="export-market">
-              <span class="market-number">01</span>
-              <div>
-                <strong data-i18n="Tunisia">Tunisia</strong>
-                <small data-i18n="North Africa">North Africa</small>
-              </div>
-            </div>
-            <div class="export-market">
-              <span class="market-number">02</span>
-              <div>
-                <strong data-i18n="Libya">Libya</strong>
-                <small data-i18n="North Africa">North Africa</small>
-              </div>
-            </div>
-            <div class="export-market">
-              <span class="market-number">03</span>
-              <div>
-                <strong data-i18n="Egypt">Egypt</strong>
-                <small data-i18n="North Africa">North Africa</small>
-              </div>
-            </div>
-            <div class="export-market">
-              <span class="market-number">04</span>
-              <div>
-                <strong data-i18n="Mauritania">Mauritania</strong>
-                <small data-i18n="West Africa">West Africa</small>
-              </div>
-            </div>
-            <div class="export-market">
-              <span class="market-number">05</span>
-              <div>
-                <strong data-i18n="Senegal">Senegal</strong>
-                <small data-i18n="West Africa">West Africa</small>
-              </div>
-            </div>
-            <div class="export-market">
-              <span class="market-number">06</span>
-              <div>
-                <strong data-i18n="Nigeria">Nigeria</strong>
-                <small data-i18n="West Africa">West Africa</small>
-              </div>
-            </div>
-            <div class="export-market">
-              <span class="market-number">07</span>
-              <div>
-                <strong data-i18n="Cotedivoure">Cotedivoure</strong>
-                <small data-i18n="West Africa">West Africa</small>
-              </div>
-            </div>
-            <div class="export-market">
-              <span class="market-number">08</span>
-              <div>
-                <strong data-i18n="Syria">Syria</strong>
-                <small data-i18n="West Asia">West Asia</small>
-              </div>
-            </div>
-            <div class="export-market">
-              <span class="market-number">09</span>
-              <div class="next-market">
-                <div>
-                  <strong data-i18n="France">France</strong>
-                  <small data-i18n="Europe">Europe</small>
-                </div>
-                <div class="coming-soon" data-i18n="we are coming soon">we are coming soon</div>
-              </div>
-            </div>
+
+          <div
+            class="coming-soon"
+            data-i18n="we are coming soon"
+          >
+            we are coming soon
           </div>
         </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
       </section>
       <section class="section section-tint global-stats">
         <div class="container">
