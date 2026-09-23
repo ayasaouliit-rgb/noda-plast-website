@@ -91,7 +91,9 @@ const FR={"Exhibition": "Exposition","October 17 – 21, 2026": "17 – 21 octob
 "You can reach our sales team at commercial@nodaplast-film.com. For general enquiries, contact us at contact@nodaplast-film.com.": "Vous pouvez joindre notre équipe commerciale à commercial@nodaplast-film.com. Pour toute demande générale, contactez-nous à contact@nodaplast-film.com.",
 "Where is NODA PLAST located?": "Où se situe NODA PLAST ?",
 "NODA PLAST FILM is located in the Industrial Zone, Guidjel, Sétif, Algeria (demo address shown in this prototype).": "NODA PLAST FILM est situé dans la Zone Industrielle de Guidjel, Sétif, Algérie (adresse de démonstration affichée dans ce prototype).",
-
+"Finished jumbo rolls ready for slitting and dispatch.": "Rouleaux jumbo finis, prêts pour le refendage et l’expédition.",
+"Laboratory-driven quality checks on every batch.": "Contrôles qualité en laboratoire sur chaque lot.",
+"Instrumented testing of optical, mechanical and surface properties.": "Tests instrumentés des propriétés optiques, mécaniques et de surface.",
 };
 
 const FALLBACK=[["All rights reserved.", "Tous droits réservés."], ["Learn more", "En savoir plus"], ["Read more", "Lire la suite"], ["View", "Voir"], ["Details", "Détails"], ["Quality", "Qualité"], ["Products", "Produits"], ["Product", "Produit"], ["Services", "Services"], ["Company", "Entreprise"], ["Technology", "Technologie"], ["Support", "Support"], ["Country", "Pays"], ["Email", "E-mail"], ["Phone", "Téléphone"], ["Message", "Message"], ["Name", "Nom"], ["Location", "Lieu"], ["Employment", "Emploi"]];
