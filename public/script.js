@@ -469,7 +469,7 @@ const PRODUCTS = [
       'Lamination',
       'Flexible packaging'
     ],
-    thicknesses: ['20 MIC', '25 MIC', '30 MIC','40 MIC'],
+    thicknesses: ['20 MIC', '25 MIC', '30 MIC', '40 MIC'],
     technicalSpecifications: {
       "20 MIC": {
         unitweight: "18.2",
@@ -481,7 +481,7 @@ const PRODUCTS = [
         tensileStrength: "150 / 290",
         elongation: "200 / 50",
         thermalShrinkage: "≤ 5 / ≤ 3",
-        heatSealRange:"105-140",
+        heatSealRange: "105-140",
       },
       "25 MIC": {
         unitweight: "22.7",
@@ -493,7 +493,7 @@ const PRODUCTS = [
         tensileStrength: "140 / 290",
         elongation: "200 / 50",
         thermalShrinkage: "≤ 5 / ≤ 3",
-        heatSealRange:"105-140",
+        heatSealRange: "105-140",
       },
       "30 MIC": {
         unitweight: "27.3",
@@ -505,7 +505,7 @@ const PRODUCTS = [
         tensileStrength: "140 / 290",
         elongation: "200 / 50",
         thermalShrinkage: "≤ 5 / ≤ 3",
-        heatSealRange:"105-140",
+        heatSealRange: "105-140",
       },
       "40 MIC": {
         unitweight: "36.5",
@@ -517,7 +517,7 @@ const PRODUCTS = [
         tensileStrength: "140 / 290",
         elongation: "180 / 40",
         thermalShrinkage: "≤ 5 / ≤ 3",
-        heatSealRange:"105-140",
+        heatSealRange: "105-140",
       },
     },
     specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "haze", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "heatSealRange"],
@@ -582,7 +582,7 @@ const PRODUCTS = [
         thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opacity","haze", "gloss", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage"],
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opacity", "haze", "gloss", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -627,7 +627,7 @@ const PRODUCTS = [
         tensileStrength: "150 / 290",
         elongation: "200 / 50",
         thermalShrinkage: "≤ 5 / ≤ 3",
-        heatSealRange:"105-140",
+        heatSealRange: "105-140",
       },
       "25 MIC": {
         unitweight: "22.7",
@@ -639,7 +639,7 @@ const PRODUCTS = [
         tensileStrength: "140 / 290",
         elongation: "200 / 50",
         thermalShrinkage: "≤ 5 / ≤ 3",
-        heatSealRange:"105-140",
+        heatSealRange: "105-140",
       },
       "30 MIC": {
         unitweight: "27.3",
@@ -651,7 +651,7 @@ const PRODUCTS = [
         tensileStrength: "140 / 290",
         elongation: "200 / 50",
         thermalShrinkage: "≤ 5 / ≤ 3",
-        heatSealRange:"105-140",
+        heatSealRange: "105-140",
       },
       "40 MIC": {
         unitweight: "36.5",
@@ -663,7 +663,7 @@ const PRODUCTS = [
         tensileStrength: "140 / 290",
         elongation: "200 / 50",
         thermalShrinkage: "≤ 5 / ≤ 3",
-        heatSealRange:"105-140",
+        heatSealRange: "105-140",
       },
     },
     specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "haze", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "heatSealRange"],
@@ -705,9 +705,9 @@ const PRODUCTS = [
         unitweight: "16.4",
         yield: "60.97",
         wettingTension: "≥ 38",
-        opticalDensity:"> 2",
-        otr:"< 80",
-        wvtr:"<0.8",
+        opticalDensity: "> 2",
+        otr: "< 80",
+        wvtr: "<0.8",
         cof: "≤ 0.30",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
@@ -717,9 +717,9 @@ const PRODUCTS = [
         unitweight: "18.2",
         yield: "54.9",
         wettingTension: "≥ 38",
-        opticalDensity:"> 2",
-        otr:"< 80",
-        wvtr:"<0.8",
+        opticalDensity: "> 2",
+        otr: "< 80",
+        wvtr: "<0.8",
         cof: "≤ 0.31",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
@@ -729,9 +729,9 @@ const PRODUCTS = [
         unitweight: "22.75",
         yield: "43.96",
         wettingTension: "≥ 38",
-        opticalDensity:"> 2",
-        otr:"< 80",
-        wvtr:"<0.8",
+        opticalDensity: "> 2",
+        otr: "< 80",
+        wvtr: "<0.8",
         cof: "≤ 0.32",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
@@ -741,16 +741,16 @@ const PRODUCTS = [
         unitweight: "27.3",
         yield: "36.6",
         wettingTension: "≥ 38",
-        opticalDensity:"> 2",
-        otr:"< 80",
-        wvtr:"<0.8",
+        opticalDensity: "> 2",
+        otr: "< 80",
+        wvtr: "<0.8",
         cof: "≤ 0.30",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
         thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield","wettingTension", "opticalDensity", "otr","wvtr", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opticalDensity", "otr", "wvtr", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -789,9 +789,9 @@ const PRODUCTS = [
         unitweight: "16.4",
         yield: "60.97",
         wettingTension: "≥ 38",
-        opticalDensity:"> 2",
-        otr:"< 80",
-        wvtr:"<0.8",
+        opticalDensity: "> 2",
+        otr: "< 80",
+        wvtr: "<0.8",
         cof: "≤ 0.30",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
@@ -801,16 +801,16 @@ const PRODUCTS = [
         unitweight: "18.2",
         yield: "54.9",
         wettingTension: "≥ 38",
-        opticalDensity:"> 2",
-        otr:"< 80",
-        wvtr:"<0.8",
+        opticalDensity: "> 2",
+        otr: "< 80",
+        wvtr: "<0.8",
         cof: "≤ 0.31",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
         thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield","wettingTension", "opticalDensity", "otr","wvtr", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opticalDensity", "otr", "wvtr", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -1001,74 +1001,74 @@ const PRODUCTS = [
     phCap: 'NSW solid white sealable film'
   },
 
-/*  {
-    id: 'nvmm',
-    code: 'NVMM',
-    img: 'mtz-bopp-film-roll.png',
-    gallery: [
-      'mtz-bopp-film-roll.png',
-      'nvmm/nvmm (1).png',
-      'nvmm/nvmm (2).png',
-      'nvmm/nvmm (3).png'
-    ],
-    category: 'White Films, Metalized Films',
-    name: 'NVMM — Metalized White Voided Film',
-    shortName: 'Metalized White Voided Film',
-    desc: 'Metalized white voided BOPP film designed for applications requiring an opaque white appearance and lightweight structure.',
-    overview:
-      'NVMM is a metalized white voided BOPP film intended for applications requiring a white opaque appearance and voided structure.',
-    tags: [
-      'White',
-      'Voided',
-      'Opaque'
-    ],
-    applications: [
-      'Labels',
-      'Packaging',
-      'Specialty applications'
-    ],
-    thicknesses: ['35 MIC', '40 MIC', '45 MIC'],
-    technicalSpecifications: {
-      '35 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
+  /*  {
+      id: 'nvmm',
+      code: 'NVMM',
+      img: 'mtz-bopp-film-roll.png',
+      gallery: [
+        'mtz-bopp-film-roll.png',
+        'nvmm/nvmm (1).png',
+        'nvmm/nvmm (2).png',
+        'nvmm/nvmm (3).png'
+      ],
+      category: 'White Films, Metalized Films',
+      name: 'NVMM — Metalized White Voided Film',
+      shortName: 'Metalized White Voided Film',
+      desc: 'Metalized white voided BOPP film designed for applications requiring an opaque white appearance and lightweight structure.',
+      overview:
+        'NVMM is a metalized white voided BOPP film intended for applications requiring a white opaque appearance and voided structure.',
+      tags: [
+        'White',
+        'Voided',
+        'Opaque'
+      ],
+      applications: [
+        'Labels',
+        'Packaging',
+        'Specialty applications'
+      ],
+      thicknesses: ['35 MIC', '40 MIC', '45 MIC'],
+      technicalSpecifications: {
+        '35 MIC': {
+          unitweight: 'TBD',
+          yield: 'TBD',
+          haze: 'TBD',
+          gloss: 'TBD',
+          cof: 'TBD',
+          tensileStrength: 'TBD',
+          elongation: 'TBD',
+          thermalShrinkage: 'TBD',
+          heatSealRange: 'TBD'
+        },
+        '40 MIC': {
+          unitweight: 'TBD',
+          yield: 'TBD',
+          haze: 'TBD',
+          gloss: 'TBD',
+          cof: 'TBD',
+          tensileStrength: 'TBD',
+          elongation: 'TBD',
+          thermalShrinkage: 'TBD',
+          heatSealRange: 'TBD'
+        },
+        '45 MIC': {
+          unitweight: 'TBD',
+          yield: 'TBD',
+          haze: 'TBD',
+          gloss: 'TBD',
+          cof: 'TBD',
+          tensileStrength: 'TBD',
+          elongation: 'TBD',
+          thermalShrinkage: 'TBD',
+          heatSealRange: 'TBD'
+        },
       },
-      '40 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-      '45 MIC': {
-        unitweight: 'TBD',
-        yield: 'TBD',
-        haze: 'TBD',
-        gloss: 'TBD',
-        cof: 'TBD',
-        tensileStrength: 'TBD',
-        elongation: 'TBD',
-        thermalShrinkage: 'TBD',
-        heatSealRange: 'TBD'
-      },
-    },
-    widthMin: 400,
-    widthMax: 2000,
-    treatments: [...TREATMENT_OPTIONS],
-    phCap: 'NVMM metalized white voided film'
-  }*/
-  
+      widthMin: 400,
+      widthMax: 2000,
+      treatments: [...TREATMENT_OPTIONS],
+      phCap: 'NVMM metalized white voided film'
+    }*/
+
   /*{
     id: 'nrc',
     code: 'NRC',
@@ -1774,10 +1774,10 @@ function createNewsSection(item, index) {
 
             <span class="news-paper-category">
               ${i18nText(
-                item.type === 'event'
-                  ? 'Event'
-                  : item.category
-              )}
+    item.type === 'event'
+      ? 'Event'
+      : item.category
+  )}
             </span>
 
             <span class="news-date">
@@ -1793,23 +1793,6 @@ function createNewsSection(item, index) {
           <p>
             ${i18nText(item.desc || '')}
           </p>
-
-          <button
-            type="button"
-            class="news-paper-readmore"
-            data-news-id="${item.id}"
-          >
-            ${i18nText(
-              item.type === 'event'
-                ? 'View event'
-                : 'Read more'
-            )}
-
-            <span class="material-symbols-outlined">
-              arrow_forward
-            </span>
-
-          </button>
 
         </div>
 
@@ -1996,161 +1979,161 @@ function renderProductDetail(id) {
    Safe, isolated gallery with proper cleanup
    ============================================================ */
 
-const pdImageImg =
-  document.getElementById('pdImageImg');
+  const pdImageImg =
+    document.getElementById('pdImageImg');
 
-const pdGalleryThumbs =
-  document.getElementById('pdGalleryThumbs');
-
-
-if (pdImageImg) {
-
-  /*
-   * CLEAN UP THE PREVIOUS PRODUCT GALLERY
-   *
-   * This is the key fix.
-   * When a new product is opened, the previous product's
-   * autoplay timer, transition timer and event listeners
-   * are stopped before the new gallery starts.
-   */
-
-  if (typeof window.__nodaProductGalleryCleanup === 'function') {
-    window.__nodaProductGalleryCleanup();
-  }
+  const pdGalleryThumbs =
+    document.getElementById('pdGalleryThumbs');
 
 
-  /*
-   * Get this product's gallery only.
-   */
-
-  const galleryImages =
-    Array.isArray(p.gallery) && p.gallery.length
-      ? p.gallery.slice(0, 4)
-      : [p.img];
-
-
-  /*
-   * Unique gallery instance.
-   * Any delayed callback from an older instance becomes invalid.
-   */
-
-  const galleryInstanceId =
-    Symbol('productGallery');
-
-
-  let currentIndex = 0;
-  let autoplayTimer = null;
-  let transitionTimer = null;
-  let galleryPaused = false;
-  let destroyed = false;
-
-
-  /*
-   * Gallery element for hover pause.
-   */
-
-  const galleryElement =
-    document.querySelector('.pd-gallery');
-
-
-  /*
-   * CLEANUP FUNCTION FOR THIS GALLERY INSTANCE
-   */
-
-  const cleanupGallery = () => {
-
-    destroyed = true;
-
-    clearInterval(autoplayTimer);
-    clearTimeout(transitionTimer);
-
-    autoplayTimer = null;
-    transitionTimer = null;
+  if (pdImageImg) {
 
     /*
-     * Remove listeners attached by this gallery instance.
+     * CLEAN UP THE PREVIOUS PRODUCT GALLERY
+     *
+     * This is the key fix.
+     * When a new product is opened, the previous product's
+     * autoplay timer, transition timer and event listeners
+     * are stopped before the new gallery starts.
      */
 
-    if (galleryElement) {
-      galleryElement.removeEventListener(
-        'mouseenter',
-        handleMouseEnter
-      );
-
-      galleryElement.removeEventListener(
-        'mouseleave',
-        handleMouseLeave
-      );
+    if (typeof window.__nodaProductGalleryCleanup === 'function') {
+      window.__nodaProductGalleryCleanup();
     }
 
+
     /*
-     * Only clear the global reference if it still
-     * belongs to this exact gallery instance.
+     * Get this product's gallery only.
      */
 
-    if (
-      window.__nodaProductGalleryCleanup === cleanupGallery
-    ) {
-      window.__nodaProductGalleryCleanup = null;
-    }
-
-  };
-
-
-  /*
-   * Register this gallery as the active one.
-   */
-
-  window.__nodaProductGalleryCleanup = cleanupGallery;
-
-
-  /* ==========================================================
-     RENDER GALLERY
-     ========================================================== */
-
-  function renderGallery() {
-
-    if (
-      destroyed ||
-      window.__nodaProductGalleryCleanup !== cleanupGallery
-    ) {
-      return;
-    }
-
-    if (!galleryImages.length) return;
-
-
-    const currentImage =
-      galleryImages[currentIndex];
+    const galleryImages =
+      Array.isArray(p.gallery) && p.gallery.length
+        ? p.gallery.slice(0, 4)
+        : [p.img];
 
 
     /*
-     * Only this product's image can be displayed.
+     * Unique gallery instance.
+     * Any delayed callback from an older instance becomes invalid.
      */
 
-    pdImageImg.src =
-      'assets/images/' + currentImage;
+    const galleryInstanceId =
+      Symbol('productGallery');
 
-    pdImageImg.alt =
-      p.phCap || p.name;
+
+    let currentIndex = 0;
+    let autoplayTimer = null;
+    let transitionTimer = null;
+    let galleryPaused = false;
+    let destroyed = false;
 
 
     /*
-     * Create thumbnails from the other images.
+     * Gallery element for hover pause.
      */
 
-    const thumbnailIndexes =
-      galleryImages
-        .map((image, index) => index)
-        .filter(index => index !== currentIndex);
+    const galleryElement =
+      document.querySelector('.pd-gallery');
 
 
-    if (pdGalleryThumbs) {
+    /*
+     * CLEANUP FUNCTION FOR THIS GALLERY INSTANCE
+     */
 
-      pdGalleryThumbs.innerHTML =
-        thumbnailIndexes
-          .slice(0, 3)
-          .map(index => `
+    const cleanupGallery = () => {
+
+      destroyed = true;
+
+      clearInterval(autoplayTimer);
+      clearTimeout(transitionTimer);
+
+      autoplayTimer = null;
+      transitionTimer = null;
+
+      /*
+       * Remove listeners attached by this gallery instance.
+       */
+
+      if (galleryElement) {
+        galleryElement.removeEventListener(
+          'mouseenter',
+          handleMouseEnter
+        );
+
+        galleryElement.removeEventListener(
+          'mouseleave',
+          handleMouseLeave
+        );
+      }
+
+      /*
+       * Only clear the global reference if it still
+       * belongs to this exact gallery instance.
+       */
+
+      if (
+        window.__nodaProductGalleryCleanup === cleanupGallery
+      ) {
+        window.__nodaProductGalleryCleanup = null;
+      }
+
+    };
+
+
+    /*
+     * Register this gallery as the active one.
+     */
+
+    window.__nodaProductGalleryCleanup = cleanupGallery;
+
+
+    /* ==========================================================
+       RENDER GALLERY
+       ========================================================== */
+
+    function renderGallery() {
+
+      if (
+        destroyed ||
+        window.__nodaProductGalleryCleanup !== cleanupGallery
+      ) {
+        return;
+      }
+
+      if (!galleryImages.length) return;
+
+
+      const currentImage =
+        galleryImages[currentIndex];
+
+
+      /*
+       * Only this product's image can be displayed.
+       */
+
+      pdImageImg.src =
+        'assets/images/' + currentImage;
+
+      pdImageImg.alt =
+        p.phCap || p.name;
+
+
+      /*
+       * Create thumbnails from the other images.
+       */
+
+      const thumbnailIndexes =
+        galleryImages
+          .map((image, index) => index)
+          .filter(index => index !== currentIndex);
+
+
+      if (pdGalleryThumbs) {
+
+        pdGalleryThumbs.innerHTML =
+          thumbnailIndexes
+            .slice(0, 3)
+            .map(index => `
             <button
               type="button"
               class="pd-gallery-thumb"
@@ -2164,96 +2147,60 @@ if (pdImageImg) {
               >
             </button>
           `)
-          .join('');
+            .join('');
 
 
-      /*
-       * Add click listeners only to the current gallery's
-       * newly created thumbnails.
-       */
+        /*
+         * Add click listeners only to the current gallery's
+         * newly created thumbnails.
+         */
 
-      pdGalleryThumbs
-        .querySelectorAll('.pd-gallery-thumb')
-        .forEach(thumb => {
+        pdGalleryThumbs
+          .querySelectorAll('.pd-gallery-thumb')
+          .forEach(thumb => {
 
-          thumb.addEventListener('click', () => {
+            thumb.addEventListener('click', () => {
 
-            if (
-              destroyed ||
-              window.__nodaProductGalleryCleanup !== cleanupGallery
-            ) {
-              return;
-            }
-
-
-            const newIndex =
-              Number(thumb.dataset.galleryIndex);
+              if (
+                destroyed ||
+                window.__nodaProductGalleryCleanup !== cleanupGallery
+              ) {
+                return;
+              }
 
 
-            if (
-              Number.isNaN(newIndex) ||
-              newIndex === currentIndex
-            ) {
-              return;
-            }
+              const newIndex =
+                Number(thumb.dataset.galleryIndex);
 
 
-            pauseGallery();
+              if (
+                Number.isNaN(newIndex) ||
+                newIndex === currentIndex
+              ) {
+                return;
+              }
 
-            changeGalleryImage(newIndex);
 
-            restartGalleryAutoplay();
+              pauseGallery();
+
+              changeGalleryImage(newIndex);
+
+              restartGalleryAutoplay();
+
+            });
 
           });
 
-        });
+      }
 
     }
 
-  }
 
+    /* ==========================================================
+       CHANGE MAIN IMAGE
+       ========================================================== */
 
-  /* ==========================================================
-     CHANGE MAIN IMAGE
-     ========================================================== */
-
-  function changeGalleryImage(newIndex) {
-
-    if (
-      destroyed ||
-      window.__nodaProductGalleryCleanup !== cleanupGallery
-    ) {
-      return;
-    }
-
-
-    if (
-      newIndex < 0 ||
-      newIndex >= galleryImages.length ||
-      newIndex === currentIndex
-    ) {
-      return;
-    }
-
-
-    /*
-     * Cancel any previous pending transition.
-     * This prevents delayed transitions from stacking.
-     */
-
-    clearTimeout(transitionTimer);
-
-
-    pdImageImg.classList.add('gallery-changing');
-
-
-    transitionTimer = setTimeout(() => {
-
-      /*
-       * IMPORTANT:
-       * Verify that this callback still belongs to
-       * the currently active product gallery.
-       */
+    function changeGalleryImage(newIndex) {
 
       if (
         destroyed ||
@@ -2263,12 +2210,33 @@ if (pdImageImg) {
       }
 
 
-      currentIndex = newIndex;
+      if (
+        newIndex < 0 ||
+        newIndex >= galleryImages.length ||
+        newIndex === currentIndex
+      ) {
+        return;
+      }
 
-      renderGallery();
+
+      /*
+       * Cancel any previous pending transition.
+       * This prevents delayed transitions from stacking.
+       */
+
+      clearTimeout(transitionTimer);
 
 
-      requestAnimationFrame(() => {
+      pdImageImg.classList.add('gallery-changing');
+
+
+      transitionTimer = setTimeout(() => {
+
+        /*
+         * IMPORTANT:
+         * Verify that this callback still belongs to
+         * the currently active product gallery.
+         */
 
         if (
           destroyed ||
@@ -2277,137 +2245,152 @@ if (pdImageImg) {
           return;
         }
 
-        pdImageImg.classList.remove('gallery-changing');
 
-      });
+        currentIndex = newIndex;
 
-    }, 180);
-
-  }
+        renderGallery();
 
 
-  /* ==========================================================
-     AUTOPLAY
-     ========================================================== */
+        requestAnimationFrame(() => {
 
-  function startGalleryAutoplay() {
+          if (
+            destroyed ||
+            window.__nodaProductGalleryCleanup !== cleanupGallery
+          ) {
+            return;
+          }
 
-    clearInterval(autoplayTimer);
+          pdImageImg.classList.remove('gallery-changing');
 
-    if (galleryImages.length <= 1) {
-      return;
+        });
+
+      }, 180);
+
     }
 
 
-    autoplayTimer = setInterval(() => {
+    /* ==========================================================
+       AUTOPLAY
+       ========================================================== */
 
-      if (
-        destroyed ||
-        window.__nodaProductGalleryCleanup !== cleanupGallery ||
-        galleryPaused
-      ) {
+    function startGalleryAutoplay() {
+
+      clearInterval(autoplayTimer);
+
+      if (galleryImages.length <= 1) {
         return;
       }
 
 
-      const nextIndex =
-        (currentIndex + 1) % galleryImages.length;
+      autoplayTimer = setInterval(() => {
+
+        if (
+          destroyed ||
+          window.__nodaProductGalleryCleanup !== cleanupGallery ||
+          galleryPaused
+        ) {
+          return;
+        }
 
 
-      changeGalleryImage(nextIndex);
-
-    }, 4500);
-
-  }
+        const nextIndex =
+          (currentIndex + 1) % galleryImages.length;
 
 
-  /* ==========================================================
-     PAUSE / RESUME
-     ========================================================== */
+        changeGalleryImage(nextIndex);
 
-  function pauseGallery() {
-    galleryPaused = true;
-  }
+      }, 4500);
 
-
-  function resumeGallery() {
-    galleryPaused = false;
-  }
-
-
-  /* ==========================================================
-     RESTART AUTOPLAY AFTER CLICK
-     ========================================================== */
-
-  function restartGalleryAutoplay() {
-
-    clearInterval(autoplayTimer);
-
-    if (galleryImages.length <= 1) {
-      return;
     }
 
 
-    autoplayTimer = setInterval(() => {
+    /* ==========================================================
+       PAUSE / RESUME
+       ========================================================== */
 
-      if (
-        destroyed ||
-        window.__nodaProductGalleryCleanup !== cleanupGallery ||
-        galleryPaused
-      ) {
+    function pauseGallery() {
+      galleryPaused = true;
+    }
+
+
+    function resumeGallery() {
+      galleryPaused = false;
+    }
+
+
+    /* ==========================================================
+       RESTART AUTOPLAY AFTER CLICK
+       ========================================================== */
+
+    function restartGalleryAutoplay() {
+
+      clearInterval(autoplayTimer);
+
+      if (galleryImages.length <= 1) {
         return;
       }
 
 
-      const nextIndex =
-        (currentIndex + 1) % galleryImages.length;
+      autoplayTimer = setInterval(() => {
+
+        if (
+          destroyed ||
+          window.__nodaProductGalleryCleanup !== cleanupGallery ||
+          galleryPaused
+        ) {
+          return;
+        }
 
 
-      changeGalleryImage(nextIndex);
+        const nextIndex =
+          (currentIndex + 1) % galleryImages.length;
 
-    }, 4500);
+
+        changeGalleryImage(nextIndex);
+
+      }, 4500);
+
+    }
+
+
+    /* ==========================================================
+       HOVER PAUSE
+       ========================================================== */
+
+    function handleMouseEnter() {
+      pauseGallery();
+    }
+
+
+    function handleMouseLeave() {
+      resumeGallery();
+    }
+
+
+    if (galleryElement) {
+
+      galleryElement.addEventListener(
+        'mouseenter',
+        handleMouseEnter
+      );
+
+      galleryElement.addEventListener(
+        'mouseleave',
+        handleMouseLeave
+      );
+
+    }
+
+
+    /* ==========================================================
+       INITIAL RENDER
+       ========================================================== */
+
+    renderGallery();
+
+    startGalleryAutoplay();
 
   }
-
-
-  /* ==========================================================
-     HOVER PAUSE
-     ========================================================== */
-
-  function handleMouseEnter() {
-    pauseGallery();
-  }
-
-
-  function handleMouseLeave() {
-    resumeGallery();
-  }
-
-
-  if (galleryElement) {
-
-    galleryElement.addEventListener(
-      'mouseenter',
-      handleMouseEnter
-    );
-
-    galleryElement.addEventListener(
-      'mouseleave',
-      handleMouseLeave
-    );
-
-  }
-
-
-  /* ==========================================================
-     INITIAL RENDER
-     ========================================================== */
-
-  renderGallery();
-
-  startGalleryAutoplay();
-
-}
 
 
   const pdTags =
@@ -2465,9 +2448,9 @@ if (pdImageImg) {
   window.currentSelectedProduct = p;
   renderTechnicalSpecifications(p);
 
-    /* ==========================================================
-     PRODUCT DETAIL — TOP PREV / NEXT PRODUCT BUTTONS
-     ========================================================== */
+  /* ==========================================================
+   PRODUCT DETAIL — TOP PREV / NEXT PRODUCT BUTTONS
+   ========================================================== */
 
   // Remove any previous top-nav (from a previous product)
   const existingNav = document.getElementById('pdProductTopNav');
