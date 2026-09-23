@@ -1264,8 +1264,8 @@ const NEWS = [
     type: "event",
     category: "Exhibition",
     date: "17 – 21 octobre 2026",
-    title: "NodaPlast Film au SIAL Paris 2026 !",
-    desc: "Nous sommes heureux de vous annoncer notre participation au SIAL Paris 2026, le rendez-vous incontournable des professionnels de l’agroalimentaire et de l’emballage.",
+    title: "NodaPlast Film at SIAL Paris 2026!",
+    desc: "We are pleased to announce our participation in SIAL Paris 2026, the must-attend event for professionals in the food and packaging industries.",
     phCap: "Trade exhibition photograph",
     img: "paris-event.png"
   },
@@ -1302,28 +1302,6 @@ const NEWS = [
     phCap: "Quality lab instrument photograph",
     img: "quality-lab-instrument-upgrade.png"
   },
-
-  {
-    id: 'news-item-5',
-    type: "event",
-    category: "Training",
-    date: "Coming soon",
-    title: "Technical training and knowledge sharing",
-    desc: "A technical session focused on production processes, quality, and continuous improvement.",
-    phCap: "Technical training photograph",
-    img: "technical-training.png"
-  },
-
-  {
-    id: 'news-item-6',
-    type: "news",
-    category: "Sustainability",
-    date: "Coming soon",
-    title: "Edge-trim recovery process overview",
-    desc: "Placeholder summary — replace with verified sustainability content.",
-    phCap: "Material recovery photograph",
-    img: "material-recovery-process.png"
-  }
 ];
 
 
