@@ -911,9 +911,9 @@ const PRODUCTS = [
     img: 'white-bopp-film-roll.png',
     gallery: [
       'white-bopp-film-roll.png',
-      'nsw/nsw (1).png',
-      'nsw/nsw (2).png',
-      'nsw/nsw (3).png'
+      'nsw/nsw (1).jpg',
+      'nsw/nsw (2).jpg',
+      'nsw/nsw (3).jpg'
     ],
     category: 'White Films',
     name: 'NSW — Solid White Sealable',
