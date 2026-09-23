@@ -457,8 +457,7 @@ header {
 }
 
 .mobile-language-toggle {
-  margin-left: auto;
-  margin-right: 10px;
+  margin-top: 12px;
 }
 
 @media (max-width:900px) {
@@ -531,6 +530,10 @@ header {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 36px;
+}
+
+.logo-mobile {
+  width: 150px;
 }
 
 .mobile-panel a.nav-link {
