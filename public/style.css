@@ -3515,13 +3515,6 @@ CAREERS RESPONSIVE
 
 
 @media (max-width: 380px) {
-   .world-map-image {
-    height: 280px;
-  }
-
-  .world-map-image img {
-    width: 900px;
-  }
 
   .export-markets-toggle {
     min-height: 54px;
