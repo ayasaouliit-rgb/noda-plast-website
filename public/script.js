@@ -454,15 +454,15 @@ const PRODUCTS = [
       'nsc/nsc (3).png'
     ],
     category: 'Clear Films',
-    name: 'NSC — Clear Non-Sealable',
-    shortName: 'Clear Non-Sealable Film',
+    name: 'NSC — Clear Sealable Film',
+    shortName: 'Clear Sealable Film',
     desc: 'Transparent BOPP film without heat-sealing functionality.',
     overview:
-      'NSC is a clear non-sealable BOPP film intended for applications requiring transparency without a heat-sealable structure.',
+      'NSC is a clear sealable BOPP film intended for applications requiring transparency without a heat-sealable structure.',
     tags: [
       'Clear',
       'Transparent',
-      'Non-sealable'
+      'Sealable'
     ],
     applications: [
       'Printing',
@@ -538,7 +538,7 @@ const PRODUCTS = [
       'nnc/nnc (3).png'
     ],
     category: 'Clear Films',
-    name: 'NNC — Clear Non-Sealable',
+    name: 'NNC — Clear Non-Sealable Film',
     shortName: 'Clear Non-Sealable Film',
     desc: 'Transparent BOPP film without heat-sealing functionality.',
     overview:

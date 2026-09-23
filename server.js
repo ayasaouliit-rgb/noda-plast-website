@@ -7,10 +7,17 @@ const nodemailer = require('nodemailer');
 
 const PORT = Number(process.env.PORT || 3000);
 const HOST = process.env.HOST || '0.0.0.0';
-const MAIL_TO_PURCHASING = process.env.MAIL_TO_PURCHASING || [EMAIL_ADDRESS];
-const MAIL_TO_SALES = process.env.MAIL_TO_SALES || [EMAIL_ADDRESS];
-const MAIL_TO_CS = process.env.MAIL_TO_CS || [EMAIL_ADDRESS];
-const MAIL_TO_HR = process.env.MAIL_TO_HR || [EMAIL_ADDRESS];
+const MAIL_TO_PURCHASING =
+  process.env.MAIL_TO_PURCHASING || process.env.SMTP_USER;
+
+const MAIL_TO_SALES =
+  process.env.MAIL_TO_SALES || process.env.SMTP_USER;
+
+const MAIL_TO_CS =
+  process.env.MAIL_TO_CS || process.env.SMTP_USER;
+
+const MAIL_TO_HR =
+  process.env.MAIL_TO_HR || process.env.SMTP_USER;
 
 const MAIL_FROM =
   process.env.MAIL_FROM ||
