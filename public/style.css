@@ -425,41 +425,56 @@ header {
    LANGUAGE TOGGLE
    ============================================================ */
 .language-toggle {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:48px;
-  height:34px;
-  padding:0 12px;
-  border:1px solid var(--border);
-  border-radius:999px;
-  background:var(--white);
-  color:var(--dark);
-  font-family:var(--font-body);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.08em;
-  cursor:pointer;
-  transition:all .2s ease;
-  box-shadow:0 4px 14px rgba(16,24,32,.06);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--dark);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  cursor: pointer;
+  transition: all .2s ease;
+  box-shadow: 0 4px 14px rgba(16, 24, 32, .06);
 }
+
 .language-toggle:hover {
-  background:var(--orange);
-  border-color:var(--orange);
-  color:var(--dark);
-  transform:translateY(-1px);
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--dark);
+  transform: translateY(-1px);
 }
+
 .language-toggle:focus-visible {
-  outline:2px solid var(--orange);
-  outline-offset:3px;
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
 }
-.mobile-language-toggle { margin-left:auto; margin-right:10px; }
+
+.mobile-language-toggle {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
 @media (max-width:900px) {
-  .nav-right .language-toggle { display:none; }
-  .mobile-panel-top .language-toggle { display:inline-flex; }
+  .nav-right .language-toggle {
+    display: none;
+  }
+
+  .mobile-panel-top .language-toggle {
+    display: inline-flex;
+  }
 }
+
 @media (min-width:901px) {
-  .mobile-panel-top .language-toggle { display:none; }
+  .mobile-panel-top .language-toggle {
+    display: none;
+  }
 }
 
 
@@ -681,11 +696,13 @@ footer {
     repeating-linear-gradient(115deg, rgba(242, 165, 26, .10) 0 2px, transparent 2px 46px),
     linear-gradient(120deg, #182430, #0C1218 70%);
 }
-.hero-bg img{
+
+.hero-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -696,7 +713,8 @@ footer {
 .hero-content h1 {
   color: var(--white);
 }
-.hero-content h1 span{
+
+.hero-content h1 span {
   color: var(--orange);
   white-space: nowrap;
 }
@@ -804,6 +822,7 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
+
 /* ============================================================
    HOME NEWS / EVENTS / JOBS CAROUSEL
    ============================================================ */
@@ -846,11 +865,9 @@ footer {
   justify-content: center;
 
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       var(--dark),
-      #26343d
-    );
+      #26343d);
 }
 
 .home-job-card .job-icon {
@@ -2915,7 +2932,7 @@ CAREERS RESPONSIVE
 }
 
 .sustainability-cta-box p {
-  color: rgba(255,255,255,.72);
+  color: rgba(255, 255, 255, .72);
   max-width: 600px;
   margin-top: 18px;
   line-height: 1.7;
@@ -3005,7 +3022,7 @@ CAREERS RESPONSIVE
   align-items: end;
 }
 
-.global-intro .section-head > p {
+.global-intro .section-head>p {
   max-width: 520px;
   margin: 0;
   color: var(--text-gray);
@@ -3053,6 +3070,7 @@ CAREERS RESPONSIVE
   border-radius: 50%;
   display: inline-block;
 }
+
 /* ============================================================
    GLOBAL MARKET MAP
    ============================================================ */
@@ -3179,6 +3197,7 @@ CAREERS RESPONSIVE
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
 .export-markets::-webkit-scrollbar {
   display: none;
 }
@@ -3188,11 +3207,11 @@ CAREERS RESPONSIVE
   align-items: center;
   gap: 15px;
   padding: 17px 0;
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
 .export-market:first-child {
-  border-top: 1px solid rgba(255,255,255,.1);
+  border-top: 1px solid rgba(255, 255, 255, .1);
 }
 
 .market-number {
@@ -3279,6 +3298,7 @@ CAREERS RESPONSIVE
   margin-left: auto;
   margin-right: auto;
 }
+
 /* =========================
    OUR CLIENTS CAROUSEL
    ========================= */
@@ -3288,22 +3308,18 @@ CAREERS RESPONSIVE
   overflow: hidden;
   position: relative;
   padding: 30px 0;
-  
+
   /* Optional fade effect on both sides */
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%);
 }
 
 .clients-track {
@@ -3426,21 +3442,17 @@ CAREERS RESPONSIVE
   .our-clients-section {
     padding: 20px 0;
 
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 5%,
-      black 95%,
-      transparent 100%
-    );
+    mask-image: linear-gradient(to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%);
 
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 5%,
-      black 95%,
-      transparent 100%
-    );
+    -webkit-mask-image: linear-gradient(to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%);
   }
 
   .clients-track {
@@ -3479,6 +3491,7 @@ CAREERS RESPONSIVE
     -webkit-mask-image: none;
   }
 }
+
 .global-quality {
   padding-top: 110px;
   padding-bottom: 110px;
@@ -3533,12 +3546,13 @@ CAREERS RESPONSIVE
   font-size: 14px;
 }
 
-.next-market{
+.next-market {
   position: relative;
   display: flex;
   align-items: center;
 }
-.next-market .coming-soon{
+
+.next-market .coming-soon {
   position: relative;
   top: 0;
   right: -20px;
@@ -3549,7 +3563,8 @@ CAREERS RESPONSIVE
   letter-spacing: .05em;
   text-transform: uppercase;
   padding: 3px 7px;
-  border-radius: 5px;}
+  border-radius: 5px;
+}
 
 
 /* ============================================================
@@ -3573,7 +3588,7 @@ CAREERS RESPONSIVE
   max-width: 650px;
 }
 
-.quality-intro-content > p {
+.quality-intro-content>p {
   margin-top: 22px;
   max-width: 620px;
   line-height: 1.8;
@@ -3774,7 +3789,7 @@ CAREERS RESPONSIVE
   margin-top: 8px;
 }
 
-.quality-checks-content > p {
+.quality-checks-content>p {
   margin-top: 20px;
 
   max-width: 540px;
@@ -4499,11 +4514,9 @@ CAREERS RESPONSIVE
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.02),
-    rgba(0, 0, 0, 0.18)
-  );
+  background: linear-gradient(135deg,
+      rgba(0, 0, 0, 0.02),
+      rgba(0, 0, 0, 0.18));
   pointer-events: none;
 }
 
@@ -4968,7 +4981,7 @@ CAREERS RESPONSIVE
   letter-spacing: -.025em;
 }
 
-.about-company-content > p {
+.about-company-content>p {
   max-width: 600px;
 
   margin-top: 20px;
@@ -5108,7 +5121,7 @@ CAREERS RESPONSIVE
   font-size: 25px;
 }
 
-.about-mv-card > p {
+.about-mv-card>p {
   margin-top: 14px;
 
   font-size: 14.5px;
@@ -5295,7 +5308,7 @@ CAREERS RESPONSIVE
     font-size: 33px;
   }
 
-  .about-company-content > p {
+  .about-company-content>p {
     font-size: 15px;
     line-height: 1.7;
   }
@@ -5322,6 +5335,7 @@ CAREERS RESPONSIVE
   }
 
 }
+
 /* ============================================================
    PRODUCT DETAIL IMAGE GALLERY
    ============================================================ */
@@ -5461,6 +5475,7 @@ CAREERS RESPONSIVE
   }
 
 }
+
 .pd-gallery-main img {
   width: 100%;
   height: 100%;
@@ -5479,6 +5494,7 @@ CAREERS RESPONSIVE
   opacity: 0;
   transform: scale(.96);
 }
+
 .pd-gallery-thumbs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -5526,11 +5542,12 @@ CAREERS RESPONSIVE
 
 .material-symbols-outlined {
   font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
 }
+
 /* ============================================================
    PRODUCT DETAIL — BACK BUTTON
    ============================================================ */
@@ -5697,7 +5714,8 @@ CAREERS RESPONSIVE
 }
 
 .pd-top-nav .back-btn {
-  margin-bottom: 0; /* override the default bottom margin */
+  margin-bottom: 0;
+  /* override the default bottom margin */
 }
 
 /* Flip the second button so it points right, matching the left one */
@@ -5727,7 +5745,7 @@ CAREERS RESPONSIVE
 /*
  * Container controls the content width.
  */
-.news-item-section > .container {
+.news-item-section>.container {
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -5740,8 +5758,7 @@ CAREERS RESPONSIVE
   display: grid;
 
   grid-template-columns:
-    minmax(0, 1.08fr)
-    minmax(0, .92fr);
+    minmax(0, 1.08fr) minmax(0, .92fr);
 
   gap: 70px;
 
@@ -5758,16 +5775,14 @@ CAREERS RESPONSIVE
  */
 .news-paper-item.is-reversed {
   grid-template-columns:
-    minmax(0, .92fr)
-    minmax(0, 1.08fr);
+    minmax(0, .92fr) minmax(0, 1.08fr);
 }
 
 
 /*
  * Image on normal article
  */
-.news-paper-item:not(.is-reversed)
-.news-paper-image {
+.news-paper-item:not(.is-reversed) .news-paper-image {
   order: 1;
 }
 
@@ -5775,8 +5790,7 @@ CAREERS RESPONSIVE
 /*
  * Text on normal article
  */
-.news-paper-item:not(.is-reversed)
-.news-paper-content {
+.news-paper-item:not(.is-reversed) .news-paper-content {
   order: 2;
 }
 
@@ -5784,8 +5798,7 @@ CAREERS RESPONSIVE
 /*
  * Image on reversed article
  */
-.news-paper-item.is-reversed
-.news-paper-image {
+.news-paper-item.is-reversed .news-paper-image {
   order: 2;
 }
 
@@ -5793,8 +5806,7 @@ CAREERS RESPONSIVE
 /*
  * Text on reversed article
  */
-.news-paper-item.is-reversed
-.news-paper-content {
+.news-paper-item.is-reversed .news-paper-content {
   order: 1;
 }
 
@@ -5835,8 +5847,7 @@ CAREERS RESPONSIVE
 }
 
 
-.news-paper-item:hover
-.news-paper-image img {
+.news-paper-item:hover .news-paper-image img {
   transform: scale(1.025);
 }
 
@@ -5954,8 +5965,7 @@ CAREERS RESPONSIVE
 }
 
 
-.news-paper-readmore
-.material-symbols-outlined {
+.news-paper-readmore .material-symbols-outlined {
   font-size: 19px;
 
   transition:
@@ -5963,8 +5973,7 @@ CAREERS RESPONSIVE
 }
 
 
-.news-paper-readmore:hover
-.material-symbols-outlined {
+.news-paper-readmore:hover .material-symbols-outlined {
   transform: translateX(5px);
 }
 
@@ -6029,6 +6038,7 @@ CAREERS RESPONSIVE
 
   color: var(--text-gray);
 }
+
 @media (max-width: 800px) {
 
   .news-item-section {
@@ -6055,22 +6065,18 @@ CAREERS RESPONSIVE
    * On mobile don't alternate the order.
    * Image always comes first.
    */
-  .news-paper-item:not(.is-reversed)
-  .news-paper-image,
+  .news-paper-item:not(.is-reversed) .news-paper-image,
 
-  .news-paper-item.is-reversed
-  .news-paper-image {
+  .news-paper-item.is-reversed .news-paper-image {
 
     order: 1;
 
   }
 
 
-  .news-paper-item:not(.is-reversed)
-  .news-paper-content,
+  .news-paper-item:not(.is-reversed) .news-paper-content,
 
-  .news-paper-item.is-reversed
-  .news-paper-content {
+  .news-paper-item.is-reversed .news-paper-content {
 
     order: 2;
 
@@ -6091,6 +6097,7 @@ CAREERS RESPONSIVE
   }
 
 }
+
 .career-job-highlight {
   animation: careerJobHighlight 1.8s ease;
 }
@@ -6107,5 +6114,818 @@ CAREERS RESPONSIVE
   55% {
     box-shadow:
       0 0 0 4px rgba(242, 165, 26, .35);
+  }
+}
+
+
+/* ============================================================
+   NODA PLAST — MOBILE / PHONE RESPONSIVE OVERRIDES
+   Added as a final layer so the existing desktop styling remains
+   intact while phones from very small screens through large
+   smartphones/tablets get fluid layouts.
+   ============================================================ */
+
+/* Prevent viewport-width elements from creating horizontal scroll */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 0;
+}
+
+.container,
+.nav-wrap,
+.hero-content {
+  width: 100%;
+  max-width: var(--container);
+}
+
+/* Flexible media and controls */
+img,
+video,
+iframe,
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+}
+
+button,
+.btn,
+.btn-ghost,
+.nav-link,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ------------------------------------------------------------
+   LARGE PHONES / SMALL TABLETS: <= 860px
+   ------------------------------------------------------------ */
+@media (max-width: 860px) {
+  :root {
+    --section-pad: 56px;
+    --section-pad-mobile: 52px;
+  }
+
+  .container {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Header */
+  header {
+    height: 64px;
+  }
+
+  .nav-wrap {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .brand img {
+    height: 42px;
+    max-width: min(180px, 48vw);
+    object-fit: contain;
+  }
+
+  .nav-right {
+    gap: 6px;
+  }
+
+  .hamburger {
+    width: 42px;
+    height: 42px;
+    display: flex;
+  }
+
+  .mobile-panel {
+    padding: 18px 20px 32px;
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+  }
+
+  .mobile-panel-top {
+    margin-bottom: 24px;
+  }
+
+  .mobile-panel a.nav-link {
+    font-size: clamp(19px, 5vw, 22px);
+    padding: 13px 0;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: clamp(38px, 8vw, 52px);
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-size: clamp(30px, 6vw, 38px);
+  }
+
+  h3 {
+    font-size: clamp(21px, 4.8vw, 26px);
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .section-head {
+    margin-bottom: 36px;
+  }
+
+  .section-head p {
+    font-size: 16px;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 560px;
+    height: auto;
+  }
+
+  .hero-content {
+    padding: 100px 20px 56px;
+  }
+
+  .hero-content h1 span {
+    white-space: normal;
+  }
+
+  .hero-content .lede {
+    font-size: 16px;
+    max-width: 100%;
+    margin: 18px 0 28px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .hero-actions .btn {
+    min-height: 46px;
+  }
+
+  .hero-nav {
+    width: 44px;
+    height: 44px;
+    font-size: 28px;
+  }
+
+  /* Main grids */
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .form-grid,
+  .products-layout,
+  .pd-hero,
+  .quote-inner,
+  .appx-detail.show,
+  .info-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .product-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  /* Product detail */
+  .pd-hero {
+    gap: 32px;
+  }
+
+  .pd-hero .ph {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .pd-info-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .pd-actions {
+    gap: 10px;
+  }
+
+  .pd-actions .btn {
+    flex: 1 1 180px;
+  }
+
+  /* Product grid */
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  /* Applications */
+  .appx-detail.show {
+    gap: 26px;
+    padding: 28px;
+  }
+
+  /* Sustainability */
+  .sustainability-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .sustainability-image-home {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .sustainability-image {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Contact / quote */
+  .quote-inner {
+    gap: 36px;
+  }
+
+  /* Tables: keep all columns accessible without breaking page width */
+  .spec-table-wrap,
+  .table-wrap,
+  .specifications-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .spec-table {
+    min-width: 680px;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    gap: 18px;
+  }
+
+  /* Chat */
+  .chat-fab {
+    right: 18px;
+    bottom: max(18px, env(safe-area-inset-bottom));
+    padding: 13px 18px 13px 15px;
+  }
+
+  .chat-panel {
+    width: min(376px, calc(100vw - 24px));
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    max-height: calc(100dvh - 24px);
+  }
+}
+
+/* ------------------------------------------------------------
+   PHONES: <= 600px
+   ------------------------------------------------------------ */
+@media (max-width: 600px) {
+  :root {
+    --section-pad-mobile: 46px;
+  }
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Header */
+  header {
+    height: 60px;
+  }
+
+  .nav-wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .brand img {
+    height: 38px;
+    max-width: 52vw;
+  }
+
+  .hamburger {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mobile-panel {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: clamp(32px, 10vw, 44px);
+  }
+
+  h2 {
+    font-size: clamp(28px, 8vw, 34px);
+  }
+
+  h3 {
+    font-size: 21px;
+  }
+
+  p {
+    font-size: 14.5px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: .11em;
+    margin-bottom: 13px;
+  }
+
+  .section {
+    padding: var(--section-pad-mobile) 0;
+  }
+
+  .section-head {
+    margin-bottom: 30px;
+  }
+
+  .section-head p {
+    margin-top: 14px;
+    font-size: 15px;
+  }
+
+  /* Buttons become easy thumb targets */
+  .btn {
+    min-height: 46px;
+    padding: 13px 18px;
+    font-size: 11.5px;
+  }
+
+  .btn-sm {
+    min-height: 42px;
+    padding: 10px 15px;
+  }
+
+  .hero {
+    min-height: 520px;
+  }
+
+  .hero-content {
+    padding: 90px 16px 42px;
+  }
+
+  .hero-content .lede {
+    font-size: 15px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 23px;
+  }
+
+  .hero-nav-left {
+    left: 2px;
+  }
+
+  .hero-nav-right {
+    right: 2px;
+  }
+
+  /* News carousel */
+  .home-news-carousel {
+    margin-left: -16px;
+    width: calc(100% + 32px);
+  }
+
+  .home-news-track {
+    gap: 14px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .home-news-card {
+    flex: 0 0 min(82vw, 310px);
+    width: min(82vw, 310px);
+  }
+
+  /* Product cards */
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .pgrid-card-body,
+  .news-card-body,
+  .app-card-body {
+    padding: 18px;
+  }
+
+  .pgrid-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pgrid-actions .btn {
+    width: 100%;
+  }
+
+  .product-row {
+    padding: 26px 0;
+  }
+
+  /* Product detail */
+  .pd-hero {
+    gap: 24px;
+  }
+
+  .pd-hero .ph {
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+  }
+
+  .pd-tags,
+  .tag-row {
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .pd-actions {
+    flex-direction: column;
+  }
+
+  .pd-actions .btn {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .pd-section {
+    padding: 38px 0;
+  }
+
+  /* Technical table */
+  .spec-table-wrap,
+  .table-wrap,
+  .specifications-table-wrap {
+    margin-left: -16px;
+    width: calc(100% + 32px);
+  }
+
+  .spec-table {
+    min-width: 640px;
+  }
+
+  .spec-table th,
+  .spec-table td {
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+
+  .spec-table td select {
+    width: 150px;
+  }
+
+  /* Download rows */
+  .download-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .download-row .btn {
+    width: 100%;
+  }
+
+  /* Applications */
+  .appx-detail.show {
+    padding: 20px;
+    gap: 22px;
+  }
+
+  .appx-detail .ph {
+    border-radius: 10px;
+  }
+
+  /* Sustainability */
+  .sustainability-image-home,
+  .sustainability-image {
+    aspect-ratio: 16 / 11;
+    height: auto;
+  }
+
+  .sustainability-main-text {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .sustainability-point {
+    gap: 12px;
+    padding: 18px 0;
+  }
+
+  .point-icon {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+    font-size: 19px;
+  }
+
+  .sustainability-point h3 {
+    font-size: 16px;
+  }
+
+  .sustainability-point p {
+    font-size: 14px;
+  }
+
+  /* Forms */
+  .form-grid {
+    gap: 14px;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    min-height: 46px;
+    font-size: 16px;
+    /* prevents iOS zoom on form controls */
+  }
+
+  .field textarea {
+    min-height: 110px;
+  }
+
+  .request-success {
+    padding: 26px 18px;
+    border-radius: 22px;
+  }
+
+  /* Contact */
+  .info-grid {
+    gap: 14px;
+  }
+
+  .info-card {
+    padding: 17px 18px;
+  }
+
+  /* Map */
+  .map-box {
+    height: 300px;
+  }
+
+  .map-overlay {
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    max-width: none;
+    padding: 10px 12px;
+  }
+
+  .map-actions {
+    gap: 7px;
+  }
+
+  .map-actions a {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  /* Reference gallery */
+  .reference-gallery {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .reference-gallery img {
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Footer */
+  footer {
+    padding-top: 48px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 42px;
+  }
+
+  .footer-brand-chip img {
+    height: 72px;
+  }
+
+  .footer-bottom {
+    padding: 20px 0;
+    align-items: flex-start;
+  }
+
+  .footer-bottom .legal {
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .social-row a {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Chat */
+  .chat-fab {
+    right: 14px;
+    bottom: max(14px, env(safe-area-inset-bottom));
+    padding: 13px 16px;
+    font-size: 12px;
+  }
+
+  .chat-panel {
+    left: 8px;
+    right: 8px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    width: auto;
+    max-width: none;
+    height: min(620px, calc(100dvh - 16px));
+    max-height: calc(100dvh - 16px);
+    border-radius: 16px;
+  }
+
+  .chat-head {
+    padding: 16px;
+  }
+
+  .chat-body {
+    padding: 14px;
+  }
+
+  .chat-input-row {
+    padding: 10px;
+  }
+
+  .msg {
+    max-width: 90%;
+  }
+}
+
+/* ------------------------------------------------------------
+   VERY SMALL PHONES: <= 380px
+   ------------------------------------------------------------ */
+@media (max-width: 380px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .nav-wrap {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .brand img {
+    height: 34px;
+    max-width: 50vw;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  .hero {
+    min-height: 500px;
+  }
+
+  .hero-content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .home-news-carousel {
+    margin-left: -12px;
+    width: calc(100% + 24px);
+  }
+
+  .home-news-track {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .home-news-card {
+    flex-basis: 86vw;
+    width: 86vw;
+  }
+
+  .btn {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .appx-detail.show {
+    padding: 16px;
+  }
+
+  .map-box {
+    height: 260px;
+  }
+
+  .chat-fab {
+    right: 10px;
+    padding: 12px 14px;
+  }
+}
+
+/* ------------------------------------------------------------
+   LANDSCAPE PHONES
+   ------------------------------------------------------------ */
+@media (max-width: 860px) and (orientation: landscape) {
+  .hero {
+    min-height: 460px;
+  }
+
+  .hero-content {
+    padding-top: 70px;
+    padding-bottom: 36px;
+  }
+
+  .mobile-panel {
+    padding-top: 14px;
+    padding-bottom: 24px;
+  }
+
+  .mobile-panel a.nav-link {
+    padding: 9px 0;
+  }
+
+  .chat-panel {
+    height: calc(100dvh - 16px);
+  }
+}
+
+/* ------------------------------------------------------------
+   SAFE AREA FOR MODERN PHONES WITH NOTCH / HOME INDICATOR
+   ------------------------------------------------------------ */
+@supports (padding: max(0px)) {
+  header {
+    padding-top: env(safe-area-inset-top);
+    height: calc(60px + env(safe-area-inset-top));
+  }
+
+  .mobile-panel {
+    padding-top: max(18px, env(safe-area-inset-top));
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+  }
+
+  footer {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Touch devices: remove hover movement that can feel jumpy on phones */
+@media (hover: none) and (pointer: coarse) {
+  .card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--border);
+  }
+
+  .sustainability-image-home:hover img,
+  .sustainability-image:hover img {
+    transform: none;
+  }
+
+  .btn-primary:hover,
+  .btn-cta:hover,
+  .btn-secondary:hover {
+    transform: none;
   }
 }
