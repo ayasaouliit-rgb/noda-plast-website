@@ -2069,6 +2069,10 @@ footer {
   margin-bottom: 3px;
 }
 
+.reference-gallery figcaption span {
+  display: block;
+}
+
 
 
 /* Responsive layout */
