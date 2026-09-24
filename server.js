@@ -43,6 +43,35 @@ const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
 const RATE_LIMIT_MAX = 10; // 10 requests per IP per window
 const MAX_QUOTE_PRODUCTS = 10; // Max 10 items per quote
 
+// ------------------------------------------------------------
+// SECURITY CONFIG (new)
+// ------------------------------------------------------------
+// Only trust X-Forwarded-For if you are actually deployed behind a proxy/load
+// balancer that sets it itself (nginx, Cloudflare, etc). If this is false and
+// you're directly internet-facing, an attacker can spoof this header to dodge
+// rate limiting — so it's off by default.
+const TRUST_PROXY = String(process.env.TRUST_PROXY || '').toLowerCase() === 'true';
+
+// Explicit allowlist of origins permitted to call the state-changing API
+// endpoints cross-origin. Empty (default) = no CORS header is sent for
+// /api/send-email, which means only same-origin requests work — the safest
+// default, since JSON POSTs are CORS-preflighted and a wildcard '*' on a
+// state-changing endpoint lets any website silently trigger requests through
+// a visitor's browser. Set e.g. ALLOWED_ORIGINS=https://www.example.com if
+// your frontend is hosted separately from this API.
+const ALLOWED_ORIGINS = String(process.env.ALLOWED_ORIGINS || '')
+  .split(',')
+  .map(s => s.trim())
+  .filter(Boolean);
+
+// Legacy .doc (OLE compound file) is the hardest attachment format to inspect
+// server-side (no reliable content scan below) and is the classic macro-
+// malware vector. Left enabled by default to match original behavior; set
+// ALLOW_LEGACY_DOC=false to only accept PDF/DOCX.
+const ALLOW_LEGACY_DOC = String(process.env.ALLOW_LEGACY_DOC || 'true').toLowerCase() !== 'false';
+
+const MAX_CV_RAW_BYTES = 5 * 1024 * 1024; // 5 MB decoded
+
 const rateBuckets = new Map();
 
 // Periodic cleanup of rate limiting buckets every 10 minutes
@@ -195,9 +224,11 @@ function validateProductItem(item) {
 }
 
 function getClientIp(req) {
-  const forwarded = req.headers['x-forwarded-for'];
-  if (forwarded && typeof forwarded === 'string') {
-    return forwarded.split(',')[0].trim();
+  if (TRUST_PROXY) {
+    const forwarded = req.headers['x-forwarded-for'];
+    if (forwarded && typeof forwarded === 'string') {
+      return forwarded.split(',')[0].trim();
+    }
   }
   return req.socket.remoteAddress || 'unknown';
 }
@@ -238,6 +269,252 @@ async function verifyTurnstileToken(token, remoteIp) {
     console.error('Turnstile verification error:', err.message);
     return false;
   }
+}
+
+// ============================================================
+// ATTACHMENT / CV SECURITY SCANNING (new)
+// ============================================================
+// Defense in depth against a file being something other than what its
+// filename or declared Content-Type claims — e.g. "resume.exe" renamed to
+// "resume.pdf", or a real PDF with an executable/script smuggled inside it.
+// None of this replaces a real antivirus engine (see note at bottom of file);
+// it catches the common, high-confidence cases cheaply and with zero new
+// dependencies.
+
+const DANGEROUS_EXTENSIONS = new Set([
+  'exe', 'scr', 'bat', 'cmd', 'com', 'pif', 'msi', 'msp', 'msc', 'vbs', 'vbe',
+  'vb', 'js', 'jse', 'wsf', 'wsh', 'ps1', 'ps1xml', 'ps2', 'ps2xml', 'psc1',
+  'psc2', 'jar', 'jnlp', 'reg', 'dll', 'sys', 'drv', 'ocx', 'cpl', 'gadget',
+  'application', 'hta', 'html', 'htm', 'shs', 'sct', 'lnk', 'url', 'scf',
+  'inf', 'ins', 'isp', 'iso', 'img', 'vhd', 'vhdx', 'apk', 'ipa', 'dmg',
+  'pkg', 'deb', 'rpm', 'sh', 'bash', 'csh', 'ksh', 'run', 'bin', 'out',
+  'py', 'pyc', 'pl', 'php', 'docm', 'xlsm', 'pptm'
+]);
+
+// Right-to-left override / bidi formatting characters used to visually
+// disguise a file's real extension (e.g. making "cv‮fdp.exe" display
+// reversed so it looks like it ends in ".pdf").
+const BIDI_CONTROL_CHARS = /[\u202A-\u202E\u2066-\u2069\u200E\u200F]/g;
+
+const PDF_SUSPICIOUS_TOKENS = [
+  '/JavaScript', '/JS', '/OpenAction', '/AA', '/Launch',
+  '/EmbeddedFile', '/RichMedia', '/SubmitForm', '/ImportData', '/GoToE'
+];
+
+function sanitizeFilename(name) {
+  if (typeof name !== 'string') return '';
+  return name
+    .normalize('NFKC')
+    .replace(/[\u0000-\u001F\u007F]/g, '')
+    .replace(BIDI_CONTROL_CHARS, '')
+    .replace(/[\\/]/g, '_')
+    .trim()
+    .slice(0, 150);
+}
+
+function hasDangerousExtensionAnywhere(filename) {
+  const parts = filename.toLowerCase().split('.').slice(1);
+  return parts.some(ext => DANGEROUS_EXTENSIONS.has(ext));
+}
+
+function detectSignature(buf) {
+  if (buf.length >= 5 && buf.slice(0, 5).toString('latin1') === '%PDF-') return 'pdf';
+  if (buf.length >= 8 && buf.slice(0, 8).equals(Buffer.from('d0cf11e0a1b11ae1', 'hex'))) return 'ole';
+  if (buf.length >= 4 && (
+    buf.slice(0, 4).equals(Buffer.from('504b0304', 'hex')) ||
+    buf.slice(0, 4).equals(Buffer.from('504b0506', 'hex'))
+  )) return 'zip';
+  if (buf.length >= 2 && buf.slice(0, 2).toString('latin1') === 'MZ') return 'exe';
+  if (buf.length >= 4 && buf.slice(0, 4).equals(Buffer.from('7f454c46', 'hex'))) return 'elf';
+  if (buf.length >= 4 && (
+    buf.slice(0, 4).equals(Buffer.from('cafebabe', 'hex')) ||
+    buf.slice(0, 4).equals(Buffer.from('feedface', 'hex')) ||
+    buf.slice(0, 4).equals(Buffer.from('feedfacf', 'hex')) ||
+    buf.slice(0, 4).equals(Buffer.from('cffaedfe', 'hex')) ||
+    buf.slice(0, 4).equals(Buffer.from('cefaedfe', 'hex'))
+  )) return 'macho';
+  if (buf.length >= 2 && buf.slice(0, 2).toString('latin1') === '#!') return 'script';
+  return 'unknown';
+}
+
+// Looks for a Windows PE embedded/appended anywhere in the buffer (not just
+// at offset 0) — the technique used to smuggle an executable inside what is
+// otherwise a structurally valid PDF/DOCX/DOC container.
+function containsEmbeddedExecutableMarker(buf) {
+  if (buf.includes(Buffer.from('This program cannot be run in DOS mode'))) return true;
+  let idx = 0;
+  while (true) {
+    idx = buf.indexOf('MZ', idx, 'latin1');
+    if (idx === -1) break;
+    const window = buf.slice(idx, idx + 512);
+    if (window.includes(Buffer.from('PE\0\0'))) return true;
+    idx += 2;
+  }
+  return false;
+}
+
+// Heuristic only: catches active-content keywords sitting in plain text in
+// the PDF's object dictionaries. It will NOT see JS hidden inside a
+// FlateDecode-compressed stream — a real CV never legitimately needs any of
+// these features, so any hit is treated as a hard rejection rather than a
+// false-positive risk worth tolerating.
+function scanPdfHeuristics(buf) {
+  const found = [];
+  for (const token of PDF_SUSPICIOUS_TOKENS) {
+    if (buf.includes(Buffer.from(token, 'latin1'))) found.push(token);
+  }
+  return found;
+}
+
+// Lightweight ZIP local-file-header walker (no dependency) to list entry
+// names inside a .docx without fully decompressing it. Rejects (fails
+// closed) on anything that doesn't parse cleanly, on macro indicators
+// (vbaProject.bin), on any dangerous-extension entry, on implausible
+// declared sizes (zip-bomb guard), and on streamed entries whose size can't
+// be verified up front.
+function scanZipEntries(buf) {
+  const LOCAL_SIG = 0x04034b50;
+  const result = { entries: [], suspicious: false, reason: '' };
+  let offset = 0;
+  let iterations = 0;
+
+  try {
+    while (offset + 4 <= buf.length && iterations < 2000) {
+      iterations++;
+      const sig = buf.readUInt32LE(offset);
+      if (sig !== LOCAL_SIG) break;
+      if (offset + 30 > buf.length) {
+        result.suspicious = true;
+        result.reason = 'Truncated zip header';
+        break;
+      }
+      const flag = buf.readUInt16LE(offset + 6);
+      const compSize = buf.readUInt32LE(offset + 18);
+      const uncompSize = buf.readUInt32LE(offset + 22);
+      const nameLen = buf.readUInt16LE(offset + 26);
+      const extraLen = buf.readUInt16LE(offset + 28);
+      const nameStart = offset + 30;
+      const nameEnd = nameStart + nameLen;
+
+      if (nameEnd > buf.length) {
+        result.suspicious = true;
+        result.reason = 'Truncated entry name';
+        break;
+      }
+
+      const entryName = buf.slice(nameStart, nameEnd).toString('utf8');
+      result.entries.push(entryName);
+
+      if (uncompSize > 200 * 1024 * 1024) {
+        result.suspicious = true;
+        result.reason = 'Implausible uncompressed size (possible zip bomb)';
+        break;
+      }
+
+      const lowerName = entryName.toLowerCase();
+      if (hasDangerousExtensionAnywhere(lowerName) || lowerName.endsWith('vbaproject.bin')) {
+        result.suspicious = true;
+        result.reason = `Disallowed entry: ${entryName}`;
+        break;
+      }
+
+      if (flag & 0x0008) {
+        result.suspicious = true;
+        result.reason = 'Streamed zip entry (size unverifiable)';
+        break;
+      }
+
+      offset = nameStart + nameLen + extraLen + compSize;
+    }
+  } catch (e) {
+    result.suspicious = true;
+    result.reason = 'Zip parsing error';
+  }
+
+  const looksLikeOoxml = result.entries.includes('[Content_Types].xml') ||
+    result.entries.some(e => e.startsWith('word/'));
+  if (!looksLikeOoxml && !result.suspicious) {
+    result.suspicious = true;
+    result.reason = 'Archive does not look like a valid Word document';
+  }
+
+  return result;
+}
+
+// Main orchestrator: decodes, verifies content actually matches the claimed
+// type, scans for active/embedded threats, and rebuilds a safe output
+// filename. The returned filename is ALWAYS <cleaned-name>.<verified-ext> —
+// constructed from scratch, never copied from the original — so a double-
+// extension trick like "cv.exe.pdf" cannot survive into the outgoing email
+// even if some other check were bypassed.
+async function verifyAttachment(attachment) {
+  const rawFilename = sanitizeFilename(attachment.filename);
+  if (!rawFilename) {
+    return { ok: false, message: 'The CV file name is invalid.' };
+  }
+  if (hasDangerousExtensionAnywhere(rawFilename)) {
+    return { ok: false, message: 'That file type is not accepted for security reasons.' };
+  }
+
+  const normalizedB64 = attachment.content.replace(/\s/g, '');
+  if (!/^[A-Za-z0-9+/]+={0,2}$/.test(normalizedB64)) {
+    return { ok: false, message: 'The CV attachment could not be read.' };
+  }
+
+  let buffer;
+  try {
+    buffer = Buffer.from(normalizedB64, 'base64');
+  } catch (e) {
+    return { ok: false, message: 'The CV attachment could not be read.' };
+  }
+  if (!buffer.length) {
+    return { ok: false, message: 'The CV attachment is empty.' };
+  }
+  if (buffer.length > MAX_CV_RAW_BYTES) {
+    return { ok: false, message: 'The CV file is too large.' };
+  }
+
+  const signature = detectSignature(buffer);
+
+  if (['exe', 'elf', 'macho', 'script'].includes(signature)) {
+    return { ok: false, message: 'That file appears to be an executable and was rejected.' };
+  }
+
+  const mimeToSignature = {
+    'application/pdf': 'pdf',
+    'application/msword': 'ole',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'zip'
+  };
+  const expectedSignature = mimeToSignature[attachment.mimeType];
+  if (signature !== expectedSignature) {
+    return { ok: false, message: 'The file content does not match its declared type.' };
+  }
+  if (signature === 'ole' && !ALLOW_LEGACY_DOC) {
+    return { ok: false, message: 'Legacy .doc files are not accepted — please upload a PDF or .docx.' };
+  }
+
+  if (containsEmbeddedExecutableMarker(buffer)) {
+    return { ok: false, message: 'That file appears to contain embedded executable content and was rejected.' };
+  }
+
+  if (signature === 'pdf' && scanPdfHeuristics(buffer).length) {
+    return { ok: false, message: 'That PDF contains active content that is not accepted for CV submissions.' };
+  }
+
+  if (signature === 'zip' && scanZipEntries(buffer).suspicious) {
+    return { ok: false, message: 'That document could not be verified as safe and was rejected.' };
+  }
+
+  const extensionBySignature = { pdf: 'pdf', ole: 'doc', zip: 'docx' };
+  const safeExt = extensionBySignature[signature];
+  const displayBase = rawFilename
+    .replace(/\.[a-zA-Z0-9]{1,10}$/, '')
+    .replace(/[^a-zA-Z0-9 _-]/g, '')
+    .trim()
+    .slice(0, 80) || 'CV';
+  const finalFilename = `${displayBase}.${safeExt}`;
+
+  return { ok: true, filename: finalFilename, mimeType: attachment.mimeType, buffer };
 }
 
 function validatePayload(input) {
@@ -424,11 +701,21 @@ function buildEmail(data) {
   return { subject, text, html };
 }
 
-async function handleSendEmail(req, res) {
-   // ----- CORS preflight -----
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+function applyCors(req, res, allowMethods) {
+  const origin = req.headers.origin;
+  if (ALLOWED_ORIGINS.length > 0 && origin && ALLOWED_ORIGINS.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
+  // If ALLOWED_ORIGINS is empty (default), no CORS header is sent, so only
+  // same-origin requests succeed — the safest default for a state-changing
+  // endpoint. Configure ALLOWED_ORIGINS if your frontend lives elsewhere.
+  res.setHeader('Access-Control-Allow-Methods', allowMethods);
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+}
+
+async function handleSendEmail(req, res) {
+  applyCors(req, res, 'POST, OPTIONS');
 
   if (req.method === 'OPTIONS') {
     return res.writeHead(204).end();
@@ -452,6 +739,12 @@ async function handleSendEmail(req, res) {
     });
   }
 
+  // Fail fast on an oversized declared body before reading any of it.
+  const declaredLength = Number(req.headers['content-length'] || 0);
+  if (declaredLength && declaredLength > MAX_BODY_BYTES) {
+    return sendJson(res, 413, { success: false, message: 'Request body is too large.' });
+  }
+
   try {
     const input = await readJson(req);
     const validation = validatePayload(input);
@@ -464,12 +757,28 @@ async function handleSendEmail(req, res) {
       return sendJson(res, 400, { success: false, message: validation.message });
     }
 
-    // Verify Turnstile CAPTCHA if token provided
-    if (validation.data.turnstileToken) {
+    // Verify Turnstile CAPTCHA. If a secret key is configured, a token is
+    // REQUIRED — previously an attacker could just omit the token and skip
+    // verification entirely.
+    if (TURNSTILE_SECRET_KEY) {
+      if (!validation.data.turnstileToken) {
+        return sendJson(res, 400, { success: false, message: 'CAPTCHA verification is required.' });
+      }
       const validCaptcha = await verifyTurnstileToken(validation.data.turnstileToken, getClientIp(req));
       if (!validCaptcha) {
         return sendJson(res, 400, { success: false, message: 'CAPTCHA verification failed. Please try again.' });
       }
+    }
+
+    // Deep-scan the CV attachment (magic bytes, embedded executables, active
+    // PDF content, zip/macro inspection) — never trust the client-declared
+    // mimeType alone.
+    if (validation.data.type === 'career') {
+      const attCheck = await verifyAttachment(validation.data.attachment);
+      if (!attCheck.ok) {
+        return sendJson(res, 400, { success: false, message: attCheck.message });
+      }
+      validation.data.attachment = attCheck;
     }
 
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !MAIL_FROM) {
@@ -502,8 +811,7 @@ async function handleSendEmail(req, res) {
     if (validation.data.type === 'career' && validation.data.attachment) {
       mailOptions.attachments = [{
         filename: validation.data.attachment.filename,
-        content: validation.data.attachment.content,
-        encoding: 'base64',
+        content: validation.data.attachment.buffer,
         contentType: validation.data.attachment.mimeType
       }];
     }
@@ -590,6 +898,9 @@ function setSecurityHeaders(res) {
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  // Only honored by browsers over HTTPS, harmless to always send.
+  res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains');
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
 
   res.setHeader(
     'Content-Security-Policy',
@@ -680,6 +991,11 @@ const server = http.createServer((req, res) => {
 
   return serveStatic(req, res);
 });
+
+// Basic protection against slow-loris style connection exhaustion attacks.
+server.headersTimeout = 20000;
+server.requestTimeout = 30000;
+server.keepAliveTimeout = 15000;
 
 server.listen(PORT, HOST, () => {
   console.log(`NODA PLAST website server listening on http://${HOST}:${PORT}`);
