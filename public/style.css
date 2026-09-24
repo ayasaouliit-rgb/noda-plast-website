@@ -30,6 +30,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -38,7 +39,7 @@ body {
   background: var(--white);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img,
@@ -287,10 +288,11 @@ p {
 /* ============================================================
    HEADER
    ============================================================ */
-
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 500;
 
   width: 100%;
@@ -304,7 +306,6 @@ header {
   display: flex;
   align-items: center;
 }
-
 
 /* Main header container */
 .nav-wrap {
@@ -682,9 +683,18 @@ footer {
 }
 
 /* HERO */
-.hero {
+.hero-home {
   position: relative;
   height: 600px;
+  display: flex;
+  align-items: flex-end;
+  color: var(--white);
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  height: fit-content;
   display: flex;
   align-items: flex-end;
   color: var(--white);
