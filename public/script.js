@@ -1269,39 +1269,16 @@ const NEWS = [
     phCap: "Trade exhibition photograph",
     img: "paris-event.png"
   },
-
   {
-    id: 'news-item-2',
-    type: "news",
-    category: "Technology",
-    date: "Coming soon",
-    title: "Inside our extrusion and orientation process",
-    desc: "Explore how our production processes contribute to consistent film quality and performance.",
-    phCap: "Laboratory or technical photograph",
-    img: "extrusion-process-technical.png"
-  },
-
-  {
-    id: 'news-item-3',
-    type: "event",
-    category: "Company",
-    date: "Coming soon",
-    title: "NODA PLAST welcomes industry partners",
-    desc: "An opportunity to connect with customers, partners, and professionals from the flexible packaging industry.",
-    phCap: "Industry meeting photograph",
-    img: "industry-meeting.png"
-  },
-
-  {
-    id: 'news-item-4',
-    type: "news",
-    category: "Technology",
-    date: "Coming soon",
-    title: "Quality lab instrumentation upgrade",
-    desc: "Placeholder summary — replace with real technical article content.",
-    phCap: "Quality lab instrument photograph",
-    img: "quality-lab-instrument-upgrade.png"
-  },
+  id: 'technologie',
+  type: "news",
+  category: "Technology",
+  date: "27/09/2026",
+  title: "Inside Our Extrusion and Orientation Process",
+  desc: "Discover how our advanced production processes help us deliver consistent film quality, performance, and reliability.",
+  phCap: "Our production line",
+  img: "bopp-production-line-wide.jpg"
+  }
 ];
 
 
@@ -1313,28 +1290,6 @@ const jobs = [
     description:
       "Support daily production operations and ensure that manufacturing processes are carried out safely, efficiently, and according to quality requirements.",
     tags: ["Full-time", "Production", "On-site"],
-    location: "Sétif, Algeria",
-    employment: "Full-time"
-  },
-
-  {
-    id: 'process-production-engineer',
-    category: "Engineering",
-    title: "Process / Production Engineer",
-    description:
-      "Help optimize production processes, monitor performance, identify improvement opportunities, and support continuous improvement initiatives.",
-    tags: ["Full-time", "Engineering", "On-site"],
-    location: "Sétif, Algeria",
-    employment: "Full-time"
-  },
-
-  {
-    id: 'quality-control-technician',
-    category: "Quality",
-    title: "Quality Control Technician",
-    description:
-      "Perform quality checks, record technical measurements, support laboratory activities, and help maintain product quality standards.",
-    tags: ["Full-time", "Quality", "Laboratory"],
     location: "Sétif, Algeria",
     employment: "Full-time"
   }
