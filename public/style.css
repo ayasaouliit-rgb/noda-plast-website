@@ -565,7 +565,6 @@ footer {
 }
 
 .footer-brand-chip {
-  background: var(--white);
   display: inline-flex;
   padding: 10px 16px;
   border-radius: 10px;
