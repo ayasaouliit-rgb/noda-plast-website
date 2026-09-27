@@ -759,7 +759,7 @@ const PRODUCTS = [
 
   {
     id: 'nsmmb',
-    code: 'NSMM-B',
+    code: 'NSMB',
     img: 'mtz-bopp-film-roll.png',
     gallery: [
       'mtz-bopp-film-roll.png',
@@ -1270,14 +1270,14 @@ const NEWS = [
     img: "paris-event.png"
   },
   {
-  id: 'technologie',
-  type: "news",
-  category: "Technology",
-  date: "27/09/2026",
-  title: "Inside Our Extrusion and Orientation Process",
-  desc: "Discover how our advanced production processes help us deliver consistent film quality, performance, and reliability.",
-  phCap: "Our production line",
-  img: "bopp-production-line-wide.jpg"
+    id: 'technologie',
+    type: "news",
+    category: "Technology",
+    date: "27/09/2026",
+    title: "Inside Our Extrusion and Orientation Process",
+    desc: "Discover how our advanced production processes help us deliver consistent film quality, performance, and reliability.",
+    phCap: "Our production line",
+    img: "bopp-production-line-wide.jpg"
   }
 ];
 
