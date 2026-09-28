@@ -928,8 +928,8 @@ const mimeTypes = {
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
   '.pdf': 'application/pdf',
-  '.xml': 'application/xml; charset=utf-8',   // ← أضف هذا
-  '.txt': 'text/plain; charset=utf-8',        // ← أضف هذا
+  '.xml': 'application/xml; charset=utf-8',   
+  '.txt': 'text/plain; charset=utf-8',        
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
   '.ttf': 'font/ttf',
