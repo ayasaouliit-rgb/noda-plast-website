@@ -16,14 +16,14 @@ function i18nText(str) {
    SEO — PAGE TITLE & META DESCRIPTION MAP
    ============================================================ */
 const PAGE_SEO = {
-  home:                { title: 'NODA PLAST FILM — BOPP Film Manufacturer | Sétif, Algeria', desc: 'High-performance BOPP film solutions for packaging, labels, printing and lamination.' },
-  about:               { title: 'About NODA PLAST FILM — BOPP Film Manufacturer', desc: 'Learn about NODA PLAST FILM, a BOPP film manufacturer in Sétif, Algeria with an advanced 8.7-meter five-layer production line.' },
+  home:                { title: 'NODA PLAST FILM — BOPP Film Manufacturer | Setif, Algeria', desc: 'High-performance BOPP film solutions for packaging, labels, printing and lamination.' },
+  about:               { title: 'About NODA PLAST FILM — BOPP Film Manufacturer', desc: 'Learn about NODA PLAST FILM, a BOPP film manufacturer in Setif, Algeria with an advanced 8.7-meter five-layer production line.' },
   products:            { title: 'BOPP Film Products — Clear, White, Metallized, Matt | NODA PLAST FILM', desc: 'Explore our full range of BOPP films: clear, white, metallized, matt and pearlised films for packaging and labels.' },
   'product-detail':    { title: 'BOPP Film Product Details | NODA PLAST FILM', desc: 'Technical details and specifications for NODA PLAST BOPP film products.' },
   applications:        { title: 'BOPP Film Applications — Packaging, Labels, Printing | NODA PLAST FILM', desc: 'BOPP film solutions for food packaging, labels, printing, lamination and industrial use.' },
   quality:             { title: 'Quality — BOPP Film Testing & Control | NODA PLAST FILM', desc: 'Quality control at every stage of BOPP film production, from raw materials to finished rolls.' },
   sustainability:      { title: 'Sustainability — Responsible BOPP Film Production | NODA PLAST FILM', desc: 'Recyclable products, responsible production and environmental care at NODA PLAST FILM.' },
-  careers:             { title: 'Careers — Join NODA PLAST FILM', desc: 'Build your career at NODA PLAST FILM in Sétif, Algeria. View open positions and submit your CV.' },
+  careers:             { title: 'Careers — Join NODA PLAST FILM', desc: 'Build your career at NODA PLAST FILM in Setif, Algeria. View open positions and submit your CV.' },
   'global-presence':   { title: 'Global Presence — BOPP Film Export | NODA PLAST FILM', desc: 'NODA PLAST FILM exports BOPP film from Algeria to Africa, the Middle East and Europe.' },
   news:                { title: 'News & Events | NODA PLAST FILM', desc: 'Latest news, events and industry insights from NODA PLAST FILM.' },
   contact:             { title: 'Contact NODA PLAST FILM — BOPP Film Supplier', desc: 'Contact NODA PLAST FILM for quotes, technical questions or partnership inquiries.' }
@@ -1318,7 +1318,7 @@ const jobs = [
     description:
       "Support daily production operations and ensure that manufacturing processes are carried out safely, efficiently, and according to quality requirements.",
     tags: ["Full-time", "Production", "On-site"],
-    location: "Sétif, Algeria",
+    location: "Setif, Algeria",
     employment: "Full-time"
   }
 ];
@@ -1339,29 +1339,29 @@ function renderjobsgrid() {
       article.innerHTML = `
         <div class="careers-job-main">
           <div class="careers-job-category" data-i18n="${job.category}">
-            ${job.category}
+            ${i18nText(job.category)}
           </div>
           <h3 data-i18n="${job.title}">
-            ${job.title}
+            ${i18nText(job.title)}
           </h3>
           <p data-i18n="${job.description}">
-            ${job.description}
+            ${i18nText(job.description)}
           </p>
           <div class="tag-row">
             ${job.tags.map(tag => `
-              <span class="tag" data-i18n="${tag}">${tag}</span>
+              <span class="tag" data-i18n="${tag}">${i18nText(tag)}</span>
             `).join("")}
           </div>
         </div>
 
         <div class="careers-job-side">
           <div class="careers-job-detail">
-            <span data-i18n="Location">Location</span>
-            <strong data-i18n="${job.location}">${job.location}</strong>
+            <span data-i18n="Location">${i18nText('Location')}</span>
+            <strong data-i18n="${job.location}">${i18nText(job.location)}</strong>
           </div>
           <div class="careers-job-detail">
-            <span data-i18n="Employment">Employment</span>
-            <strong data-i18n="${job.employment}">${job.employment}</strong>
+            <span data-i18n="Employment">${i18nText('Employment')}</span>
+            <strong data-i18n="${job.employment}">${i18nText(job.employment)}</strong>
           </div>
           <a
             href="#careers-apply"
@@ -1471,6 +1471,9 @@ function renderHomeNewsCarousel() {
       item.contentType === 'event'
     ) {
 
+          const catRaw =
+        item.contentType === 'event' ? 'Event' : item.category;
+
       return `
         <div
           class="card news-card home-news-card"
@@ -1483,21 +1486,19 @@ function renderHomeNewsCarousel() {
 
             <div class="news-meta">
 
-              <span class="news-cat">
-                ${item.contentType === 'event'
-          ? '<span data-i18n="Event">Event</span>'
-          : `<span data-i18n="${item.category}">${item.category}</span>`}
+              <span class="news-cat" data-i18n="${catRaw}">
+                ${i18nText(catRaw)}
               </span>
 
               <span class="news-date" data-i18n="${item.date}">
-                ${item.date}
+                ${i18nText(item.date)}
               </span>
 
             </div>
 
-            <h3 data-i18n="${item.title}">${item.title}</h3>
+            <h3 data-i18n="${item.title}">${i18nText(item.title)}</h3>
 
-            <p data-i18n="${item.desc}">${item.desc}</p>
+            <p data-i18n="${item.desc}">${i18nText(item.desc)}</p>
 
             <button
               type="button"
@@ -1507,8 +1508,8 @@ function renderHomeNewsCarousel() {
             >
 
               ${item.contentType === 'event'
-          ? '<span data-i18n="View event">View event</span>'
-          : '<span data-i18n="Read more">Read more</span>'}
+          ? `<span data-i18n="View event">${i18nText('View event')}</span>`
+          : `<span data-i18n="Read more">${i18nText('Read more')}</span>`}
 
               <svg
                 width="14"
@@ -1534,7 +1535,7 @@ function renderHomeNewsCarousel() {
 
     /* JOB */
 
-    return `
+        return `
       <div
         class="card news-card home-news-card home-job-card"
         data-content-type="job"
@@ -1549,18 +1550,18 @@ function renderHomeNewsCarousel() {
           <div class="news-meta">
 
             <span class="news-cat" data-i18n="Job Opportunity">
-              Job Opportunity
+              ${i18nText('Job Opportunity')}
             </span>
 
             <span class="news-date" data-i18n="${item.location}">
-              ${item.location}
+              ${i18nText(item.location)}
             </span>
 
           </div>
 
-          <h3 data-i18n="${item.title}">${item.title}</h3>
+          <h3 data-i18n="${item.title}">${i18nText(item.title)}</h3>
 
-          <p data-i18n="${item.description}">${item.description}</p>
+          <p data-i18n="${item.description}">${i18nText(item.description)}</p>
 
           <button
             type="button"
@@ -1568,7 +1569,7 @@ function renderHomeNewsCarousel() {
             data-content-type="job"
             data-content-id="${item.id}"
           >
-            <span data-i18n="View position">View position</span>
+            <span data-i18n="View position">${i18nText('View position')}</span>
 
             <svg
               width="14"
@@ -1640,7 +1641,14 @@ function renderNewsGrid(filter = 'all') {
   }
 
   filteredNews.forEach((item, index) => {
-
+  if (!filteredNews.length) {
+    firstGrid.innerHTML = `
+      <div class="news-empty" data-i18n="No news or events available.">
+        ${i18nText('No news or events available.')}
+      </div>
+    `;
+    return;
+  }
     /*
      * FIRST NEWS / EVENT
      * Goes inside .news-hub-section
@@ -1661,49 +1669,26 @@ function renderNewsGrid(filter = 'all') {
     restGrid.appendChild(section);
   });
 }
+
 function createNewsSection(item, index) {
 
   const section = document.createElement('section');
 
-  /*
-   * First item:
-   * .section
-   *
-   * Second item:
-   * .section-tint
-   *
-   * Third:
-   * .section
-   *
-   * Fourth:
-   * .section-tint
-   */
   const sectionClass =
     index % 2 === 0
       ? 'section news-item-section'
       : 'section section-tint news-item-section';
 
   section.className = sectionClass;
-
-  // IMPORTANT:
-  // The section ID must be the actual NEWS id.
-  // This allows Read More from the homepage
-  // to scroll directly to this section.
   section.id = item.id;
-
   section.dataset.newsId = item.id;
   section.dataset.newsType = item.type;
 
-  /*
-   * Odd items are reversed:
-   *
-   * index 0 → image | text
-   * index 1 → text  | image
-   * index 2 → image | text
-   * index 3 → text  | image
-   */
   const reversedClass =
     index % 2 === 1 ? 'is-reversed' : '';
+
+  const categoryRaw =
+    item.type === 'event' ? 'Event' : item.category;
 
   section.innerHTML = `
     <div class="container">
@@ -1733,25 +1718,21 @@ function createNewsSection(item, index) {
 
           <div class="news-paper-meta">
 
-            <span class="news-paper-category">
-              ${i18nText(
-    item.type === 'event'
-      ? 'Event'
-      : item.category
-  )}
+            <span class="news-paper-category" data-i18n="${categoryRaw}">
+              ${i18nText(categoryRaw)}
             </span>
 
-            <span class="news-date">
+            <span class="news-date" data-i18n="${item.date || ''}">
               ${i18nText(item.date || '')}
             </span>
 
           </div>
 
-          <h3>
+          <h3 data-i18n="${item.title}">
             ${i18nText(item.title)}
           </h3>
 
-          <p>
+          <p data-i18n="${item.desc || ''}">
             ${i18nText(item.desc || '')}
           </p>
 
@@ -2734,9 +2715,10 @@ function renderTechnicalSpecifications(product, selectedThickness) {
       return thicknessSpecs[spec.key] ?? 'TBD';
     });
 
+    const labelText = i18nText(String(spec.label));
     return `
       <tr>
-        <td>${escapeHtml(String(spec.label))}</td>
+        <td data-i18n="${escapeHtml(String(spec.label))}">${escapeHtml(labelText)}</td>
         <td>${escapeHtml(String(spec.unit || '-'))}</td>
         ${values.map(value => `
           <td>${escapeHtml(String(value))}</td>
@@ -2748,9 +2730,12 @@ function renderTechnicalSpecifications(product, selectedThickness) {
   const note =
     table.parentElement?.querySelector('.form-note');
 
-  if (note) {
-    note.textContent =
+    if (note) {
+    const noteText =
       'Typical values from the available NODA PLAST technical data sheets. Please contact NODA PLAST for detailed technical specifications and current approved values.';
+    note.dataset.i18n = noteText;
+    note.dataset.i18nOriginalHtml = noteText;
+    note.textContent = i18nText(noteText);
   }
 
   return getProductTechnicalSpecificationValues(
@@ -3807,6 +3792,9 @@ document.addEventListener(
 
 window.renderProductDetail = renderProductDetail;
 window.showPage = showPage;
+window.renderNewsGrid = renderNewsGrid;
+window.renderHomeNewsCarousel = renderHomeNewsCarousel;
+window.renderjobsgrid = renderjobsgrid;
 window.NODA_THICKNESS_OPTIONS =
   THICKNESS_OPTIONS;
 

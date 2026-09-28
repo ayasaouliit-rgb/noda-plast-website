@@ -41,7 +41,7 @@ const CHAT_QA = [
 
   {
     q: 'Where is NODA PLAST located?',
-    a: 'NODA PLAST FILM is located in the Industrial Zone, Guidjel, Sétif, Algeria (demo address shown in this prototype).'
+    a: 'NODA PLAST FILM is located in the Industrial Zone, Guidjel, Setif, Algeria (demo address shown in this prototype).'
   }
 ];
 /* ============================================================
