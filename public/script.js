@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
+  openProductFromUrl();
+});
+
 /* ============================================================
    I18N HELPER
    Translates a static English string to French at call time when
@@ -3184,9 +3188,8 @@ function openProductFromUrl() {
     product: product.id
   });
 }
-document.addEventListener('DOMContentLoaded', () => {
-  openProductFromUrl();
-});
+
+
 /* ============================================================
    GLOBAL NAVIGATION
    ============================================================ */
