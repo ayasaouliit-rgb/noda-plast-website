@@ -7,9 +7,11 @@
    string when not in French mode or before translation.js loads.
    ============================================================ */
 function i18nText(str) {
-  return (window.NODA_LANGUAGE === 'fr' && window.t) ? window.t(str) : str;
+  if (window.NODA_LANGUAGE === 'fr' && typeof window.t === 'function') {
+    return window.t(str);
+  }
+  return str;
 }
-
 /* ============================================================
    SEO — PAGE TITLE & META DESCRIPTION MAP
    ============================================================ */
@@ -1835,11 +1837,11 @@ function renderProductGrid() {
         </div>
 
         <h3 data-i18n="${p.name}">
-          ${p.name}
+          ${i18nText(p.name)}
         </h3>
 
         <p data-i18n="${p.desc}">
-          ${p.desc}
+          ${i18nText(p.desc)}
         </p>
 
         <div class="tag-row">
@@ -1914,24 +1916,30 @@ function renderProductDetail(id) {
     document.getElementById('pdOverview');
 
 
-  if (pdCategory)
-    pdCategory.textContent =
-      `${p.code} · ${i18nText(p.category)}`;
+  if (pdCategory) {
+    const catText = `${p.code} · ${p.category}`;
+    pdCategory.dataset.i18n = catText;
+    pdCategory.dataset.i18nOriginalHtml = catText;
+    pdCategory.textContent = `${p.code} · ${i18nText(p.category)}`;
+  }
 
+  if (pdName) {
+    pdName.dataset.i18n = p.name;
+    pdName.dataset.i18nOriginalHtml = p.name;
+    pdName.textContent = i18nText(p.name);
+  }
 
-  if (pdName)
-    pdName.textContent =
-      i18nText(p.name);
+  if (pdDesc) {
+    pdDesc.dataset.i18n = p.shortName;
+    pdDesc.dataset.i18nOriginalHtml = p.shortName;
+    pdDesc.textContent = i18nText(p.shortName);
+  }
 
-
-  if (pdDesc)
-    pdDesc.textContent =
-      i18nText(p.shortName);
-
-
-  if (pdOverview)
-    pdOverview.textContent =
-      i18nText(p.overview);
+  if (pdOverview) {
+    pdOverview.dataset.i18n = p.overview;
+    pdOverview.dataset.i18nOriginalHtml = p.overview;
+    pdOverview.textContent = i18nText(p.overview);
+  }
 
   /* ============================================================
    PRODUCT DETAIL IMAGE GALLERY
@@ -2351,53 +2359,40 @@ function renderProductDetail(id) {
 
   }
 
-
-  const pdTags =
+    const pdTags =
     document.getElementById('pdTags');
 
-
   if (pdTags) {
-
     pdTags.innerHTML =
       p.tags
         .map(t => `
-          <span class="tag" data-i18n="${t}">${t}</span>
+          <span class="tag" data-i18n="${t}">${i18nText(t)}</span>
         `)
         .join('');
-
   }
+
   const pdKeyProps =
     document.getElementById('pdKeyProps');
 
-
   if (pdKeyProps) {
-
     pdKeyProps.innerHTML = `
-
       <span class="tag">
         ${p.code}
       </span>
-
       <span class="tag" data-i18n="${p.shortName}">
-        ${p.shortName}
+        ${i18nText(p.shortName)}
       </span>
-
     `;
-
   }
-
 
   const pdApplications =
     document.getElementById('pdApplications');
 
-
   if (pdApplications) {
-
     pdApplications.innerHTML =
       p.applications
-        .map(a => `<li>${a}</li>`)
+        .map(a => `<li data-i18n="${a}">${i18nText(a)}</li>`)
         .join('');
-
   }
 
   /*
@@ -2816,9 +2811,9 @@ function renderApplicationsGrid() {
             0${i + 1}
           </div>
 
-          <h3 data-i18n="${a.name}">${a.name}</h3>
+          <h3 data-i18n="${a.name}">${i18nText(a.name)}</h3>
 
-          <p data-i18n="${a.desc}">${a.desc}</p>
+          <p data-i18n="${a.desc}">${i18nText(a.desc)}</p>
 
           <span class="btn-ghost">
             <span data-i18n="View details">View details</span>
@@ -2874,9 +2869,9 @@ function renderHomeApplicationsCarousel() {
       <div class="app-card-body">
         <div class="app-card-num">0${i + 1}</div>
 
-        <h3 data-i18n="${a.name}">${a.name}</h3>
+        <h3 data-i18n="${a.name}">${i18nText(a.name)}</h3>
 
-        <p data-i18n="${a.desc}">${a.desc}</p>
+        <p data-i18n="${a.desc}">${i18nText(a.desc)}</p>
 
         <button
           type="button"
@@ -2944,7 +2939,7 @@ function openApplicationDetail(id) {
     <div>
 
       <div class="eyebrow" data-i18n="${a.name}">
-        ${a.name}
+        ${i18nText(a.name)}
       </div>
 
       <h3
@@ -2953,7 +2948,7 @@ function openApplicationDetail(id) {
           margin-bottom:12px;
         "
       >
-        <span data-i18n="${a.desc}">${a.desc}</span>
+        <span data-i18n="${a.desc}">${i18nText(a.desc)}</span>
       </h3>
 
 
@@ -3810,9 +3805,8 @@ document.addEventListener(
  * the HTML needs to use them later.
  */
 
-window.NODA_PRODUCTS =
-  PRODUCTS;
-
+window.renderProductDetail = renderProductDetail;
+window.showPage = showPage;
 window.NODA_THICKNESS_OPTIONS =
   THICKNESS_OPTIONS;
 
@@ -4104,23 +4098,27 @@ function changeHeroValue(index) {
 
     /* Store the original English value in data-i18n so translation.js
        can translate it now and whenever the language is toggled. */
-    if (heroBadge) {
+        if (heroBadge) {
       heroBadge.dataset.i18n = value.name;
+      heroBadge.dataset.i18nOriginalHtml = value.name;
       heroBadge.textContent = i18nText(value.name);
     }
 
     if (heroEyebrow) {
       heroEyebrow.dataset.i18n = value.eyebrow;
+      heroEyebrow.dataset.i18nOriginalHtml = value.eyebrow;
       heroEyebrow.textContent = i18nText(value.eyebrow);
     }
 
     if (heroTitle) {
       heroTitle.dataset.i18n = value.title;
+      heroTitle.dataset.i18nOriginalHtml = value.title;
       heroTitle.innerHTML = i18nText(value.title);
     }
 
     if (heroText) {
       heroText.dataset.i18n = value.text;
+      heroText.dataset.i18nOriginalHtml = value.text;
       heroText.textContent = i18nText(value.text);
     }
 

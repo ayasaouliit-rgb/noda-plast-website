@@ -94,6 +94,144 @@ const FR={"Exhibition": "Exposition","October 17 – 21, 2026": "17 – 21 octob
 "Finished jumbo rolls ready for slitting and dispatch.": "Rouleaux jumbo finis, prêts pour le refendage et l’expédition.",
 "Laboratory-driven quality checks on every batch.": "Contrôles qualité en laboratoire sur chaque lot.",
 "Instrumented testing of optical, mechanical and surface properties.": "Tests instrumentés des propriétés optiques, mécaniques et de surface.",
+/* ============================================================
+   PRODUCTS — NAMES, SHORTNAMES, DESCRIPTIONS, OVERVIEWS
+   ============================================================ */
+
+/* ---------- MATTS — Matt Film Both Sides Sealable ---------- */
+"MATTS — Matt Film Both Sides Sealable": "MATTS — Film mat thermoscellable des deux côtés",
+"Matt Film (Both Sides Sealable)": "Film mat (thermoscellable des deux côtés)",
+"Matt film with both sides sealable for packaging structures requiring a matte appearance and sealing capability.": "Film mat thermoscellable des deux côtés, pour les structures d’emballage nécessitant un aspect mat et une capacité de thermoscellage.",
+"MATTS is a matt BOPP film designed with both sides sealable. It combines a matte visual appearance with sealing functionality.": "MATTS est un film BOPP mat conçu avec les deux faces thermoscellables. Il associe un aspect visuel mat à une fonction de thermoscellage.",
+"Flexible packaging": "Emballage flexible",
+"Heat-sealable structures": "Structures thermoscellables",
+"Premium packaging": "Emballage haut de gamme",
+"Both sides sealable": "Thermoscellable des deux côtés",
+
+/* ---------- NLC — Label Clear Film ---------- */
+"NLC — Label Clear Film": "NLC — Film transparent pour étiquettes",
+"Label Clear Film": "Film transparent pour étiquettes",
+"Clear BOPP film developed for transparent label applications.": "Film BOPP transparent développé pour les applications d’étiquettes transparentes.",
+"NLC is a clear label film designed for applications where transparency and a no-label-look appearance are important.": "NLC est un film transparent pour étiquettes, conçu pour les applications où la transparence et un effet « sans étiquette apparente » sont importants.",
+"Clear labels": "Étiquettes transparentes",
+"No-label-look applications": "Applications à effet sans étiquette",
+"Bottle labels": "Étiquettes pour bouteilles",
+"Transparent appearance": "Aspect transparent",
+
+/* ---------- NLV — Label White Voided Film ---------- */
+"NLV — Label White Voided Film": "NLV — Film blanc cavité pour étiquettes",
+"Label White Voided Film": "Film blanc cavité pour étiquettes",
+"White voided BOPP film designed for label applications requiring an opaque white appearance.": "Film BOPP blanc cavité conçu pour les applications d’étiquettes nécessitant un aspect blanc opaque.",
+"NLV is a white voided film developed for label applications where opacity, lightweight construction and a white appearance are required.": "NLV est un film blanc cavité développé pour les applications d’étiquettes nécessitant opacité, légèreté et aspect blanc.",
+"Pressure-sensitive labels": "Étiquettes autocollantes",
+"Wrap-around labels": "Étiquettes enveloppantes",
+"Product labels": "Étiquettes produit",
+"Voided": "Cavité",
+
+/* ---------- NSC — Clear Sealable Film ---------- */
+"NSC — Clear Sealable Film": "NSC — Film transparent thermoscellable",
+"Clear Sealable Film": "Film transparent thermoscellable",
+"Transparent BOPP film without heat-sealing functionality.": "Film BOPP transparent sans fonction de thermoscellage.",
+"NSC is a clear sealable BOPP film intended for applications requiring transparency without a heat-sealable structure.": "NSC est un film BOPP transparent thermoscellable destiné aux applications nécessitant une transparence avec une structure thermoscellable.",
+"Printing": "Impression",
+"Lamination": "Contrecollage",
+"Flexible packaging": "Emballage flexible",
+"Sealable": "Thermoscellable",
+
+/* ---------- NNC — Clear Non-Sealable Film ---------- */
+"NNC — Clear Non-Sealable Film": "NNC — Film transparent non thermoscellable",
+"Clear Non-Sealable Film": "Film transparent non thermoscellable",
+"NNC is a clear non-sealable BOPP film intended for applications requiring transparency without a heat-sealable structure.": "NNC est un film BOPP transparent non thermoscellable, destiné aux applications nécessitant une transparence sans structure thermoscellable.",
+"Non-sealable": "Non thermoscellable",
+
+/* ---------- NSH — Clear Heat Sealable ---------- */
+"NSH — Clear Heat Sealable": "NSH — Transparent thermoscellable",
+"Clear Heat Sealable, High C.O.F": "Transparent thermoscellable, coefficient de frottement élevé",
+"Clear heat-sealable film with high coefficient of friction characteristics.": "Film transparent thermoscellable avec des caractéristiques de coefficient de frottement élevé.",
+"NSH is coextruded BOPP film designed for applications requiring heat sealing together with high C.O.F characteristics. suitable for food packaging and intended specially for puches stacking.": "NSH est un film BOPP coextrudé conçu pour les applications nécessitant à la fois le thermoscellage et un coefficient de frottement élevé. Il convient à l’emballage alimentaire et est particulièrement destiné à l’empilage de sachets.",
+"Packaging": "Emballage",
+"Bag making": "Fabrication de sacs",
+"High-speed converting": "Transformation à grande vitesse",
+"High C.O.F": "Coefficient de frottement élevé",
+"Heat sealable": "Thermoscellable",
+
+/* ---------- NSMM — Metallized Sealable One Side ---------- */
+"NSMM — Metallized Sealable One Side Film": "NSMM — Film métallisé thermoscellable une face",
+"Metallized Sealable One Side Film": "Film métallisé thermoscellable une face",
+"Metallized BOPP film with sealing capability for packaging structures.": "Film BOPP métallisé avec capacité de thermoscellage pour les structures d’emballage.",
+"NSMM is a metallized sealable film designed for packaging structures where the metallized appearance and sealing functionality are required.": "NSMM est un film métallisé thermoscellable, conçu pour les structures d’emballage nécessitant à la fois un aspect métallisé et une fonction de thermoscellage.",
+"Metallized packaging": "Emballage métallisé",
+"Snack packaging": "Emballage de snacks",
+"Barrier laminates": "Structures barrière",
+"Barrier packaging": "Emballage barrière",
+"Metallized": "Métallisé",
+
+/* ---------- NSMM-B — Metallized Sealable Both Sides ---------- */
+"NSMM-B — Metallized Sealable Both Sides Film": "NSMM-B — Film métallisé thermoscellable deux faces",
+"Metallized Sealable Both Sides Film": "Film métallisé thermoscellable deux faces",
+
+/* ---------- NSP — White Pearlized Sealable ---------- */
+"NSP — White Pearlized Sealable Film": "NSP — Film blanc perlé thermoscellable",
+"White Pearlized Sealable Film": "Film blanc perlé thermoscellable",
+"White pearlized BOPP film with heat-sealing capability and a distinctive pearlescent appearance.": "Film BOPP blanc perlé avec capacité de thermoscellage et un aspect perlé distinctif.",
+"NSP is a white pearlized sealable BOPP film designed for applications requiring a distinctive pearlized appearance together with sealing functionality.": "NSP est un film BOPP blanc perlé thermoscellable, conçu pour les applications nécessitant un aspect perlé distinctif associé à une fonction de thermoscellage.",
+"Food packaging": "Emballage alimentaire",
+"Premium packaging": "Emballage haut de gamme",
+"Pearlized": "Perlé",
+"White": "Blanc",
+
+/* ---------- NSW — Solid White Sealable ---------- */
+"NSW — Solid White Sealable": "NSW — Blanc opaque thermoscellable",
+"Solid White Sealable (Milky)": "Blanc opaque thermoscellable (laiteux)",
+"Solid white milky BOPP film with heat-sealing capability.": "Film BOPP blanc opaque laiteux avec capacité de thermoscellage.",
+"NSW is a solid white milky sealable BOPP film developed for applications requiring a white opaque appearance and sealing performance.": "NSW est un film BOPP blanc opaque laiteux thermoscellable, développé pour les applications nécessitant un aspect blanc opaque et une bonne performance de scellage.",
+"White packaging structures": "Structures d’emballage blanches",
+"Solid white": "Blanc opaque",
+"Milky": "Laiteux",
+
+/* ============================================================
+   PRODUCT CATEGORIES
+   ============================================================ */
+"Matt Films": "Films mats",
+"Label Films": "Films pour étiquettes",
+"Clear Films": "Films transparents",
+"Heat Sealable Films": "Films thermoscellables",
+"White Films": "Films blancs",
+"Metallized Films": "Films métallisés",
+"White Films, Metallized Films": "Films blancs, films métallisés",
+
+/* ============================================================
+   PRODUCT TAGS (reused across many products)
+   ============================================================ */
+"Matt finish": "Finition mate",
+"Non-sealable matt side": "Face mate non thermoscellable",
+"Clear": "Transparent",
+"Transparent": "Transparent",
+"Label film": "Film pour étiquettes",
+"White": "Blanc",
+"Opaque": "Opaque",
+"Metallized": "Métallisé",
+"Pearlized": "Perlé",
+"High opacity": "Haute opacité",
+"High clarity": "Haute transparence",
+"Printability": "Imprimabilité",
+"Multiple gauges": "Plusieurs épaisseurs",
+"Smooth surface": "Surface lisse",
+"Cavitated options": "Options cavitées",
+"Heat-sealable": "Thermoscellable",
+"Corona treated": "Traité corona",
+"Multi-layer": "Multicouche",
+"Pearlised finish": "Finition perlée",
+"Sealable": "Thermoscellable",
+"Non-sealable": "Non thermoscellable",
+"Release film": "Film de démoulage",
+"Barrier packaging": "Emballage barrière",
+"Both sides sealable": "Thermoscellable des deux côtés",
+"High C.O.F": "Coefficient de frottement élevé",
+"Solid white": "Blanc opaque",
+"Milky": "Laiteux",
+"Voided": "Cavité",
+
 };
 
 const FALLBACK=[["All rights reserved.", "Tous droits réservés."], ["Learn more", "En savoir plus"], ["Read more", "Lire la suite"], ["View", "Voir"], ["Details", "Détails"], ["Quality", "Qualité"], ["Products", "Produits"], ["Product", "Produit"], ["Services", "Services"], ["Company", "Entreprise"], ["Technology", "Technologie"], ["Support", "Support"], ["Country", "Pays"], ["Email", "E-mail"], ["Phone", "Téléphone"], ["Message", "Message"], ["Name", "Nom"], ["Location", "Lieu"], ["Employment", "Emploi"]];
@@ -134,6 +272,19 @@ if (typeof window.refreshHeroTranslations === 'function') {
 
 if (typeof window.refreshChatTranslations === 'function') {
   window.refreshChatTranslations();
+}
+
+/* Re-render the currently open product detail so dynamic
+   fields (name, overview, tags, specs) pick up the new language. */
+if (
+  typeof window.currentSelectedProduct !== 'undefined' &&
+  window.currentSelectedProduct &&
+  typeof window.renderProductDetail === 'function'
+) {
+  const productPage = document.getElementById('page-product-detail');
+  if (productPage && productPage.classList.contains('active')) {
+    window.renderProductDetail(window.currentSelectedProduct.id);
+  }
 }
 }
 function init(){
