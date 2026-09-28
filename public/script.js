@@ -1,7 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-  openProductFromUrl();
-});
-
 /* ============================================================
    I18N HELPER
    Translates a static English string to French at call time when
@@ -3179,11 +3175,15 @@ function openProductFromUrl() {
   if (!productId) return;
 
   const product = PRODUCTS.find(
-    p => p.id.toLowerCase() === productId.toLowerCase()
+    p => String(p.id).toLowerCase() === productId.toLowerCase()
   );
 
-  if (!product) return;
+  if (!product) {
+    console.warn('Product not found:', productId);
+    return;
+  }
 
+  // Open the product detail page
   showPage('product-detail', {
     product: product.id
   });
@@ -4538,4 +4538,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
+});
+document.addEventListener('DOMContentLoaded', function () {
+  openProductFromUrl();
 });
