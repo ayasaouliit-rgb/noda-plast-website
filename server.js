@@ -927,7 +927,13 @@ const mimeTypes = {
   '.webp': 'image/webp',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
-  '.pdf': 'application/pdf'
+  '.pdf': 'application/pdf',
+  '.xml': 'application/xml; charset=utf-8',   // ← أضف هذا
+  '.txt': 'text/plain; charset=utf-8',        // ← أضف هذا
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+  '.ttf': 'font/ttf',
+  '.webmanifest': 'application/manifest+json'
 };
 
 function serveStatic(req, res) {
