@@ -3161,7 +3161,32 @@ function showPage(id, opts) {
   }
 
 }
+/* ============================================================
+   DIRECT PRODUCT URL
+   Allows QR codes / links to open a specific product directly
+   Example:
+   https://noda-plast-website.onrender.com/?product=matts
+   ============================================================ */
 
+function openProductFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const productId = params.get('product');
+
+  if (!productId) return;
+
+  const product = PRODUCTS.find(
+    p => p.id.toLowerCase() === productId.toLowerCase()
+  );
+
+  if (!product) return;
+
+  showPage('product-detail', {
+    product: product.id
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  openProductFromUrl();
+});
 /* ============================================================
    GLOBAL NAVIGATION
    ============================================================ */
