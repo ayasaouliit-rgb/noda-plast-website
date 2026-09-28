@@ -232,6 +232,40 @@ const FR={"Exhibition": "Exposition","October 17 – 21, 2026": "17 – 21 octob
 "Milky": "Laiteux",
 "Voided": "Cavité",
 
+/* ============================================================
+   TECHNICAL SPECIFICATIONS — ROW LABELS
+   ============================================================ */
+"Thickness": "Épaisseur",
+"Unit Weight": "Poids surfacique",
+"Yield": "Rendement",
+"Density": "Densité",
+"Wetting Tension": "Tension de mouillage",
+"Whiteness Index": "Indice de blancheur",
+"Opacity": "Opacité",
+"Transmittance": "Transmittance",
+"Haze": "Voile",
+"Gloss 45°": "Brillance 45°",
+"Gloss": "Brillance",
+"COF Dynamic F-F (U-U)": "COF dynamique F-F (U-U)",
+"Coefficient of Friction": "Coefficient de frottement",
+"Optical Density": "Densité optique",
+"OTR": "OTR",
+"WVTR": "WVTR",
+"Tensile Strength (MD / TD)": "Résistance à la traction (MD / TD)",
+"Elongation at Break (MD / TD)": "Allongement à la rupture (MD / TD)",
+"Modulus of Elasticity (MD / TD)": "Module d’élasticité (MD / TD)",
+"Thermal Shrinkage (MD / TD)": "Retrait thermique (MD / TD)",
+"Heat Seal Range": "Plage de thermoscellage",
+"Seal Strength": "Résistance de soudure",
+
+/* Also useful if displayed */
+"PROPERTY": "PROPRIÉTÉ",
+"UNIT": "UNITÉ",
+"SPECIFICATION": "SPÉCIFICATION",
+"Property": "Propriété",
+"Unit": "Unité",
+"Specification": "Spécification",
+"Typical values from the available NODA PLAST technical data sheets. Please contact NODA PLAST for detailed technical specifications and current approved values.": "Valeurs typiques issues des fiches techniques NODA PLAST disponibles. Veuillez contacter NODA PLAST pour des spécifications techniques détaillées et les valeurs approuvées en vigueur.",
 };
 
 const FALLBACK=[["All rights reserved.", "Tous droits réservés."], ["Learn more", "En savoir plus"], ["Read more", "Lire la suite"], ["View", "Voir"], ["Details", "Détails"], ["Quality", "Qualité"], ["Products", "Produits"], ["Product", "Produit"], ["Services", "Services"], ["Company", "Entreprise"], ["Technology", "Technologie"], ["Support", "Support"], ["Country", "Pays"], ["Email", "E-mail"], ["Phone", "Téléphone"], ["Message", "Message"], ["Name", "Nom"], ["Location", "Lieu"], ["Employment", "Emploi"]];

@@ -2734,9 +2734,10 @@ function renderTechnicalSpecifications(product, selectedThickness) {
       return thicknessSpecs[spec.key] ?? 'TBD';
     });
 
+    const labelText = i18nText(String(spec.label));
     return `
       <tr>
-        <td>${escapeHtml(String(spec.label))}</td>
+        <td data-i18n="${escapeHtml(String(spec.label))}">${escapeHtml(labelText)}</td>
         <td>${escapeHtml(String(spec.unit || '-'))}</td>
         ${values.map(value => `
           <td>${escapeHtml(String(value))}</td>
@@ -2748,9 +2749,12 @@ function renderTechnicalSpecifications(product, selectedThickness) {
   const note =
     table.parentElement?.querySelector('.form-note');
 
-  if (note) {
-    note.textContent =
+    if (note) {
+    const noteText =
       'Typical values from the available NODA PLAST technical data sheets. Please contact NODA PLAST for detailed technical specifications and current approved values.';
+    note.dataset.i18n = noteText;
+    note.dataset.i18nOriginalHtml = noteText;
+    note.textContent = i18nText(noteText);
   }
 
   return getProductTechnicalSpecificationValues(
