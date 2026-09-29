@@ -722,11 +722,13 @@ footer {
   width: 100%;
 }
 
-.hero-content h1 {
+.hero-content h1,
+.hero-content h2 {
   color: var(--white);
 }
 
-.hero-content h1 span {
+.hero-content h1 span,
+.hero-content h2 span {
   color: var(--orange);
   white-space: nowrap;
 }
