@@ -298,9 +298,6 @@ const FR={"The Power to Create,": "Le pouvoir de créer,","The Power to Create,<
 "Full-time": "Temps plein",
 "On-site": "Sur site",
 "Setif, Algeria": "Sétif, Algérie",
-
-"NODA PLAST FILM — BOPP film manufacturer in Sétif, Algeria. Clear, white, metallized, matt and pearlised films for packaging and labels.": "NODA PLAST FILM — fabricant de films BOPP à Sétif, Algérie. Films transparents, blancs, métallisés, mats et perlés pour l’emballage et les étiquettes.",
-
 };
 
 const FALLBACK=[["All rights reserved.", "Tous droits réservés."], ["Learn more", "En savoir plus"], ["Read more", "Lire la suite"], ["View", "Voir"], ["Details", "Détails"], ["Quality", "Qualité"], ["Products", "Produits"], ["Product", "Produit"], ["Services", "Services"], ["Company", "Entreprise"], ["Technology", "Technologie"], ["Support", "Support"], ["Country", "Pays"], ["Email", "E-mail"], ["Phone", "Téléphone"], ["Message", "Message"], ["Name", "Nom"], ["Location", "Lieu"], ["Employment", "Emploi"]];
@@ -313,34 +310,6 @@ function t(v){
  FALLBACK.forEach(([a,b])=>{r=r.replace(new RegExp('\\b'+a.replace(/[.*+?^${}()|[\\]\\]/g,'\\\\$&')+'\\b','gi'),b);});
  return r;
 }
-
-/*META DESCRIPTION TRANSLATION*/
-function applyMetaDescription(lang) {
-  const meta = document.querySelector('meta[name="description"]');
-  if (!meta) return;
-
-  const enText = meta.dataset.i18nDescription || meta.getAttribute('content') || '';
-  if (!enText) return;
-
-  // Store the original English text the first time we see it
-  if (!meta.dataset.i18nDescription) {
-    meta.dataset.i18nDescription = enText;
-  }
-
-  meta.setAttribute('content', lang === 'fr' ? t(enText) : enText);
-}
-
-function applyMetaTitle(lang) {
-  const titleEl = document.querySelector('title[data-i18n]');
-  if (!titleEl) return;
-  if (!titleEl.dataset.i18nOriginalTitle) {
-    titleEl.dataset.i18nOriginalTitle = titleEl.textContent;
-  }
-  titleEl.textContent = lang === 'fr'
-    ? t(titleEl.dataset.i18nOriginalTitle)
-    : titleEl.dataset.i18nOriginalTitle;
-}
-
 function attrs(el,lang){
  ['placeholder','title','aria-label'].forEach(a=>{
   const key='i18n'+a[0].toUpperCase()+a.slice(1), src=el.dataset[key];
@@ -362,8 +331,6 @@ function apply(lang){
  document.querySelectorAll('[data-i18n-placeholder],[data-i18n-title],[data-i18n-aria-label]').forEach(el=>attrs(el,lang));
  document.querySelectorAll('[data-i18n-toggle]').forEach(b=>{b.textContent=lang==='fr'?'EN':'FR';b.setAttribute('aria-label',lang==='fr'?'Passer en anglais':'Passer en français');b.title=lang==='fr'?'Passer en anglais':'Passer en français';});
  localStorage.setItem(KEY,lang);
- applyMetaDescription(lang);
- applyMetaTitle(lang);
 
 if (typeof window.refreshHeroTranslations === 'function') {
   window.refreshHeroTranslations();
@@ -425,4 +392,3 @@ function init(){
 window.NODA_TRANSLATE=apply; window.t=t;
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
-
