@@ -297,10 +297,20 @@ const DANGEROUS_EXTENSIONS = new Set([
 const BIDI_CONTROL_CHARS = /[\u202A-\u202E\u2066-\u2069\u200E\u200F]/g;
 
 const PDF_SUSPICIOUS_TOKENS = [
-  '/JavaScript', '/JS', '/OpenAction', '/AA', '/Launch',
-  '/EmbeddedFile', '/RichMedia', '/SubmitForm', '/ImportData', '/GoToE'
+  'JavaScript', 'JS', 'OpenAction', 'AA', 'Launch',
+  'EmbeddedFile', 'RichMedia', 'SubmitForm', 'ImportData', 'GoToE'
 ];
 
+
+function scanPdfHeuristics(buf) {
+  const text = buf.toString('latin1');
+  const found = [];
+  for (const token of PDF_SUSPICIOUS_TOKENS) {
+    const re = new RegExp('/' + token + '(?![A-Za-z0-9_+.\\-#])');
+    if (re.test(text)) found.push('/' + token);
+  }
+  return found;
+}
 function sanitizeFilename(name) {
   if (typeof name !== 'string') return '';
   return name
@@ -351,19 +361,6 @@ function containsEmbeddedExecutableMarker(buf) {
     idx += 2;
   }
   return false;
-}
-
-// Heuristic only: catches active-content keywords sitting in plain text in
-// the PDF's object dictionaries. It will NOT see JS hidden inside a
-// FlateDecode-compressed stream — a real CV never legitimately needs any of
-// these features, so any hit is treated as a hard rejection rather than a
-// false-positive risk worth tolerating.
-function scanPdfHeuristics(buf) {
-  const found = [];
-  for (const token of PDF_SUSPICIOUS_TOKENS) {
-    if (buf.includes(Buffer.from(token, 'latin1'))) found.push(token);
-  }
-  return found;
 }
 
 // Lightweight ZIP local-file-header walker (no dependency) to list entry
@@ -773,12 +770,14 @@ async function handleSendEmail(req, res) {
     // Deep-scan the CV attachment (magic bytes, embedded executables, active
     // PDF content, zip/macro inspection) — never trust the client-declared
     // mimeType alone.
+    let recipient = SERVICE_RECIPIENTS[validation.data.service];
     if (validation.data.type === 'career') {
       const attCheck = await verifyAttachment(validation.data.attachment);
       if (!attCheck.ok) {
         return sendJson(res, 400, { success: false, message: attCheck.message });
       }
       validation.data.attachment = attCheck;
+      recipient=MAIL_TO_HR;
     }
 
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !MAIL_FROM) {
@@ -790,7 +789,7 @@ async function handleSendEmail(req, res) {
     }
 
     const email = buildEmail(validation.data);
-    const recipient = SERVICE_RECIPIENTS[validation.data.service];
+    
 
     if (!recipient) {
       return sendJson(res, 400, {
