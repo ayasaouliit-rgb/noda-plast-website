@@ -1,7 +1,11 @@
+import { on } from './core/dom.js';
+import { i18nText } from './core/i18n.js';
+import { PRODUCTS } from './data/products.js';
+
 const CHAT_QA = [
   {
     q: 'What BOPP films do you produce?',
-    a: 'We manufacture MATTN, MATTS, NLC, NLV, NNC, NRC, NSC, NSH, NSMM, NSP, NSW and NVMM BOPP films.'
+    a: 'We manufacture MATTS, NLC, NLV, NNC, NRC, NSC, NSH, NSMM, NSP and NSW BOPP films.'
   },
 
   {
@@ -36,17 +40,24 @@ const CHAT_QA = [
 
   {
     q: 'How can I contact sales?',
-    a: 'You can reach our sales team at commercial@nodaplast-film.com. For general enquiries, contact us at contact@nodaplast-film.com.'
+    a: 'You can reach our sales team manager at amira.ameen@nodaplast-film.com or sales representatives at ch.bouaoud@nodaplast-film.com, n.kharfi@nodaplast-film.com or y.lebcir@nodaplast-film.com. For general enquiries, contact us at it@nodaplast-film.com.'
+  },
+
+  {
+    q: 'How can I contact purchasing?',
+    a: 'You can reach our purchasing team at it@nodaplast-film.com.'
+  },
+
+  {
+    q: 'How can I contact human resources?',
+    a: 'You can reach our human resources team at drh@nodaplast-film.com.'
   },
 
   {
     q: 'Where is NODA PLAST located?',
-    a: 'NODA PLAST FILM is located in the Industrial Zone, Guidjel, Setif, Algeria (demo address shown in this prototype).'
+    a: 'NODA PLAST FILM is located in the Industrial Zone, Guidjel, Setif, Algeria.'
   }
 ];
-/* ============================================================
-   CHATBOT
-   ============================================================ */
 
 const chatFab =
   document.getElementById(

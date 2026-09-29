@@ -68,27 +68,54 @@ const FR={"The Power to Create,": "Le pouvoir de créer,","The Power to Create,<
 "coming soon": "bientôt disponible",
 "Sales": "Commercial",
 "Company": "Entreprise",
-
 "What BOPP films do you produce?": "Quels films BOPP produisez-vous ?",
-"We manufacture MATTN, MATTS, NLC, NLV, NNC, NRC, NSC, NSH, NSMM, NSP, NSW and NVMM BOPP films.": "Nous fabriquons les films BOPP MATTN, MATTS, NLC, NLV, NNC, NRC, NSC, NSH, NSMM, NSP, NSW et NVMM.",
+
+"We manufacture MATTS, NLC, NLV, NNC, NRC, NSC, NSH, NSMM, NSP and NSW BOPP films.": "Nous fabriquons les films BOPP MATTS, NLC, NLV, NNC, NRC, NSC, NSH, NSMM, NSP et NSW.",
+
 "What applications do you support?": "Quelles applications proposez-vous ?",
+
 "Our films support food packaging, labels, printing, lamination, industrial and specialty applications.": "Nos films couvrent l’emballage alimentaire, les étiquettes, l’impression, le contrecollage ainsi que les applications industrielles et spécialisées.",
+
 "How is quality controlled?": "Comment la qualité est-elle contrôlée ?",
+
 "We take quality seriously and verify product quality throughout the production process before release.": "Nous prenons la qualité très au sérieux et vérifions la qualité des produits tout au long du processus de production avant leur mise sur le marché.",
+
 "What specifications can I choose?": "Quelles spécifications puis-je choisir ?",
+
 "Customers can select the available film thickness, width and treatment according to the selected film type.": "Les clients peuvent choisir l’épaisseur, la largeur et le traitement disponibles selon le type de film sélectionné.",
+
 "What thicknesses are available?": "Quelles épaisseurs sont disponibles ?",
+
 "Available thickness options are 15, 18, 20, 22, 23, 25, 30, 35, 38, 40, 45, 50 and 70 MIC.": "Les épaisseurs disponibles sont 15, 18, 20, 22, 23, 25, 30, 35, 38, 40, 45, 50 et 70 MIC.",
+
 "What widths are available?": "Quelles largeurs sont disponibles ?",
+
 "Film widths can be selected from 400 mm up to 2000 mm.": "Les largeurs de film peuvent être choisies de 400 mm jusqu’à 2000 mm.",
+
 "What treatments are available?": "Quels traitements sont disponibles ?",
+
 "Available treatments are ONE SIDE TREATED IN, ONE SIDE TREATED OUT and BOTH SIDE TREATED.": "Les traitements disponibles sont TRAITÉ UNE FACE INTÉRIEURE, TRAITÉ UNE FACE EXTÉRIEURE et TRAITÉ DEUX FACES.",
+
 "How can I contact sales?": "Comment puis-je contacter le service commercial ?",
-"You can reach our sales team at commercial@nodaplast-film.com. For general enquiries, contact us at contact@nodaplast-film.com.": "Vous pouvez joindre notre équipe commerciale à commercial@nodaplast-film.com. Pour toute demande générale, contactez-nous à contact@nodaplast-film.com.",
+
+"You can reach our sales team manager at amira.ameen@nodaplast-film.com or sales representatives at ch.bouaoud@nodaplast-film.com, n.kharfi@nodaplast-film.com or y.lebcir@nodaplast-film.com. For general enquiries, contact us at it@nodaplast-film.com.": "Vous pouvez joindre la responsable de notre équipe commerciale à amira.ameen@nodaplast-film.com ou nos représentants commerciaux à ch.bouaoud@nodaplast-film.com, n.kharfi@nodaplast-film.com ou y.lebcir@nodaplast-film.com. Pour toute demande générale, contactez-nous à it@nodaplast-film.com.",
+
+"How can I contact purchasing?": "Comment puis-je contacter le service achats ?",
+
+"You can reach our purchasing team at it@nodaplast-film.com.": "Vous pouvez joindre notre service achats à it@nodaplast-film.com.",
+
+"How can I contact human resources?": "Comment puis-je contacter les ressources humaines ?",
+
+"You can reach our human resources team at drh@nodaplast-film.com.": "Vous pouvez joindre notre service des ressources humaines à drh@nodaplast-film.com.",
+
 "Where is NODA PLAST located?": "Où se situe NODA PLAST ?",
-"NODA PLAST FILM is located in the Industrial Zone, Guidjel, Setif, Algeria (demo address shown in this prototype).": "NODA PLAST FILM est situé dans la Zone Industrielle de Guidjel, Sétif, Algérie (adresse de démonstration affichée dans ce prototype).",
+
+"NODA PLAST FILM is located in the Industrial Zone, Guidjel, Setif, Algeria.": "NODA PLAST FILM est situé dans la Zone Industrielle de Guidjel, Sétif, Algérie.",
+
 "Finished jumbo rolls ready for slitting and dispatch.": "Rouleaux jumbo finis, prêts pour le refendage et l’expédition.",
+
 "Laboratory-driven quality checks on every batch.": "Contrôles qualité en laboratoire sur chaque lot.",
+
 "Instrumented testing of optical, mechanical and surface properties.": "Tests instrumentés des propriétés optiques, mécaniques et de surface.",
 /* ============================================================
    PRODUCTS — NAMES, SHORTNAMES, DESCRIPTIONS, OVERVIEWS
