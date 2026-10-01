@@ -1532,6 +1532,14 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+.spec-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
 .spec-table {
   width: 100%;
   border-collapse: collapse;
@@ -1544,6 +1552,7 @@ footer {
   padding: 14px 16px;
   border-bottom: 1px solid var(--border);
   font-size: 14.5px;
+  white-space: nowrap;
 }
 
 .spec-table th {
@@ -2190,45 +2199,6 @@ footer {
 
 .form-loading {
   position: relative;
-}
-
-
-
-/* ============================================================
-   REFINED TECHNICAL SPECIFICATIONS TABLE
-   ============================================================ */
-/* Thickness selector */
-.spec-table td select {
-  width: 172px;
-  max-width: 100%;
-  min-height: 40px;
-  padding: 8px 38px 8px 12px;
-  border: 1px solid #C9D0CD;
-  border-radius: 8px;
-  background-color: var(--white);
-  color: var(--dark);
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-  cursor: pointer;
-  transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
-}
-
-.spec-table td select:hover {
-  border-color: var(--orange-dark);
-  background-color: #fffdfa;
-}
-
-.spec-table td select:focus {
-  outline: none;
-  border-color: var(--orange);
-  box-shadow: 0 0 0 3px rgba(242, 165, 26, .16);
-}
-
-.spec-table td select:disabled {
-  opacity: .65;
-  cursor: not-allowed;
 }
 
 /* ================= HERO DYNAMIC BACKGROUND ================= */
@@ -6400,17 +6370,29 @@ a {
     gap: 36px;
   }
 
-  /* Tables: keep all columns accessible without breaking page width */
-  .spec-table-wrap,
-  .table-wrap,
-  .specifications-table-wrap {
-    width: 100%;
+  .spec-table-wrap {
+    width: calc(100% + 32px);
+    max-width: calc(100% + 32px);
+    margin-left: -16px;
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
   }
 
   .spec-table {
-    min-width: 680px;
+    width: max-content;
+    min-width: 640px;
+  }
+
+  .spec-table th,
+  .spec-table td {
+    padding: 11px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .spec-table td select {
+    width: 150px;
   }
 
   /* Footer */
