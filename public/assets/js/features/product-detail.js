@@ -9,6 +9,8 @@ import {
 
 import { i18nText } from '../core/i18n.js';
 import { showToast } from '../core/ui.js';
+import { on } from '../core/dom.js';
+import { showPage, openDatasheetNotice } from './navigation.js';
 
 window.__nodaProductGalleryCleanup = null;
 export function renderProductDetail(id) {
@@ -905,4 +907,26 @@ export function updateProductDetailSpecifications(product, selectedThickness) {
     thickness: selected,
     technicalSpecifications: specs
   };
+}
+
+export function initProductDetail() {
+
+  on('pdDatasheetBtn', 'click', () => {
+    const product = window.currentSelectedProduct;
+
+    if (product) {
+      openDatasheetNotice(product.id);
+    }
+  });
+
+  on('pdDatasheetBtn2', 'click', () => {
+    const product = window.currentSelectedProduct;
+
+    if (product) {
+      openDatasheetNotice(product.id);
+    }
+  });
+
+  // other product-detail listeners...
+
 }

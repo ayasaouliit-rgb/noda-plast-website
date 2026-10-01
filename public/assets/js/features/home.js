@@ -34,16 +34,6 @@ function initializeNodaWebsite() {
 
   // Job opportunities
   renderjobsgrid();
-
-  on('pdDatasheetBtn', 'click', () => {
-    const product = window.currentSelectedProduct;
-    if (product) openDatasheetNotice(product.id);
-  });
-
-  on('pdDatasheetBtn2', 'click', () => {
-    const product = window.currentSelectedProduct;
-    if (product) openDatasheetNotice(product.id);
-  });
 }
 
 if (
