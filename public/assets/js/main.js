@@ -42,6 +42,7 @@ import {
   setupInfiniteCarousel
 } from './components/carousel.js';
 
+import { initProductDetail } from './features/product-detail.js';
 
 function initializeNodaWebsite() {
 
@@ -103,7 +104,7 @@ function initializeNodaWebsite() {
     cardSelector: '.home-app-card',
     speed: 0.5
   });
-
+  initProductDetail();
 }
 
 
