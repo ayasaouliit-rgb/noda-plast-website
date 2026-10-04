@@ -46,6 +46,10 @@ export const SPECIFICATION_DEFINITIONS = {
     label: 'COF Dynamic F-F (U-U)',
     unit: '-'
   },
+  cof_metal: {
+    label: 'COF Dynamic F-Metal',
+    unit: '-'
+  },
   opticalDensity: {
     label: 'Optical Density',
     unit: '-'
@@ -87,7 +91,7 @@ export const SPECIFICATION_DEFINITIONS = {
 export const PRODUCTS = [
   /*{
     id: 'mattn',
-    code: 'MATTN',
+    code: 'MATT-N',
     img: 'matt-bopp-film-roll.png',
     gallery: [
       'matt-bopp-film-roll.png',
@@ -96,8 +100,8 @@ export const PRODUCTS = [
       'mattn/mattn (3).png'
     ],
     category: 'Matt Films',
-    name: 'MATTN — Matt Film side Non Sealable',
-    shortName: 'Matt Film (Matt Side Non Sealable)',
+    name: 'MATT-N — Matt Film Non Sealable',
+    shortName: 'Matt Film (Matt Non Sealable)',
     desc: 'Matt film with a non-sealable matte side, designed for applications requiring a distinctive low-gloss surface.',
     overview:
       'MATTN is a matt BOPP film with a non-sealable matt side. It is suitable for applications where a premium matte appearance is required.',
@@ -155,7 +159,7 @@ export const PRODUCTS = [
 
   {
     id: 'matts',
-    code: 'MATTS',
+    code: 'MATT-S',
     img: 'matt-bopp-film-roll.png',
     gallery: [
       'matt-bopp-film-roll.png',
@@ -164,14 +168,14 @@ export const PRODUCTS = [
       'matts/matts (3).png'
     ],
     category: 'Matt Films',
-    name: 'MATTS — Matt Film Both Sides Sealable',
-    shortName: 'Matt Film (Both Sides Sealable)',
-    desc: 'Matt film with both sides sealable for packaging structures requiring a matte appearance and sealing capability.',
+    name: 'MATT-S — Matt Film Sealable',
+    shortName: 'Matt Film (Sealable)',
+    desc: 'Matt film with sealable for packaging structures requiring a matte appearance and sealing capability.',
     overview:
-      'MATTS is a matt BOPP film designed with both sides sealable. It combines a matte visual appearance with sealing functionality.',
+      'MATTS is a matt BOPP film designed with sealable sides. It combines a matte visual appearance with sealing functionality.',
     tags: [
       'Matt finish',
-      'Both sides sealable'
+      'Sealable'
     ],
     applications: [
       'Flexible packaging',
@@ -599,7 +603,7 @@ export const PRODUCTS = [
 
   {
     id: 'nsmm',
-    code: 'NSMM',
+    code: 'NSM-M',
     img: 'mtz-bopp-film-roll.png',
     gallery: [
       'mtz-bopp-film-roll.png',
@@ -608,7 +612,7 @@ export const PRODUCTS = [
       'nsmm/nsmm (3).jpg'
     ],
     category: 'Metallized Films',
-    name: 'NSMM — Metallized Sealable One Side Film',
+    name: 'NSM-M — Metallized Sealable One Side Film',
     shortName: 'Metallized Sealable One Side Film',
     desc: 'Metallized BOPP film with sealing capability for packaging structures.',
     overview:
@@ -632,7 +636,7 @@ export const PRODUCTS = [
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
-        cof: "≤ 0.30",
+        cof_metal: "≤ 0.30",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
         thermalShrinkage: "≤ 5 / ≤ 3",
@@ -644,7 +648,7 @@ export const PRODUCTS = [
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
-        cof: "≤ 0.31",
+        cof_metal: "≤ 0.31",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
         thermalShrinkage: "≤ 5 / ≤ 3",
@@ -656,7 +660,7 @@ export const PRODUCTS = [
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
-        cof: "≤ 0.32",
+        cof_metal: "≤ 0.32",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
         thermalShrinkage: "≤ 5 / ≤ 3",
@@ -668,13 +672,13 @@ export const PRODUCTS = [
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
-        cof: "≤ 0.30",
+        cof_metal: "≤ 0.30",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
         thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opticalDensity", "otr", "wvtr", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opticalDensity", "otr", "wvtr", "cof_metal", "tensileStrength", "elongation", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -683,7 +687,7 @@ export const PRODUCTS = [
 
   {
     id: 'nsmmb',
-    code: 'NSMB',
+    code: 'NSM-MB',
     img: 'mtz-bopp-film-roll.png',
     gallery: [
       'mtz-bopp-film-roll.png',
@@ -692,11 +696,11 @@ export const PRODUCTS = [
       'nsmmb/nsmmb (3).jpg'
     ],
     category: 'Metallized Films',
-    name: 'NSMM-B — Metallized Sealable Both Sides Film',
+    name: 'NSM-MB — Metallized Sealable Both Sides Film',
     shortName: 'Metallized Sealable Both Sides Film',
     desc: 'Metallized BOPP film with sealing capability for packaging structures.',
     overview:
-      'NSMM is a metallized sealable film designed for packaging structures where the metallized appearance and sealing functionality are required.',
+      'NSM-MB is a metallized sealable film designed for packaging structures where the metallized appearance and sealing functionality are required.',
     tags: [
       'Metallized',
       'Sealable',
@@ -716,7 +720,7 @@ export const PRODUCTS = [
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
-        cof: "≤ 0.30",
+        cof_metal: "≤ 0.30",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
         thermalShrinkage: "≤ 5 / ≤ 3",
@@ -728,13 +732,13 @@ export const PRODUCTS = [
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
-        cof: "≤ 0.31",
+        cof_metal: "≤ 0.31",
         tensileStrength: "150 / 290",
         elongation: "180 / 60",
         thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opticalDensity", "otr", "wvtr", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
+    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opticalDensity", "otr", "wvtr", "cof_metal", "tensileStrength", "elongation", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
