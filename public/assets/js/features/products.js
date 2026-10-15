@@ -20,27 +20,39 @@ export function renderProductGrid() {
       : '';
 
 
+
+  const normalizeText = (text) =>
+    String(text ?? '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLocaleLowerCase()
+      .trim();
+
   const filtered = PRODUCTS.filter(p => {
+
+    // Search both the original and translated text
+    const searchableTexts = [
+      p.name,
+      p.code,
+      p.shortName,
+      p.category,
+      p.desc,
+      ...(p.tags || [])
+    ];
 
     const matchesSearch =
       !term ||
+      searchableTexts.some(text => {
+        const original = normalizeText(text);
+        const translated = normalizeText(i18nText(text));
 
-      p.name.toLowerCase().includes(term) ||
-
-      p.code.toLowerCase().includes(term) ||
-
-      p.shortName.toLowerCase().includes(term) ||
-
-      p.category.toLowerCase().includes(term) ||
-
-      p.tags.some(
-        t => t.toLowerCase().includes(term)
-      );
-
+        return original.includes(normalizeText(term)) ||
+          translated.includes(normalizeText(term));
+      });
 
     return matchesSearch;
-
   });
+
 
 
   const noResults =

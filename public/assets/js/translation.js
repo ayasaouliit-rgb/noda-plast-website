@@ -125,7 +125,7 @@ const FR={"The Power to Create,": "Le pouvoir de créer,","The Power to Create,<
 "MATTS — Matt Film Both Sides Sealable": "MATTS — Film mat thermoscellable des deux côtés",
 "Matt Film (Both Sides Sealable)": "Film mat (thermoscellable des deux côtés)",
 "Matt film with both sides sealable for packaging structures requiring a matte appearance and sealing capability.": "Film mat thermoscellable des deux côtés, pour les structures d’emballage nécessitant un aspect mat et une capacité de thermoscellage.",
-"MATTS is a matt BOPP film designed with both sides sealable. It combines a matte visual appearance with sealing functionality.": "MATTS est un film BOPP mat conçu avec les deux faces thermoscellables. Il associe un aspect visuel mat à une fonction de thermoscellage.",
+"MATTS is a matt BOPP film designed with sealable sides. It combines a matte visual appearance with sealing functionality.": "MATTS est un film BOPP mat conçu avec deux faces thermoscellables. Il allie un aspect mat à des propriétés de thermoscellage.",
 "Flexible packaging": "Emballage flexible",
 "Heat-sealable structures": "Structures thermoscellables",
 "Premium packaging": "Emballage haut de gamme",
@@ -192,7 +192,7 @@ const FR={"The Power to Create,": "Le pouvoir de créer,","The Power to Create,<
 /* ---------- NSMM-B — Metallized Sealable Both Sides ---------- */
 "NSMM-B — Metallized Sealable Both Sides Film": "NSMM-B — Film métallisé thermoscellable deux faces",
 "Metallized Sealable Both Sides Film": "Film métallisé thermoscellable deux faces",
-
+"NSM-MB is a metallized sealable film designed for packaging structures where the metallized appearance and sealing functionality are required.": "NSM-MB est un film BOPP métallisé thermoscellable, conçu pour les structures d’emballage nécessitant un aspect métallisé et des propriétés de thermoscellage.",
 /* ---------- NSP — White Pearlized Sealable ---------- */
 "NSP — White Pearlized Sealable Film": "NSP — Film blanc perlé thermoscellable",
 "White Pearlized Sealable Film": "Film blanc perlé thermoscellable",
