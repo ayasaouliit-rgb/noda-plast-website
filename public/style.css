@@ -1815,18 +1815,6 @@ footer {
   justify-content: center;
 }
 
-.chat-demo-tag {
-  background: var(--orange);
-  color: var(--dark);
-  font-size: 9px;
-  font-weight: 800;
-  padding: 3px 7px;
-  border-radius: 5px;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  margin-left: 8px;
-}
-
 .chat-body {
   flex: 1;
   overflow-y: auto;

@@ -5,7 +5,7 @@ import { PRODUCTS } from './data/products.js';
 const CHAT_QA = [
   {
     q: 'What BOPP films do you produce?',
-    a: 'We manufacture MATTS, NLC, NLV, NNC, NRC, NSC, NSH, NSMM, NSP and NSW BOPP films.'
+    a: 'We manufacture a range of BOPP films for flexible packaging, labeling, and specialized applications. Our product range includes: Matt Films: MATTS — matt film with heat-sealing capability, combining a distinctive matte appearance with sealing functionality. Label Films: NLC — transparent clear film for labels and no-label-look applications; NLV — white voided film offering opacity and a lightweight structure for wrap-around and product labels. Clear Films: NNC — clear, non-heat-sealable film for printing, lamination, and flexible packaging; NSC — clear film designed for applications requiring transparency and heat-sealing performance. High COF Films: NSH — clear heat-sealable film with a high coefficient of friction, suitable for packaging and bag-making applications. Release Films: NRC — clear release film for applications requiring a transparent release surface. Metallized Films: NSMM — metallized, heat-sealable film designed for packaging applications requiring a metallic appearance and barrier properties. White Films: NSP — white pearlized, heat-sealable film for food and premium packaging; NSW — solid white, milky film with heat-sealing capability. Our films are available in different thicknesses and can be customized to meet customer requirements. Contact our team to discuss the most suitable film for your application and request technical data sheets.'
   },
 
   {
