@@ -18,8 +18,8 @@ export const SPECIFICATION_DEFINITIONS = {
     label: 'Density',
     unit: 'g/cm³'
   },
-  wettingTension: {
-    label: 'Wetting Tension',
+  Treatment: {
+    label: 'Treatment',
     unit: 'mN/m'
   },
   whiteness: {
@@ -163,6 +163,7 @@ export const PRODUCTS = [
     img: 'matt-bopp-film-roll.png',
     gallery: [
       'matt-bopp-film-roll.png',
+      'layers/matt.png',
       'matts/matts (1).png',
       'matts/matts (2).png',
       'matts/matts (3).png'
@@ -172,22 +173,30 @@ export const PRODUCTS = [
     shortName: 'Matt Film (Sealable)',
     desc: 'Matt film with sealable for packaging structures requiring a matte appearance and sealing capability.',
     overview:
-      'MATTS is a matt BOPP film designed with sealable sides. It combines a matte visual appearance with sealing functionality.',
+      'Matt-S, is coextruded matt BOPP film with one side regular matt sealable layer and other side treated glossy heat sealable layer for good printability.',
     tags: [
       'Matt finish',
       'Sealable'
     ],
+    feature: [
+      'excellent matte dispersion.',
+      'Wide sealing range.',
+      'Good seal strength.',
+      'High mechanical properties & stiffness.',
+      'Excellent web flatness without curling.'
+    ],
     applications: [
       'Flexible packaging',
       'Heat-sealable structures',
-      'Premium packaging'
+      'Lamination',
+      'Rotogravure & Flexo printing.'
     ],
     thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
     technicalSpecifications: {
       "20 MIC": {
         unitweight: "17.6",
         yield: "56.8",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         gloss: "10",
         haze: "72",
         cof: "≤ 0.30",
@@ -196,12 +205,12 @@ export const PRODUCTS = [
         modulus: "2000 / 3800",
         thermalShrinkage: "≤ 5 / ≤ 3",
         sealStrength: "> 2",
-        heatSealRange: "125-140",
+        heatSealRange: "115-140",
       },
       "25 MIC": {
         unitweight: "22.2",
         yield: "45.5",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         gloss: "10",
         haze: "72",
         cof: "≤ 0.30",
@@ -210,12 +219,12 @@ export const PRODUCTS = [
         modulus: "2000 / 3800",
         thermalShrinkage: "≤ 5 / ≤ 3",
         sealStrength: "> 2",
-        heatSealRange: "125-140",
+        heatSealRange: "115-140",
       },
       "30 MIC": {
         unitweight: "26.7",
         yield: "37.5",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         gloss: "10",
         haze: "72",
         cof: "≤ 0.30",
@@ -224,10 +233,10 @@ export const PRODUCTS = [
         modulus: "2000 / 3800",
         thermalShrinkage: "≤ 5 / ≤ 3",
         sealStrength: "> 2",
-        heatSealRange: "125-140",
+        heatSealRange: "115-140",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "gloss", "haze", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage", "sealStrength", "heatSealRange"],
+    specificationSchema: ["thickness", "unitweight", "yield", "Treatment", "gloss", "haze", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage", "sealStrength", "heatSealRange"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -240,6 +249,7 @@ export const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
+      'layers/nlc.png',
       'nlc/nlc (1).jpg',
       'nlc/nlc (2).jpg',
       'nlc/nlc (3).jpg'
@@ -249,23 +259,30 @@ export const PRODUCTS = [
     shortName: 'Label Clear Film',
     desc: 'Clear BOPP film developed for transparent label applications.',
     overview:
-      'NLC is a clear label film designed for applications where transparency and a no-label-look appearance are important.',
+      'NLC is coextruded Transparent BOPP film, one side Corona Treated and both sides non-sealable. Film is used for Over wrap and wrap around Labeling.',
     tags: [
       'Clear',
       'Label film',
       'Transparent appearance'
     ],
+    feature: [
+      'Excellent glossy film.',
+      'Very good machinability.',
+      'High mechanical properties & stiffness.',
+      'Excellent web flatness without curling.'
+    ],
     applications: [
       'Clear labels',
       'No-label-look applications',
-      'Bottle labels'
+      'Lamination',
+      'rotogravure & flexographic printing'
     ],
     thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
     technicalSpecifications: {
       "20 MIC": {
         unitweight: "18.2",
         yield: "54.9",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opacity: "1.8",
         haze: "1.6",
         gloss: "95",
@@ -278,7 +295,7 @@ export const PRODUCTS = [
       "25 MIC": {
         unitweight: "22.7",
         yield: "44",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opacity: "2.2",
         haze: "1.7",
         gloss: "94",
@@ -291,7 +308,7 @@ export const PRODUCTS = [
       "30 MIC": {
         unitweight: "27.3",
         yield: "36.6",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opacity: "2.5",
         haze: "1.8",
         gloss: "93",
@@ -302,7 +319,7 @@ export const PRODUCTS = [
         thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opacity", "haze", "gloss", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage"],
+    specificationSchema: ["thickness", "unitweight", "yield", "Treatment", "opacity", "haze", "gloss", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -315,6 +332,7 @@ export const PRODUCTS = [
     img: 'white-bopp-film-roll.png',
     gallery: [
       'white-bopp-film-roll.png',
+      'layers/white.png',
       'nlv/nlv (1).jpg',
       'nlv/nlv (2).jpg',
       'nlv/nlv (3).jpg'
@@ -324,16 +342,22 @@ export const PRODUCTS = [
     shortName: 'Label White Voided Film',
     desc: 'White voided BOPP film designed for label applications requiring an opaque white appearance.',
     overview:
-      'NLV is a white voided film developed for label applications where opacity, lightweight construction and a white appearance are required.',
+      'NLV, is a coextruded BOPP film with a micro-voided core structure, developed as a lightweight substrate for label and packaging applications. The film combines a multilayer construction with a controlled surface structure to provide consistent performance during converting.',
     tags: [
       'White',
       'Voided',
       'Label film'
     ],
+    feature: [
+      'Very good opacity and whiteness.',
+      'Excellent web flatness.',
+      'Excellent glossy surface.',
+      'High mechanical properties & stiffness.'
+    ],
     applications: [
       'Pressure-sensitive labels',
       'Wrap-around labels',
-      'Product labels'
+      'Rotogravure & Flexo printing.'
     ],
     thicknesses: ['38 MIC', '47 MIC'],
     technicalSpecifications: {
@@ -341,7 +365,7 @@ export const PRODUCTS = [
         unitweight: "23.6",
         yield: "42.4",
         density: "0.68",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         whiteness: "90",
         opacity: "81",
         gloss: "90",
@@ -354,7 +378,7 @@ export const PRODUCTS = [
         unitweight: "32",
         yield: "31.25",
         density: "0.68",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         whiteness: "92",
         opacity: "83",
         gloss: "90",
@@ -364,7 +388,7 @@ export const PRODUCTS = [
         modulus: "1080 / 2000",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "density", "wettingTension", "whiteness", "opacity", "gloss", "cof", "tensileStrength", "elongation", "modulus"],
+    specificationSchema: ["thickness", "unitweight", "yield", "density", "Treatment", "whiteness", "opacity", "gloss", "cof", "tensileStrength", "elongation", "modulus"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -377,6 +401,7 @@ export const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
+      'layers/clear.png',
       'nsc/nsc (1).png',
       'nsc/nsc (2).png',
       'nsc/nsc (3).png'
@@ -386,69 +411,112 @@ export const PRODUCTS = [
     shortName: 'Clear Sealable Film',
     desc: 'Transparent BOPP film without heat-sealing functionality.',
     overview:
-      'NSC is a clear sealable BOPP film intended for applications requiring transparency without a heat-sealable structure.',
+      'NSC, is Coextruded BOPP film, heat sealable, suitable for food packaging and general use goods.NSC, film formulated to be compatible with most complicated printing technologies (Rotogravure & Flexo), and is accepting all types of inks, also suitable for lamination with many other substances.',
     tags: [
       'Clear',
       'Transparent',
       'Sealable'
     ],
-    applications: [
-      'Printing',
-      'Lamination',
-      'Flexible packaging'
+    feature: [
+      'Excellent transparency and gloss',
+      'Wide seal range and good seal strength',
+      'Excellent hot tack ',
+      'Excellent web flatness',
+      'High mechanical & optical properties and stiffness'
     ],
-    thicknesses: ['20 MIC', '25 MIC', '30 MIC', '40 MIC'],
+    applications: [
+      'Rotogravure & Flexo Printing',
+      'Lamination',
+      'Flexible packaging',
+      'food & non- food packaging.'
+    ],
+    thicknesses: ['15 MIC', '18 MIC', '20 MIC', '25 MIC', '30 MIC', '40 MIC'],
     technicalSpecifications: {
-      "20 MIC": {
-        unitweight: "18.2",
-        yield: "55",
-        wettingTension: "≥ 38",
-        haze: "≤3.5",
+      "15 MIC": {
+        unitweight: "13.65",
+        yield: "73.26",
+        Treatment: "≥ 38",
+        haze: "≤2.5",
         gloss: "82",
         cof: "≤ 0.30",
         tensileStrength: "150 / 290",
         elongation: "200 / 50",
+        modulus: "2000/3800",
         thermalShrinkage: "≤ 5 / ≤ 3",
+        sealStrength: ">2",
+        heatSealRange: "105-140",
+      },
+      "18 MIC": {
+        unitweight: "16.38",
+        yield: "61.05",
+        Treatment: "≥ 38",
+        haze: "≤2.5",
+        gloss: "82",
+        cof: "≤ 0.30",
+        tensileStrength: "150 / 250",
+        elongation: "200 / 50",
+        modulus: "2000/3800",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        sealStrength: ">2",
+        heatSealRange: "105-140",
+      },
+      "20 MIC": {
+        unitweight: "18.2",
+        yield: "55",
+        Treatment: "≥ 38",
+        haze: "≤2.5",
+        gloss: "82",
+        cof: "≤ 0.30",
+        tensileStrength: "150 / 290",
+        elongation: "200 / 50",
+        modulus: "2000/3800",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        sealStrength: ">2",
         heatSealRange: "105-140",
       },
       "25 MIC": {
         unitweight: "22.7",
         yield: "44",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         haze: "≤3.5",
         gloss: "82",
         cof: "≤ 0.30",
         tensileStrength: "140 / 290",
         elongation: "200 / 50",
+        modulus: "2000/3800",
         thermalShrinkage: "≤ 5 / ≤ 3",
+        sealStrength: ">2",
         heatSealRange: "105-140",
       },
       "30 MIC": {
         unitweight: "27.3",
         yield: "36.6",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         haze: "≤3.5",
         gloss: "82",
         cof: "≤ 0.30",
         tensileStrength: "140 / 290",
         elongation: "200 / 50",
+        modulus: "2000/3800",
         thermalShrinkage: "≤ 5 / ≤ 3",
+        sealStrength: ">2",
         heatSealRange: "105-140",
       },
       "40 MIC": {
         unitweight: "36.5",
         yield: "27.4",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         haze: "≤3.5",
         gloss: "82",
         cof: "≤ 0.30",
         tensileStrength: "140 / 290",
         elongation: "180 / 40",
         thermalShrinkage: "≤ 5 / ≤ 3",
+        sealStrength: ">2",
         heatSealRange: "105-140",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "haze", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "heatSealRange"],
+    specificationSchema: ["thickness", "unitweight", "yield", "Treatment", "haze", "gloss", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage", "sealStrength", "heatSealRange"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -461,6 +529,7 @@ export const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
+      'layers/clear.png',
       'nnc/nnc (1).png',
       'nnc/nnc (2).png',
       'nnc/nnc (3).png'
@@ -470,14 +539,20 @@ export const PRODUCTS = [
     shortName: 'Clear Non-Sealable Film',
     desc: 'Transparent BOPP film without heat-sealing functionality.',
     overview:
-      'NNC is a clear non-sealable BOPP film intended for applications requiring transparency without a heat-sealable structure.',
+      'NNC is coextruded Transparent BOPP film, one side Corona Treated and both sides non-sealable. Film is commonly used for Textile packing and other non-food stuff.',
     tags: [
       'Clear',
       'Transparent',
       'Non-sealable'
     ],
+    feature: [
+      'Excellent glossy film.',
+      'Very good machinability.',
+      'High mechanical properties & stiffness.',
+      'Excellent web flatness without curling.'
+    ],
     applications: [
-      'Printing',
+      'Rotogravure & Flexo Printing',
       'Lamination',
       'Flexible packaging'
     ],
@@ -486,7 +561,7 @@ export const PRODUCTS = [
       "20 MIC": {
         unitweight: "18.2",
         yield: "54.9",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opacity: "1.8",
         haze: "1.6",
         gloss: "95",
@@ -499,7 +574,7 @@ export const PRODUCTS = [
       "25 MIC": {
         unitweight: "22.7",
         yield: "44",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opacity: "2.2",
         haze: "1.7",
         gloss: "94",
@@ -510,7 +585,7 @@ export const PRODUCTS = [
         thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opacity", "haze", "gloss", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage"],
+    specificationSchema: ["thickness", "unitweight", "yield", "Treatment", "opacity", "haze", "gloss", "cof", "tensileStrength", "elongation", "modulus", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -523,6 +598,7 @@ export const PRODUCTS = [
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
+      'layers/nsh.png',
       'nsh/nsh (1).png',
       'nsh/nsh (2).png',
       'nsh/nsh (3).png'
@@ -532,15 +608,23 @@ export const PRODUCTS = [
     shortName: 'Clear Heat Sealable, High C.O.F',
     desc: 'Clear heat-sealable film with high coefficient of friction characteristics.',
     overview:
-      'NSH is coextruded BOPP film designed for applications requiring heat sealing together with high C.O.F characteristics. suitable for food packaging and intended specially for puches stacking.',
+      'NSH is coextruded BOPP film, heat sealable & high COF suitable for food packaging and intended specially for pouches stacking.',
     tags: [
       'Clear',
       'Heat sealable',
       'High C.O.F'
     ],
+    feature: [
+      'Excellent transparency & gloss',
+      'Wide sealing range & good seal strength',
+      'Excellent hot tack',
+      'Excellent web flatness',
+      'High mechanical & optical properties',
+      'High stiffness'
+    ],
     applications: [
-      'Packaging',
-      'Bag making',
+      'Rotogravure & Flexo printing',
+      'Lamination',
       'High-speed converting'
     ],
     thicknesses: ['20 MIC', '25 MIC', '30 MIC', '40 MIC'],
@@ -548,7 +632,7 @@ export const PRODUCTS = [
       "20 MIC": {
         unitweight: "18.2",
         yield: "55",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         haze: "≤3.5",
         gloss: "86",
         cof: "≤ 0.50",
@@ -560,7 +644,7 @@ export const PRODUCTS = [
       "25 MIC": {
         unitweight: "22.7",
         yield: "44",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         haze: "≤3.5",
         gloss: "85",
         cof: "≤ 0.50",
@@ -572,7 +656,7 @@ export const PRODUCTS = [
       "30 MIC": {
         unitweight: "27.3",
         yield: "36.6",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         haze: "≤3.5",
         gloss: "82",
         cof: "≤ 0.50",
@@ -584,7 +668,7 @@ export const PRODUCTS = [
       "40 MIC": {
         unitweight: "36.5",
         yield: "27.4",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         haze: "≤3.5",
         gloss: "82",
         cof: "≤ 0.50",
@@ -594,7 +678,7 @@ export const PRODUCTS = [
         heatSealRange: "105-140",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "haze", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "heatSealRange"],
+    specificationSchema: ["thickness", "unitweight", "yield", "Treatment", "haze", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "heatSealRange"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -607,6 +691,7 @@ export const PRODUCTS = [
     img: 'mtz-bopp-film-roll.png',
     gallery: [
       'mtz-bopp-film-roll.png',
+      'layers/nsm.png',
       'nsmm/nsmm (1).jpg',
       'nsmm/nsmm (2).jpg',
       'nsmm/nsmm (3).jpg'
@@ -616,11 +701,18 @@ export const PRODUCTS = [
     shortName: 'Metallized Sealable One Side Film',
     desc: 'Metallized BOPP film with sealing capability for packaging structures.',
     overview:
-      'NSMM is a metallized sealable film designed for packaging structures where the metallized appearance and sealing functionality are required.',
+      'NSM-M is coextruded BOPP film, one side heat sealable, other side metallized, moderate barrier suitable for food packaging and general use goods.',
     tags: [
       'Metallized',
       'Sealable',
       'Barrier packaging'
+    ],
+    feature:[
+      'Excellent metal band & homogeneous metal deposition.',
+      'Wide sealing range & good seal strength',
+      'Excellent hot tack ',
+      'Excellent web flatness',
+      'High mechanical properties & stiffness'
     ],
     applications: [
       'Metallized packaging',
@@ -632,7 +724,7 @@ export const PRODUCTS = [
       "18 MIC": {
         unitweight: "16.4",
         yield: "60.97",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
@@ -644,7 +736,7 @@ export const PRODUCTS = [
       "20 MIC": {
         unitweight: "18.2",
         yield: "54.9",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
@@ -656,7 +748,7 @@ export const PRODUCTS = [
       "25 MIC": {
         unitweight: "22.75",
         yield: "43.96",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
@@ -668,7 +760,7 @@ export const PRODUCTS = [
       "30 MIC": {
         unitweight: "27.3",
         yield: "36.6",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
@@ -678,7 +770,7 @@ export const PRODUCTS = [
         thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opticalDensity", "otr", "wvtr", "cof_metal", "tensileStrength", "elongation", "thermalShrinkage"],
+    specificationSchema: ["thickness", "unitweight", "yield", "Treatment", "opticalDensity", "otr", "wvtr", "cof_metal", "tensileStrength", "elongation", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -691,6 +783,7 @@ export const PRODUCTS = [
     img: 'mtz-bopp-film-roll.png',
     gallery: [
       'mtz-bopp-film-roll.png',
+      'layers/nsm.png',
       'nsmmb/nsmmb (1).jpg',
       'nsmmb/nsmmb (2).jpg',
       'nsmmb/nsmmb (3).jpg'
@@ -700,11 +793,16 @@ export const PRODUCTS = [
     shortName: 'Metallized Sealable Both Sides Film',
     desc: 'Metallized BOPP film with sealing capability for packaging structures.',
     overview:
-      'NSM-MB is a metallized sealable film designed for packaging structures where the metallized appearance and sealing functionality are required.',
+      'NSM-B, is Co-extruded BOPP film, both side Corona Treated and one side metallized, Film is dedicated for Trible Lamination and has moderate barriers suitable for food packaging as well goods with general use.',
     tags: [
       'Metallized',
       'Sealable',
       'Barrier packaging'
+    ],
+    feature:[
+      'Excellent metal band & homogeneous metal deposition.',
+      'Excellent web flatness.',
+      'High mechanical properties & stiffness.'
     ],
     applications: [
       'Metallized packaging',
@@ -716,7 +814,7 @@ export const PRODUCTS = [
       "18 MIC": {
         unitweight: "16.4",
         yield: "60.97",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
@@ -728,7 +826,7 @@ export const PRODUCTS = [
       "20 MIC": {
         unitweight: "18.2",
         yield: "54.9",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         opticalDensity: "> 2",
         otr: "< 80",
         wvtr: "<0.8",
@@ -738,7 +836,7 @@ export const PRODUCTS = [
         thermalShrinkage: "≤ 5 / ≤ 3",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "opticalDensity", "otr", "wvtr", "cof_metal", "tensileStrength", "elongation", "thermalShrinkage"],
+    specificationSchema: ["thickness", "unitweight", "yield", "Treatment", "opticalDensity", "otr", "wvtr", "cof_metal", "tensileStrength", "elongation", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -751,6 +849,7 @@ export const PRODUCTS = [
     img: 'pearlised-bopp-film-roll.png',
     gallery: [
       'pearlised-bopp-film-roll.png',
+      'layers/white.png',
       'nsp/nsp (1).png',
       'nsp/nsp (2).png',
       'nsp/nsp (3).png'
@@ -760,15 +859,22 @@ export const PRODUCTS = [
     shortName: 'White Pearlized Sealable Film',
     desc: 'White pearlized BOPP film with heat-sealing capability and a distinctive pearlescent appearance.',
     overview:
-      'NSP is a white pearlized sealable BOPP film designed for applications requiring a distinctive pearlized appearance together with sealing functionality.',
+      'NSP, is a coextruded BOPP film specially designed for food packaging and lamination applications. It combines excellent opacity and whiteness with good dead-fold properties, high stiffness, and mechanical strength. The film also provides a wide sealing range and a glossy, high-quality surface, making it suitable for high-quality rotogravure and flexographic printing.',
     tags: [
       'White',
       'Pearlized',
       'Sealable'
     ],
+    feature:[
+      'Very good opacity and whiteness.',
+      'Excellent web flatness and glossy surface.',
+      'Very good dead-fold properties.',
+      'Wide sealing range'
+    ],
     applications: [
-      'Food packaging',
+      'In box packaging style.',
       'Premium packaging',
+      'Rotogravure & Flexographic printing',
       'Flexible packaging'
     ],
     thicknesses: ['25 MIC', '30 MIC', '35 MIC', '40 MIC'],
@@ -777,7 +883,7 @@ export const PRODUCTS = [
         unitweight: "17",
         yield: "58.8",
         density: "0.68",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         whiteness: "89",
         opacity: "70",
         gloss: "90",
@@ -790,7 +896,7 @@ export const PRODUCTS = [
         unitweight: "20.4",
         yield: "49",
         density: "0.68",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         whiteness: "90",
         opacity: "72",
         gloss: "90",
@@ -803,7 +909,7 @@ export const PRODUCTS = [
         unitweight: "23.8",
         yield: "42",
         density: "0.68",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         whiteness: "90",
         opacity: "73",
         gloss: "93",
@@ -816,7 +922,7 @@ export const PRODUCTS = [
         unitweight: "27.2",
         yield: "36.8",
         density: "0.68",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         whiteness: "92",
         opacity: "76",
         gloss: "97",
@@ -826,7 +932,7 @@ export const PRODUCTS = [
         modulus: "1050 / 1980",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "density", "wettingTension", "whiteness", "opacity", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
+    specificationSchema: ["thickness", "unitweight", "yield", "density", "Treatment", "whiteness", "opacity", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -839,6 +945,7 @@ export const PRODUCTS = [
     img: 'white-bopp-film-roll.png',
     gallery: [
       'white-bopp-film-roll.png',
+      'layers/nsw.png',
       'nsw/nsw (1).jpg',
       'nsw/nsw (2).jpg',
       'nsw/nsw (3).jpg'
@@ -848,15 +955,21 @@ export const PRODUCTS = [
     shortName: 'Solid White Sealable (Milky)',
     desc: 'Solid white milky BOPP film with heat-sealing capability.',
     overview:
-      'NSW is a solid white milky sealable BOPP film developed for applications requiring a white opaque appearance and sealing performance.',
+      'NSW, is a solid white OPP film specially designed and formulated for food packaging applications (Biscuits & Cookies). White films protect products from UV light.',
     tags: [
       'Solid white',
       'Milky',
       'Sealable'
     ],
+    feature:[
+      'Excellent whiteness and high gloss.', 
+      'Good antistatic behavior.',
+      'Very good seal ability'
+    ],
     applications: [
       'Food packaging',
       'Flexible packaging',
+      'Light- and UV-sensitive food packaging',
       'White packaging structures'
     ],
     thicknesses: ['18 MIC', '20 MIC', '25 MIC', '30 MIC', '40 MIC'],
@@ -864,7 +977,7 @@ export const PRODUCTS = [
       "18 MIC": {
         unitweight: "17.1",
         yield: "58.5",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         transmittance: "44",
         gloss: "55",
         cof: "≤ 0.30",
@@ -876,7 +989,7 @@ export const PRODUCTS = [
       "20 MIC": {
         unitweight: "19.0",
         yield: "52.6",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         transmittance: "43",
         gloss: "55",
         cof: "≤ 0.30",
@@ -888,7 +1001,7 @@ export const PRODUCTS = [
       "25 MIC": {
         unitweight: "23.8",
         yield: "42",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         transmittance: "40",
         gloss: "50",
         cof: "≤ 0.30",
@@ -900,7 +1013,7 @@ export const PRODUCTS = [
       "30 MIC": {
         unitweight: "28.6",
         yield: "35.1",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         transmittance: "38",
         gloss: "50",
         cof: "≤ 0.30",
@@ -912,7 +1025,7 @@ export const PRODUCTS = [
       "40 MIC": {
         unitweight: "38.0",
         yield: "26.3",
-        wettingTension: "≥ 38",
+        Treatment: "≥ 38",
         transmittance: "34",
         gloss: "50",
         cof: "≤ 0.30",
@@ -922,7 +1035,7 @@ export const PRODUCTS = [
         sealStrength: "> 2.0",
       },
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "wettingTension", "transmittance", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "sealStrength"],
+    specificationSchema: ["thickness", "unitweight", "yield", "Treatment", "transmittance", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "sealStrength"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
@@ -997,65 +1110,82 @@ export const PRODUCTS = [
       phCap: 'NVMM metalized white voided film'
     }*/
 
-  /*{
+  {
     id: 'nrc',
     code: 'NRC',
     img: 'clear-bopp-film-roll.png',
     gallery: [
       'clear-bopp-film-roll.png',
-      'clear-application-1.jpg',
-      'clear-application-2.jpg',
-      'clear-application-3.jpg'
+      'layers/nrc.png',
+      'nrc/nrc (1).png',
+      'nrc/nrc (2).png',
+      'nrc/nrc (3).png'
     ],
     category: 'Clear Films',
-    name: 'NRC — Clear Release Film',
-    shortName: 'Clear Release Film',
-    desc: 'Clear release film designed for applications requiring a transparent release surface.',
+    name: 'NRC — Release Clear Film',
+    shortName: 'Release Clear Film',
+    desc: 'Transparent BOPP film release layerality.',
     overview:
-      'NRC is a clear release film intended for applications where a controlled release surface and transparent appearance are required.',
+      'NRS, is Bopp CLEAR FILM one side corona treated & other side release layer designed for release purpose mainly with cold-seal application. NRC can also be used for other release applications.',
     tags: [
       'Clear',
-      'Release film',
-      'Transparent'
+      'Transparent',
+      'Sealable'
+    ],
+    feature:[
+      'BOPP clear film for food and non-food packaging',
+      'Good printability (Rotogravure & Flexo) on treated side.',
+      'Good for lamination.'
     ],
     applications: [
-      'Release applications',
-      'Technical converting',
-      'Specialty applications'
+      'Printing',
+      'Lamination',
+      'Cold-seal application'
     ],
+    thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
     technicalSpecifications: {
-      "38 MIC": {
-        unitweight: "23.6",
-        yield: "42.4",
-        density: "0.68",
-        wettingTension: "≥ 38",
-        whiteness: "90",
-        opacity: "81",
-        gloss: "90",
+      "20 MIC": {
+        unitweight: "18.2",
+        yield: "55",
+        Treatment: "≥ 38",
+        haze: "≤3.5",
+        gloss: "82",
         cof: "≤ 0.30",
-        tensileStrength: "103 / 141",
-        elongation: "140 / 32",
-        modulus: "1150 / 2100",
+        tensileStrength: "150 / 290",
+        elongation: "200 / 50",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange: "105-140",
       },
-      "47 MIC": {
-        unitweight: "32",
-        yield: "31.25",
-        density: "0.68",
-        wettingTension: "≥ 38",
-        whiteness: "92",
-        opacity: "83",
-        gloss: "90",
+      "25 MIC": {
+        unitweight: "22.7",
+        yield: "44",
+        Treatment: "≥ 38",
+        haze: "≤3.5",
+        gloss: "82",
         cof: "≤ 0.30",
-        tensileStrength: "103 / 141",
-        elongation: "140 / 32",
-        modulus: "1150 / 2100",
+        tensileStrength: "140 / 290",
+        elongation: "200 / 50",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange: "105-140",
       },
+      "30 MIC": {
+        unitweight: "27.3",
+        yield: "36.6",
+        Treatment: "≥ 38",
+        haze: "≤3.5",
+        gloss: "82",
+        cof: "≤ 0.30",
+        tensileStrength: "140 / 290",
+        elongation: "200 / 50",
+        thermalShrinkage: "≤ 5 / ≤ 3",
+        heatSealRange: "105-140",
+      }
     },
-    specificationSchema: ["thickness", "unitweight", "yield", "density", "wettingTension", "whiteness", "opacity", "gloss", "cof", "tensileStrength", "elongation", "modulus"],
+    specificationSchema: ["thickness", "unitweight", "yield", "Treatment", "haze", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "heatSealRange"],
     widthMin: 400,
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
     phCap: 'NRC clear release film'
-  },*/
+  },
 
 ];

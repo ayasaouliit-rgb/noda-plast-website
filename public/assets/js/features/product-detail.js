@@ -58,11 +58,6 @@ export function renderProductDetail(id) {
     pdOverview.textContent = i18nText(p.overview);
   }
 
-  /* ============================================================
-   PRODUCT DETAIL IMAGE GALLERY
-   Safe, isolated gallery with proper cleanup
-   ============================================================ */
-
   const pdImageImg =
     document.getElementById('pdImageImg');
 
@@ -72,34 +67,14 @@ export function renderProductDetail(id) {
 
   if (pdImageImg) {
 
-    /*
-     * CLEAN UP THE PREVIOUS PRODUCT GALLERY
-     *
-     * This is the key fix.
-     * When a new product is opened, the previous product's
-     * autoplay timer, transition timer and event listeners
-     * are stopped before the new gallery starts.
-     */
-
     if (typeof window.__nodaProductGalleryCleanup === 'function') {
       window.__nodaProductGalleryCleanup();
     }
 
-
-    /*
-     * Get this product's gallery only.
-     */
-
     const galleryImages =
       Array.isArray(p.gallery) && p.gallery.length
-        ? p.gallery.slice(0, 4)
+        ? p.gallery.slice(0, 5)
         : [p.img];
-
-
-    /*
-     * Unique gallery instance.
-     * Any delayed callback from an older instance becomes invalid.
-     */
 
     const galleryInstanceId =
       Symbol('productGallery');
@@ -111,18 +86,8 @@ export function renderProductDetail(id) {
     let galleryPaused = false;
     let destroyed = false;
 
-
-    /*
-     * Gallery element for hover pause.
-     */
-
     const galleryElement =
       document.querySelector('.pd-gallery');
-
-
-    /*
-     * CLEANUP FUNCTION FOR THIS GALLERY INSTANCE
-     */
 
     const cleanupGallery = () => {
 
@@ -133,10 +98,6 @@ export function renderProductDetail(id) {
 
       autoplayTimer = null;
       transitionTimer = null;
-
-      /*
-       * Remove listeners attached by this gallery instance.
-       */
 
       if (galleryElement) {
         galleryElement.removeEventListener(
@@ -150,11 +111,6 @@ export function renderProductDetail(id) {
         );
       }
 
-      /*
-       * Only clear the global reference if it still
-       * belongs to this exact gallery instance.
-       */
-
       if (
         window.__nodaProductGalleryCleanup === cleanupGallery
       ) {
@@ -163,17 +119,7 @@ export function renderProductDetail(id) {
 
     };
 
-
-    /*
-     * Register this gallery as the active one.
-     */
-
     window.__nodaProductGalleryCleanup = cleanupGallery;
-
-
-    /* ==========================================================
-       RENDER GALLERY
-       ========================================================== */
 
     function renderGallery() {
 
@@ -190,21 +136,11 @@ export function renderProductDetail(id) {
       const currentImage =
         galleryImages[currentIndex];
 
-
-      /*
-       * Only this product's image can be displayed.
-       */
-
       pdImageImg.src =
         'assets/images/' + currentImage;
 
       pdImageImg.alt =
         p.phCap || p.name;
-
-
-      /*
-       * Create thumbnails from the other images.
-       */
 
       const thumbnailIndexes =
         galleryImages
@@ -216,7 +152,7 @@ export function renderProductDetail(id) {
 
         pdGalleryThumbs.innerHTML =
           thumbnailIndexes
-            .slice(0, 3)
+            .slice(0, 4)
             .map(index => `
             <button
               type="button"
@@ -227,17 +163,10 @@ export function renderProductDetail(id) {
               <img
                 src="assets/images/${galleryImages[index]}"
                 alt="${p.phCap || p.name} image ${index + 1}"
-                loading="lazy"
               >
             </button>
           `)
             .join('');
-
-
-        /*
-         * Add click listeners only to the current gallery's
-         * newly created thumbnails.
-         */
 
         pdGalleryThumbs
           .querySelectorAll('.pd-gallery-thumb')
@@ -279,11 +208,6 @@ export function renderProductDetail(id) {
 
     }
 
-
-    /* ==========================================================
-       CHANGE MAIN IMAGE
-       ========================================================== */
-
     function changeGalleryImage(newIndex) {
 
       if (
@@ -301,13 +225,6 @@ export function renderProductDetail(id) {
       ) {
         return;
       }
-
-
-      /*
-       * Cancel any previous pending transition.
-       * This prevents delayed transitions from stacking.
-       */
-
       clearTimeout(transitionTimer);
 
 
@@ -315,12 +232,6 @@ export function renderProductDetail(id) {
 
 
       transitionTimer = setTimeout(() => {
-
-        /*
-         * IMPORTANT:
-         * Verify that this callback still belongs to
-         * the currently active product gallery.
-         */
 
         if (
           destroyed ||
@@ -353,10 +264,6 @@ export function renderProductDetail(id) {
     }
 
 
-    /* ==========================================================
-       AUTOPLAY
-       ========================================================== */
-
     function startGalleryAutoplay() {
 
       clearInterval(autoplayTimer);
@@ -383,14 +290,9 @@ export function renderProductDetail(id) {
 
         changeGalleryImage(nextIndex);
 
-      }, 4500);
+      }, 2000);
 
     }
-
-
-    /* ==========================================================
-       PAUSE / RESUME
-       ========================================================== */
 
     function pauseGallery() {
       galleryPaused = true;
@@ -401,10 +303,6 @@ export function renderProductDetail(id) {
       galleryPaused = false;
     }
 
-
-    /* ==========================================================
-       RESTART AUTOPLAY AFTER CLICK
-       ========================================================== */
 
     function restartGalleryAutoplay() {
 
@@ -432,14 +330,10 @@ export function renderProductDetail(id) {
 
         changeGalleryImage(nextIndex);
 
-      }, 4500);
+      }, 2000);
 
     }
 
-
-    /* ==========================================================
-       HOVER PAUSE
-       ========================================================== */
 
     function handleMouseEnter() {
       pauseGallery();
@@ -465,11 +359,6 @@ export function renderProductDetail(id) {
 
     }
 
-
-    /* ==========================================================
-       INITIAL RENDER
-       ========================================================== */
-
     renderGallery();
 
     startGalleryAutoplay();
@@ -492,16 +381,14 @@ export function renderProductDetail(id) {
     document.getElementById('pdKeyProps');
 
   if (pdKeyProps) {
-    pdKeyProps.innerHTML = `
-      <span class="tag">
-        ${p.code}
+  pdKeyProps.innerHTML = p.feature
+    .map(feature => `
+      <span class="tag" data-i18n="${feature}">
+        ${i18nText(feature)}
       </span>
-      <span class="tag" data-i18n="${p.shortName}">
-        ${i18nText(p.shortName)}
-      </span>
-    `;
+    `)
+    .join('');
   }
-
   const pdApplications =
     document.getElementById('pdApplications');
 
@@ -512,14 +399,10 @@ export function renderProductDetail(id) {
         .join('');
   }
 
-  /*
-   * Store the currently selected product before rendering
-   * thickness-dependent controls/specifications.
-   */
+
   window.currentSelectedProduct = p;
   renderTechnicalSpecifications(p);
 
-  /* ============ SEO: Product JSON-LD ============ */
   (function injectProductJsonLd() {
     const ld = {
       "@context": "https://schema.org",
@@ -541,15 +424,9 @@ export function renderProductDetail(id) {
     }
     tag.textContent = JSON.stringify(ld);
 
-    /* Update page title with the product name */
     document.title = p.name + ' | NODA PLAST FILM';
   })();
 
-  /* ==========================================================
-   PRODUCT DETAIL — TOP PREV / NEXT PRODUCT BUTTONS
-   ========================================================== */
-
-  // Remove any previous top-nav (from a previous product)
   const existingNav = document.getElementById('pdProductTopNav');
   if (existingNav) existingNav.remove();
 
@@ -571,7 +448,6 @@ export function renderProductDetail(id) {
       </button>
     `;
 
-    // Insert the nav at the top of the product detail container
     const pdContainer = document.querySelector('#page-product-detail .container');
     if (pdContainer) {
       const pdHero = pdContainer.querySelector('.pd-hero');
@@ -721,12 +597,6 @@ export function updateSelectedProductSpecs(product) {
 
   `;
 
-
-  /*
-   * Also update the old specification
-   * fields on the page.
-   */
-
   const pdThickness =
     document.getElementById('pdThickness');
 
@@ -751,11 +621,6 @@ export function updateSelectedProductSpecs(product) {
     pdTreatment.textContent =
       specs.treatment;
 
-
-  /*
-   * Save selection globally so Request Quote
-   * can use it.
-   */
 
   window.currentProductConfiguration = {
 
@@ -927,6 +792,5 @@ export function initProductDetail() {
     }
   });
 
-  // other product-detail listeners...
 
 }
