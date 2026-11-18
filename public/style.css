@@ -5022,7 +5022,7 @@ footer {
   width: 100%;
   aspect-ratio: 4 / 3;
 
-  background: var(--bg-light);
+  background: white;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
 
