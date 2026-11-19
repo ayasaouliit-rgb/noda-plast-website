@@ -176,7 +176,7 @@ export const PRODUCTS = [
       'mattn/mattr (3).png'
     ],
     category: 'Matt Films',
-    name: 'MATT-N — Matt Release Film ',
+    name: 'MATT-R — Matt Release Film ',
     shortName: 'Matt Film (Matt Release)',
     desc: 'Matt film with a release matte side, designed for applications requiring a distinctive low-gloss surface.',
     overview:
