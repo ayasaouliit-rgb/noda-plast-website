@@ -171,9 +171,9 @@ export const PRODUCTS = [
     gallery: [
       'matt-bopp-film-roll.png',
       'layers/mattr.png',
-      'mattn/mattn (1).png',
-      'mattn/mattn (2).png',
-      'mattn/mattn (3).png'
+      'mattn/mattr (1).png',
+      'mattn/mattr (2).png',
+      'mattn/mattr (3).png'
     ],
     category: 'Matt Films',
     name: 'MATT-N — Matt Release Film ',
