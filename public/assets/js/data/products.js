@@ -89,12 +89,13 @@ export const SPECIFICATION_DEFINITIONS = {
 };
 
 export const PRODUCTS = [
-  /*{
+  {
     id: 'mattn',
     code: 'MATT-N',
     img: 'matt-bopp-film-roll.png',
     gallery: [
       'matt-bopp-film-roll.png',
+      'layers/mattn.png',
       'mattn/mattn (1).png',
       'mattn/mattn (2).png',
       'mattn/mattn (3).png'
@@ -104,14 +105,20 @@ export const PRODUCTS = [
     shortName: 'Matt Film (Matt Non Sealable)',
     desc: 'Matt film with a non-sealable matte side, designed for applications requiring a distinctive low-gloss surface.',
     overview:
-      'MATTN is a matt BOPP film with a non-sealable matt side. It is suitable for applications where a premium matte appearance is required.',
+      'Matt-N, is coextruded BOPP Matt film, one side Matt Non-Sealable layer and other side treated glossy layer for Printing and Lamination.',
     tags: [
       'Matt finish',
-      'Non-sealable matt side'
+      'Non-sealable side'
+    ],
+    feature: [
+      "excellent Matt dispersion.",
+      "Very Good Haze across the web.",
+      "High mechanical properties & stiffness.",
+      "Excellent web flatness without curling."
     ],
     applications: [
-      'Premium packaging',
-      'Labels',
+      'Paper & Card Board lamination.',
+      'Rotogravure & flexo printing on Treated side.',
       'Specialty packaging'
     ],
     thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
@@ -155,7 +162,82 @@ export const PRODUCTS = [
     widthMax: 2000,
     treatments: [...TREATMENT_OPTIONS],
     phCap: 'MATTN matt BOPP film'
-  },*/
+  },
+
+  {
+    id: 'mattr',
+    code: 'MATT-R',
+    img: 'matt-bopp-film-roll.png',
+    gallery: [
+      'matt-bopp-film-roll.png',
+      'layers/mattr.png',
+      'mattn/mattn (1).png',
+      'mattn/mattn (2).png',
+      'mattn/mattn (3).png'
+    ],
+    category: 'Matt Films',
+    name: 'MATT-N — Matt Release Film ',
+    shortName: 'Matt Film (Matt Release)',
+    desc: 'Matt film with a release matte side, designed for applications requiring a distinctive low-gloss surface.',
+    overview:
+      'Matt-R, is coextruded BOPP Matt Release film, one side Matt Release layer and other side treated glossy layer for Printing and Lamination.',
+    tags: [
+      'Matt finish',
+      'Release side'
+    ],
+    feature: [
+      "excellent Matt dispersion.",
+      "Very Good Haze across the web.",
+      "High mechanical properties & stiffness. ",
+      "Excellent web flatness without curling."
+    ],
+    applications: [
+      'Lamination',
+      'Rotogravure & Flexo printing ',
+      'Specialty packaging'
+    ],
+    thicknesses: ['20 MIC', '25 MIC', '30 MIC'],
+    technicalSpecifications: {
+      "20 MIC": {
+        unitweight: "TBD",
+        yield: "TBD",
+        haze: "TBD",
+        gloss: "TBD",
+        cof: "TBD",
+        tensileStrength: "TBD",
+        elongation: "TBD",
+        thermalShrinkage: "TBD",
+        heatSealRange: "TBD",
+      },
+      "25 MIC": {
+        unitweight: "TBD",
+        yield: "TBD",
+        haze: "TBD",
+        gloss: "TBD",
+        cof: "TBD",
+        tensileStrength: "TBD",
+        elongation: "TBD",
+        thermalShrinkage: "TBD",
+        heatSealRange: "TBD",
+      },
+      "30 MIC": {
+        unitweight: "TBD",
+        yield: "TBD",
+        haze: "TBD",
+        gloss: "TBD",
+        cof: "TBD",
+        tensileStrength: "TBD",
+        elongation: "TBD",
+        thermalShrinkage: "TBD",
+        heatSealRange: "TBD",
+      },
+    },
+    specificationSchema: ["thickness", "unitweight", "yield", "haze", "gloss", "cof", "tensileStrength", "elongation", "thermalShrinkage", "heatSealRange"],
+    widthMin: 400,
+    widthMax: 2000,
+    treatments: [...TREATMENT_OPTIONS],
+    phCap: 'MATTN matt BOPP film'
+  },
 
   {
     id: 'matts',
@@ -707,7 +789,7 @@ export const PRODUCTS = [
       'Sealable',
       'Barrier packaging'
     ],
-    feature:[
+    feature: [
       'Excellent metal band & homogeneous metal deposition.',
       'Wide sealing range & good seal strength',
       'Excellent hot tack ',
@@ -799,7 +881,7 @@ export const PRODUCTS = [
       'Sealable',
       'Barrier packaging'
     ],
-    feature:[
+    feature: [
       'Excellent metal band & homogeneous metal deposition.',
       'Excellent web flatness.',
       'High mechanical properties & stiffness.'
@@ -865,7 +947,7 @@ export const PRODUCTS = [
       'Pearlized',
       'Sealable'
     ],
-    feature:[
+    feature: [
       'Very good opacity and whiteness.',
       'Excellent web flatness and glossy surface.',
       'Very good dead-fold properties.',
@@ -961,8 +1043,8 @@ export const PRODUCTS = [
       'Milky',
       'Sealable'
     ],
-    feature:[
-      'Excellent whiteness and high gloss.', 
+    feature: [
+      'Excellent whiteness and high gloss.',
       'Good antistatic behavior.',
       'Very good seal ability'
     ],
@@ -1130,9 +1212,9 @@ export const PRODUCTS = [
     tags: [
       'Clear',
       'Transparent',
-      'Sealable'
+      'Release'
     ],
-    feature:[
+    feature: [
       'BOPP clear film for food and non-food packaging',
       'Good printability (Rotogravure & Flexo) on treated side.',
       'Good for lamination.'
